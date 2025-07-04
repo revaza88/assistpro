@@ -38,8 +38,8 @@ AssistPro არის თანამედროვე ვებ-აპლი�
 
 ```bash
 # რეპოზიტორიის კლონირება
-git clone https://github.com/[your-username]/assist3.git
-cd assist3
+git clone https://github.com/revaza88/assistpto.git
+cd assistpto
 
 # დეპენდენციების ინსტალაცია
 npm install
@@ -106,7 +106,7 @@ ssh root@your-server-ip
 cd /home/[site-user]/htdocs/[site-name]
 
 # Git რეპოზიტორიის კლონირება
-git clone https://github.com/[your-username]/assist3.git .
+git clone https://github.com/revaza88/assistpto.git .
 
 # ფაილების უფლებების დაყენება
 chown -R [site-user]:[site-user] .
@@ -317,7 +317,7 @@ MIT License - იხილეთ LICENSE ფაილი დეტალებ�
 
 - **Email**: info@assistpro.com
 - **Website**: https://assistpro.com
-- **GitHub**: https://github.com/[your-username]/assist3
+- **GitHub**: https://github.com/revaza88/assistpto
 
 ---
 
