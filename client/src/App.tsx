@@ -16,7 +16,6 @@ import LegalServices from "@/pages/services/legal";
 import BusinessConsulting from "@/pages/services/business"; // Name kept, but content is Business Assist
 import AuditServices from "@/pages/services/audit";
 import HRServices from "@/pages/services/hr";
-import AdminPage from "@/pages/admin";
 
 function Router() {
   return (
@@ -32,7 +31,6 @@ function Router() {
       <Route path="/services/business" component={BusinessConsulting} /> {/* Path kept, component name too */}
       <Route path="/services/audit" component={AuditServices} />
       <Route path="/services/hr" component={HRServices} />
-      <Route path="/admin" component={AdminPage} />
       <Route component={NotFound} />
     </Switch>
   );

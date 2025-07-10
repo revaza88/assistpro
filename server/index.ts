@@ -7,7 +7,6 @@ import { securityMiddleware, corsMiddleware, compressionMiddleware } from "./mid
 import { apiLimiter } from "./middleware/rateLimiter";
 import { config } from "./config";
 import { logger } from "./utils/logger";
-import adminRoutes from "./routes/admin";
 
 const app = express();
 
@@ -31,11 +30,6 @@ app.use(express.urlencoded({ extended: false, limit: config.bodyLimit }));
 // Custom middleware
 app.use(requestLogger);
 
-// Admin routes (protected)
-if (config.features.adminPanel) {
-  app.use('/api/admin', adminRoutes);
-}
-
 (async () => {
   try {
     logger.info('🚀 Starting server...');
@@ -58,12 +52,6 @@ if (config.features.adminPanel) {
     server.listen(config.port, config.host, () => {
       logger.info(`🚀 Server running on ${config.host}:${config.port}`);
       logger.info(`📦 Environment: ${config.environment}`);
-      if (config.features.adminPanel) {
-        logger.info(`🔧 Admin panel available at: http://${config.host}:${config.port}/admin`);
-      if (config.isProduction && config.adminToken === 'dev-admin-token-123') {
-        logger.warn('🚨 SECURITY WARNING: Running in production with the default admin token. Please set a strong ADMIN_TOKEN environment variable.');
-      }
-      }
     });
 
   } catch (error) {

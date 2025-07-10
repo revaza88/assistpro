@@ -1,9 +1,33 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertContactSchema, insertJobApplicationSchema } from "@shared/schema";
+// import { insertContactSchema, insertJobApplicationSchema } from "@shared/schema"; // Removed
 import { z } from "zod";
 import { logger } from "./utils/logger"; // Added logger import
+
+// Define Zod schemas for validation, previously in shared/schema.ts
+const insertContactSchema = z.object({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().optional(),
+  company: z.string().optional(),
+  service: z.string().optional(),
+  message: z.string().min(1, "Message is required"),
+  privacy: z.boolean().optional().default(false),
+});
+
+const insertJobApplicationSchema = z.object({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().optional(),
+  position: z.string().min(1, "Position is required"),
+  resume: z.string().optional(), // Assuming string (e.g. filename or link)
+  coverLetter: z.string().optional(),
+  privacy: z.boolean().optional().default(false),
+});
+
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Health check endpoint

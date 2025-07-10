@@ -10,7 +10,6 @@ export const config = {
   
   // Security
   corsOrigin: process.env.CORS_ORIGIN || 'http://localhost:3000',
-  adminToken: process.env.ADMIN_TOKEN || 'dev-admin-token-123',
   
   // Rate limiting
   rateLimit: {
@@ -21,14 +20,8 @@ export const config = {
   // Request body limits
   bodyLimit: '10mb',
 
-  // Database
-  database: {
-    url: process.env.DATABASE_URL || 'postgresql://localhost:5432/assist',
-  },
-
   // Features
   features: {
-    adminPanel: process.env.ENABLE_ADMIN_PANEL !== 'false',
     rateLimiting: process.env.ENABLE_RATE_LIMITING !== 'false',
     compression: process.env.ENABLE_COMPRESSION !== 'false',
     monitoring: process.env.ENABLE_MONITORING !== 'false'
