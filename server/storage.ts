@@ -1,15 +1,4 @@
 // Define simplified types directly, removing dependency on @shared/schema
-export type User = {
-  id: number;
-  username: string;
-  password?: string; // Password might not always be present in User objects
-};
-
-export type InsertUser = {
-  username: string;
-  password?: string;
-};
-
 export type Contact = {
   id: number;
   firstName: string;
@@ -60,11 +49,6 @@ export type InsertJobApplication = {
 
 
 export interface IStorage {
-  // User methods (existing)
-  getUser(id: number): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
-  
   // Contact methods
   createContact(contact: InsertContact): Promise<Contact>;
   getAllContacts(): Promise<Contact[]>;
@@ -75,83 +59,56 @@ export interface IStorage {
 }
 
 export class MemStorage implements IStorage {
-  private users: Map<number, User>;
   private contacts: Map<number, Contact>;
   private jobApplications: Map<number, JobApplication>;
-  private currentUserId: number;
   private currentContactId: number;
   private currentJobApplicationId: number;
 
   constructor() {
-    this.users = new Map();
     this.contacts = new Map();
     this.jobApplications = new Map();
-    this.currentUserId = 1;
     this.currentContactId = 1;
     this.currentJobApplicationId = 1;
   }
 
-  async getUser(id: number): Promise<User | undefined> {
-    return this.users.get(id);
-  }
-
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
-  }
-
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = this.currentUserId++;
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
-  }
-
   async createContact(insertContact: InsertContact): Promise<Contact> {
-    // Simulate creation without actual storage
-    console.log("Contact form submission (in-memory storage disabled):", insertContact);
-    // Return a mock Contact object matching the expected structure but without saving
-    return {
-      id: this.currentContactId++, // Still increment to mimic ID generation
-      firstName: insertContact.firstName,
-      lastName: insertContact.lastName,
-      email: insertContact.email,
+    const id = this.currentContactId++;
+    const newContact: Contact = {
+      ...insertContact,
+      id,
+      createdAt: new Date(),
+      privacy: insertContact.privacy || false, // Ensure privacy has a default
       phone: insertContact.phone || null,
       company: insertContact.company || null,
       service: insertContact.service || null,
-      message: insertContact.message,
-      privacy: insertContact.privacy || false,
-      createdAt: new Date(),
-    } as Contact; // Type assertion might be needed if schema is strict
+    };
+    this.contacts.set(id, newContact);
+    console.log("New contact created (in-memory):", newContact);
+    return newContact;
   }
 
   async getAllContacts(): Promise<Contact[]> {
-    // Return empty array as no contacts are stored
-    return [];
+    return Array.from(this.contacts.values());
   }
 
   async createJobApplication(insertApplication: InsertJobApplication): Promise<JobApplication> {
-    // Simulate creation without actual storage
-    console.log("Job application submission (in-memory storage disabled):", insertApplication);
-    // Return a mock JobApplication object
-    return {
-      id: this.currentJobApplicationId++, // Still increment
-      firstName: insertApplication.firstName,
-      lastName: insertApplication.lastName,
-      email: insertApplication.email,
+    const id = this.currentJobApplicationId++;
+    const newApplication: JobApplication = {
+      ...insertApplication,
+      id,
+      createdAt: new Date(),
+      privacy: insertApplication.privacy || false, // Ensure privacy has a default
       phone: insertApplication.phone || null,
-      position: insertApplication.position,
       resume: insertApplication.resume || null,
       coverLetter: insertApplication.coverLetter || null,
-      privacy: insertApplication.privacy || false,
-      createdAt: new Date(),
-    } as JobApplication; // Type assertion
+    };
+    this.jobApplications.set(id, newApplication);
+    console.log("New job application created (in-memory):", newApplication);
+    return newApplication;
   }
 
   async getAllJobApplications(): Promise<JobApplication[]> {
-    // Return empty array as no applications are stored
-    return [];
+    return Array.from(this.jobApplications.values());
   }
 }
 
