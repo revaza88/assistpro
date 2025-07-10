@@ -4,29 +4,7 @@ import { storage } from "./storage";
 // import { insertContactSchema, insertJobApplicationSchema } from "@shared/schema"; // Removed
 import { z } from "zod";
 import { logger } from "./utils/logger"; // Added logger import
-
-// Define Zod schemas for validation, previously in shared/schema.ts
-const insertContactSchema = z.object({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().optional(),
-  company: z.string().optional(),
-  service: z.string().optional(),
-  message: z.string().min(1, "Message is required"),
-  privacy: z.boolean().optional().default(false),
-});
-
-const insertJobApplicationSchema = z.object({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().optional(),
-  position: z.string().min(1, "Position is required"),
-  resume: z.string().optional(), // Assuming string (e.g. filename or link)
-  coverLetter: z.string().optional(),
-  privacy: z.boolean().optional().default(false),
-});
+import { insertContactSchema, insertJobApplicationSchema } from "../src/shared/schemas";
 
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -48,7 +26,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const contact = await storage.createContact(validatedData);
       
       // Log the contact submission
-      console.log("New contact submission:", {
+      logger.info("New contact submission:", {
         name: `${contact.firstName} ${contact.lastName}`,
         email: contact.email,
         service: contact.service,
@@ -84,7 +62,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const application = await storage.createJobApplication(validatedData);
       
       // Log the job application
-      console.log("New job application:", {
+      logger.info("New job application:", {
         name: `${application.firstName} ${application.lastName}`,
         email: application.email,
         position: application.position

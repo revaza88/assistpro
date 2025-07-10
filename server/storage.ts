@@ -1,52 +1,6 @@
 // Define simplified types directly, removing dependency on @shared/schema
-export type Contact = {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone?: string | null;
-  company?: string | null;
-  service?: string | null;
-  message: string;
-  privacy: boolean;
-  createdAt: Date;
-};
-
-export type InsertContact = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone?: string | null;
-  company?: string | null;
-  service?: string | null;
-  message: string;
-  privacy?: boolean; // Made optional as it has a default in schema
-};
-
-export type JobApplication = {
-  id: number;
-  firstName: string;
-  lastName:string;
-  email: string;
-  phone?: string | null;
-  position: string;
-  resume?: string | null; // Assuming URL or file path
-  coverLetter?: string | null;
-  createdAt: Date;
-  privacy?: boolean; // Added based on contact form, ensure consistency if needed
-};
-
-export type InsertJobApplication = {
-  firstName: string;
-  lastName:string;
-  email: string;
-  phone?: string | null;
-  position: string;
-  resume?: string | null;
-  coverLetter?: string | null;
-  privacy?: boolean;
-};
-
+import { logger } from "./utils/logger";
+import { Contact, InsertContact, JobApplication, InsertJobApplication } from "../src/shared/types";
 
 export interface IStorage {
   // Contact methods
@@ -83,7 +37,7 @@ export class MemStorage implements IStorage {
       service: insertContact.service || null,
     };
     this.contacts.set(id, newContact);
-    console.log("New contact created (in-memory):", newContact);
+    logger.info("New contact created (in-memory):", newContact);
     return newContact;
   }
 
@@ -103,7 +57,7 @@ export class MemStorage implements IStorage {
       coverLetter: insertApplication.coverLetter || null,
     };
     this.jobApplications.set(id, newApplication);
-    console.log("New job application created (in-memory):", newApplication);
+    logger.info("New job application created (in-memory):", newApplication);
     return newApplication;
   }
 
