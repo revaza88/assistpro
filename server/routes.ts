@@ -8,16 +8,71 @@ import { insertContactSchema, insertJobApplicationSchema } from "../src/shared/s
 
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Health check endpoint
+  // Health check endpoint with detailed information
   app.get("/health", (req, res) => {
-    res.status(200).json({
+    const memUsage = process.memoryUsage();
+    const uptime = process.uptime();
+    
+    const healthData = {
       status: "ok",
       timestamp: new Date().toISOString(),
       version: process.env.npm_package_version || "1.0.0",
       environment: process.env.NODE_ENV || "development",
-      uptime: process.uptime()
+      uptime: {
+        seconds: Math.floor(uptime),
+        human: `${Math.floor(uptime / 3600)}h ${Math.floor((uptime % 3600) / 60)}m ${Math.floor(uptime % 60)}s`
+      },
+      memory: {
+        rss: `${Math.round(memUsage.rss / 1024 / 1024)}MB`,
+        heapTotal: `${Math.round(memUsage.heapTotal / 1024 / 1024)}MB`,
+        heapUsed: `${Math.round(memUsage.heapUsed / 1024 / 1024)}MB`,
+        heapUsedPercent: `${Math.round((memUsage.heapUsed / memUsage.heapTotal) * 100)}%`
+      },
+      node: {
+        version: process.version,
+        platform: process.platform,
+        arch: process.arch
+      },
+      features: {
+        compression: !!process.env.ENABLE_COMPRESSION,
+        rateLimiting: !!process.env.ENABLE_RATE_LIMITING,
+        monitoring: !!process.env.ENABLE_MONITORING
+      }
+    };
+    
+    logger.debug("Health check requested", { 
+      ip: req.ip, 
+      userAgent: req.get('User-Agent'),
+      memory: healthData.memory
     });
+    
+    res.status(200).json(healthData);
   });
+
+  // Debug endpoint (development only)
+  if (process.env.NODE_ENV === 'development') {
+    app.get("/debug/logs", (req, res) => {
+      const level = req.query.level as string;
+      const logs = logger.getLogs(level as any);
+      res.json({
+        count: logs.length,
+        logs: logs.slice(0, 100) // Last 100 logs
+      });
+    });
+    
+    app.get("/debug/config", (req, res) => {
+      res.json({
+        config: {
+          port: process.env.PORT,
+          host: process.env.HOST,
+          nodeEnv: process.env.NODE_ENV,
+          corsOrigin: process.env.CORS_ORIGIN,
+          logLevel: process.env.LOG_LEVEL
+        },
+        env: Object.keys(process.env).filter(key => !key.includes('SECRET') && !key.includes('PASSWORD'))
+      });
+    });
+  }
 
   // Contact form submission
   app.post("/api/contacts", async (req, res) => {
