@@ -44,8 +44,8 @@ This project and everyone participating in it is governed by our Code of Conduct
 
 ```bash
 # Clone the repository
-git clone https://github.com/[your-username]/assist3.git
-cd assist3
+git clone https://github.com/revaza88/assistpro.git
+cd assistpro
 
 # Install dependencies
 npm install
@@ -80,7 +80,7 @@ Follow the conventional commits format:
 ### Project Structure
 
 ```
-assist3/
+assistpro/
 ├── client/                 # React frontend
 │   ├── src/
 │   │   ├── components/    # Reusable components
