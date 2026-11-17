@@ -4,7 +4,7 @@ import path from "path";
 import { createServer as createViteServer, createLogger } from "vite";
 import { type Server } from "http";
 import viteConfig from "../vite.config";
-import { nanoid } from "nanoid";
+import { randomUUID } from 'node:crypto';
 import { htmlStatus, pageHtml, setupSeoRoutes } from './seo';
 
 
@@ -59,7 +59,7 @@ export async function setupVite(app: Express, server: Server) {
       let template = await fs.promises.readFile(clientTemplate, "utf-8");
       template = template.replace(
         `src="/src/main.tsx"`,
-        `src="/src/main.tsx?v=${nanoid()}"`,
+        `src="/src/main.tsx?v=${randomUUID()}"`,
       );
       const page = await vite.transformIndexHtml(url, pageHtml(template, pathname, url.includes('?')));
       res.status(htmlStatus(pathname)).set({ "Content-Type": "text/html", 'Cache-Control': 'no-cache' }).end(page);

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { nanoid } from "nanoid";
+import { randomBytes } from 'node:crypto';
 import { logger } from "../utils/logger";
 
 // Extend Request interface to include traceId
@@ -12,7 +12,7 @@ declare global {
 }
 
 export const requestTracing = (req: Request, res: Response, next: NextFunction) => {
-  const traceId = nanoid(8);
+  const traceId = randomBytes(6).toString('base64url');
   req.traceId = traceId;
   
   // Log request start with trace ID
