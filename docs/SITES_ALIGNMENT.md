@@ -147,3 +147,12 @@ build-ისა და runtime-ის დამოკიდებულებე
 დაკავშირებას სთავაზობს. ლოკალური ტესტი ცალკე `INTAKE_MODE=local`-ით ირთვება.
 ბაზა და შეტყობინებები არ შექმნილა. დარჩენილი დომენის, ჰოსტინგის, ინდექსაციის,
 კონტენტის დამტკიცებისა და build-tool advisory-ების საკითხები იხილეთ `docs/RELEASE.md`.
+
+### Build tools follow-up — 2026-11-17
+
+The original four build-tool findings were addressed by Vite 8.3.8, React plugin
+6.3.0, esbuild 0.28.2 and removal of unused typography. The current full audit
+also exposes a separate, newly reviewed picomatch advisory with no published fix;
+production audit remains clean. See `BUILD_TOOLCHAIN_QA.md` for exact scope,
+verification and the outstanding upstream limitation. Database creation and public
+intake/indexing remain deferred.

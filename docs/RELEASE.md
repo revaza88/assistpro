@@ -10,11 +10,13 @@ Docker runtime მხოლოდ production დამოკიდებულ�
 არის. შესრულდა health/HTML/404/noindex/გამორთული მიღების smoke ტესტი და Compose
 კონფიგურაციის შემოწმება. DNS/TLS და საჯარო ჰოსტინგი ჯერ არ შემოწმებულა.
 
-Runtime audit განახლების შემდეგ 0 advisory-ს აჩვენებს. სრული dependency audit-ში
-რჩება 4 build/development advisory (Vite/esbuild და typography/selector-parser-ის
-ჯაჭვები), მათ შორის Vite-ის high advisory. ისინი production იმიჯში არ შედის;
-dev server საჯაროდ არ უნდა გაიხსნას. Toolchain-ის ცალკე დაგეგმილი განახლება და
-ხელახალი ტესტირება რჩება გასაკეთებელი; ავტომატური `npm audit fix --force` არ გამოყენებულა.
+Runtime audit განახლების შემდეგ 0 advisory-ს აჩვენებს. თავდაპირველი 4
+build/development advisory გამოსწორებულია Vite 8.3.8 / React plugin 6.3.0 /
+esbuild 0.28.2 განახლებითა და გამოუყენებელი typography plugin-ის ამოღებით.
+2026-11-17-ის ახალ სრულ აუდიტში რჩება სხვა, ჯერ შეუსწორებელი `picomatch`
+advisory და მისი დამოკიდებული ჯაჭვები (12 high package findings; ერთი ძირეული
+advisory). დეტალები და შემოწმებები: [toolchain ანგარიში](BUILD_TOOLCHAIN_QA.md).
+Dev server საჯაროდ არ გახსნათ; ავტომატური `npm audit fix --force` არ გამოყენებულა.
 
 ## რა მომზადდა
 
