@@ -4,8 +4,9 @@ import { config } from './config';
 
 export const seoOrigin = siteOrigin(process.env.SITE_URL);
 export const indexingEnabled = process.env.INDEXING_ENABLED === 'true' && !!seoOrigin;
-export function pageHtml(template: string, pathname: string, query: boolean, body = '') {
-  return template.replace('<!--app-head-->', () => seoHead(pathname, seoOrigin, indexingEnabled, query) + `<meta name="intake-mode" content="${config.intakeMode === 'local' ? 'local' : 'disabled'}" />`)
+export function pageHtml(template: string, pathname: string, query: boolean, body = '', scriptNonce = '') {
+  // Substitute only the developer-owned template, before inserting page content.
+  return template.replaceAll('__ASSISTPRO_CSP_NONCE__', scriptNonce).replace('<!--app-head-->', () => seoHead(pathname, seoOrigin, indexingEnabled, query) + `<meta name="intake-mode" content="${config.intakeMode === 'local' ? 'local' : 'disabled'}" />`)
     .replace('<!--app-html-->', () => body);
 }
 export function setupSeoRoutes(app: Express) {

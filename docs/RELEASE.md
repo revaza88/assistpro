@@ -10,6 +10,12 @@ Docker runtime მხოლოდ production დამოკიდებულ�
 არის. შესრულდა health/HTML/404/noindex/გამორთული მიღების smoke ტესტი და Compose
 კონფიგურაციის შემოწმება. DNS/TLS და საჯარო ჰოსტინგი ჯერ არ შემოწმებულა.
 
+Modern Web Guidance-ის შემდგომ ცვლილებებზე TypeScript, 23 ტესტი და ბილდი
+გაიარა. production სკრიპტები იყენებს თითო პასუხისთვის ახალ CSP nonce-ს.
+Proxy/CDN-მ HTML და მისი CSP სათაური ერთად უნდა გაატაროს; HTML-ის ცალკე
+ქეშირება ან CSP-ის სხვა წესით გადაწერა nonce-ს დაარღვევს. შემოწმებები და
+გამოყენებული რეკომენდაციები: [Modern Web Guidance](MODERN_WEB_GUIDANCE.md).
+
 Runtime audit განახლების შემდეგ 0 advisory-ს აჩვენებს. თავდაპირველი 4
 build/development advisory გამოსწორებულია Vite 8.3.8 / React plugin 6.3.0 /
 esbuild 0.28.2 განახლებითა და გამოუყენებელი typography plugin-ის ამოღებით.

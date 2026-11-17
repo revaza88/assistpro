@@ -156,3 +156,14 @@ also exposes a separate, newly reviewed picomatch advisory with no published fix
 production audit remains clean. See `BUILD_TOOLCHAIN_QA.md` for exact scope,
 verification and the outstanding upstream limitation. Database creation and public
 intake/indexing remain deferred.
+
+### Modern Web Guidance — 2026-11-17
+
+The user requested consideration of GoogleChrome/modern-web-guidance. The complete
+guide-description catalog was reviewed for relevance; applicable source guidance,
+legacy scanning and browser checks informed fixes to theming, keyboard navigation,
+text scaling, scrollbars, field descriptions and production script CSP. Future UI
+work now references this guidance in AGENTS.md. Coverage, deliberate applicability
+decisions and verification limits are recorded in `docs/MODERN_WEB_GUIDANCE.md`;
+this does not claim every feature is required or all browser behavior is certified.
+Database creation, public intake and indexing remain deferred.

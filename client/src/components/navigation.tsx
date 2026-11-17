@@ -24,6 +24,7 @@ export default function Navigation() {
   const design = designCopy(i18n.language);
   const navRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const servicesButtonRef = useRef<HTMLButtonElement>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [location, navigate] = useLocation();
@@ -100,9 +101,9 @@ export default function Navigation() {
   ];
 
   return (
-    <><a href="#main-content" className="skip-link">{design.skip}</a><nav ref={navRef} onKeyDown={event => { if (event.key === 'Escape') { setIsMobileMenuOpen(false); setIsServicesOpen(false); menuButtonRef.current?.focus(); } }} className="site-header sticky top-0 z-50">
+    <><a href="#main-content" className="skip-link">{design.skip}</a><nav ref={navRef} onKeyDown={event => { if (event.key === 'Escape' && (isMobileMenuOpen || isServicesOpen)) { event.preventDefault(); setIsMobileMenuOpen(false); setIsServicesOpen(false); (isMobileMenuOpen ? menuButtonRef : servicesButtonRef).current?.focus(); } }} className="site-header sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 lg:h-20"> {/* Adjusted height for better spacing */}
+        <div className="flex flex-wrap gap-y-2 justify-between items-center min-h-16 lg:min-h-20">
           {/* Logo */}
           <div
             className="flex items-center"
@@ -118,16 +119,21 @@ export default function Navigation() {
               className="relative"
               onMouseEnter={() => setIsServicesOpen(true)}
               onMouseLeave={() => setIsServicesOpen(false)}
+              onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setIsServicesOpen(false); }}
             >
               {/* Main link for services - can navigate to a general services page or first service */}
-              <Link to="/services" className="text-slate-700 hover:text-brand-blue-600 px-3 py-2 text-sm lg:text-base font-medium transition-colors duration-200 flex items-center gap-1 hover:bg-brand-blue-50 rounded-lg">
+              <div className="flex items-center">
+              <Link to="/services" aria-current={location === '/services' ? 'page' : undefined} className="text-slate-700 hover:text-brand-blue-600 pl-3 py-2 text-sm lg:text-base font-medium transition-colors duration-200 flex items-center gap-1 hover:bg-brand-blue-50 rounded-lg">
                 {t('nav.services')}
-                <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
               </Link>
+              <button ref={servicesButtonRef} type="button" aria-label={t('nav.services')} aria-expanded={isServicesOpen} aria-controls="desktop-services" onClick={() => setIsServicesOpen(open => !open)} className="inline-flex items-center justify-center min-h-12 min-w-12 rounded-lg hover:bg-brand-blue-50">
+                <ChevronDownIcon aria-hidden="true" className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
+              </button></div>
               <>
                 {isServicesOpen && (
                   <div
-                    className="absolute left-0 mt-2 w-96 bg-white rounded-xl shadow-2xl border border-slate-100 overflow-hidden"
+                    id="desktop-services"
+                    className="absolute left-0 pt-2 w-96 bg-white rounded-xl shadow-2xl border border-slate-100 overflow-hidden"
                     style={{zIndex: 100}}
                   >
                     <div className="p-3 grid grid-cols-1 gap-1">
@@ -137,6 +143,7 @@ export default function Navigation() {
                           <Link
                             key={service.href}
                             to={service.href}
+                            aria-current={location === service.href ? 'page' : undefined}
                             className="group flex items-start gap-3 p-3 rounded-lg hover:bg-slate-100 transition-all duration-200"
                             onClick={() => { setIsServicesOpen(false); }}
                           >
@@ -156,6 +163,7 @@ export default function Navigation() {
 
             {navItems.map((item) => (
               <Link key={item.id} to={item.path}
+                  aria-current={location === item.path.split('?')[0] ? 'page' : undefined}
                   className={`text-slate-700 hover:text-brand-blue-600 px-3 py-2 text-sm lg:text-base font-medium transition-colors duration-200 hover:bg-brand-blue-50 rounded-lg ${location === item.path ? 'text-brand-blue-600 bg-brand-blue-50' : ''}`}
                   onClick={() => handleDesktopNavClick(item.path)}
                 >
@@ -171,14 +179,15 @@ export default function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="xl:hidden flex items-center">
+          <div className="xl:hidden flex flex-wrap max-w-full items-center">
             <LanguageSelector />
             <ThemeToggle />
             <button
               ref={menuButtonRef}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="inline-flex min-h-12 min-w-12 items-center justify-center p-2 rounded-md text-slate-600 hover:text-brand-blue-600 hover:bg-brand-blue-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-blue-500"
-              aria-label="Open mobile menu"
+              type="button"
+              aria-label={i18n.language.startsWith('en') ? 'Menu' : i18n.language.startsWith('ru') ? 'Меню' : 'მენიუ'}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
             >
@@ -193,11 +202,12 @@ export default function Navigation() {
         {isMobileMenuOpen && (
           <div
             id="mobile-menu"
-            className="xl:hidden bg-white border-t border-slate-200 shadow-lg max-h-[75vh] overflow-y-auto"
+            className="mobile-site-menu xl:hidden bg-white border-t border-slate-200 shadow-lg overflow-y-auto"
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <div className="relative">
                 <button
+                  type="button"
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
                   aria-expanded={isServicesOpen}
                   aria-controls="mobile-services"
@@ -216,6 +226,7 @@ export default function Navigation() {
                         <Link
                           key={service.href}
                           to={service.href}
+                          aria-current={location === service.href ? 'page' : undefined}
                           className="flex items-center min-h-12 px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-brand-blue-600 hover:bg-brand-blue-50"
                           onClick={() => handleMobileNavClick(service.href)}
                         >
@@ -233,6 +244,7 @@ export default function Navigation() {
                 <Link
                   key={item.id}
                   to={item.path}
+                  aria-current={location === item.path.split('?')[0] ? 'page' : undefined}
                   onClick={() => handleMobileNavClick(item.path)}
                   className={`text-slate-700 hover:text-brand-blue-600 hover:bg-brand-blue-50 flex items-center min-h-12 w-full text-left px-3 py-2 rounded-md text-base font-medium ${location === item.path ? 'text-brand-blue-600 bg-brand-blue-50' : ''}`}
                 >

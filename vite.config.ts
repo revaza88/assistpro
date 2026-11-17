@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
+  html: { cspNonce: '__ASSISTPRO_CSP_NONCE__' },
   plugins: [
     react(),
     // Remove replit plugins for local development

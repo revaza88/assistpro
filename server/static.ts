@@ -32,6 +32,6 @@ export function serveStatic(app: Express) {
     const query = req.url.includes('?');
     const body = query ? '' : rendered.get(status === 404 ? '/404' : req.path)!;
     res.status(status).set('Cache-Control', 'no-cache').set('X-Robots-Tag', !indexingEnabled || !pageSeo(req.path).indexable || query ? 'noindex,follow' : 'index,follow')
-      .type('html').send(pageHtml(template, req.path, query, body));
+      .type('html').send(pageHtml(template, req.path, query, body, res.locals.scriptNonce));
   });
 }

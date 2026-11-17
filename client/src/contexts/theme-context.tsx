@@ -12,51 +12,48 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>('auto');
+  const [loaded, setLoaded] = useState(false);
   const [actualTheme, setActualTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as Theme || 'auto';
-    setTheme(savedTheme);
-    
-    const updateActualTheme = () => {
-      if (savedTheme === 'auto') {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        setActualTheme(prefersDark ? 'dark' : 'light');
-      } else {
-        setActualTheme(savedTheme);
-      }
+    const readTheme = () => {
+      try {
+        const saved = localStorage.getItem('theme');
+        return saved === 'light' || saved === 'dark' ? saved : 'auto';
+      } catch { return 'auto'; }
     };
-
-    updateActualTheme();
-    
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    mediaQuery.addEventListener('change', updateActualTheme);
-    
-    return () => mediaQuery.removeEventListener('change', updateActualTheme);
-  }, [theme]);
+    setTheme(readTheme());
+    setLoaded(true);
+    const sync = (event: StorageEvent) => {
+      if (event.key === 'theme' || event.key === null) setTheme(readTheme());
+    };
+    window.addEventListener('storage', sync);
+    return () => window.removeEventListener('storage', sync);
+  }, []);
 
   useEffect(() => {
-    const root = window.document.documentElement;
-    root.classList.remove('light', 'dark');
-    
-    if (actualTheme === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.add('light');
-    }
-  }, [actualTheme]);
+    if (!loaded) return;
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const apply = () => {
+      const resolved = theme === 'auto' ? (mediaQuery.matches ? 'dark' : 'light') : theme;
+      setActualTheme(resolved);
+      const root = document.documentElement;
+      root.classList.toggle('dark', resolved === 'dark');
+      root.classList.toggle('light', resolved === 'light');
+      const meta = document.querySelector<HTMLMetaElement>('meta[name="color-scheme"]');
+      if (meta) meta.content = theme === 'auto' ? 'light dark' : theme;
+    };
+    apply();
+    mediaQuery.addEventListener('change', apply);
+    return () => mediaQuery.removeEventListener('change', apply);
+  }, [theme, loaded]);
 
   const handleSetTheme = (newTheme: Theme) => {
     setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    // Update actual theme immediately
-    if (newTheme === 'auto') {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setActualTheme(prefersDark ? 'dark' : 'light');
-    } else {
-      setActualTheme(newTheme);
-    }
+    try {
+      if (newTheme === 'auto') localStorage.removeItem('theme');
+      else localStorage.setItem('theme', newTheme);
+    } catch { /* The current tab's setting still works when storage is blocked. */ }
   };
 
   return (
