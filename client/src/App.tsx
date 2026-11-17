@@ -1,26 +1,48 @@
-import { Switch, Route } from "wouter";
-import { queryClient } from "./lib/queryClient";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import { Switch, Route, useLocation } from "wouter";
+import { lazy, Suspense, useEffect, type ComponentType } from 'react';
+import i18n from './lib/i18n';
+import SeoHead from './components/SeoHead';
 import { ThemeProvider } from "@/contexts/theme-context";
 import Home from "@/pages/home";
-import NotFound from "@/pages/not-found";
-import AboutPage from "@/pages/about"; // New
-import ContactPage from "@/pages/contact"; // New
-import TeamPage from "@/pages/team"; // New
-import CareerPage from "@/pages/career"; // New
-import AccountingServices from "@/pages/services/accounting";
-import TaxServices from "@/pages/services/tax";
-import LegalServices from "@/pages/services/legal";
-import BusinessConsulting from "@/pages/services/business"; // Name kept, but content is Business Assist
-import AuditServices from "@/pages/services/audit";
-import HRServices from "@/pages/services/hr";
+// Animation code is needed by detail pages, not the initial home/calculator path.
+const animatedPage = (load: () => Promise<{ default: ComponentType }>) => lazy(async () => {
+  const [{ default: Page }, { default: Frame }] = await Promise.all([load(), import('@/components/MotionPage')]);
+  return { default: () => <Frame><Page /></Frame> };
+});
+const ServicesPage = lazy(() => import('@/pages/services'));
+const IndustriesPage = lazy(() => import('@/pages/industries'));
+const FaqPage = lazy(() => import('@/pages/faq'));
+const CalculatorPage = lazy(() => import('@/pages/calculator'));
+import { InquiryDraftProvider } from "@/contexts/inquiry-draft";
+const NotFound = animatedPage(() => import('@/pages/not-found'));
+const AboutPage = animatedPage(() => import('@/pages/about'));
+const ContactPage = lazy(() => import('@/pages/contact'));
+const TeamPage = animatedPage(() => import('@/pages/team'));
+const CareerPage = animatedPage(() => import('@/pages/career'));
+const AccountingServices = animatedPage(() => import('@/pages/services/accounting'));
+const TaxServices = animatedPage(() => import('@/pages/services/tax'));
+const LegalServices = animatedPage(() => import('@/pages/services/legal'));
+const BusinessConsulting = animatedPage(() => import('@/pages/services/business'));
+const AuditServices = animatedPage(() => import('@/pages/services/audit'));
+const HRServices = animatedPage(() => import('@/pages/services/hr'));
+
+function RouteFocus() {
+  const [location] = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.getElementById('main-content')?.focus({ preventScroll: true });
+  }, [location]);
+  return null;
+}
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/services" component={ServicesPage} />
+      <Route path="/industries" component={IndustriesPage} />
+      <Route path="/faq" component={FaqPage} />
+      <Route path="/calculator" component={CalculatorPage} />
       <Route path="/about" component={AboutPage} /> {/* New */}
       <Route path="/contact" component={ContactPage} /> {/* New */}
       <Route path="/team" component={TeamPage} /> {/* New */}
@@ -37,15 +59,16 @@ function Router() {
 }
 
 function App() {
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('language');
+      if (saved && ['ka', 'en', 'ru'].includes(saved)) void i18n.changeLanguage(saved);
+    } catch { /* Storage can be unavailable in private/restricted browsing. */ }
+  }, []);
   return (
-    <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
+          <SeoHead /><InquiryDraftProvider><Suspense fallback={<p role="status" className="p-8 text-center">იტვირთება… / Loading…</p>}><Router /><RouteFocus /></Suspense></InquiryDraftProvider>
       </ThemeProvider>
-    </QueryClientProvider>
   );
 }
 

@@ -48,37 +48,38 @@ export default function TaxServicePage() {
     <div className="min-h-screen bg-white flex flex-col"> {/* Page background to white */}
       <Navigation />
       
-      <main className="flex-grow">
+      <main id="main-content" tabIndex={-1} className="flex-grow">
         <motion.section
-          initial={{ opacity: 0, y: -20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="py-16 sm:py-20 lg:py-24 bg-brand-blue-600 text-white" // Consistent hero background
+          className="service-intro py-12 sm:py-16 bg-brand-blue-50" // Consistent hero background
         >
           <div className="container mx-auto px-4 text-center">
             <div className="mb-6">
-              <Link href="/" className="inline-flex items-center text-slate-200 hover:text-white transition-colors text-sm">
+              <Link href="/" className="inline-flex items-center text-brand-blue-700 hover:underline transition-colors text-sm">
                 <ArrowLeftIcon className="w-5 h-5 mr-2" />
                 {t('nav.logo', {defaultValue: 'Home'})}
               </Link>
             </div>
             <ReceiptPercentIcon className="w-16 h-16 sm:w-20 sm:h-20 text-brand-gold-400 mx-auto mb-6" />
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-              {t('services.tax.h1')}
+              {t('servicesOverview.tax.title')}
             </h1>
-            <p className="text-lg sm:text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed whitespace-pre-line">
-              {t('services.tax.intro')}
+            <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed whitespace-pre-line">
+              {t('servicesOverview.tax.description')}
             </p>
           </div>
         </motion.section>
 
         <div className="container mx-auto px-4 py-12 sm:py-16 lg:py-20">
           <motion.article
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="max-w-4xl mx-auto p-4 sm:p-6"
           >
+            <p className="text-base leading-relaxed text-slate-600 mb-10">{t('services.tax.intro')}</p>
             {benefits.length > 0 && (
               <section className="mb-10 sm:mb-12 lg:mb-16">
                 <SectionTitle title={t('services.tax.whyImportantTitle')} icon={ShieldCheckIcon} />
@@ -86,7 +87,7 @@ export default function TaxServicePage() {
                   {benefits.map((benefit, index) => (
                     <motion.li
                       key={index}
-                      initial={{ opacity: 0, x: -20 }}
+                      initial={false}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: index * 0.05 }}
@@ -107,7 +108,7 @@ export default function TaxServicePage() {
                   {serviceList.map((item, index) => (
                      <motion.div
                       key={index}
-                      initial={{ opacity: 0, x: -20 }}
+                      initial={false}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3, delay: index * 0.03 }}
@@ -128,7 +129,7 @@ export default function TaxServicePage() {
                         {targetList.map((item, index) => (
                             <motion.p
                                 key={index}
-                                initial={{ opacity: 0, x: -20 }}
+                                initial={false}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.3, delay: index * 0.03 }}
@@ -148,7 +149,7 @@ export default function TaxServicePage() {
                   {whyUsReasons.map((reason, index) => (
                      <motion.li
                       key={index}
-                      initial={{ opacity: 0, x: -20 }}
+                      initial={false}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: index * 0.05 }}
@@ -163,11 +164,11 @@ export default function TaxServicePage() {
             )}
 
             <motion.section
-              initial={{ opacity: 0, y:20 }}
+              initial={false}
               whileInView={{ opacity: 1, y:0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-center mt-12 py-10 px-6 bg-brand-blue-600 text-white rounded-xl shadow-xl"
+              className="service-cta text-center mt-12 py-10 px-6 bg-brand-blue-600 text-white rounded-xl shadow-xl"
             >
               <h2 className="text-2xl sm:text-3xl font-bold mb-4">
                 {t('services.tax.finalCtaTitle')}
@@ -176,13 +177,13 @@ export default function TaxServicePage() {
                 {t('services.tax.finalCtaText')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" asChild className="bg-brand-gold-500 hover:bg-brand-gold-600 text-brand-blue-700 font-semibold shadow hover:shadow-lg text-base">
-                  <Link href="/contact">
+                <Button size="lg" asChild className="h-auto min-h-12 whitespace-normal max-w-full bg-brand-gold-500 hover:bg-brand-gold-600 text-brand-blue-700 font-semibold shadow hover:shadow-lg text-base">
+                  <Link href="/contact?service=tax">
                     {t('services.tax.ctaRequestConsultation')}
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" asChild className="border-brand-gold-500 text-brand-gold-500 hover:bg-brand-gold-500 hover:text-brand-blue-700 font-semibold shadow hover:shadow-lg text-base">
-                   <Link href="/contact">
+                <Button size="lg" variant="outline" asChild className="h-auto min-h-12 whitespace-normal max-w-full border-brand-gold-500 text-brand-gold-500 hover:bg-brand-gold-500 hover:text-brand-blue-700 font-semibold shadow hover:shadow-lg text-base">
+                   <Link href="/contact?service=tax">
                     {t('services.tax.ctaContact')}
                   </Link>
                 </Button>

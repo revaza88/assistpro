@@ -1,54 +1,22 @@
-#!/bin/bash
-
-# AssistPro Deployment Script for CloudPanel
-# Usage: ./deploy.sh [production|staging]
-
-set -e
-
-ENV=${1:-production}
-PROJECT_NAME="assistpro"
-BACKUP_DIR="/tmp/backup-$(date +%Y%m%d-%H%M%S)"
-
-echo "🚀 Starting deployment for $ENV environment..."
-
-# 1. Create backup
-echo "📦 Creating backup..."
-mkdir -p $BACKUP_DIR
-cp -r dist/ $BACKUP_DIR/ 2>/dev/null || echo "No existing dist/ directory"
-cp .env $BACKUP_DIR/ 2>/dev/null || echo "No existing .env file"
-
-# 2. Pull latest code
-echo "🔄 Pulling latest code..."
-git pull origin main
-
-# 3. Install dependencies
-echo "📥 Installing dependencies..."
-npm ci --production
-
-# 4. Build application
-echo "🏗️  Building application..."
-npm run build
-
-# 5. PM2 setup (skip database migration for now)
-echo "⚙️  Setting up PM2..."
-
-# 6. Restart application
-echo "♻️  Restarting application..."
-pm2 restart $PROJECT_NAME || pm2 start ecosystem.config.cjs
-
-# 7. Health check
-echo "🏥 Running health check..."
-sleep 5
-curl -f http://localhost:3000/health || echo "Health check failed"
-
-# 8. Cleanup
-echo "🧹 Cleaning up..."
-npm prune --production
-
-echo "✅ Deployment completed successfully!"
-echo "🌐 Application is running at: http://localhost:3000"
-echo "🔧 Admin panel: http://localhost:3000/admin"
-
-# Optional: Send notification
-# curl -X POST "https://api.telegram.org/bot<TOKEN>/sendMessage" \
-#      -d "chat_id=<CHAT_ID>&text=✅ $PROJECT_NAME deployed successfully to $ENV"
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")"
+target="${1:-staging}"
+case "$target" in
+  production) env_file='.env.production' ;;
+  staging) env_file='.env.staging' ;;
+  *) echo 'Usage: ./deploy.sh [staging|production]' >&2; exit 1 ;;
+esac
+[[ -f "$env_file" ]] || { echo "Prepare $env_file from .env.production.example first" >&2; exit 1; }
+node --env-file="$env_file" scripts/check-environment.mjs
+if [[ "$target" == 'staging' ]] && grep -Eq '^INDEXING_ENABLED=true' "$env_file"; then
+  echo 'Staging must keep INDEXING_ENABLED=false' >&2; exit 1
+fi
+export APP_ENV_FILE="$env_file"
+export ASSISTPRO_IMAGE="${ASSISTPRO_IMAGE:-assistpro:$(git rev-parse --short HEAD)}"
+docker compose --env-file "$env_file" config --quiet
+# Build and test before replacing the running container. No git pull or migrations.
+docker compose --env-file "$env_file" build
+docker compose --env-file "$env_file" up -d --no-build
+curl --fail --silent --show-error --retry 12 --retry-connrefused --retry-delay 2 "${DEPLOY_HEALTH_URL:-http://127.0.0.1:3000/health}"
+echo "Release $ASSISTPRO_IMAGE is healthy. Verify the public HTTPS origin before enabling indexing."

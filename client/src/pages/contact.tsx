@@ -1,188 +1,113 @@
-import React from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link, useSearch } from 'wouter';
 import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
-import { Button } from '@/components/ui/button'; // Assuming this Button is styled appropriately or will be
-import { Input } from '@/components/ui/input';   // Assuming these are styled for the new theme
-import { Textarea } from '@/components/ui/textarea';// Assuming these are styled for the new theme
-import { Label } from '@/components/ui/label';
-import { motion } from 'framer-motion';
-import {
-  MapPinIcon,
-  PhoneIcon,
-  EnvelopeIcon,
-  ClockIcon,
-  PaperAirplaneIcon
-} from '@heroicons/react/24/outline'; // Using Heroicons
+import SelectionSummary from '@/components/SelectionSummary';
+import CalculatorSummary from '@/components/CalculatorSummary';
+import { calculatorForSelection, calculatorHref, calculatorJourneySelection, isCalculatorQuery, parseCalculatorQuery } from '@shared/pricing';
+import { calculatorCopy } from '@/lib/calculator-copy';
+import { useInquiryDraft } from '@/contexts/inquiry-draft';
+import { company } from '@/lib/company';
+import { requestCopy } from '@/lib/request-copy';
+import { insertContactSchema } from '@shared/schemas';
+import { emptySelection, parseSelection, selectionHref } from '@shared/selection';
 
-const ContactPage: React.FC = () => {
-  const { t } = useTranslation();
-
-  const contactDetails = [
-    {
-      icon: MapPinIcon,
-      labelKey: 'contact.addressLabel',
-      valueKey: 'contact.addressValue',
-    },
-    {
-      icon: PhoneIcon,
-      labelKey: 'contact.phoneLabel',
-      valueKey: 'contact.phoneValue',
-      hrefBase: 'tel:',
-    },
-    {
-      icon: EnvelopeIcon,
-      labelKey: 'contact.emailLabel',
-      valueKey: 'contact.emailValue',
-      hrefBase: 'mailto:',
-    },
-    {
-      icon: ClockIcon,
-      labelKey: 'contact.workingHoursLabel',
-      valueKey: 'contact.workingHoursValue',
-    },
-  ];
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+type Field = 'name' | 'contact' | 'message' | 'privacy';
+type ErrorKey = 'nameError' | 'contactError' | 'messageError' | 'consentError';
+export default function ContactPage() {
+  const { i18n } = useTranslation();
+  const copy = requestCopy(i18n.language);
+  const search = useSearch();
+  const fromCalculator = isCalculatorQuery(search);
+  const calculator = fromCalculator ? parseCalculatorQuery(search) : null;
+  const selection = fromCalculator ? calculatorJourneySelection(search) : parseSelection(search);
+  const { draft, update, clear } = useInquiryDraft();
+  const [errors, setErrors] = useState<Partial<Record<Field, ErrorKey>>>({});
+  const [status, setStatus] = useState<'success' | 'error' | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [ready, setReady] = useState(false);
+  const [localIntake, setLocalIntake] = useState(false);
+  useEffect(() => { setLocalIntake(document.querySelector('meta[name="intake-mode"]')?.getAttribute('content') === 'local'); setReady(true); }, []);
+  const busy = useRef(false);
+  const form = useRef<HTMLFormElement>(null);
+  useEffect(() => { setErrors({}); setStatus(null); }, [search]);
+  const change = (field: Field, value: string | boolean) => {
+    update({ [field]: value });
+    setErrors(previous => ({ ...previous, [field]: undefined }));
+    setStatus(null);
+  };
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    // TODO: Implement actual form submission logic
-    console.log('Form submitted');
-    // Example: toast({ title: "Message Sent!", description: "We'll get back to you soon." });
+    if (busy.current || !selection || !localIntake) return;
+    const contact = draft.contact.trim();
+    const payload = {
+      firstName: draft.name, email: contact.includes('@') ? contact : '', phone: contact.includes('@') ? '' : contact,
+      message: draft.message, privacy: draft.privacy, industry: selection.industry, services: selection.services,
+      calculator: calculator ?? undefined,
+    };
+    const parsed = insertContactSchema.safeParse(payload);
+    const nextErrors: Partial<Record<Field, ErrorKey>> = {};
+    if (!parsed.success) for (const issue of parsed.error.issues) {
+      const key = issue.path[0];
+      if (key === 'firstName') nextErrors.name = 'nameError';
+      else if (key === 'email' || key === 'phone') nextErrors.contact = 'contactError';
+      else if (key === 'message') nextErrors.message = 'messageError';
+    }
+    if (!draft.privacy) nextErrors.privacy = 'consentError';
+    setErrors(nextErrors);
+    setStatus(null);
+    const first = (['name', 'contact', 'message', 'privacy'] as Field[]).find(field => nextErrors[field]);
+    if (first) { form.current?.querySelector<HTMLElement>('#' + first)?.focus(); return; }
+    if (!parsed.success) return;
+    busy.current = true;
+    setSubmitting(true);
+    try {
+      const response = await fetch('/api/contacts', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(parsed.data), signal: AbortSignal.timeout(15000),
+      });
+      const body = await response.json();
+      if (!response.ok || body.success !== true || !Number.isInteger(body.id)) throw new Error('Submission failed');
+      clear();
+      setStatus('success');
+    } catch {
+      setStatus('error');
+    } finally {
+      busy.current = false;
+      setSubmitting(false);
+    }
+  };
+  const fieldClass = 'w-full min-h-12 border border-slate-300 rounded-lg px-3 py-3 mt-2 text-base bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue-500';
+  const error = (field: Field) => {
+    const key = errors[field];
+    return key && <p id={field + '-error'} className="text-red-700 text-sm mt-2">{copy[key]}</p>;
   };
 
-  return (
-    <div className="min-h-screen bg-white flex flex-col"> {/* Changed page background */}
-      <Navigation />
-      <main className="flex-grow py-12 sm:py-16 lg:py-20">
-         {/* Page Header Section */}
-         <motion.header
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-10 sm:mb-12 lg:mb-16 py-8 bg-brand-blue-50 rounded-xl container mx-auto max-w-5xl px-4"
-          >
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-blue-700 mb-3">
-              {t('contact.h1')}
-            </h1>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed whitespace-pre-line">
-              {t('contact.intro')}
-            </p>
-          </motion.header>
-
-        <div className="container mx-auto px-4">
-          <motion.article
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="max-w-5xl mx-auto p-4 sm:p-6" // Removed bg-white and shadow from here
-          >
-            <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-start">
-              {/* Contact Info Section */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="p-6 bg-slate-50 rounded-lg shadow-md" // Added bg and shadow to info block
-              >
-                <h2 className="text-2xl sm:text-3xl font-semibold text-brand-blue-600 mb-6">
-                  {t('contact.infoTitle')}
-                </h2>
-                <div className="space-y-5">
-                  {contactDetails.map((detail, index) => {
-                    const Icon = detail.icon;
-                    const value = t(detail.valueKey);
-                    return (
-                      <div key={index} className="flex items-start">
-                        <Icon className="w-6 h-6 text-brand-gold-500 mr-4 mt-1 flex-shrink-0" />
-                        <div>
-                          <h3 className="font-semibold text-slate-800">{t(detail.labelKey)}</h3>
-                          {detail.hrefBase ? (
-                            <a
-                              href={`${detail.hrefBase}${value}`}
-                              className="text-slate-600 hover:text-brand-gold-600 transition-colors whitespace-pre-line"
-                            >
-                              {value}
-                            </a>
-                          ) : (
-                            <p className="text-slate-600 whitespace-pre-line">{value}</p>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-                {/* Social Media Links Placeholder */}
-                 <div className="mt-8">
-                    <h3 className="font-semibold text-slate-800 mb-3">{t('contact.socialMediaTitle')}</h3>
-                    <div className="flex space-x-4">
-                        {/* Example: <a href="#" className="text-slate-500 hover:text-brand-gold-500"><BrandFacebookIcon /></a> */}
-                        <p className="text-sm text-slate-500">(Social media icons to be added)</p>
-                    </div>
-                 </div>
-              </motion.div>
-
-              {/* Contact Form Section */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="p-6 bg-slate-50 rounded-lg shadow-md" // Added bg and shadow to form block
-              >
-                <h2 className="text-2xl sm:text-3xl font-semibold text-brand-blue-600 mb-6">
-                  {t('contact.formTitle')}
-                </h2>
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div>
-                    <Label htmlFor="name" className="font-medium text-slate-700">{t('contact.fieldName')}</Label>
-                    <Input type="text" name="name" id="name" required className="mt-1.5 focus:ring-brand-blue-500 border-slate-300" />
-                  </div>
-                  <div>
-                    <Label htmlFor="email" className="font-medium text-slate-700">{t('contact.fieldEmail')}</Label>
-                    <Input type="email" name="email" id="email" required className="mt-1.5 focus:ring-brand-blue-500 border-slate-300" />
-                  </div>
-                  <div>
-                    <Label htmlFor="phone" className="font-medium text-slate-700">{t('contact.fieldPhone')}</Label>
-                    <Input type="tel" name="phone" id="phone" className="mt-1.5 focus:ring-brand-blue-500 border-slate-300" />
-                  </div>
-                  <div>
-                    <Label htmlFor="company" className="font-medium text-slate-700">{t('contact.fieldCompany')}</Label>
-                    <Input type="text" name="company" id="company" className="mt-1.5 focus:ring-brand-blue-500 border-slate-300" />
-                  </div>
-                  <div>
-                    <Label htmlFor="subject" className="font-medium text-slate-700">{t('contact.fieldSubject')}</Label>
-                    <Input type="text" name="subject" id="subject" required className="mt-1.5 focus:ring-brand-blue-500 border-slate-300" />
-                  </div>
-                  <div>
-                    <Label htmlFor="message" className="font-medium text-slate-700">{t('contact.fieldMessage')}</Label>
-                    <Textarea name="message" id="message" rows={5} required className="mt-1.5 focus:ring-brand-blue-500 border-slate-300" />
-                  </div>
-                  <div>
-                    <Button
-                      type="submit"
-                      size="lg"
-                      className="w-full bg-brand-gold-500 hover:bg-brand-gold-600 text-brand-blue-700 font-semibold text-lg"
-                    >
-                      {t('contact.ctaSend')} <PaperAirplaneIcon className="w-5 h-5 ml-2 transform rotate-45" />
-                    </Button>
-                  </div>
-                </form>
-              </motion.div>
-            </div>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className="mt-12 text-center text-slate-600 whitespace-pre-line"
-            >
-              {t('contact.finalMessage')}
-            </motion.p>
-          </motion.article>
-        </div>
-      </main>
-      <Footer />
+  return <div className="inquiry-page min-h-screen"><Navigation /><main id="main-content" tabIndex={-1} className="max-w-5xl mx-auto px-5 py-12 text-slate-700">
+    <h1 className="text-3xl sm:text-4xl font-bold text-brand-blue-700 mb-4">{copy.contactTitle}</h1>
+    <p className="text-lg mb-6 leading-relaxed">{localIntake ? copy.contactIntro : copy.unavailable}</p>
+    {localIntake && <p className="border-l-4 border-amber-400 bg-amber-50 p-4 mb-8 text-sm leading-relaxed">{copy.local}</p>}
+    <div className="grid md:grid-cols-2 gap-8 items-start">
+      <div className="space-y-6">
+        {selection ? <>
+          <SelectionSummary selection={selection} editable editHref={calculator ? calculatorHref('/industries', calculator, selection) : undefined} />
+          {calculator ? <CalculatorSummary input={calculator} selection={selection} /> : <Link href={calculatorHref('/calculator', calculatorForSelection(selection), selection)} className="site-button site-button-outline">{calculatorCopy(i18n.language).nav}</Link>}
+        </> : <div role="alert" className="rounded-xl bg-amber-50 p-5"><p>{fromCalculator ? calculatorCopy(i18n.language).invalidLink : copy.invalid}</p><Link href={fromCalculator ? '/calculator' : selectionHref('/industries', emptySelection)} className="underline inline-flex items-center min-h-12">{copy.edit}</Link></div>}
+        <div className="rounded-xl bg-slate-50 p-5 space-y-3"><p>{company.address}</p><a href={'mailto:' + company.email} className="underline inline-flex min-h-12 items-center text-brand-blue-700">{company.email}</a></div>
+        <Link href="/faq" className="inline-flex min-h-12 items-center underline text-brand-blue-700">{copy.faq}</Link>
+      </div>
+      <form ref={form} onSubmit={handleSubmit} method="post" action="/api/contacts" noValidate aria-busy={submitting} className="rounded-xl border border-slate-200 p-5 sm:p-6 space-y-5">
+        <fieldset disabled={!ready || !localIntake || submitting || !selection} className="space-y-5 disabled:opacity-70">
+          <legend className="sr-only">{copy.contactTitle}</legend>
+          <div><label htmlFor="name" className="font-semibold">{copy.name}</label><input id="name" name="name" autoComplete="name" required maxLength={80} value={draft.name} onChange={event => change('name', event.target.value)} aria-invalid={!!errors.name} aria-describedby={errors.name ? 'name-error' : undefined} className={fieldClass} />{error('name')}</div>
+          <div><label htmlFor="contact" className="font-semibold">{copy.channel}</label><input id="contact" name="contact" type="text" autoComplete="off" autoCapitalize="none" spellCheck={false} required maxLength={254} value={draft.contact} onChange={event => change('contact', event.target.value)} aria-invalid={!!errors.contact} aria-describedby={errors.contact ? 'contact-error' : undefined} className={fieldClass} />{error('contact')}</div>
+          <div><label htmlFor="message" className="font-semibold">{copy.message}</label><textarea id="message" name="message" rows={4} maxLength={5000} value={draft.message} onChange={event => change('message', event.target.value)} aria-invalid={!!errors.message} aria-describedby="message-hint" className={fieldClass} /><p id="message-hint" className="text-sm mt-2 leading-relaxed">{copy.caution}</p>{error('message')}</div>
+          <label className="flex items-start gap-3 min-h-12 py-2"><input id="privacy" type="checkbox" name="privacy" checked={draft.privacy} onChange={event => change('privacy', event.target.checked)} required aria-invalid={!!errors.privacy} aria-describedby={errors.privacy ? 'privacy-error' : undefined} className="w-5 h-5 mt-1 shrink-0 accent-blue-600" /><span className="text-sm leading-relaxed">{copy.consent}</span></label>{error('privacy')}
+          <button type="submit" className="site-button w-full">{submitting ? copy.sending : copy.send}</button>
+        </fieldset>
+        {status && <p role={status === 'success' ? 'status' : 'alert'} className={status === 'success' ? 'text-green-800' : 'text-red-700'}>{status === 'success' ? copy.sent : copy.failed}</p>}
+      </form>
     </div>
-  );
-};
-
-export default ContactPage;
+  </main><Footer /></div>;
+}

@@ -1,4 +1,9 @@
+import type { IndustryId, ServiceId } from './selection';
+import type { CalculatorInput, DemoEstimate } from './pricing';
+
 export type Contact = {
+  calculator?: CalculatorInput;
+  demoEstimate?: DemoEstimate;
   id: number;
   firstName: string;
   lastName: string;
@@ -7,11 +12,15 @@ export type Contact = {
   company?: string | null;
   service?: string | null;
   message: string;
+  subject?: string;
+  industry?: IndustryId;
+  services?: ServiceId[];
   privacy: boolean;
   createdAt: Date;
 };
 
 export type InsertContact = {
+  calculator?: CalculatorInput;
   firstName: string;
   lastName: string;
   email: string;
@@ -19,6 +28,9 @@ export type InsertContact = {
   company?: string | null;
   service?: string | null;
   message: string;
+  subject?: string;
+  industry?: IndustryId;
+  services?: ServiceId[];
   privacy?: boolean; // Made optional as it has a default in schema
 };
 

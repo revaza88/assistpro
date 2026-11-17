@@ -10,13 +10,14 @@ interface EnvValidationResult {
 export function validateEnvironment(): EnvValidationResult {
   const errors: string[] = [];
   const warnings: string[] = [];
+  if (!['disabled', 'local'].includes(config.intakeMode)) errors.push('INTAKE_MODE must be disabled or local');
+  if (process.env.TRUST_PROXY && !['false', 'loopback', '1'].includes(process.env.TRUST_PROXY)) errors.push('TRUST_PROXY must be false, loopback or 1 (one controlled reverse proxy)');
   
   logger.info('🔧 Validating environment variables...');
   
   // Required environment variables
   const required = {
-    NODE_ENV: process.env.NODE_ENV,
-    PORT: process.env.PORT
+    NODE_ENV: process.env.NODE_ENV
   };
   
   // Optional environment variables with defaults
@@ -47,7 +48,7 @@ export function validateEnvironment(): EnvValidationResult {
   }
   
   // Validate PORT is a number
-  const port = parseInt(process.env.PORT || '');
+  const port = config.port;
   if (isNaN(port) || port < 1 || port > 65535) {
     errors.push(`PORT must be a valid number between 1-65535, got: ${process.env.PORT}`);
     logger.error(`❌ PORT validation failed: ${process.env.PORT}`);
@@ -86,7 +87,7 @@ export function validateSystemRequirements() {
   
   // Check Node.js version
   const nodeVersion = process.version;
-  const requiredVersion = '18.0.0';
+  const requiredVersion = '24.0.0';
   logger.info(`📦 Node.js version: ${nodeVersion} (required: >=${requiredVersion})`);
   
   // Check memory

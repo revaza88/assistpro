@@ -1,0 +1,12 @@
+# Assistpro project context
+
+Read `docs/SITES_ALIGNMENT.md` before planning product or architecture changes. It reconciles this repository with the user's related Sites project, records evidence limits, and distinguishes implemented features from proposals and demos.
+
+- Preserve existing local work. This checkout uses React/Vite and Express; the reference Site uses Next.js. Do not silently replace the framework or merge independent project identities.
+- The accessible Sites conversation explicitly deferred database selection/creation. Consider the roadmap without provisioning a database, activating production intake, or enabling outbound notifications as an incidental step. `MSA` is not a confirmed organization selection, and the unrelated `banki` project is out of scope.
+- The current file store is a single-process local development facility, not the planned production PostgreSQL/API/authorization/outbox system.
+- Confirmed public details live in `client/src/lib/company.ts`: info@assist.ge and ბიზნეს ცენტრი კრწანისი მოდერნი, გორგასლის №61. Unknown phone/team details must not be invented.
+- Preserve the source roadmap's flexible industry and multi-service selection preference; fixed pricing packages, real tariffs, credentials and corporate claims require their own supporting information.
+- Keep public site, staff CMS, company portal and native apps distinct. A demo UI, successful build, or mocked integration does not establish production readiness.
+- The user requested alignment with the Sites visual design. Preserve the warm paper/dark green/lime palette and responsive compositions in `client/src/index.css`. Legacy `brand-blue`/`brand-gold` Tailwind names now map to these colors for compatibility; their names do not mean the previous blue/orange design should be restored.
+- For application changes run appropriate checks: `npm run check`, `npm test`, `npm run build`, plus browser/API checks for affected flows. Documentation-only reconciliation does not require repeating unchanged application checks.

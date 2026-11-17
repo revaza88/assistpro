@@ -15,6 +15,10 @@ build/
 .env.development.local
 .env.test.local
 .env.production.local
+.env.production
+.env.staging
+.artifacts/
+releases/
 
 # Logs
 logs/
@@ -25,6 +29,7 @@ yarn-error.log*
 lerna-debug.log*
 
 # Runtime data
+data/
 pids/
 *.pid
 *.seed

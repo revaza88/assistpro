@@ -48,10 +48,10 @@ const CareerPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white flex flex-col"> {/* Page background to white */}
       <Navigation />
-      <main className="flex-grow py-12 sm:py-16 lg:py-20">
+      <main id="main-content" tabIndex={-1} className="flex-grow py-12 sm:py-16 lg:py-20">
         {/* Page Header Section */}
         <motion.header
-            initial={{ opacity: 0, y: -20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="text-center mb-10 sm:mb-12 lg:mb-16 py-8 bg-brand-blue-50 rounded-xl container mx-auto max-w-5xl px-4"
@@ -67,7 +67,7 @@ const CareerPage: React.FC = () => {
 
         <div className="container mx-auto px-4">
           <motion.article
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="max-w-5xl mx-auto p-4 sm:p-6"
@@ -82,7 +82,7 @@ const CareerPage: React.FC = () => {
                   return (
                     <motion.div
                       key={index}
-                      initial={{ opacity: 0, y: 15 }}
+                      initial={false}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -110,7 +110,7 @@ const CareerPage: React.FC = () => {
                   {placeholderVacancies.map((vacancy, index) => (
                     <motion.div
                       key={index}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={false}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -129,7 +129,7 @@ const CareerPage: React.FC = () => {
                 </div>
               ) : (
                 <motion.div
-                  initial={{ opacity: 0, y:10 }}
+                  initial={false}
                   whileInView={{ opacity: 1, y:0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1, duration: 0.5}}
@@ -148,7 +148,7 @@ const CareerPage: React.FC = () => {
             </section>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.5 }}

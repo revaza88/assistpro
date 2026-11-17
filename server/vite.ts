@@ -1,10 +1,12 @@
-import express, { type Express } from "express";
+import type { Express } from "express";
 import fs from "fs";
 import path from "path";
 import { createServer as createViteServer, createLogger } from "vite";
 import { type Server } from "http";
 import viteConfig from "../vite.config";
 import { nanoid } from "nanoid";
+import { htmlStatus, pageHtml, setupSeoRoutes } from './seo';
+
 
 const viteLogger = createLogger();
 
@@ -40,9 +42,11 @@ export async function setupVite(app: Express, server: Server) {
     appType: "custom",
   });
 
+  setupSeoRoutes(app);
   app.use(vite.middlewares);
   app.use("*", async (req, res, next) => {
     const url = req.originalUrl;
+    const pathname = new URL(url, 'http://local.invalid').pathname;
 
     try {
       const clientTemplate = path.resolve(
@@ -57,29 +61,11 @@ export async function setupVite(app: Express, server: Server) {
         `src="/src/main.tsx"`,
         `src="/src/main.tsx?v=${nanoid()}"`,
       );
-      const page = await vite.transformIndexHtml(url, template);
-      res.status(200).set({ "Content-Type": "text/html" }).end(page);
+      const page = await vite.transformIndexHtml(url, pageHtml(template, pathname, url.includes('?')));
+      res.status(htmlStatus(pathname)).set({ "Content-Type": "text/html", 'Cache-Control': 'no-cache' }).end(page);
     } catch (e) {
       vite.ssrFixStacktrace(e as Error);
       next(e);
     }
-  });
-}
-
-export function serveStatic(app: Express) {
-  // In production, dist folder is at the same level as the server bundle
-  const distPath = path.resolve(process.cwd(), "dist", "public");
-
-  if (!fs.existsSync(distPath)) {
-    throw new Error(
-      `Could not find the build directory: ${distPath}, make sure to build the client first`,
-    );
-  }
-
-  app.use(express.static(distPath));
-
-  // fall through to index.html if the file doesn't exist
-  app.use("*", (_req, res) => {
-    res.sendFile(path.resolve(distPath, "index.html"));
   });
 }

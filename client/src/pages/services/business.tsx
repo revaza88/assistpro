@@ -39,37 +39,38 @@ export default function BusinessAssistServicePage() {
     <div className="min-h-screen bg-white flex flex-col"> {/* Page background to white */}
       <Navigation />
 
-      <main className="flex-grow">
+      <main id="main-content" tabIndex={-1} className="flex-grow">
         <motion.section
-          initial={{ opacity: 0, y: -20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="py-16 sm:py-20 lg:py-24 bg-brand-blue-600 text-white" // Consistent hero background
+          className="service-intro py-12 sm:py-16 bg-brand-blue-50" // Consistent hero background
         >
           <div className="container mx-auto px-4 text-center">
             <div className="mb-6">
-              <Link href="/" className="inline-flex items-center text-slate-200 hover:text-white transition-colors text-sm">
+              <Link href="/" className="inline-flex items-center text-brand-blue-700 hover:underline transition-colors text-sm">
                 <ArrowLeftIcon className="w-5 h-5 mr-2" />
                 {t('nav.logo', {defaultValue: 'Home'})}
               </Link>
             </div>
             <BuildingOffice2Icon className="w-16 h-16 sm:w-20 sm:h-20 text-brand-gold-400 mx-auto mb-6" />
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-              {t('services.business.h1')}
+              {t('servicesOverview.businessAssist.title')}
             </h1>
-            <p className="text-lg sm:text-xl text-slate-200 max-w-3xl mx-auto leading-relaxed whitespace-pre-line">
-              {t('services.business.intro')}
+            <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed whitespace-pre-line">
+              {t('servicesOverview.businessAssist.description')}
             </p>
           </div>
         </motion.section>
 
         <div className="container mx-auto px-4 py-12 sm:py-16 lg:py-20">
           <motion.article
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="max-w-4xl mx-auto p-4 sm:p-6"
           >
+            <p className="text-base leading-relaxed text-slate-600 mb-10">{t('services.business.intro')}</p>
             {benefits.length > 0 && (
               <section className="mb-10 sm:mb-12 lg:mb-16">
                 <SectionTitle title={t('services.business.whyUseTitle')} icon={ArrowTrendingUpIcon} />
@@ -77,7 +78,7 @@ export default function BusinessAssistServicePage() {
                   {benefits.map((benefit, index) => (
                     <motion.li
                       key={index}
-                      initial={{ opacity: 0, x: -20 }}
+                      initial={false}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: index * 0.05 }}
@@ -94,7 +95,7 @@ export default function BusinessAssistServicePage() {
             <section className="mb-10 sm:mb-12 lg:mb-16">
               <SectionTitle title={t('services.business.servicesIncludeTitle')} icon={BriefcaseIcon} />
               <motion.div
-                initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}
+                initial={false} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}
                 className="p-4 lg:p-6 bg-brand-blue-50 rounded-lg mb-6 shadow-sm"
               >
                 <h3 className="font-semibold text-lg lg:text-xl text-brand-blue-700 flex items-center">
@@ -104,7 +105,7 @@ export default function BusinessAssistServicePage() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay:0.1 }}
+                initial={false} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay:0.1 }}
               >
                 <h3 className="text-xl lg:text-2xl font-semibold text-brand-blue-700 my-4 lg:my-6 flex items-center">
                   <CheckBadgeIcon className="w-6 h-6 lg:w-7 lg:h-7 mr-2 text-brand-gold-500"/>
@@ -115,7 +116,7 @@ export default function BusinessAssistServicePage() {
                     {statusList.map((item, index) => (
                        <motion.div
                         key={index}
-                        initial={{ opacity: 0, x: -20 }}
+                        initial={false}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.3, delay: index * 0.03 }}
@@ -146,11 +147,11 @@ export default function BusinessAssistServicePage() {
             </section>
 
             <motion.section
-              initial={{ opacity: 0, y:20 }}
+              initial={false}
               whileInView={{ opacity: 1, y:0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-center mt-12 py-10 px-6 bg-brand-blue-600 text-white rounded-xl shadow-xl"
+              className="service-cta text-center mt-12 py-10 px-6 bg-brand-blue-600 text-white rounded-xl shadow-xl"
             >
               <h2 className="text-2xl sm:text-3xl font-bold mb-4">
                 {t('services.business.finalCtaTitle')}
@@ -159,12 +160,12 @@ export default function BusinessAssistServicePage() {
                 {t('services.business.finalCtaText')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" asChild className="bg-brand-gold-500 hover:bg-brand-gold-600 text-brand-blue-700 font-semibold shadow hover:shadow-lg text-base">
-                  <Link href="/contact">
+                <Button size="lg" asChild className="h-auto min-h-12 whitespace-normal max-w-full bg-brand-gold-500 hover:bg-brand-gold-600 text-brand-blue-700 font-semibold shadow hover:shadow-lg text-base">
+                  <Link href="/contact?service=business">
                     {t('services.business.ctaRequestConsultation')}
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" asChild className="border-brand-gold-500 text-brand-gold-500 hover:bg-brand-gold-500 hover:text-brand-blue-700 font-semibold shadow hover:shadow-lg text-base">
+                <Button size="lg" variant="outline" asChild className="h-auto min-h-12 whitespace-normal max-w-full border-brand-gold-500 text-brand-gold-500 hover:bg-brand-gold-500 hover:text-brand-blue-700 font-semibold shadow hover:shadow-lg text-base">
                    <Link href="#statuses-info-section">
                     {t('services.business.ctaLearnMoreStatuses')}
                   </Link>

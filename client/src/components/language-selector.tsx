@@ -17,7 +17,7 @@ const languages = [
 export default function LanguageSelector() {
   const { i18n } = useTranslation();
   
-  const currentLanguage = languages.find(lang => lang.code === i18n.language);
+  const currentLanguage = languages.find(lang => i18n.language.startsWith(lang.code));
 
   const changeLanguage = (langCode: 'ka' | 'en' | 'ru') => {
     i18n.changeLanguage(langCode);
@@ -27,7 +27,7 @@ export default function LanguageSelector() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="h-8 px-2">
+        <Button variant="ghost" size="sm" className="h-12 min-w-12 px-2" aria-label={currentLanguage?.name}>
           <Globe className="w-4 h-4 mr-1" />
           <span className="hidden sm:inline">{currentLanguage?.name}</span>
           <span className="sm:hidden">{currentLanguage?.flag}</span>
@@ -38,7 +38,7 @@ export default function LanguageSelector() {
           <DropdownMenuItem
             key={lang.code}
             onClick={() => changeLanguage(lang.code)}
-            className={`cursor-pointer ${i18n.language === lang.code ? 'bg-brand-blue-50 text-brand-blue-600' : ''}`}
+            className={`cursor-pointer min-h-12 ${i18n.language === lang.code ? 'bg-brand-blue-50 text-brand-blue-600' : ''}`}
           >
             <span className="mr-2">{lang.flag}</span>
             {lang.name}

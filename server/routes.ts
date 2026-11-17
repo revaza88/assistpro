@@ -5,6 +5,7 @@ import { storage } from "./storage";
 import { z } from "zod";
 import { logger } from "./utils/logger"; // Added logger import
 import { insertContactSchema, insertJobApplicationSchema } from "../src/shared/schemas";
+import { config } from './config';
 
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -76,17 +77,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Contact form submission
   app.post("/api/contacts", async (req, res) => {
+    if (config.intakeMode !== 'local') { res.status(503).json({ success: false, code: 'INTAKE_DISABLED', message: 'Online intake is not enabled. Contact info@assist.ge.' }); return; }
     try {
       const validatedData = insertContactSchema.parse(req.body);
       const contact = await storage.createContact(validatedData);
       
       // Log the contact submission
-      logger.info("New contact submission:", {
-        name: `${contact.firstName} ${contact.lastName}`,
-        email: contact.email,
-        service: contact.service,
-        company: contact.company
-      });
+      logger.info("Contact saved", { id: contact.id });
       
       res.status(201).json({ 
         success: true, 
@@ -98,7 +95,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         res.status(400).json({ 
           success: false, 
           message: "არასწორი მონაცემები", 
-          errors: error.errors 
+          errors: error.issues
         });
       } else {
         logger.error("Error creating contact:", error);
@@ -112,16 +109,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Job application submission
   app.post("/api/job-applications", async (req, res) => {
+    if (config.intakeMode !== 'local') { res.status(503).json({ success: false, code: 'INTAKE_DISABLED', message: 'Online intake is not enabled. Contact info@assist.ge.' }); return; }
     try {
       const validatedData = insertJobApplicationSchema.parse(req.body);
       const application = await storage.createJobApplication(validatedData);
       
       // Log the job application
-      logger.info("New job application:", {
-        name: `${application.firstName} ${application.lastName}`,
-        email: application.email,
-        position: application.position
-      });
+      logger.info("Job application saved", { id: application.id });
       
       res.status(201).json({ 
         success: true, 
@@ -133,7 +127,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         res.status(400).json({ 
           success: false, 
           message: "არასწორი მონაცემები", 
-          errors: error.errors 
+          errors: error.issues
         });
       } else {
         logger.error("Error creating job application:", error);

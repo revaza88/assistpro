@@ -9,9 +9,9 @@ export default function NotFound() {
   return (
     <div className="min-h-screen w-full flex flex-col bg-white"> {/* Changed background */}
       <Navigation />
-      <main className="flex-grow flex items-center justify-center">
+      <main id="main-content" tabIndex={-1} className="flex-grow flex items-center justify-center">
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="text-center p-8 max-w-md w-full"

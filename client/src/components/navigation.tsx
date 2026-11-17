@@ -1,10 +1,14 @@
-import { useState, ElementType } from "react";
+import { useState, useEffect, useRef, ElementType } from "react";
+import { requestCopy } from '@/lib/request-copy';
+import { designCopy } from '@/lib/design-copy';
 import { Bars3Icon as MenuIcon, XMarkIcon as XIcon, ChevronDownIcon } from "@heroicons/react/24/outline"; // Using Heroicons
 import LanguageSelector from "@/components/language-selector";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { motion, AnimatePresence } from "framer-motion";
+
 import { useTranslation } from "react-i18next";
-import { Link, useLocation } from "wouter";
+import { Link, useLocation, useSearch } from "wouter";
+import { calculatorEntryHref, inquiryEntryHref } from '@shared/calculator-context';
+import { calculatorCopy } from '@/lib/calculator-copy';
 import {
   DocumentChartBarIcon,
   ShieldCheckIcon,
@@ -15,10 +19,23 @@ import {
 } from '@heroicons/react/24/outline'; // Icons for dropdown
 
 export default function Navigation() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const copy = requestCopy(i18n.language);
+  const design = designCopy(i18n.language);
+  const navRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [location, navigate] = useLocation();
+  const search = useSearch();
+  const selectionLink = inquiryEntryHref('/industries', search);
+  useEffect(() => {
+    const outside = (event: PointerEvent) => {
+      if (!navRef.current?.contains(event.target as Node)) { setIsMobileMenuOpen(false); setIsServicesOpen(false); }
+    };
+    document.addEventListener('pointerdown', outside);
+    return () => document.removeEventListener('pointerdown', outside);
+  }, []);
 
   const handleMobileNavClick = (path: string) => {
     navigate(path);
@@ -77,56 +94,39 @@ export default function Navigation() {
   ];
 
   const navItems = [
+    { id: 'industries', label: copy.industries, path: selectionLink },
     { id: 'about', label: t('nav.about'), path: '/about' },
-    { id: 'team', label: t('nav.team'), path: '/team' },
-    { id: 'career', label: t('nav.career'), path: '/career' },
-    { id: 'contact', label: t('nav.contact'), path: '/contact' },
+    { id: 'faq', label: copy.faq, path: '/faq' },
   ];
 
   return (
-    <nav className="bg-white/90 backdrop-blur-lg shadow-sm border-b border-slate-200 sticky top-0 z-50"> {/* Light theme navbar */}
+    <><a href="#main-content" className="skip-link">{design.skip}</a><nav ref={navRef} onKeyDown={event => { if (event.key === 'Escape') { setIsMobileMenuOpen(false); setIsServicesOpen(false); menuButtonRef.current?.focus(); } }} className="site-header sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 lg:h-20"> {/* Adjusted height for better spacing */}
           {/* Logo */}
-          <motion.div 
+          <div
             className="flex items-center"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
           >
-            <Link to="/" className="flex-shrink-0" onClick={() => setIsMobileMenuOpen(false)}>
-              <div className="flex items-center gap-2 sm:gap-3">
-                <div className="w-10 h-10 lg:w-12 lg:h-12 bg-brand-blue-600 rounded-xl flex items-center justify-center shadow-md">
-                  <span className="text-white font-bold text-lg lg:text-xl">A</span>
-                </div>
-                <div>
-                  <h1 className="text-xl sm:text-2xl font-bold text-brand-blue-700">
-                    {t('nav.logo')}
-                  </h1>
-                </div>
-              </div>
+            <Link to="/" className="site-brand" onClick={() => setIsMobileMenuOpen(false)}>
+              <span className="site-mark" aria-hidden="true" /><span className="site-wordmark">{design.brand}</span>
             </Link>
-          </motion.div>
+          </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
+          <div className="hidden xl:flex items-center space-x-1 lg:space-x-2">
             <div
               className="relative"
               onMouseEnter={() => setIsServicesOpen(true)}
               onMouseLeave={() => setIsServicesOpen(false)}
             >
               {/* Main link for services - can navigate to a general services page or first service */}
-              <Link to="/services/accounting" className="text-slate-700 hover:text-brand-blue-600 px-3 py-2 text-sm lg:text-base font-medium transition-colors duration-200 flex items-center gap-1 hover:bg-brand-blue-50 rounded-lg">
+              <Link to="/services" className="text-slate-700 hover:text-brand-blue-600 px-3 py-2 text-sm lg:text-base font-medium transition-colors duration-200 flex items-center gap-1 hover:bg-brand-blue-50 rounded-lg">
                 {t('nav.services')}
                 <ChevronDownIcon className={`w-4 h-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
               </Link>
-              <AnimatePresence>
+              <>
                 {isServicesOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
+                  <div
                     className="absolute left-0 mt-2 w-96 bg-white rounded-xl shadow-2xl border border-slate-100 overflow-hidden"
                     style={{zIndex: 100}}
                   >
@@ -149,22 +149,21 @@ export default function Navigation() {
                         );
                       })}
                     </div>
-                  </motion.div>
+                  </div>
                 )}
-              </AnimatePresence>
+              </>
             </div>
 
             {navItems.map((item) => (
-              <Link key={item.id} to={item.path}>
-                <button
+              <Link key={item.id} to={item.path}
                   className={`text-slate-700 hover:text-brand-blue-600 px-3 py-2 text-sm lg:text-base font-medium transition-colors duration-200 hover:bg-brand-blue-50 rounded-lg ${location === item.path ? 'text-brand-blue-600 bg-brand-blue-50' : ''}`}
                   onClick={() => handleDesktopNavClick(item.path)}
                 >
                   {item.label}
-                </button>
               </Link>
             ))}
             
+            <Link to={selectionLink} className="site-button">{copy.quote}</Link>
             <div className="pl-2">
               <LanguageSelector />
             </div>
@@ -172,13 +171,16 @@ export default function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          <div className="xl:hidden flex items-center">
             <LanguageSelector />
             <ThemeToggle />
             <button
+              ref={menuButtonRef}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-600 hover:text-brand-blue-600 hover:bg-brand-blue-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-blue-500"
+              className="inline-flex min-h-12 min-w-12 items-center justify-center p-2 rounded-md text-slate-600 hover:text-brand-blue-600 hover:bg-brand-blue-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-blue-500"
               aria-label="Open mobile menu"
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               {isMobileMenuOpen ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
             </button>
@@ -187,61 +189,61 @@ export default function Navigation() {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
+      <>
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden bg-white border-t border-slate-200 shadow-lg"
+          <div
+            id="mobile-menu"
+            className="xl:hidden bg-white border-t border-slate-200 shadow-lg max-h-[75vh] overflow-y-auto"
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <div className="relative">
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
-                  className="text-slate-700 hover:text-brand-blue-600 hover:bg-brand-blue-50 w-full text-left px-3 py-2 rounded-md text-base font-medium flex justify-between items-center"
+                  aria-expanded={isServicesOpen}
+                  aria-controls="mobile-services"
+                  className="text-slate-700 hover:text-brand-blue-600 hover:bg-brand-blue-50 w-full min-h-12 text-left px-3 py-2 rounded-md text-base font-medium flex justify-between items-center"
                 >
                   <span>{t('nav.services')}</span>
                   <ChevronDownIcon className={`w-5 h-5 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
                 </button>
-                <AnimatePresence>
+                <>
                   {isServicesOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
+                    <div
+                      id="mobile-services"
                       className="pl-4 mt-1 space-y-1 overflow-hidden"
                     >
                       {mainServicesForDropdown.map((service) => (
                         <Link
                           key={service.href}
                           to={service.href}
-                          className="block px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-brand-blue-600 hover:bg-brand-blue-50"
+                          className="flex items-center min-h-12 px-3 py-2 rounded-md text-base font-medium text-slate-600 hover:text-brand-blue-600 hover:bg-brand-blue-50"
                           onClick={() => handleMobileNavClick(service.href)}
                         >
                           {service.title}
                         </Link>
                       ))}
-                    </motion.div>
+                    </div>
                   )}
-                </AnimatePresence>
+                </>
               </div>
 
+              <Link to="/services" onClick={() => handleMobileNavClick('/services')} className="flex items-center min-h-12 px-3 text-brand-blue-700">{t('servicesOverview.ctaAll')}</Link>
+              <Link to={calculatorEntryHref(search)} onClick={() => handleMobileNavClick(calculatorEntryHref(search))} className="flex items-center min-h-12 px-3 text-brand-blue-700">{calculatorCopy(i18n.language).nav}</Link>
               {navItems.map((item) => (
                 <Link
                   key={item.id}
                   to={item.path}
                   onClick={() => handleMobileNavClick(item.path)}
-                  className={`text-slate-700 hover:text-brand-blue-600 hover:bg-brand-blue-50 block w-full text-left px-3 py-2 rounded-md text-base font-medium ${location === item.path ? 'text-brand-blue-600 bg-brand-blue-50' : ''}`}
+                  className={`text-slate-700 hover:text-brand-blue-600 hover:bg-brand-blue-50 flex items-center min-h-12 w-full text-left px-3 py-2 rounded-md text-base font-medium ${location === item.path ? 'text-brand-blue-600 bg-brand-blue-50' : ''}`}
                 >
                   {item.label}
                 </Link>
               ))}
+              <Link to={selectionLink} onClick={() => handleMobileNavClick(selectionLink)} className="site-button w-full">{copy.quote}</Link>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
-    </nav>
+      </>
+    </nav></>
   );
 }

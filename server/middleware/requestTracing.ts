@@ -24,7 +24,6 @@ export const requestTracing = (req: Request, res: Response, next: NextFunction) 
       'content-type': req.get('Content-Type'),
       'accept': req.get('Accept')
     },
-    body: req.method !== 'GET' ? req.body : undefined,
     query: Object.keys(req.query).length > 0 ? req.query : undefined,
     ip: req.ip
   });

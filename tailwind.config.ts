@@ -62,21 +62,8 @@ export default {
           ring: "var(--sidebar-ring)",
         },
         // Added brand colors
-        'brand-blue': {
-          DEFAULT: 'hsl(207, 90%, 54%)',
-          50: 'hsl(214, 100%, 97%)',  // from index.css
-          100: 'hsl(214, 95%, 93%)', // from index.css
-          500: 'hsl(207, 90%, 54%)', // DEFAULT
-          600: 'hsl(207, 90%, 54%)', // from index.css --brand-blue-600
-          700: 'hsl(207, 90%, 44%)', // from index.css --brand-blue-700
-        },
-        'brand-gold': {
-          DEFAULT: 'hsl(36, 100%, 50%)',
-          100: 'hsl(48, 100%, 88%)', // from index.css
-          400: 'hsl(43, 96%, 56%)', // from index.css
-          500: 'hsl(37, 91%, 55%)', // from index.css --brand-gold-500
-          600: 'hsl(32, 95%, 44%)', // from index.css
-        },
+        'brand-blue': { DEFAULT: '#356653', 50: '#edf2e8', 100: '#e0e8d9', 500: '#356653', 600: '#214e41', 700: '#183c34' },
+        'brand-gold': { DEFAULT: '#d6ed9b', 100: '#edf5d8', 400: '#d6ed9b', 500: '#d6ed9b', 600: '#c4dc87' },
       },
       keyframes: {
         "accordion-down": {

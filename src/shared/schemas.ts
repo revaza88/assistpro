@@ -1,14 +1,25 @@
 import { z } from "zod";
+import { industryIds, serviceIds, validPhone } from './selection';
+import { calculatorInputSchema } from './pricing';
 
-export const insertContactSchema = z.object({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().optional(),
-  company: z.string().optional(),
-  service: z.string().optional(),
-  message: z.string().min(1, "Message is required"),
+export const contactFieldsSchema = z.object({
+  firstName: z.string().trim().min(1, "First name is required").max(80),
+  lastName: z.string().trim().max(80).default(''),
+  email: z.union([z.string().trim().email("Invalid email address").max(254), z.literal('')]).default(''),
+  phone: z.string().trim().max(50).refine(value => value === '' || validPhone(value), 'Invalid phone').optional(),
+  company: z.string().trim().max(200).optional(),
+  service: z.string().trim().max(200).optional(),
+  subject: z.string().trim().min(1).max(200).optional(),
+  message: z.string().trim().max(5000).default(''),
+  industry: z.enum(industryIds).default('other'),
+  services: z.array(z.enum(serviceIds)).max(serviceIds.length).refine(ids => new Set(ids).size === ids.length, 'Duplicate services').default([]),
+  calculator: calculatorInputSchema.optional(),
   privacy: z.boolean().optional().default(false),
+});
+
+export const insertContactSchema = contactFieldsSchema.superRefine((value, context) => {
+  if (!value.email && !value.phone) context.addIssue({ code: z.ZodIssueCode.custom, path: ['email'], message: 'Email or phone is required' });
+  if (!value.privacy) context.addIssue({ code: z.ZodIssueCode.custom, path: ['privacy'], message: 'Consent is required' });
 });
 
 export const insertJobApplicationSchema = z.object({

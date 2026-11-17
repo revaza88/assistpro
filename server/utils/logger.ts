@@ -14,7 +14,7 @@ interface LogEntry {
 class Logger {
   private logs: LogEntry[] = [];
   private maxLogs = 1000;
-  private logToFile = config.isProduction;
+  private logToFile = config.isProduction && process.env.LOG_TO_FILE !== 'false';
 
   constructor() {
     // Ensure logs directory exists in production

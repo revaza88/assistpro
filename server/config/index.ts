@@ -10,6 +10,8 @@ export const config = {
   
   // Security
   corsOrigin: process.env.CORS_ORIGIN || 'http://localhost:5000',
+  trustProxy: process.env.TRUST_PROXY === 'loopback' ? 'loopback' : process.env.TRUST_PROXY === '1' ? 1 : false,
+  intakeMode: process.env.INTAKE_MODE ?? (process.env.NODE_ENV === 'production' ? 'disabled' : 'local'),
   
   // Rate limiting
   rateLimit: {

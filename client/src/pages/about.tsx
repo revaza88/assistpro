@@ -37,11 +37,11 @@ const AboutPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-white flex flex-col"> {/* Changed page background to white */}
       <Navigation />
-      <main className="flex-grow py-12 sm:py-16 lg:py-20">
+      <main id="main-content" tabIndex={-1} className="flex-grow py-12 sm:py-16 lg:py-20">
         <div className="container mx-auto px-4">
           {/* Page Header Section */}
           <motion.header
-            initial={{ opacity: 0, y: -20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="text-center mb-10 sm:mb-12 lg:mb-16 py-8 bg-brand-blue-50 rounded-xl" // Light blue background for header
@@ -52,7 +52,7 @@ const AboutPage: React.FC = () => {
           </motion.header>
 
           <motion.article
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay:0.2 }}
             // Removed background from article as page bg is white, added shadow for depth on content blocks if needed
@@ -82,7 +82,7 @@ const AboutPage: React.FC = () => {
                   return (
                     <motion.div
                       key={index}
-                      initial={{ opacity: 0, x: -20 }}
+                      initial={false}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -121,7 +121,7 @@ const AboutPage: React.FC = () => {
                 {values.map((value, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 15 }}
+                    initial={false}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.05 }} // Slightly faster delay for list items
@@ -135,7 +135,7 @@ const AboutPage: React.FC = () => {
             </section>
 
             <motion.div // Changed from p to div for block styling
-              initial={{ opacity: 0, y:20 }}
+              initial={false}
               whileInView={{ opacity: 1, y:0 }} // Animate while in view
               viewport={{ once: true }}
               transition={{ duration: 0.5}}

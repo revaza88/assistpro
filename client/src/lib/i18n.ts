@@ -1,5 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import { siteCopy } from './site-copy';
 
 const resources = {
   ka: {
@@ -1266,11 +1267,16 @@ const resources = {
   }
 };
 
+for (const language of Object.keys(siteCopy) as (keyof typeof siteCopy)[]) {
+  Object.assign(resources[language].translation.servicesOverview, { hr: siteCopy[language].hr });
+  Object.assign(resources[language].translation.contact, siteCopy[language].contact);
+}
+
 i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: localStorage.getItem('language') || 'ka',
+    lng: 'ka',
     fallbackLng: 'ka',
     interpolation: {
       escapeValue: false,

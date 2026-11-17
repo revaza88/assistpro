@@ -1,0 +1,19 @@
+import { createServer } from 'vite';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { publicPaths } from '../src/shared/seo';
+
+const vite = await createServer({ server: { middlewareMode: true }, appType: 'custom' });
+try {
+  const { render } = await vite.ssrLoadModule('/src/entry-prerender.tsx');
+  const folder = path.resolve('dist/prerender');
+  await mkdir(folder, { recursive: true });
+  for (const route of [...publicPaths, '/404']) {
+    const html: string = await render(route);
+    if (!html.includes('<h1') || !html.includes('main-content')) throw new Error(`Prerender missing page content: ${route}`);
+    await writeFile(path.join(folder, (route === '/' ? 'home' : route.slice(1).replaceAll('/', '_')) + '.html'), html);
+  }
+  const template = await readFile('dist/public/index.html', 'utf8');
+  if (!template.includes('<!--app-head-->') || !template.includes('<!--app-html-->')) throw new Error('Missing HTML template markers');
+  console.log(`Prerendered ${publicPaths.length} pages and 404 with their actual React content.`);
+} finally { await vite.close(); }
