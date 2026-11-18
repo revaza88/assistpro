@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, ElementType } from "react";
 import { requestCopy } from '@/lib/request-copy';
 import { designCopy } from '@/lib/design-copy';
+import BrandLogo from '@/components/BrandLogo';
 import { Bars3Icon as MenuIcon, XMarkIcon as XIcon, ChevronDownIcon } from "@heroicons/react/24/outline"; // Using Heroicons
 import LanguageSelector from "@/components/language-selector";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -102,19 +103,19 @@ export default function Navigation() {
 
   return (
     <><a href="#main-content" className="skip-link">{design.skip}</a><nav ref={navRef} onKeyDown={event => { if (event.key === 'Escape' && (isMobileMenuOpen || isServicesOpen)) { event.preventDefault(); setIsMobileMenuOpen(false); setIsServicesOpen(false); (isMobileMenuOpen ? menuButtonRef : servicesButtonRef).current?.focus(); } }} className="site-header sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap gap-y-2 justify-between items-center min-h-16 lg:min-h-20">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="header-topline flex flex-wrap gap-y-2 justify-between items-center min-h-16 lg:min-h-20">
           {/* Logo */}
           <div
             className="flex items-center"
           >
             <Link to="/" className="site-brand" onClick={() => setIsMobileMenuOpen(false)}>
-              <span className="site-mark" aria-hidden="true" /><span className="site-wordmark">{design.brand}</span>
+              <BrandLogo />
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center space-x-1 lg:space-x-2">
+          <div className="header-desktop-navigation items-center space-x-1">
             <div
               className="relative"
               onMouseEnter={() => setIsServicesOpen(true)}
@@ -179,7 +180,7 @@ export default function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="xl:hidden flex flex-wrap max-w-full items-center">
+          <div className="header-mobile-controls flex flex-wrap max-w-full items-center">
             <LanguageSelector />
             <ThemeToggle />
             <button
@@ -202,7 +203,7 @@ export default function Navigation() {
         {isMobileMenuOpen && (
           <div
             id="mobile-menu"
-            className="mobile-site-menu xl:hidden bg-white border-t border-slate-200 shadow-lg overflow-y-auto"
+            className="mobile-site-menu bg-white border-t border-slate-200 shadow-lg overflow-y-auto"
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <div className="relative">

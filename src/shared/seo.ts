@@ -1,3 +1,5 @@
+import { brandLogo } from './brand';
+
 type Language = 'ka' | 'en' | 'ru';
 const titles: Record<string, [string, string, string]> = {
   '/': ['ბუღალტერია და ბიზნესის მხარდაჭერა', 'Accounting and business support', 'Бухгалтерия и поддержка бизнеса'],
@@ -69,5 +71,11 @@ export function seoHead(path: string, origin: string | null, indexing: boolean, 
 <meta property="og:site_name" content="ასისტი" />
 <meta property="og:locale" content="ka_GE" />
 <meta name="twitter:card" content="summary" />
+${origin ? `<meta property="og:image" content="${escapeHtml(origin + brandLogo.src)}" />
+<meta property="og:image:width" content="${brandLogo.width}" />
+<meta property="og:image:height" content="${brandLogo.height}" />
+<meta property="og:image:alt" content="${brandLogo.alt}" />
+<meta name="twitter:image" content="${escapeHtml(origin + brandLogo.src)}" />
+<meta name="twitter:image:alt" content="${brandLogo.alt}" />` : ''}
 ${url ? `<link rel="canonical" href="${escapeHtml(url)}" /><meta property="og:url" content="${escapeHtml(url)}" />` : ''}`;
 }

@@ -27,16 +27,24 @@
       "contains_transparency": false,
       "bytes_changed": false,
       "identity_status": "resolved_by_filename_matching_guideline_page_6",
-      "approved_original_master_linkage": "pending",
-      "site_production_path": null,
+      "approved_original_master_linkage": "supplied_export_explicitly_authorized_for_site_by_user; external_master_comparison_not_performed",
+      "site_production_path": "client/public/assets/brand/ASSIST_Locked_White_Native_1405px.png",
       "checks_completed": [
         "materialized_original_file",
         "byte_hash_recorded",
         "dimensions_and_color_mode_checked",
-        "visually_reviewed"
+        "visually_reviewed",
+        "production_copy_sha256_matches_reference",
+        "full_original_used_in_header_footer_and_favicon"
       ],
-      "required_next_check": "Compare with the exact user-approved original Master or an already approved asset in the actual website; record evidence before marking linkage verified.",
-      "integration_hash_verified": true
+      "required_next_check": null,
+      "integration_hash_verified": true,
+      "usage_authorization": {
+        "date": "2026-11-18",
+        "source": "latest_user_message_in_current_conversation",
+        "scope": "all_supplied_brand_material_including_logo_and_company_information",
+        "supersedes": "earlier_instruction_to_preserve_provisional_CSS_logo"
+      }
     },
     {
       "path": "reference/ASSIST_Brand_Guidelines_Digital_v1_0.pdf",
@@ -65,11 +73,8 @@
     "six_Office_PDF_source_materials"
   ],
   "open_decisions": [
-    "exact_approved_master_linkage",
-    "actual_site_logo_path_and_responsive_size",
-    "font_delivery_in_target_project",
-    "favicon_and_social_preview_if_no_existing_approved_assets",
-    "translated_slogans_if_required"
+    "translated_slogans_if_explicitly_requested",
+    "public_domain_and_hosting_target_not_configured"
   ],
   "tokens_status": "documented_palette_and_font_family_names; semantic_web_roles_proposed_not_approved",
   "canonical_brand_standards": "https://chatgpt.com/space/page_4b64e35dc9a4819184466cda53fcca20",
@@ -125,9 +130,9 @@
       }
     ],
     "existing_approved_master_found": false,
-    "approved_logo_production_path": null,
+    "approved_logo_production_path": "client/public/assets/brand/ASSIST_Locked_White_Native_1405px.png",
     "slogan_runtime_status": "implemented_exact_georgian_in_home_hero_and_shared_footer; old_footer_service_description_removed",
-    "reference_assets_publicly_served": false,
+    "reference_assets_publicly_served": "only_authorized_logo_png; internal_PDF_and_instructions_not_served",
     "verification": {
       "archive_files_hash_verified": 9,
       "pdf_pages_text_read": 17,
@@ -178,5 +183,60 @@
       ],
       "console_page_errors": 0
     }
+  },
+  "web_redesign": {
+    "date": "2026-11-18",
+    "source": "explicit_user_request_in_current_conversation",
+    "status": "palette_typography_components_logo_and_company_information_integrated",
+    "report": "COMPLETE_INTEGRATION.md",
+    "palette": [
+      "#0B1B4D",
+      "#6A00FF",
+      "#8A3DFF",
+      "#D9B3FF",
+      "#FFFFFF"
+    ],
+    "fonts": [
+      "Noto Sans Georgian",
+      "Montserrat"
+    ],
+    "font_delivery": "local_woff2_unicode_subsets; no_external_browser_font_requests",
+    "logo": "full_supplied_export_authorized_by_user; unchanged_bytes",
+    "reference_assets_changed": false,
+    "fonts_added": [
+      {
+        "path": "client/public/assets/fonts/montserrat-latin.woff2",
+        "size_bytes": 37956,
+        "sha256": "06b16db7a969135d48d38c49183be7fb88d4452e2a3011957c7851941f4e4879",
+        "source": "https://fonts.googleapis.com/css2?family=Montserrat:wght@400..700&display=swap",
+        "license": "client/public/assets/fonts/Montserrat-OFL.txt"
+      },
+      {
+        "path": "client/public/assets/fonts/montserrat-cyrillic.woff2",
+        "size_bytes": 23828,
+        "sha256": "a187b077090fe8ae3fd2d7496aabbeae604819c718a282e0afc92df72b450766",
+        "source": "https://fonts.googleapis.com/css2?family=Montserrat:wght@400..700&display=swap",
+        "license": "client/public/assets/fonts/Montserrat-OFL.txt"
+      }
+    ]
+  },
+  "complete_integration": {
+    "date": "2026-11-18",
+    "report": "COMPLETE_INTEGRATION.md",
+    "logo_placements": [
+      "header",
+      "footer",
+      "favicon",
+      "Open_Graph_and_Twitter_when_SITE_URL_configured"
+    ],
+    "company_information_source": "reference/ASSIST_Brand_Guidelines_Digital_v1_0.pdf page 14; explicitly_authorized_by_user",
+    "legalName": "შპს \"ემ ეს ეი\"",
+    "identificationCode": "416317239",
+    "registeredAddress": "თბილისი, გორგასლის N61",
+    "bank": "სს \"თიბისი ბანკი\"",
+    "iban": "GE83TB7866336080100002",
+    "bic": "TBCBGE22",
+    "bank_account_ownership_independently_verified": false,
+    "source_reference_bytes_changed": false
   }
 }

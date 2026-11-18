@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link, useSearch } from 'wouter';
 import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
+import CompanyDetails from '@/components/CompanyDetails';
 import SelectionSummary from '@/components/SelectionSummary';
 import CalculatorSummary from '@/components/CalculatorSummary';
 import { calculatorForSelection, calculatorHref, calculatorJourneySelection, isCalculatorQuery, parseCalculatorQuery } from '@shared/pricing';
@@ -109,5 +110,6 @@ export default function ContactPage() {
         {status && <p role={status === 'success' ? 'status' : 'alert'} className={status === 'success' ? 'text-green-800' : 'text-red-700'}>{status === 'success' ? copy.sent : copy.failed}</p>}
       </form>
     </div>
+    <CompanyDetails />
   </main><Footer /></div>;
 }

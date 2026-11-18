@@ -62,9 +62,9 @@ export default {
           border: "var(--sidebar-border)",
           ring: "var(--sidebar-ring)",
         },
-        // Added brand colors
-        'brand-blue': { DEFAULT: '#356653', 50: '#edf2e8', 100: '#e0e8d9', 500: '#356653', 600: '#214e41', 700: '#183c34' },
-        'brand-gold': { DEFAULT: '#d6ed9b', 100: '#edf5d8', 400: '#d6ed9b', 500: '#d6ed9b', 600: '#c4dc87' },
+        // Compatibility aliases mapped to ASSIST navy/lilac. Primary actions use purple.
+        'brand-blue': { DEFAULT: '#0b1b4d', 50: '#f1ebff', 100: '#e7ddfa', 500: '#0b1b4d', 600: '#0b1b4d', 700: '#0b1b4d' },
+        'brand-gold': { DEFAULT: '#d9b3ff', 100: '#f1ebff', 400: '#d9b3ff', 500: '#d9b3ff', 600: '#c79bf5' },
       },
       keyframes: {
         "accordion-down": {

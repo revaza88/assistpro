@@ -146,3 +146,12 @@ DNS/TLS, redirect, canonical/sitemap, ტელეფონის ბრაუ�
 მითითებები: [Docker-ის მრავალეტაპიანი build](https://docs.docker.com/guides/nodejs/),
 [Express reverse proxy](https://expressjs.com/en/guide/behind-proxies/),
 [Google Search Console დაწყება](https://developers.google.com/search/docs/monitor-debug/search-console-start).
+
+
+## შემდგომი ბრენდული მითითება — 2026-11-18
+
+მომხმარებელმა ავტორიზაცია მისცა მოწოდებული ბრენდის პაკეტის სრულ გადატანას,
+ლოგოსა და კომპანიის ინფორმაციის ჩათვლით. ადრეული ჩანაწერები დაუდასტურებელი
+ბრენდისა და იურიდიული სახელის შესახებ ამ ნაწილში ჩანაცვლებულია. მიმდინარე
+ინტეგრაცია და გაშვება: `docs/brand/COMPLETE_INTEGRATION.md` (რეპოზიტორიის ძირიდან).
+ბაზის, intake-ისა და დომენის საკითხები ამით არ გააქტიურებულა.

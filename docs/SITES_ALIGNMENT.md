@@ -202,3 +202,12 @@ the current logo unchanged until Master linkage is verified. A prerender UTF-8
 padding issue discovered during verification was fixed using React's Web Streams
 renderer; the build checks exact slogan output and rejects NUL bytes. See
 `docs/brand/SLOGAN_QA.md` for the 25-test/build and responsive-browser results.
+
+
+## შემდგომი ბრენდული მითითება — 2026-11-18
+
+მომხმარებელმა ავტორიზაცია მისცა მოწოდებული ბრენდის პაკეტის სრულ გადატანას,
+ლოგოსა და კომპანიის ინფორმაციის ჩათვლით. ადრეული ჩანაწერები დაუდასტურებელი
+ბრენდისა და იურიდიული სახელის შესახებ ამ ნაწილში ჩანაცვლებულია. მიმდინარე
+ინტეგრაცია და გაშვება: `docs/brand/COMPLETE_INTEGRATION.md` (რეპოზიტორიის ძირიდან).
+ბაზის, intake-ისა და დომენის საკითხები ამით არ გააქტიურებულა.

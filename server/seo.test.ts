@@ -17,9 +17,11 @@ test('canonical and Open Graph URL use only a configured origin and exclude sele
   const head = seoHead('/calculator', 'https://assist.example', true, true);
   assert.match(head, /noindex,follow/);
   assert.match(head, /rel="canonical" href="https:\/\/assist.example\/calculator"/);
+  assert.match(head, /property="og:image" content="https:\/\/assist.example\/assets\/brand\/ASSIST_Locked_White_Native_1405px.png"/);
   assert.doesNotMatch(head, /documents=|sector=|services=/);
   assert.match(seoHead('/', null, false), /noindex,follow/);
   assert.doesNotMatch(seoHead('/', null, false), /rel="canonical"/);
+  assert.doesNotMatch(seoHead('/', null, false), /property="og:image"/);
   assert.match(seoHead('/services', 'https://assist.example', true), /content="index,follow"/);
   assert.doesNotMatch(seoHead('/bad"><script>', 'https://assist.example', true), /<script>/);
 });

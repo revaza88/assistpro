@@ -59,9 +59,13 @@ function Router() {
 
 function App() {
   return (
-      <ThemeProvider>
-          <SeoHead /><InquiryDraftProvider><Suspense fallback={<p role="status" className="p-8 text-center">იტვირთება… / Loading…</p>}><Router /><RouteFocus /></Suspense></InquiryDraftProvider>
-      </ThemeProvider>
+    <InquiryDraftProvider>
+      <Suspense fallback={<p role="status" className="p-8 text-center">იტვირთება… / Loading…</p>}>
+        {/* Commit preference effects only after the lazy page has hydrated. An outer
+            provider could update a still-dehydrated boundary (React error 421). */}
+        <ThemeProvider><SeoHead /><Router /><RouteFocus /></ThemeProvider>
+      </Suspense>
+    </InquiryDraftProvider>
   );
 }
 
