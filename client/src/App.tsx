@@ -1,6 +1,5 @@
 import { Switch, Route, useLocation } from "wouter";
 import { lazy, Suspense, useEffect, type ComponentType } from 'react';
-import i18n from './lib/i18n';
 import SeoHead from './components/SeoHead';
 import { ThemeProvider } from "@/contexts/theme-context";
 import Home from "@/pages/home";
@@ -59,12 +58,6 @@ function Router() {
 }
 
 function App() {
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem('language');
-      if (saved && ['ka', 'en', 'ru'].includes(saved)) void i18n.changeLanguage(saved);
-    } catch { /* Storage can be unavailable in private/restricted browsing. */ }
-  }, []);
   return (
       <ThemeProvider>
           <SeoHead /><InquiryDraftProvider><Suspense fallback={<p role="status" className="p-8 text-center">იტვირთება… / Loading…</p>}><Router /><RouteFocus /></Suspense></InquiryDraftProvider>

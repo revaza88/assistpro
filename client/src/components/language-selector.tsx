@@ -1,50 +1,37 @@
-import { useTranslation } from "react-i18next";
-import { Globe } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { GlobeAltIcon } from '@heroicons/react/24/outline';
+import { changeSiteLanguage, type SiteLanguage } from '@/lib/i18n';
 
 const languages = [
-  { code: 'ka' as const, name: 'ქართული', flag: '🇬🇪' },
-  { code: 'en' as const, name: 'English', flag: '🇺🇸' },
-  { code: 'ru' as const, name: 'Русский', flag: '🇷🇺' },
-];
+  { code: 'ka', name: 'ქართული', flag: '🇬🇪' },
+  { code: 'en', name: 'English', flag: '🇺🇸' },
+  { code: 'ru', name: 'Русский', flag: '🇷🇺' },
+] as const;
 
 export default function LanguageSelector() {
   const { i18n } = useTranslation();
-  
-  const currentLanguage = languages.find(lang => i18n.language.startsWith(lang.code));
-
-  const changeLanguage = (langCode: 'ka' | 'en' | 'ru') => {
-    i18n.changeLanguage(langCode);
-    localStorage.setItem('language', langCode);
+  const current = languages.find(lang => i18n.language.startsWith(lang.code)) ?? languages[0];
+  const [loading, setLoading] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const label = current.code === 'en' ? 'Language' : current.code === 'ru' ? 'Язык' : 'ენა';
+  const change = async (language: SiteLanguage) => {
+    setLoading(true); setFailed(false);
+    try {
+      await changeSiteLanguage(language);
+      try { localStorage.setItem('language', language); } catch { /* The current tab still works. */ }
+    } catch { setFailed(true); }
+    finally { setLoading(false); }
   };
-
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="h-12 min-w-12 px-2" aria-label={currentLanguage?.name}>
-          <Globe className="w-4 h-4 mr-1" />
-          <span className="hidden sm:inline">{currentLanguage?.name}</span>
-          <span className="sm:hidden">{currentLanguage?.flag}</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="min-w-[120px]">
-        {languages.map((lang) => (
-          <DropdownMenuItem
-            key={lang.code}
-            onClick={() => changeLanguage(lang.code)}
-            className={`cursor-pointer min-h-12 ${i18n.language === lang.code ? 'bg-brand-blue-50 text-brand-blue-600' : ''}`}
-          >
-            <span className="mr-2">{lang.flag}</span>
-            {lang.name}
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
+  return <>
+    <span className="header-picker language-picker" aria-busy={loading}>
+      <GlobeAltIcon aria-hidden="true" className="w-4 h-4" />
+      <span aria-hidden="true" className="hidden sm:inline">{current.name}</span>
+      <span aria-hidden="true" className="sm:hidden">{current.flag}</span>
+      <select aria-label={label} value={current.code} disabled={loading} onChange={event => void change(event.target.value as SiteLanguage)}>
+        {languages.map(lang => <option key={lang.code} value={lang.code}>{lang.name}</option>)}
+      </select>
+    </span>
+    {failed && <span role="alert" className="sr-only">{current.code === 'en' ? 'Language could not be changed. Try again.' : current.code === 'ru' ? 'Не удалось изменить язык. Повторите попытку.' : 'ენა ვერ შეიცვალა. სცადეთ ხელახლა.'}</span>}
+  </>;
 }

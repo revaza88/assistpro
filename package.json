@@ -34,7 +34,7 @@
     "pm2:restart": "pm2 restart assistpro",
     "pm2:logs": "pm2 logs assistpro",
     "health": "curl -f http://localhost:3000/health || curl -f http://localhost:5000/health",
-    "test": "node --import tsx --test server/storage.test.ts server/inquiry.test.ts server/pricing.test.ts server/seo.test.ts scripts/browser-policy.test.ts"
+    "test": "node --import tsx --test server/storage.test.ts server/inquiry.test.ts server/pricing.test.ts server/seo.test.ts scripts/browser-policy.test.ts scripts/client-bundle.test.ts"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

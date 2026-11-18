@@ -41,6 +41,31 @@ assert.ok(js.body.length < 600000, 'Initial UTF-8 JS exceeded 600 kB budget');
 assert.ok(compressed.body.length < 180000, 'Initial gzip JS exceeded 180 kB budget');
 assert.match(String(js.headers['cache-control']), /immutable/);
 assert.equal(compressed.headers['content-encoding'], 'gzip');
+// Count every script and stylesheet declared for initial loading, including
+// shared modulepreloads. An entry chunk alone is not a full-page JS budget.
+const initialScripts = new Set([...home.matchAll(/<script\b[^>]*src="([^"]+)"[^>]*>/g)].map(match => match[1]));
+const initialStyles = new Set<string>();
+for (const [tag] of home.matchAll(/<link\b[^>]*>/g)) {
+  const href = tag.match(/href="([^"]+)"/)?.[1];
+  if (!href) continue;
+  if (/rel="modulepreload"/.test(tag)) initialScripts.add(href);
+  if (/rel="stylesheet"/.test(tag)) initialStyles.add(href);
+}
+const initialAssets = [];
+for (const [kind, paths] of [['script', initialScripts], ['stylesheet', initialStyles]] as const) {
+  for (const path of paths) {
+    assert.ok(path.startsWith('/') && !path.startsWith('//'), 'Initial assets must be same-origin');
+    const raw = await get(path);
+    const gzip = await get(path, true);
+    assert.equal(raw.status, 200, path);
+    assert.equal(gzip.status, 200, path);
+    initialAssets.push({ kind, path, rawBytes: raw.body.length, gzipBytes: gzip.body.length });
+  }
+}
+const total = (kind: string, key: 'rawBytes' | 'gzipBytes') => initialAssets.filter(asset => asset.kind === kind).reduce((sum, asset) => sum + asset[key], 0);
+assert.ok(total('script', 'rawBytes') < 400000, 'Initial scripts exceeded 400 kB raw budget');
+assert.ok(total('script', 'gzipBytes') < 120000, 'Initial scripts exceeded 120 kB gzip budget');
+assert.ok(total('stylesheet', 'gzipBytes') < 12000, 'Initial styles exceeded 12 kB gzip budget');
 for (const route of ['/missing-page', '/assets/missing.js', '/api/missing']) assert.equal((await get(route)).status, 404, route);
 assert.equal((await get('/index.html')).status, 301);
 assert.equal((await get('/services/')).status, 301);
@@ -61,6 +86,6 @@ if (indexing) {
 const timings = [];
 for (let run = 0; run < 7; run++) timings.push((await get('/', true)).ttfb);
 timings.sort((a, b) => a - b);
-const report = { base, indexing, pages: pages.length, rawInitialJsBytes: js.body.length, gzipInitialJsBytes: compressed.body.length, medianLocalTtfbMs: +timings[3].toFixed(1), pageChecks: pages, checks: 'HTML content, metadata, status codes, gzip, cache headers, favicon, robots, sitemap, query noindex', limits: 'Local unthrottled HTTP; not Lighthouse, LCP, INP, CLS, real network or field Core Web Vitals.' };
+const report = { base, indexing, pages: pages.length, rawEntryJsBytes: js.body.length, gzipEntryJsBytes: compressed.body.length, rawInitialJsBytes: total('script', 'rawBytes'), gzipInitialJsBytes: total('script', 'gzipBytes'), gzipInitialCssBytes: total('stylesheet', 'gzipBytes'), initialAssets, medianLocalTtfbMs: +timings[3].toFixed(1), pageChecks: pages, checks: 'HTML content, metadata, status codes, gzip, cache headers, full declared initial JS/CSS budgets, favicon, robots, sitemap, query noindex', limits: 'Local unthrottled HTTP. HTML-declared assets exclude later dynamic imports; Lighthouse checks actual network activity. Not LCP, INP, CLS, real network or field Core Web Vitals.' };
 await writeFile(`dist/seo-performance-${indexing ? 'configured' : 'local'}.json`, JSON.stringify(report, null, 2));
 console.log(JSON.stringify(report, null, 2));

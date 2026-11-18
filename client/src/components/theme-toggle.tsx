@@ -1,42 +1,17 @@
-import { Moon, Sun, Laptop } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/contexts/theme-context';
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" className="h-12 w-12">
-          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem className="min-h-12" onClick={() => setTheme('light')}>
-          <Sun className="mr-2 h-4 w-4" />
-          <span>ღია</span>
-          {theme === 'light' && <span className="ml-auto">✓</span>}
-        </DropdownMenuItem>
-        <DropdownMenuItem className="min-h-12" onClick={() => setTheme('dark')}>
-          <Moon className="mr-2 h-4 w-4" />
-          <span>მუქი</span>
-          {theme === 'dark' && <span className="ml-auto">✓</span>}
-        </DropdownMenuItem>
-        <DropdownMenuItem className="min-h-12" onClick={() => setTheme('auto')}>
-          <Laptop className="mr-2 h-4 w-4" />
-          <span>სისტემური</span>
-          {theme === 'auto' && <span className="ml-auto">✓</span>}
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
+  const { theme, setTheme, actualTheme } = useTheme();
+  const { i18n } = useTranslation();
+  const copy = i18n.language.startsWith('en') ? ['Theme', 'Light', 'Dark', 'System']
+    : i18n.language.startsWith('ru') ? ['Тема', 'Светлая', 'Тёмная', 'Системная'] : ['თემა', 'ღია', 'მუქი', 'სისტემური'];
+  const Icon = actualTheme === 'dark' ? MoonIcon : SunIcon;
+  return <span className="header-picker theme-picker">
+    <Icon aria-hidden="true" className="w-5 h-5" />
+    <select aria-label={copy[0]} value={theme} onChange={event => setTheme(event.target.value as 'light' | 'dark' | 'auto')}>
+      <option value="light">{copy[1]}</option><option value="dark">{copy[2]}</option><option value="auto">{copy[3]}</option>
+    </select>
+  </span>;
 }

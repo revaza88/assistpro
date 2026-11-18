@@ -167,3 +167,14 @@ work now references this guidance in AGENTS.md. Coverage, deliberate applicabili
 decisions and verification limits are recorded in `docs/MODERN_WEB_GUIDANCE.md`;
 this does not claim every feature is required or all browser behavior is certified.
 Database creation, public intake and indexing remain deferred.
+
+### Mobile performance follow-up — 2026-11-18
+
+Split optional English/Russian translations, replaced header choice menus with
+native selects, and limited Tailwind generation to the complete client import
+graph. All translation values are preserved by checksums and all routes remain
+included. Fresh three-run mobile medians improved from Performance 99 / TBT 102ms
+to Performance 100 / TBT 28.5ms; all three new runs scored 100. Initial transferred
+JS fell 33% and CSS 37.5%. Twenty-five tests, build, HTTP checks and a 15-page
+browser pass succeeded. See `docs/MOBILE_PERFORMANCE_QA.md` for all samples,
+coverage and lab-measurement limits. Database/intake/indexing remain deferred.

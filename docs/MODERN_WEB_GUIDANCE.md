@@ -1,5 +1,11 @@
 # Modern Web Guidance integration
 
+2026-11-18 follow-up: header language/theme controls now use native selects and
+optional translations load on demand. Tailwind excludes unreachable components.
+The new mobile performance measurements and current validation are in
+[`MOBILE_PERFORMANCE_QA.md`](MOBILE_PERFORMANCE_QA.md); the review below records
+the earlier 2026-11-17 implementation and measurements.
+
 Reviewed on 2026-11-17 against
 [GoogleChrome/modern-web-guidance](https://github.com/GoogleChrome/modern-web-guidance/tree/64a6d708f5a43f2cd3fde5d4d7db3905ba1bdf65),
 commit `64a6d708f5a43f2cd3fde5d4d7db3905ba1bdf65`.

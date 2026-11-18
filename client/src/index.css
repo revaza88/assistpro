@@ -31,6 +31,12 @@
   :root { --destructive: light-dark(#b33225, #f59785); }
 }
 .mobile-site-menu { max-block-size: 75vh; max-block-size: min(75dvh, calc(100dvh - 5rem)); }
+.header-picker { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: .25rem; min-block-size: 3rem; min-inline-size: 3rem; padding: .5rem; border-radius: .375rem; color: var(--body); }
+.theme-picker { border: 1px solid var(--line); }
+.header-picker:hover { background: var(--soft); }
+.header-picker:focus-within { outline: 3px solid #75924f; outline-offset: 3px; }
+.header-picker select { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; opacity: 0; cursor: pointer; }
+.header-picker select:disabled { cursor: progress; }
 @media (max-width: 79.9375em) {
   .site-header { max-block-size: 100vh; max-block-size: 100dvh; overflow-y: auto; }
 }
