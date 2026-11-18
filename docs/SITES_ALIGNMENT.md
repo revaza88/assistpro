@@ -178,3 +178,17 @@ to Performance 100 / TBT 28.5ms; all three new runs scored 100. Initial transfer
 JS fell 33% and CSS 37.5%. Twenty-five tests, build, HTTP checks and a 15-page
 browser pass succeeded. See `docs/MOBILE_PERFORMANCE_QA.md` for all samples,
 coverage and lab-measurement limits. Database/intake/indexing remain deferred.
+
+### ASSIST brand handoff — 2026-11-18
+
+The user supplied ASSIST_Codex_Brand_Handoff_v1_0 and requested local context
+integration plus an audit. Brand documents and unchanged reference PDF/PNG now
+live in `docs/brand/`; the marked brand section was appended to AGENTS.md without
+replacing existing instructions. Original Master V1.2 must not be redrawn or
+recolored. The exact approved slogan is `თქვენი ბიზნესის მხარდამჭერი`; the lower
+service descriptor is omitted from brand presentation, while normal service pages
+remain. Existing CSS header/footer marks are not the approved Master. The supplied
+PNG's identity/hash is verified but its linkage to the exact approved Master is
+still pending. See `docs/brand/INTEGRATION_REPORT.md` and the manifest for current
+findings, documented palette/fonts and open checks. No runtime rebrand, reference
+asset publication, database creation or hosting deployment was performed.

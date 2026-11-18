@@ -1,0 +1,147 @@
+{
+  "handoff_version": "1.0",
+  "as_of_date": "2026-11-18",
+  "timezone": "Asia/Tbilisi",
+  "approved_logo_design": "original Master V1.2",
+  "site_repository_inspected": true,
+  "automatic_sync_configured": false,
+  "slogan": {
+    "text": "თქვენი ბიზნესის მხარდამჭერი",
+    "status": "user_approved",
+    "lower_service_descriptor_enabled": false,
+    "scope": "logo_and_slogan_brand_presentation_only",
+    "source": "https://chatgpt.com/space/page_a8a628b6cabc8191ad57ec9d2bea45bb"
+  },
+  "assets": [
+    {
+      "path": "reference/ASSIST_Locked_White_Native_1405px.png",
+      "role": "existing_documented_digital_logo_export",
+      "library_file_id": "libfile_4c77799c82b0819180ad62372650c140",
+      "source_file_id": "file_000000003fec822fa5791a10f0eefa47",
+      "source_url": "https://chatgpt.com/library?file_id=libfile_4c77799c82b0819180ad62372650c140&account_id=personal",
+      "source_sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e",
+      "size_bytes": 242575,
+      "pixel_width": 1405,
+      "pixel_height": 235,
+      "color_mode": "RGB",
+      "contains_transparency": false,
+      "bytes_changed": false,
+      "identity_status": "resolved_by_filename_matching_guideline_page_6",
+      "approved_original_master_linkage": "pending",
+      "site_production_path": null,
+      "checks_completed": [
+        "materialized_original_file",
+        "byte_hash_recorded",
+        "dimensions_and_color_mode_checked",
+        "visually_reviewed"
+      ],
+      "required_next_check": "Compare with the exact user-approved original Master or an already approved asset in the actual website; record evidence before marking linkage verified.",
+      "integration_hash_verified": true
+    },
+    {
+      "path": "reference/ASSIST_Brand_Guidelines_Digital_v1_0.pdf",
+      "role": "historical_digital_guideline_reference",
+      "library_file_id": "libfile_cd51aaafa5208191a7f9355803e51994",
+      "source_file_id": "file_00000000430081f4b177bb3d617cde8b",
+      "source_url": "https://chatgpt.com/library?file_id=libfile_cd51aaafa5208191a7f9355803e51994&account_id=personal",
+      "source_sha256": "726868771598b9a14ef77b73e7a59ab37499e6405c1c456201c77b853478a349",
+      "size_bytes": 2054087,
+      "pages": 17,
+      "bytes_changed": false,
+      "checks_completed": [
+        "all_page_text_read",
+        "pages_10_11_visually_reviewed"
+      ],
+      "current_decision_precedence": "Latest user slogan decision overrides historical card/web examples within descriptor scope.",
+      "integration_hash_verified": true
+    }
+  ],
+  "not_included": [
+    "font_binaries",
+    "approved_favicon",
+    "approved_dark_or_transparent_logo",
+    "approved_translated_slogans",
+    "other_PNG_sizes",
+    "six_Office_PDF_source_materials"
+  ],
+  "open_decisions": [
+    "exact_approved_master_linkage",
+    "actual_site_logo_path_and_responsive_size",
+    "font_delivery_in_target_project",
+    "favicon_and_social_preview_if_no_existing_approved_assets",
+    "translated_slogans_if_required"
+  ],
+  "tokens_status": "documented_palette_and_font_family_names; semantic_web_roles_proposed_not_approved",
+  "canonical_brand_standards": "https://chatgpt.com/space/page_4b64e35dc9a4819184466cda53fcca20",
+  "integration": {
+    "date": "2026-11-18",
+    "repository": "revaza88/assistpro",
+    "workspace": "D:/Assist/assistpro",
+    "inspected_commit": "88a3947057eab7a5fb0d8b0681625e4b0b55555f",
+    "scope": "local_brand_context_and_source_compliance_audit; no_runtime_brand_changes_or_publication",
+    "archive": {
+      "filename": "ASSIST_Codex_Brand_Handoff_v1_0.zip",
+      "size_bytes": 2181450,
+      "sha256": "ceeb5b1729646c1597058e172c45248b6a584cb651a98894756c01491e6385e6"
+    },
+    "original_checksum_list": "handoff-v1.0/SHA256SUMS.txt",
+    "checksum_note": "All nine archive checksums matched before integration. The original checksum list describes the handoff, not locally updated documentation. Reference PDF and PNG remain byte-identical.",
+    "report": "INTEGRATION_REPORT.md",
+    "active_instructions": [
+      "AGENTS.md"
+    ],
+    "instruction_overrides_found": false,
+    "marked_section_merged": true,
+    "existing_site_files": [
+      {
+        "path": "client/src/components/navigation.tsx",
+        "sha256": "e8d375768f0d1406c8661946063b96a80c576bb9df1d03cc5616c342e4391684",
+        "status": "existing_site_code_inspected_not_approved_master_asset"
+      },
+      {
+        "path": "client/src/components/footer.tsx",
+        "sha256": "bfd8deb54b99ea932c567f26c6387f01f40ee1791aa6f4febeba233d9209bfaa",
+        "status": "existing_site_code_inspected_not_approved_master_asset"
+      },
+      {
+        "path": "client/src/index.css",
+        "sha256": "e9e65db72e6caed06ea64983ec77eeb28c463994dc2ae31fcc0fe2c257f46162",
+        "status": "existing_site_code_inspected_not_approved_master_asset"
+      },
+      {
+        "path": "client/src/lib/design-copy.ts",
+        "sha256": "ab4c6d6ee820d5fb9991bf902072593b434852400eaf784f7df0b4399be8bbdf",
+        "status": "existing_site_code_inspected_not_approved_master_asset"
+      },
+      {
+        "path": "client/src/fonts.css",
+        "sha256": "82c8a25e8ec182a460675b37be73d0577a42ad16215eeb7d61a4e05c13cc6074",
+        "status": "existing_site_code_inspected_not_approved_master_asset"
+      },
+      {
+        "path": "client/public/favicon.svg",
+        "sha256": "86fece93e01d55706ec581fb5a9739a0290fa8a9bf156f737ff17f1b9f4c7aa7",
+        "status": "existing_site_code_inspected_not_approved_master_asset"
+      }
+    ],
+    "existing_approved_master_found": false,
+    "approved_logo_production_path": null,
+    "slogan_runtime_status": "not_yet_present; header/footer CSS logo and adjacent copy need alignment",
+    "reference_assets_publicly_served": false,
+    "verification": {
+      "archive_files_hash_verified": 9,
+      "pdf_pages_text_read": 17,
+      "pdf_pages_visually_reviewed": [
+        10,
+        11
+      ],
+      "png_size": [
+        1405,
+        235
+      ],
+      "png_mode": "RGB",
+      "application_tests_rerun": false,
+      "reason": "Documentation and instructions only; application source unchanged"
+    }
+  }
+}

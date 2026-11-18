@@ -1,0 +1,23 @@
+/* ASSIST handoff 1.0 | 2026-11-18
+ * Source: ASSIST_Brand_Guidelines_Digital_v1_0.pdf, pages 4-5.
+ * Status: documented reference values, not a new approved website theme.
+ * Additive declarations only. This file is not imported automatically.
+ * Adapt names/locations to the current site's styling system when integrating.
+ * Font binaries and @font-face rules are intentionally not supplied.
+ * Never use these tokens to redraw or recolor the logo image.
+ */
+:root {
+  --assist-brand-navy: #0B1B4D;
+  --assist-brand-purple: #6A00FF;
+  --assist-brand-purple-secondary: #8A3DFF;
+  --assist-brand-lilac: #D9B3FF;
+  --assist-brand-white: #FFFFFF;
+
+  --assist-font-georgian: "Noto Sans Georgian", sans-serif;
+  --assist-font-latin: "Montserrat", sans-serif;
+}
+
+/* Semantic roles (button, link, focus, disabled, background) remain an
+ * implementation choice in the existing site. Validate actual contrast,
+ * Georgian text, responsive layout, and font loading after integration.
+ */
