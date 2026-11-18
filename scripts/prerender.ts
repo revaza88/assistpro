@@ -2,6 +2,7 @@ import { createServer } from 'vite';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { publicPaths } from '../src/shared/seo';
+import { brandSlogan } from '../client/src/lib/company';
 
 const vite = await createServer({ server: { middlewareMode: true }, appType: 'custom' });
 try {
@@ -11,6 +12,7 @@ try {
   for (const route of [...publicPaths, '/404']) {
     const html: string = await render(route);
     if (!html.includes('<h1') || !html.includes('main-content')) throw new Error(`Prerender missing page content: ${route}`);
+    if (html.includes('\u0000') || !html.includes(`<p lang="ka">${brandSlogan}</p>`)) throw new Error(`Prerender corrupted or missing brand text: ${route}`);
     await writeFile(path.join(folder, (route === '/' ? 'home' : route.slice(1).replaceAll('/', '_')) + '.html'), html);
   }
   const template = await readFile('dist/public/index.html', 'utf8');

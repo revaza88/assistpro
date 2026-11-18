@@ -126,7 +126,7 @@
     ],
     "existing_approved_master_found": false,
     "approved_logo_production_path": null,
-    "slogan_runtime_status": "not_yet_present; header/footer CSS logo and adjacent copy need alignment",
+    "slogan_runtime_status": "implemented_exact_georgian_in_home_hero_and_shared_footer; old_footer_service_description_removed",
     "reference_assets_publicly_served": false,
     "verification": {
       "archive_files_hash_verified": 9,
@@ -142,6 +142,41 @@
       "png_mode": "RGB",
       "application_tests_rerun": false,
       "reason": "Documentation and instructions only; application source unchanged"
+    }
+  },
+  "slogan_implementation": {
+    "date": "2026-11-18",
+    "source": "explicit_user_request_in_current_conversation",
+    "text": "თქვენი ბიზნესის მხარდამჭერი",
+    "language": "ka",
+    "placements": [
+      "home_hero",
+      "shared_footer_on_all_public_pages"
+    ],
+    "translated": false,
+    "footer_service_descriptor_removed": true,
+    "ordinary_service_content_preserved": true,
+    "logo_unchanged_until_master_verified": true,
+    "approved_master_linkage": "pending",
+    "qa_report": "SLOGAN_QA.md",
+    "checks": {
+      "typecheck": "passed",
+      "tests_passed": 25,
+      "build": "passed",
+      "prerender_pages_without_nul": 16,
+      "public_footer_pages_checked": 15,
+      "viewport_widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "language_versions": [
+        "ka",
+        "en",
+        "ru"
+      ],
+      "console_page_errors": 0
     }
   }
 }

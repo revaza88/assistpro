@@ -4,13 +4,14 @@ import { useTranslation } from 'react-i18next';
 import { requestCopy } from '@/lib/request-copy';
 import { designCopy } from '@/lib/design-copy';
 import { calculatorCopy } from '@/lib/calculator-copy';
+import { brandSlogan } from '@/lib/company';
 
 export default function HeroSection() {
   const { t, i18n } = useTranslation();
   const copy = designCopy(i18n.language);
   return <>
     <section id="hero" className="site-hero"><div className="design-wrap hero-grid">
-      <div><div className="site-eyebrow">{copy.eyebrow}</div><h1 className="hero-heading">{copy.title}</h1><p className="hero-summary">{copy.summary}</p>
+      <div><div className="site-eyebrow" lang="ka">{brandSlogan}</div><h1 className="hero-heading">{copy.title}</h1><p className="hero-summary">{copy.summary}</p>
         <div className="hero-actions"><Link href="/industries" className="site-button">{requestCopy(i18n.language).quote}<ArrowRight size={18} aria-hidden="true" /></Link><Link href="/calculator" className="site-button site-button-outline">{calculatorCopy(i18n.language).nav}</Link></div>
         <p className="hero-note">{copy.note}</p>
       </div>

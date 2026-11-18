@@ -192,3 +192,13 @@ PNG's identity/hash is verified but its linkage to the exact approved Master is
 still pending. See `docs/brand/INTEGRATION_REPORT.md` and the manifest for current
 findings, documented palette/fonts and open checks. No runtime rebrand, reference
 asset publication, database creation or hosting deployment was performed.
+
+### Approved slogan implementation — 2026-11-18
+
+At the user's explicit request, the exact Georgian slogan now appears in the home
+hero and shared footer, with `lang="ka"` also on EN/RU pages. The footer brand
+service description was removed; normal services remain. The user explicitly kept
+the current logo unchanged until Master linkage is verified. A prerender UTF-8
+padding issue discovered during verification was fixed using React's Web Streams
+renderer; the build checks exact slogan output and rejects NUL bytes. See
+`docs/brand/SLOGAN_QA.md` for the 25-test/build and responsive-browser results.

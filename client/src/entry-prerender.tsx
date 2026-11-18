@@ -1,18 +1,16 @@
-import { PassThrough } from 'node:stream';
-import { renderToPipeableStream } from 'react-dom/server';
+import { renderToReadableStream } from 'react-dom/server.browser';
 import { Router } from 'wouter';
 import App from './App';
 import './lib/i18n';
 
-export function render(path: string): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const chunks: Buffer[] = [];
-    const output = new PassThrough();
-    output.on('data', chunk => chunks.push(Buffer.from(chunk)));
-    output.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
-    output.on('error', reject);
-    const stream = renderToPipeableStream(<Router ssrPath={path}><App /></Router>, {
-      onAllReady() { stream.pipe(output); }, onError: reject,
-    });
+export async function render(path: string): Promise<string> {
+  let failure: unknown;
+  // The Web Streams renderer encodes complete UTF-8 chunks. React 18's Node
+  // development renderer can pad partially filled string buffers with NUL bytes.
+  const stream = await renderToReadableStream(<Router ssrPath={path}><App /></Router>, {
+    onError(error) { failure = error; },
   });
+  await stream.allReady;
+  if (failure) throw failure;
+  return new Response(stream).text();
 }

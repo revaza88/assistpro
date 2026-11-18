@@ -1,4 +1,6 @@
 // Only confirmed public details belong here. Leave unknown fields empty.
+export const brandSlogan = 'თქვენი ბიზნესის მხარდამჭერი';
+
 export const company = {
   email: "info@assist.ge",
   phone: "",
