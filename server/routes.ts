@@ -34,11 +34,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         platform: process.platform,
         arch: process.arch
       },
-      features: {
-        compression: !!process.env.ENABLE_COMPRESSION,
-        rateLimiting: !!process.env.ENABLE_RATE_LIMITING,
-        monitoring: !!process.env.ENABLE_MONITORING
-      }
+      features: config.features
     };
     
     logger.debug("Health check requested", { 

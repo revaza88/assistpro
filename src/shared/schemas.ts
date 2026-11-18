@@ -22,7 +22,8 @@ export const insertContactSchema = contactFieldsSchema.superRefine((value, conte
   if (!value.privacy) context.addIssue({ code: z.ZodIssueCode.custom, path: ['privacy'], message: 'Consent is required' });
 });
 
-export const insertJobApplicationSchema = z.object({
+// Read legacy local records with their original constraints; validate new writes below.
+export const jobApplicationFieldsSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
   email: z.string().email("Invalid email address"),
@@ -32,3 +33,13 @@ export const insertJobApplicationSchema = z.object({
   coverLetter: z.string().optional(),
   privacy: z.boolean().optional().default(false),
 });
+
+export const insertJobApplicationSchema = jobApplicationFieldsSchema.extend({
+  firstName: z.string().trim().min(1).max(80),
+  lastName: z.string().trim().min(1).max(80),
+  email: z.string().trim().email().max(254),
+  phone: z.string().trim().max(50).refine(value => !value || validPhone(value), 'Invalid phone').optional(),
+  position: z.string().trim().min(1).max(200),
+  resume: z.string().trim().max(2048).optional(),
+  coverLetter: z.string().trim().max(5000).optional(),
+}).refine(value => value.privacy, { path: ['privacy'], message: 'Consent is required' });

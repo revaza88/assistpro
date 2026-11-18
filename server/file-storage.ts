@@ -2,7 +2,7 @@ import { mkdirSync, readFileSync } from "node:fs";
 import { rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { z } from "zod";
-import { contactFieldsSchema, insertJobApplicationSchema } from "../src/shared/schemas";
+import { contactFieldsSchema, jobApplicationFieldsSchema } from "../src/shared/schemas";
 import type { Contact, InsertContact, JobApplication, InsertJobApplication } from "../src/shared/types";
 import { calculateDemoEstimate, demoEstimateSchema } from '../src/shared/pricing';
 
@@ -13,7 +13,7 @@ const savedDataSchema = z.object({
     id: z.number().int().positive(), createdAt: z.coerce.date(),
     phone: z.string().nullish(), company: z.string().nullish(), service: z.string().nullish(),
   })),
-  jobApplications: z.array(insertJobApplicationSchema.extend({
+  jobApplications: z.array(jobApplicationFieldsSchema.extend({
     id: z.number().int().positive(), createdAt: z.coerce.date(),
     phone: z.string().nullish(), resume: z.string().nullish(), coverLetter: z.string().nullish(),
   })),

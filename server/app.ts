@@ -53,10 +53,10 @@ export async function startServer(setupClient: (application: typeof app, server:
 
     const server = await registerRoutes(app);
 
-    // Error handling middleware (must be last)
-    app.use(errorHandler);
-
     await setupClient(app, server);
+
+    // Catch errors from static/client handlers as well as API/body parsing.
+    app.use(errorHandler);
 
     // Server startup
     server.listen(config.port, config.host, () => {

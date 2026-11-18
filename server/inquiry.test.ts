@@ -1,11 +1,22 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, rm } from 'node:fs/promises';
+import { mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { parseSelection, selectionHref } from '../src/shared/selection';
 import { insertContactSchema } from '../src/shared/schemas';
 import { FileStorage } from './file-storage';
+
+test('stricter new job validation does not invalidate or rewrite legacy local records', async () => {
+  const directory = await mkdtemp(path.join(tmpdir(), 'assist-legacy-job-'));
+  try {
+    const file = path.join(directory, 'data.json');
+    const legacy = { id: 1, firstName: ' ', lastName: ' ', email: 'qa@example.invalid', position: ' ', privacy: false, createdAt: new Date().toISOString() };
+    await writeFile(file, JSON.stringify({ version: 1, contacts: [], jobApplications: [legacy] }));
+    const records = await new FileStorage(file).getAllJobApplications();
+    assert.equal(records.length, 1);assert.equal(records[0].firstName, ' ');assert.equal(records[0].privacy, false);
+  } finally { await rm(directory, { recursive: true, force: true }); }
+});
 
 test('selection survives navigation, refresh and editing, without private query data', () => {
   const selection = { industry: 'retail' as const, services: ['payroll', 'bookkeeping'] as const };

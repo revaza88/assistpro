@@ -20,7 +20,7 @@ export const config = {
   },
 
   // Request body limits
-  bodyLimit: '10mb',
+  bodyLimit: '64kb',
 
   // Features
   features: {

@@ -8,18 +8,16 @@ export const errorHandler = (
   res: Response, 
   next: NextFunction
 ) => {
-  const status = err.status || err.statusCode || 500;
-  const message = err.message || "Internal Server Error";
+  if (res.headersSent) { next(err); return; }
+  const requestedStatus = err.status || err.statusCode;
+  const status = Number.isInteger(requestedStatus) && requestedStatus >= 400 && requestedStatus <= 599 ? requestedStatus : 500;
+  const publicMessages: Record<number, string> = { 400: 'Invalid request', 413: 'Request body too large', 415: 'Unsupported content type' };
+  const message = config.isProduction ? publicMessages[status] ?? 'Request failed' : err.message || 'Internal Server Error';
   
   // Log error details
   logger.error(`Error ${status}: ${message}`, {
     path: `${req.method} ${req.path}`,
-    stack: err.stack,
-    body: req.body,
-    query: req.query,
-    params: req.params,
-    userAgent: req.get('User-Agent'),
-    ip: req.ip
+    ...(config.isDevelopment && { stack: err.stack }),
   });
 
   // Send appropriate response
