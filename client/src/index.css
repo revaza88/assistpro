@@ -350,6 +350,15 @@ main .shadow-lg,main .shadow-md { box-shadow: 0 6px 24px color-mix(in srgb, var(
 @media(max-width:22.4375em) {
   .brand-logo { inline-size: 12.5rem; }
   .hero-heading { font-size: 2rem; }
+  /* Keep long Cyrillic service names intact at 320px; retain reflow on zoom. */
+  .service-intro h1:lang(ru) { font-size: 1.75rem; }
+}
+.calculator-industry-field,.calculator-type-field { grid-column: 1 / -1; }
+/* Native selects cannot wrap their selected label. Repeat it as wrapping text
+   on narrow screens; assistive technology already reads the selected option. */
+.calculator-selected-type { display: none; }
+@media(max-width:29.9375em) {
+  .calculator-selected-type { display: block; margin-top: .5rem; font-size: .875rem; color: var(--body); }
 }
 @media(forced-colors:active) {
   :focus-visible,.header-picker:focus-within { outline-color: Highlight; }
