@@ -51,7 +51,7 @@ export function structuredData(path: string, origin: string, language?: string) 
   if (base.startsWith('/services/')) {
     const home = ['მთავარი','Home','Главная'][siteLanguages.indexOf(meta.lang)];
     graph.push({ '@type':'BreadcrumbList', '@id':url+'#breadcrumb', itemListElement:[{ '@type':'ListItem', position:1, name:home, item:origin+localizedPath('/',meta.lang) },{ '@type':'ListItem', position:2, name:pageSeo('/services',meta.lang).label, item:origin+localizedPath('/services',meta.lang) },{ '@type':'ListItem', position:3, name:meta.label, item:url }] });
-    if (['/services/accounting','/services/tax','/services/audit'].includes(base)) graph.push({ '@type':'Service', '@id':url+'#service', name:meta.label, description:meta.description, url, provider:{ '@id':origin+'/#organization' }, inLanguage:meta.lang });
+    if (['/services/accounting','/services/tax','/services/audit'].includes(base)) graph.push({ '@type':'Service', '@id':url+'#service', name:meta.label, description:meta.description, url, provider:{ '@id':origin+'/#organization' }, mainEntityOfPage:url });
   }
   return { '@context':'https://schema.org', '@graph':graph };
 }

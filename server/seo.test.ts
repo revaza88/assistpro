@@ -96,6 +96,8 @@ test('structured data uses visible confirmed identity and scoped services withou
     assert.equal(org.taxID,company.identificationCode);assert.equal('telephone' in org,false);
     const serviceData=data['@graph'].find(item=>item['@type']==='Service')!;
     assert.equal(serviceData.description,pageSeo(path).description);assert.equal(serviceData.url,'https://assist.example'+path);
+    assert.equal(serviceData.mainEntityOfPage,serviceData.url);
+    assert.equal('inLanguage' in serviceData,false,'inLanguage is not a property of generic Service');
     const head=seoHead(path,'https://assist.example',false,false,'qa-nonce');
     const script=head.match(/<script[^>]*application\/ld\+json[^>]*>([\s\S]*?)<\/script>/)!;
     assert.deepEqual(JSON.parse(script[1]),data);

@@ -1,4 +1,4 @@
-// Human-reviewed descriptions; no prices, credentials or response-time promises.
+// Route-specific draft descriptions; no prices, credentials or response-time promises.
 export const seoDescriptions: Record<string, [string, string, string]> = {
   '/': ['ASSIST — ბუღალტრული აუთსორსინგი, საგადასახადო კონსულტაცია და ფინანსური ანგარიშგების მხარდაჭერა. აირჩიეთ თქვენი ბიზნესისთვის საჭირო მომსახურება.', 'ASSIST supports businesses with outsourced accounting, Georgian tax questions and financial reporting. Explore the scope and discuss the support you need.', 'ASSIST: бухгалтерское сопровождение бизнеса, налоговые вопросы в Грузии и финансовая отчётность. Выберите услугу и обсудите задачи компании.'],
   '/services': ['ასისტის მომსახურებები: ბუღალტრული აუთსორსინგი, გადასახადები, აუდიტისა და ანგარიშგების მხარდაჭერა, იურიდიული და HR მიმართულებები.', 'Explore ASSIST accounting, tax, audit and reporting support, legal services and HR. Compare the service scope before choosing support for your business.', 'Услуги ASSIST: бухгалтерское сопровождение, налоги, аудит и отчётность, юридическая и кадровая поддержка. Сравните направления работы.'],
