@@ -1,3 +1,15 @@
+## საბოლოო ასახვა assist.ge-ზე — 19 ნოემბერი 2026
+
+მომხმარებლის ახალი მოთხოვნით („განახორციელე საბოლოო ასახვა“) [PR #2](https://github.com/revaza88/assistpro/pull/2) გაერთიანდა main-ში: [8ebae9b](https://github.com/revaza88/assistpro/commit/8ebae9bd15d2824bb082a1c48f0f22b9046de58f). **ეს მოთხოვნა ამ გამოქვეყნებისთვის ცვლის ქვემოთ ისტორიულ no-merge/no-deployment ფარგლებს.** ახალმა main update-მა არსებული ავტომატური გამოქვეყნება გამოიწვია; ახალი ჰოსტინგი/DNS/Sites პროექტი არ შექმნილა.
+
+**https://assist.ge-ზე ახალი ფაილები დადასტურდა:**15 საჯარო გვერდი200/ერთი H1/noindex/გამორთული intake/სწორი CSP nonce;9 რეალურად ჩამოტვირთული ფაილის hash/ზომა ემთხვევა შემოწმებულ dba65b8 build-ს (5 საწყისი asset,inner-page CSS,EN/RU ჩანკები,Master PNG). ოთხი ფონტი200-ია. About-ის განახლებული ქართული ტექსტი ჩანს prerender HTML-ში, ძველი ფოტო-ჩანართი და2015 მტკიცება აღარ ჩანს. health200,უცნობი404,robots200,sitemap503. საჯარო write მოთხოვნა0. [საჯარო ანგარიში](qa/2026-11-19-design-audit/public-final-publication.json).
+
+**ასახვა და ზუსტი build provenance გამიჯნულია:**live release.json-ის commit/tree/dirty კვლავ null-ია, რადგან არსებულ ჰოსტინგის build-ს Git metadata/RELEASE_* არ მიეწოდა. Strict audit-release ამ მიზეზით კვლავ ვერ გადის; არ შესუსტებულა და pass-ად არ ჩაითვალოს. რეალურად ჩამოტვირთული ფაილების თანხვედრა დადასტურებულია. ჰოსტინგის metadata კონფიგურაცია ცალკე ტექნიკური საკითხია. GitHub merge SHA-ზე check/status0; ძველი ადგილობრივი36 ტესტი/check/build და ახალი საჯარო HTTP ცალკე მტკიცებულებებია.
+
+ახალი browser ვიზუალური შემოწმება არ ჩატარებულა; ადრე დაფიქსირებული Computer Use URL შეზღუდვა და საბოლოო ვიზუალური მიღების ღია შემთხვევები ძალაში რჩება. ბოლო ტექსტების public HTML/ფაილები შემოწმდა HTTP-ით. ბაზა/production intake/გარე შეტყობინებები არ გააქტიურებულა; INDEXING_ENABLED=false. შემდეგი ცვლილება ცალკე დავალებით და მიმდინარე GitHub მდგომარეობის გადამოწმებით დაიწყეთ; ძველი Draft/no-publish სტატუსი ამ გამოქვეყნების მიმდინარე მდგომარეობად არ გამოიყენოთ.
+
+---
+
 ## მიმდინარე განახლება — GitHub push, 19 ნოემბერი 2026
 
 [Draft PR #2](https://github.com/revaza88/assistpro/pull/2), `codex/assist-design-audit-2026-11-19`. შემოწმებული აპლიკაცია [dba65b8](https://github.com/revaza88/assistpro/commit/dba65b88a22d6bbc953a10cc5063352667753c9c), tree `264518fa0939425c23bb935241668ef4f21efdb6`; ადგილობრივი ed2002b-ის tree ზუსტად ემთხვევა. **TypeScript,36/36 ტესტი,production build15+404,smoke/audit-web/audit-release წარმატებულია.** Canonical build clean-ია;5 საწყისი asset-ის hash/ზომა დადასტურდა. GitHub check/status0; ადგილობრივი შედეგები CI-ის წარმატებას არ ნიშნავს.
