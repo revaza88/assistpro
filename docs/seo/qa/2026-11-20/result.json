@@ -1,0 +1,139 @@
+{
+  "date": "2026-11-20",
+  "timezone": "Asia/Tbilisi",
+  "repository": "revaza88/assistpro",
+  "branch": "codex/assist-seo-multilingual-staging",
+  "application_revision": "f5008ad8c1d1628f4e5c0eab7a0ea6a9bcdc7087",
+  "application_tree": "a80e33d3706087e5562954c6c623940d91d0adaa",
+  "base_revision": "f8e4b3f7964a25216f3305ccccd34c92ca6eb86a",
+  "application_diff_after_commit": false,
+  "build_manifest": "Final schema change passed check/tests/build immediately before its code commit; subsequent amendment changes only a source comment to label descriptions as drafts. Application output is unchanged by that comment. Release identity regenerated; uncommitted documentation truthfully makes dirty=true.",
+  "mode": "production build on Windows, Node26.13.1, Vite8.3.8",
+  "checks": {
+    "typescript": "pass",
+    "tests": {
+      "total": 44,
+      "pass": 44,
+      "fail": 0
+    },
+    "build": "pass: 45 localized prerenders + 3 localized 404s",
+    "http": {
+      "staging": {
+        "pages": 45,
+        "internalLinks": 84,
+        "sitemap": 503,
+        "intake": "disabled",
+        "indexing": false
+      },
+      "loopback_launch_simulation": {
+        "pages": 45,
+        "internalLinks": 84,
+        "sitemap": 200,
+        "sitemapUrls": 30,
+        "intake": "disabled",
+        "indexing": true,
+        "canonicalOrigin": "https://assist.example"
+      }
+    },
+    "html": "lang, one H1, visible priority copy, canonical, reciprocal hreflang, parseable confirmed JSON-LD, matching CSP nonce, robots HTTP/meta, redirects, 404, query canonical/noindex, internal-link status; raw HTTP without JS",
+    "bundleBudgets": "pass existing complete declared initial JS/CSS + gzip/cache/favicon HTTP audit",
+    "browser": "Native Chrome157.0.8103.79: EN accounting rendered at 390x844 emulation, full logo/palette A, English H1/copy, prefixed links, 0 console messages. Further UI actions blocked by minimized window/user-input guard.",
+    "ci": "not run; local branch only"
+  },
+  "publicChanges": {
+    "deployment": false,
+    "merge": false,
+    "push": false,
+    "noindexRemoved": false,
+    "searchConsole": false,
+    "intakeChanged": false,
+    "database": false,
+    "notifications": false,
+    "gptbotTrainingPolicyChanged": false
+  },
+  "preserved": {
+    "logoSha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e",
+    "palette": "A",
+    "slogan": "თქვენი ბიზნესის მხარდამჭერი",
+    "formLogic": true
+  },
+  "screenshots": [
+    {
+      "file": "baseline-home-mobile.jpg",
+      "source": "Lighthouse actual final-screenshot audit, not a mockup",
+      "url": "http://127.0.0.1:5016/",
+      "fetchedAt": "2026-11-19T20:16:13.323Z",
+      "viewport": {
+        "mobile": true,
+        "width": 412,
+        "height": 823,
+        "deviceScaleFactor": 1.75,
+        "disabled": false
+      }
+    },
+    {
+      "file": "final-home-mobile.jpg",
+      "source": "Lighthouse actual final-screenshot audit, not a mockup",
+      "url": "http://127.0.0.1:5017/",
+      "fetchedAt": "2026-11-19T20:51:38.422Z",
+      "viewport": {
+        "mobile": true,
+        "width": 412,
+        "height": 823,
+        "deviceScaleFactor": 1.75,
+        "disabled": false
+      }
+    },
+    {
+      "file": "final-accounting-mobile.jpg",
+      "source": "Lighthouse actual final-screenshot audit, not a mockup",
+      "url": "http://127.0.0.1:5017/services/accounting",
+      "fetchedAt": "2026-11-19T20:51:52.839Z",
+      "viewport": {
+        "mobile": true,
+        "width": 412,
+        "height": 823,
+        "deviceScaleFactor": 1.75,
+        "disabled": false
+      }
+    },
+    {
+      "file": "final-tax-mobile.jpg",
+      "source": "Lighthouse actual final-screenshot audit, not a mockup",
+      "url": "http://127.0.0.1:5017/services/tax",
+      "fetchedAt": "2026-11-19T20:52:06.203Z",
+      "viewport": {
+        "mobile": true,
+        "width": 412,
+        "height": 823,
+        "deviceScaleFactor": 1.75,
+        "disabled": false
+      }
+    },
+    {
+      "file": "final-audit-mobile.jpg",
+      "source": "Lighthouse actual final-screenshot audit, not a mockup",
+      "url": "http://127.0.0.1:5017/services/audit",
+      "fetchedAt": "2026-11-19T20:52:19.036Z",
+      "viewport": {
+        "mobile": true,
+        "width": 412,
+        "height": 823,
+        "deviceScaleFactor": 1.75,
+        "disabled": false
+      }
+    }
+  ],
+  "limitations": [
+    "Full native-browser KA/EN/RU journey and language-select/query/hash interaction not completed after Chrome became minimized; HTTP/unit coverage is not that browser check.",
+    "No physical mobile or assistive technology used.",
+    "Remaining legal/business/HR long copy needs editorial/legal confirmation before 30-URL full indexing launch.",
+    "No external schema validator, Search Console, CrUX/field metrics or actual bot access observed.",
+    "Public hosting Git identity null remains a separate known issue.",
+    "Lighthouse single local laboratory runs; no statistical or field performance claim.",
+    "Published site intentionally remains noindex with missing SITE_URL/canonical and sitemap503 until separate approval."
+  ],
+  "publicFinalGate": "public-final-gate.json",
+  "schemaVocabulary": "Schema.org Service/inLanguage documentation checked: generic Service uses mainEntityOfPage, not unsupported inLanguage.",
+  "nativeBrowserObservedStage": "EN accounting rendering checked before final schema-only correction; complete browser matrix remains open."
+}

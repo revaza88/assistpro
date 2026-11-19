@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-11-19T20:48:44.408Z",
+  "method": "GET only",
+  "publicWriteRequests": 0,
+  "results": [
+    {
+      "route": "/",
+      "status": 200,
+      "robotsHeader": "noindex,follow",
+      "robotsMeta": "noindex,follow",
+      "canonical": null,
+      "siteOrigin": ""
+    },
+    {
+      "route": "/robots.txt",
+      "status": 200,
+      "robotsHeader": null,
+      "canonical": null,
+      "body": "User-agent: *\nAllow: /\nDisallow: /api/\n"
+    },
+    {
+      "route": "/sitemap.xml",
+      "status": 503,
+      "robotsHeader": "noindex",
+      "canonical": null,
+      "body": "Sitemap requires a confirmed SITE_URL and INDEXING_ENABLED=true."
+    }
+  ]
+}

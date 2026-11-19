@@ -1,3 +1,15 @@
+## SEO / AI ძიება — სატესტო მომზადება, 20 ნოემბერი 2026
+
+მოქმედი ამოცანა: **არ გამოქვეყნდეს და არ მოიხსნას production noindex მიღებამდე**. ძველი გამოქვეყნების ნებართვა ამ სამუშაოზე არ ვრცელდება. განშტოება `codex/assist-seo-multilingual-staging`, აპლიკაციის commit `f5008ad8c1d1628f4e5c0eab7a0ea6a9bcdc7087`; main უცვლელია. GitHub push/PR/merge/deployment არ შესრულებულა.
+
+45 KA/EN/RU prerender, ცალკე URL/canonical/lang/ორმხრივი hreflang; ბუღალტერიის, გადასახადებისა და აუდიტის მოცულობა/გამონაკლისები/ფასის ფაქტორები/FAQ/ოფიციალური წყაროები; ხილულ ფაქტებთან შესაბამისი nonce-იანი Organization/BreadcrumbList/Service. Master PNG/პალიტრა A/სლოგანი/ფორმა უცვლელია. GPTBot-ის არსებული wildcard პოლიტიკა უცვლელია; საძიებო ბოტები ცალკეა.
+
+TypeScript,44/44 ტესტი,build45+3,ორივე loopback რეჟიმში45 გვერდი/84 შიდა ბმული და არსებული HTTP budget audit წარმატებულია. ჩვეულებრივ preview5017-ზე noindex/intake disabled/sitemap503; ცალკე5018 სიმულაციაში30 URL sitemap200. Production არ შეცვლილა. Native Chrome157 EN accounting390×844 და ცარიელი Console დადასტურდა; შემდეგ Chrome მინიმიზებულმა ფანჯარამ/ინპუტის შეზღუდვამ დანარჩენი ხელით გავლა შეაფერხა. Full journey/browser matrix დასრულებულად არ ჩაითვალოს. Lighthouse-ის ახალი მობილური გაზომვები და კადრები ცალკე QA-შია; არ არის საველე CWV ან CI.
+
+[აღმოჩენილი საკითხები, დარჩენილი სარედაქციო/ბრაუზერული შემოწმება, გაშვების ნებართვები და rollback](../SEO_AI_READINESS.md) · [ზუსტი შედეგები](../seo/qa/2026-11-20/result.json). იურიდიული/ბიზნესის/HR ვრცელი ძველი ტექსტების საბოლოო გადამოწმების გარეშე სრული30-URL გაშვება არ არის რეკომენდებული.
+
+---
+
 ## მობილური ჰედერი საჯაროდ ასახულია — 19 ნოემბერი 2026
 
 [PR #5](https://github.com/revaza88/assistpro/pull/5) main-ში გაერთიანდა: [091e360](https://github.com/revaza88/assistpro/commit/091e36066803f1383a4efce5c7eaf78be81a93d7). ზუსტ GitHub წყაროზე9def91d TypeScript,39/39 ტესტი,production build15+404,local clean audit-release5assets წარმატებულია. CI status0;local შედეგები CI-ად არ ჩაითვალოს.
