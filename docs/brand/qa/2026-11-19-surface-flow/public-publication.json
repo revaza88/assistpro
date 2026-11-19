@@ -1,0 +1,225 @@
+{
+  "ready": true,
+  "checked_at": "2026-11-19T18:56:15.506Z",
+  "origin": "https://assist.ge",
+  "merge_commit": "a4328ce8dad6b72d8a4937b9a3ac109b27578b10",
+  "known_tested_runtime": "448a906e8dbc5a494b95f0fbd092f72aafe8affd",
+  "local_runtime_tree": "bcaf912940e0b37e8cbf9c5e878ec1e8b1b1bd32",
+  "public_manifest": {
+    "schema_version": 1,
+    "commit": null,
+    "tree": null,
+    "dirty": null,
+    "built_at": "2026-11-19T18:59:16.915Z",
+    "assets": [
+      {
+        "path": "/assets/createLucideIcon-CxNr_4aI.js",
+        "sha256": "f490bae87a094c0b428d03f7804245bb6da13b6162ead7e937b5465d1e6d9fd8",
+        "bytes": 886
+      },
+      {
+        "path": "/assets/index-C_ouW-X1.js",
+        "sha256": "9572cc733b124ca3cbed67b1348191b485a7ca27eb1321664ae91e110cd6103e",
+        "bytes": 326222
+      },
+      {
+        "path": "/assets/index-DLv-2hg5.css",
+        "sha256": "b5bb037c4f1b4bc400bb82edda414ad138eda237ddf0fc19fa36f72034ef6a47",
+        "bytes": 51417
+      },
+      {
+        "path": "/assets/jsx-runtime-Dn_YclF2.js",
+        "sha256": "69d8d9b5752d3eea0762c1d71123a64791e4fb7196449a9d772feae1eb0a43b4",
+        "bytes": 7968
+      },
+      {
+        "path": "/theme-init.js",
+        "sha256": "6e510fb292b20ad381aa74cfb032118c5efe1f785e4812721a8bd0f5c8400b41",
+        "bytes": 390
+      }
+    ]
+  },
+  "pages": [
+    {
+      "route": "/",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/accounting",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/tax",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/legal",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/business",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/audit",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/hr",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/industries",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/calculator",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/contact",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/faq",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/about",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/team",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/career",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    }
+  ],
+  "verified_assets": [
+    {
+      "path": "/assets/createLucideIcon-CxNr_4aI.js",
+      "bytes": 886,
+      "sha256": "f490bae87a094c0b428d03f7804245bb6da13b6162ead7e937b5465d1e6d9fd8"
+    },
+    {
+      "path": "/assets/index-C_ouW-X1.js",
+      "bytes": 326222,
+      "sha256": "9572cc733b124ca3cbed67b1348191b485a7ca27eb1321664ae91e110cd6103e"
+    },
+    {
+      "path": "/assets/index-DLv-2hg5.css",
+      "bytes": 51417,
+      "sha256": "b5bb037c4f1b4bc400bb82edda414ad138eda237ddf0fc19fa36f72034ef6a47"
+    },
+    {
+      "path": "/assets/jsx-runtime-Dn_YclF2.js",
+      "bytes": 7968,
+      "sha256": "69d8d9b5752d3eea0762c1d71123a64791e4fb7196449a9d772feae1eb0a43b4"
+    },
+    {
+      "path": "/theme-init.js",
+      "bytes": 390,
+      "sha256": "6e510fb292b20ad381aa74cfb032118c5efe1f785e4812721a8bd0f5c8400b41"
+    },
+    {
+      "path": "/assets/page-system-B8eCfHsP.css",
+      "bytes": 9728,
+      "sha256": "24b8b7f8acdce5ea3313c80540442dd1bc85ceedba5c761d49a378afdcf6fa57"
+    },
+    {
+      "path": "/assets/en-dy_0EjX-.js",
+      "bytes": 21456,
+      "sha256": "f1610e14a9f656f9b56887dacc111003795f0d4bf4f60455764fb6c4912665e1"
+    },
+    {
+      "path": "/assets/ru-CK5kIjmd.js",
+      "bytes": 38075,
+      "sha256": "e0549de9ef1c9ad7bbc780cc75c9413162f540ebc2766a59f7676126c4caa81d"
+    },
+    {
+      "path": "/assets/brand/ASSIST_Locked_White_Native_1405px.png",
+      "bytes": 242575,
+      "sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e"
+    }
+  ],
+  "fonts_http200": 4,
+  "statuses": {
+    "/health": 200,
+    "/does-not-exist": 404,
+    "/robots.txt": 200,
+    "/sitemap.xml": 503
+  },
+  "public_write_requests": 0,
+  "latest_ka_about_copy_verified": true,
+  "exact_public_commit_identity": false,
+  "strict_identity_limitation": "Existing hosting build still omits Git source metadata. Asset byte identity and changed Georgian prerender verified independently; strict audit-release must remain failing.",
+  "new_browser_visual_check": true,
+  "browser_limitation": "Chrome157 Windows responsive emulation 1440x900 and390x844, top/footer checked; physical mobile/AT not used.",
+  "browser_evidence": "browser-captures.json"
+}

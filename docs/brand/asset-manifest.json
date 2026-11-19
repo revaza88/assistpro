@@ -297,6 +297,7 @@
     "canvas": "#FAF8F5",
     "panels": "#F0EDE8",
     "report": "qa/2026-11-19-surface-flow/README.md",
-    "publication": "pending"
+    "publication": "verified_on_assist_ge",
+    "merge_commit": "a4328ce8dad6b72d8a4937b9a3ac109b27578b10"
   }
 }

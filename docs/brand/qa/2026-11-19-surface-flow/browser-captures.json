@@ -75,5 +75,33 @@
       "\t\t\t\t\t\t\t\t40078 document ბუღალტრული მომსახურება | ასისტი Value: http://127.0.0.1:5016/services/accounting ID: RootWebArea"
     ],
     "time": "2026-11-19T18:51:00.563Z"
+  },
+  {
+    "name": "public-top-desktop",
+    "document": [
+      "\t\t\t\t\t\t\t\t40657 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: https://assist.ge/ ID: RootWebArea"
+    ],
+    "time": "2026-11-19T18:56:55.064Z"
+  },
+  {
+    "name": "public-footer-desktop",
+    "document": [
+      "\t\t\t\t\t\t\t\t40657 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: https://assist.ge/ ID: RootWebArea"
+    ],
+    "time": "2026-11-19T18:56:55.831Z"
+  },
+  {
+    "name": "public-top-mobile",
+    "document": [
+      "\t\t\t\t\t\t\t\t40657 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: https://assist.ge/ ID: RootWebArea"
+    ],
+    "time": "2026-11-19T18:57:12.793Z"
+  },
+  {
+    "name": "public-footer-mobile",
+    "document": [
+      "\t\t\t\t\t\t\t\t40657 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: https://assist.ge/ ID: RootWebArea"
+    ],
+    "time": "2026-11-19T18:57:13.519Z"
   }
 ]

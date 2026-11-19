@@ -2079,7 +2079,7 @@
     "public_write_requests": 0
   },
   "surface_flow_2026_11_19": {
-    "status": "implemented_and_locally_verified_publication_pending",
+    "status": "public_update_verified_with_fresh_desktop_mobile_browser_and_asset_hashes",
     "branch": "codex/assist-unified-surfaces",
     "base_commit": "a1e67ef57f8ca991676d363c7dac4516806ab04d",
     "implementation_decision": "Single light public theme to resolve requested white-dark-white discontinuity; supersedes prior dark UI proposal. Optional preference question unanswered; recommended light direction applied.",
@@ -2109,6 +2109,17 @@
     "limits": [
       "No physical device or AT",
       "Full matrix not repeated"
-    ]
+    ],
+    "validated_revision": "448a906e8dbc5a494b95f0fbd092f72aafe8affd",
+    "validated_tree": "bcaf912940e0b37e8cbf9c5e878ec1e8b1b1bd32",
+    "merge_commit": "a4328ce8dad6b72d8a4937b9a3ac109b27578b10",
+    "pr": "https://github.com/revaza88/assistpro/pull/4",
+    "public_report": "qa/2026-11-19-surface-flow/public-publication.json",
+    "public_pages": 15,
+    "verified_public_assets": 9,
+    "public_browser": "Chrome157 Windows,1440x900 and390x844 responsive emulation; top/footer",
+    "public_write_requests": 0,
+    "strict_public_identity": "existing hosting metadata unavailable; audit not weakened",
+    "ci_statuses": 0
   }
 }

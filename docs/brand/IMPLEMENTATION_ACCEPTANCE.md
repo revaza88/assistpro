@@ -1,3 +1,13 @@
+## ერთიანი ღია თემა Assist.ge-ზე დადასტურდა — 19 ნოემბერი 2026
+
+[PR #4](https://github.com/revaza88/assistpro/pull/4) გაერთიანდა main-ში: [a4328ce](https://github.com/revaza88/assistpro/commit/a4328ce8dad6b72d8a4937b9a3ac109b27578b10). GitHub-ის canonical წყაროზე448a906 TypeScript,39/39 ტესტი,production build15+404 დაclean audit-release5assets წარმატებულია; tree bcaf912940e0b37e8cbf9c5e878ec1e8b1b1bd32. CI status0; ადგილობრივი ტესტები CI-ის შედეგს არ უდრის.
+
+**საჯარო ასახვა დადასტურებულია:**15 გვერდი200/ერთი H1/CSP nonce/noindex/intake disabled;9 რეალურად ჩამოტვირთული ფაილის SHA/ზომა ემთხვევა ახალ build-ს, მათ შორის განახლებული theme-init.js;4 ფონტი200. ახალი საჯარო Chrome157 top/footer შემოწმება1440×900 და390×844-ზე ადასტურებს ერთიან ღია ფონს და theme picker-ის მოხსნას. Public browser-ს მანამდე saved dark ჰქონდა; ახალი ვერსია მაინც light-ია. [საჯარო ანგარიში](qa/2026-11-19-surface-flow/public-publication.json) · [რეალური საჯარო მანამდე/შემდეგ](qa/2026-11-19-surface-flow/surface-comparison.png). ბაზა/production intake/indexing/შეტყობინებები გამორთულია; საჯარო write0.
+
+ფერთა ამოცანა დასრულებულია. არსებული hosting release.json-ის Git metadata null შეზღუდვა ცალკე რჩება; strict source audit არ შესუსტებულა. ფიზიკური მობილური/AT არ გამოყენებულა. ქვემოთ publication-pending აღწერა ისტორიულია.
+
+---
+
 ## მიმდინარე შესწორება — ერთიანი ღია ფონი, 19 ნოემბერი 2026
 
 მომხმარებელმა მიუთითა არაბუნებრივ თეთრი–მუქი–თეთრი მიმდევრობაზე. ამ კონკრეტული ფერთა შესწორების განხორციელების გადაწყვეტილებაა ერთიანი ღია საჯარო თემა: OS/ძველი შენახული dark არჩევანი აღარ ამუქებს კონტენტს, theme picker აღარ ჩანს. ეს ცვლის წინა მუქი UI ადაპტაციის შენარჩუნების ჩანაწერს მიმდინარე საჯარო ვერსიისთვის. ლოგოს Master V1.2 PNG და #FDFDFD გარემო უცვლელია.
