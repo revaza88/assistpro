@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-11-19T11:32:20.911Z",
+  "url": "https://assist.ge/",
+  "http_status": 200,
+  "initial_assets": [
+    "/theme-init.js",
+    "/assets/index-BiFracsm.js",
+    "/assets/jsx-runtime-Dn_YclF2.js",
+    "/assets/index-DAiklZJH.css"
+  ],
+  "release_identity_status": 404,
+  "expected_runtime": "4272cc5584e2237455ed12cc58fdb3262dd7f802",
+  "public_deployment_performed": false
+}
