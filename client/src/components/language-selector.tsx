@@ -25,9 +25,9 @@ export default function LanguageSelector() {
   };
   return <>
     <span className="header-picker language-picker" aria-busy={loading}>
-      <GlobeAltIcon aria-hidden="true" className="w-4 h-4" />
-      <span aria-hidden="true" className="hidden sm:inline">{current.name}</span>
-      <span aria-hidden="true" className="sm:hidden">{current.flag}</span>
+      <GlobeAltIcon aria-hidden="true" className="language-globe w-4 h-4" />
+      <span aria-hidden="true" className="language-name">{current.name}</span>
+      <span aria-hidden="true" className="language-code">{current.code.toUpperCase()}</span>
       <select name="language" aria-label={label} value={current.code} disabled={loading} onChange={event => void change(event.target.value as SiteLanguage)}>
         {languages.map(lang => <option key={lang.code} value={lang.code}>{lang.name}</option>)}
       </select>

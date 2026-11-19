@@ -2018,7 +2018,7 @@
     "validated_app_tree": "db75a8c07e67f24a7dfd97900e17ada5c6bdf16c",
     "preview_state": "5016 retained for local review; isolated 5017 fixture stopped"
   },
-  "latest_review": "surface_flow_2026_11_19",
+  "latest_review": "mobile_header_2026_11_19",
   "color_review_publication": {
     "date": "2026-11-19",
     "status": "public_update_verified_by_asset_hashes_and_fresh_browser_checks_build_metadata_pending",
@@ -2121,5 +2121,40 @@
     "public_write_requests": 0,
     "strict_public_identity": "existing hosting metadata unavailable; audit not weakened",
     "ci_statuses": 0
+  },
+  "mobile_header_2026_11_19": {
+    "status": "locally_verified_publication_pending",
+    "branch": "codex/assist-mobile-header",
+    "base_commit": "064f8df6d9673107374a5373c2ba827b7148c904",
+    "checks": {
+      "typescript": "pass",
+      "tests": {
+        "total": 39,
+        "pass": 39,
+        "fail": 0,
+        "skip": 0
+      },
+      "build": "pass;15+404",
+      "smoke": "pass",
+      "audit_web": "pass;15 routes",
+      "browser": "Chrome157.0.8103.79,Windows native UI,production5016",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "languages": "KA/EN/RU at320",
+      "keyboard": "Menu opens;Escape closes;nextTab visibly focuses main CTA",
+      "text200": "Isolated loopback5017 CSS fixture,390px;menu final CTA reached by scrolling;write0"
+    },
+    "logo_unchanged": true,
+    "report": "qa/2026-11-19-mobile-header/README.md",
+    "intake": "disabled",
+    "indexing": false,
+    "limitations": [
+      "No physical mobile/AT",
+      "Full prior page/orientation matrix not repeated"
+    ]
   }
 }
