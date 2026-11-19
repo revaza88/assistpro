@@ -3,6 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { Link, useSearch } from 'wouter';
 import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
+import PageHeader from '@/components/PageHeader';
+import JourneySteps from '@/components/JourneySteps';
+import { interfaceCopy } from '@/lib/interface-copy';
 import CompanyDetails from '@/components/CompanyDetails';
 import SelectionSummary from '@/components/SelectionSummary';
 import CalculatorSummary from '@/components/CalculatorSummary';
@@ -19,6 +22,7 @@ type ErrorKey = 'nameError' | 'contactError' | 'messageError' | 'consentError';
 export default function ContactPage() {
   const { i18n } = useTranslation();
   const copy = requestCopy(i18n.language);
+  const ui = interfaceCopy(i18n.language);
   const search = useSearch();
   const fromCalculator = isCalculatorQuery(search);
   const calculator = fromCalculator ? parseCalculatorQuery(search) : null;
@@ -85,20 +89,22 @@ export default function ContactPage() {
     return key && <p id={field + '-error'} className="text-red-700 text-sm mt-2">{copy[key]}</p>;
   };
 
-  return <div className="inquiry-page min-h-screen"><Navigation /><main id="main-content" tabIndex={-1} className="max-w-5xl mx-auto px-5 py-12 text-slate-700">
-    <h1 className="text-3xl sm:text-4xl font-bold text-brand-blue-700 mb-4">{copy.contactTitle}</h1>
-    <p className="text-lg mb-6 leading-relaxed">{localIntake ? copy.contactIntro : copy.unavailable}</p>
+  return <div className="inquiry-page min-h-screen"><Navigation /><main id="main-content" tabIndex={-1} className="design-wrap journey-main">
+    <JourneySteps current={2} />
+    <PageHeader title={copy.contactTitle} description={localIntake ? copy.contactIntro : ui.contactLead} />
     {localIntake && <p className="border-l-4 border-amber-400 bg-amber-50 p-4 mb-8 text-sm leading-relaxed">{copy.local}</p>}
-    <div className="grid md:grid-cols-2 gap-8 items-start">
-      <div className="space-y-6">
+    <div className="contact-layout">
+      <div className="contact-context space-y-6">
+        <section className="contact-methods" aria-labelledby="contact-methods-title"><h2 id="contact-methods-title">{ui.contact}</h2><p lang="ka">{company.address}</p><a href={'mailto:' + company.email} className="site-button">{ui.email}</a><a href={'mailto:' + company.email} className="contact-email">{company.email}</a></section>
         {selection ? <>
           <SelectionSummary selection={selection} editable editHref={calculator ? calculatorHref('/industries', calculator, selection) : undefined} />
           {calculator ? <CalculatorSummary input={calculator} selection={selection} /> : <Link href={calculatorHref('/calculator', calculatorForSelection(selection), selection)} className="site-button site-button-outline">{calculatorCopy(i18n.language).nav}</Link>}
         </> : <div role="alert" className="rounded-xl bg-amber-50 p-5"><p>{fromCalculator ? calculatorCopy(i18n.language).invalidLink : copy.invalid}</p><Link href={fromCalculator ? '/calculator' : selectionHref('/industries', emptySelection)} className="underline inline-flex items-center min-h-12">{copy.edit}</Link></div>}
-        <div className="rounded-xl bg-slate-50 p-5 space-y-3"><p>{company.address}</p><a href={'mailto:' + company.email} className="underline inline-flex min-h-12 items-center text-brand-blue-700">{company.email}</a></div>
         <Link href="/faq" className="inline-flex min-h-12 items-center underline text-brand-blue-700">{copy.faq}</Link>
       </div>
-      <form ref={form} onSubmit={handleSubmit} method="post" action="/api/contacts" noValidate aria-busy={submitting} className="rounded-xl border border-slate-200 p-5 sm:p-6 space-y-5">
+      <form ref={form} onSubmit={handleSubmit} method="post" action="/api/contacts" noValidate aria-busy={submitting} aria-describedby={!localIntake ? 'intake-status' : undefined} className="inquiry-form rounded-xl border border-slate-200 p-5 sm:p-6 space-y-5">
+        <h2>{ui.form}</h2>
+        {!localIntake && <p id="intake-status" className="intake-status">{copy.unavailable}</p>}
         <fieldset disabled={!ready || !localIntake || submitting || !selection} className="space-y-5">
           <legend className="sr-only">{copy.contactTitle}</legend>
           <div><label htmlFor="name" className="font-semibold">{copy.name}</label><input id="name" name="name" autoComplete="name" required maxLength={80} value={draft.name} onChange={event => change('name', event.target.value)} aria-invalid={!!errors.name} aria-describedby={errors.name ? 'name-error' : undefined} className={fieldClass} />{error('name')}</div>

@@ -31,6 +31,9 @@
   --assist-motion-fast: 150ms;
   --assist-focus-width: 3px;
   --assist-focus-offset: 3px;
+  --assist-space-page: clamp(2rem, 4vw, 4rem);
+  --assist-space-section: clamp(2rem, 4vw, 3.5rem);
+  --assist-copy-measure: 68ch;
 
   --assist-dark-canvas: #090F25;
   --assist-dark-surface: #121C37;

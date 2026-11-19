@@ -1,3 +1,5 @@
+import PageHeader from '@/components/PageHeader';
+import { interfaceCopy } from '@/lib/interface-copy';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Navigation from '@/components/navigation';
@@ -16,7 +18,8 @@ import {
 } from '@heroicons/react/24/outline';
 
 const CareerPage: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const ui = interfaceCopy(i18n.language);
 
   const benefitsRaw = [
     { text: t('career.benefitDevelopment'), icon: AcademicCapIcon },
@@ -47,31 +50,18 @@ const CareerPage: React.FC = () => {
   const hasVacancies = false; // Toggle this to show/hide vacancy list
 
   return (
-    <div className="min-h-screen bg-white flex flex-col"> {/* Page background to white */}
+    <div className="editorial-page career-page min-h-screen flex flex-col"> {/* Page background to white */}
       <Navigation />
-      <main id="main-content" tabIndex={-1} className="flex-grow py-12 sm:py-16 lg:py-20">
+      <main id="main-content" tabIndex={-1} className="editorial-main flex-grow">
         {/* Page Header Section */}
-        <motion.header
-            initial={false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-10 sm:mb-12 lg:mb-16 py-8 bg-brand-blue-50 rounded-xl container mx-auto max-w-5xl px-4"
-          >
-            <BriefcaseIcon className="w-16 h-16 text-brand-gold-500 mx-auto mb-4" />
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-blue-700 mb-3">
-              {t('career.h1')}
-            </h1>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed whitespace-pre-line">
-              {t('career.intro')}
-            </p>
-          </motion.header>
+        <PageHeader eyebrow="ASSIST" title={ui.careerTitle} description={ui.careerIntro} />
 
         <div className="container mx-auto px-4">
           <motion.article
             initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="max-w-5xl mx-auto p-4 sm:p-6"
+            className="editorial-content"
           >
             <section className="mb-10 sm:mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl font-semibold text-brand-blue-600 mb-6 sm:mb-8 text-center">

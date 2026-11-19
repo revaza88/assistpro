@@ -10,8 +10,9 @@
     "url": "https://github.com/revaza88/assistpro",
     "base_commit": "ad8637e2f8d24426f8d46b60a1e6f566d3748622",
     "implementation_evidence": "IMPLEMENTATION_ACCEPTANCE.md",
-    "implementation_branch": "codex/assist-brand-system-2-2",
-    "machine_readable_QA": "QA_v2_2.json"
+    "implementation_branch": "codex/assist-design-audit-2026-11-19",
+    "machine_readable_QA": "QA_v2_2.json",
+    "current_review_pr": "https://github.com/revaza88/assistpro/pull/2"
   },
   "decision_status": {
     "logo_and_slogan": "user_approved_baseline",
@@ -265,5 +266,15 @@
     "type": "Native responsive SVG report chart, not a logo",
     "data_status": "Illustrative demonstration, not company results",
     "external_image_request": false
+  },
+  "design_audit_2026_11_19": {
+    "runtime_commit": "7ff27c81a6aa6730502e8901090dcc5a29ab9440",
+    "runtime_tree": "3a1f7d05fbb74270ccf7a02ac6bccc0bcf9a388f",
+    "report": "qa/2026-11-19-design-audit/README.md",
+    "board": "qa/2026-11-19-design-audit/visual-board.png",
+    "logo_assets_changed": false,
+    "font_assets_changed": false,
+    "business_assets_added": false,
+    "new_ui": "review_proposal_with_scoped_browser_evidence"
   }
 }

@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from './validation';
 import { calculatorIndustries, calculatorLimits, calculatorTypes, demoRules } from './calculator-context';
 export * from './calculator-context';
 

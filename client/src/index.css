@@ -103,11 +103,20 @@ h1[class],h2[class],h3[class] { font-weight: 700; }
 /* The full original PNG retains its near-white background and every pixel. */
 .brand-logo { display: block; inline-size: 17.5rem; max-inline-size: 100%; block-size: auto; aspect-ratio: 1405 / 235; border: 0; border-radius: 0; box-shadow: none; filter: none; mix-blend-mode: normal; }
 .header-topline { padding-block: .5rem; gap: .5rem; }
-.header-desktop-navigation { display: none; }
+.header-frame { inline-size: 100%; container: assist-header / inline-size; }
+.header-desktop-navigation { display: none; flex-wrap: wrap; max-inline-size: 100%; }
 @media(min-width:90em) {
   .header-desktop-navigation { display: flex; }
   .header-mobile-controls,.mobile-site-menu { display: none; }
 }
+/* Container em units follow the user's text size. A viewport-only breakpoint
+   leaves the language/theme controls outside the page at 200% text sizing. */
+@container assist-header (max-width:72em) {
+  .header-desktop-navigation { display: none; }
+  .header-mobile-controls { display: flex; }
+  .mobile-site-menu { display: block; }
+}
+.mobile-site-menu { overscroll-behavior: contain; }
 .site-button { display: inline-flex; min-block-size: 48px; align-items: center; justify-content: center; gap: 1rem; padding: .75rem 1.5rem; border: 1px solid var(--action); border-radius: var(--assist-radius-control); background: var(--action); color: var(--primary-foreground); font-size: 1rem; line-height: 1.4; font-weight: 700; transition: background-color var(--assist-motion-fast),border-color var(--assist-motion-fast),color var(--assist-motion-fast); text-align: center; }
 .site-button:hover { background: var(--action-hover); border-color: var(--action-hover); }
 .site-button:active { background: var(--action-pressed); border-color: var(--action-pressed); }
@@ -202,6 +211,7 @@ h1[class],h2[class],h3[class] { font-weight: 700; }
 .site-faq details p { max-width: 68ch; padding-bottom: 20px; }
 .site-faq details[open] summary { color: var(--ink); }
 .site-faq details p { color: var(--body); }
+.site-faq>div { max-inline-size: 54rem; }
 .final-section { padding-block: 20px 64px; }
 .final-card { border-top: 4px solid var(--action); display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 40px; background: var(--assist-ink); border-radius: var(--assist-radius-group); color: var(--assist-white); }
 .final-card h2 { color: var(--assist-white); font-size: clamp(1.6875rem,calc(1rem + 1.75vw),2.3125rem); margin: 14px 0; }
@@ -387,3 +397,14 @@ main .shadow-lg,main .shadow-md { box-shadow: 0 6px 24px color-mix(in srgb, var(
   .form-status { border-color: CanvasText; }
   .site-button:disabled { color: GrayText; border-color: GrayText; }
 }
+
+/* Shared refinements also used by home. */
+.site-footer .footer-grid { grid-template-columns: 1.1fr 1fr 1.2fr; gap: 2.5rem; }
+.footer-links { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .25rem 1.5rem; }
+.footer-links li { min-inline-size: 0; }
+.footer-links a { max-inline-size: 100%; line-height: 1.6; padding-block: .5rem; }
+.site-home .report-scene { padding-block-end: 1.5rem; }
+.site-home .report-disclaimer { position: static; margin-block-start: 1.25rem; }
+
+@media(max-width:47.9375em) { .site-footer .footer-grid { grid-template-columns:1fr; gap:1.75rem; } }
+main:focus-visible { outline:none; }

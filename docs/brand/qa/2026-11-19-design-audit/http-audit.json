@@ -1,0 +1,122 @@
+{
+  "base": "http://127.0.0.1:5016",
+  "indexing": false,
+  "pages": 15,
+  "rawEntryJsBytes": 332516,
+  "gzipEntryJsBytes": 97175,
+  "rawInitialJsBytes": 341892,
+  "gzipInitialJsBytes": 101650,
+  "gzipInitialCssBytes": 10858,
+  "initialAssets": [
+    {
+      "kind": "script",
+      "path": "/theme-init.js",
+      "rawBytes": 522,
+      "gzipBytes": 522
+    },
+    {
+      "kind": "script",
+      "path": "/assets/index-V-gXaYsQ.js",
+      "rawBytes": 332516,
+      "gzipBytes": 97175
+    },
+    {
+      "kind": "script",
+      "path": "/assets/jsx-runtime-Dn_YclF2.js",
+      "rawBytes": 7968,
+      "gzipBytes": 3067
+    },
+    {
+      "kind": "script",
+      "path": "/assets/createLucideIcon-CxNr_4aI.js",
+      "rawBytes": 886,
+      "gzipBytes": 886
+    },
+    {
+      "kind": "stylesheet",
+      "path": "/assets/index-DD6lcfp1.css",
+      "rawBytes": 51435,
+      "gzipBytes": 10858
+    }
+  ],
+  "medianLocalTtfbMs": 3.1,
+  "pageChecks": [
+    {
+      "route": "/",
+      "bytes": 27859,
+      "ttfbMs": 11.6
+    },
+    {
+      "route": "/services",
+      "bytes": 18666,
+      "ttfbMs": 8.9
+    },
+    {
+      "route": "/services/accounting",
+      "bytes": 35140,
+      "ttfbMs": 6.7
+    },
+    {
+      "route": "/services/tax",
+      "bytes": 28648,
+      "ttfbMs": 4.4
+    },
+    {
+      "route": "/services/legal",
+      "bytes": 28581,
+      "ttfbMs": 4.9
+    },
+    {
+      "route": "/services/business",
+      "bytes": 28031,
+      "ttfbMs": 5.2
+    },
+    {
+      "route": "/services/audit",
+      "bytes": 28358,
+      "ttfbMs": 4.4
+    },
+    {
+      "route": "/services/hr",
+      "bytes": 22993,
+      "ttfbMs": 4
+    },
+    {
+      "route": "/industries",
+      "bytes": 19002,
+      "ttfbMs": 4.5
+    },
+    {
+      "route": "/calculator",
+      "bytes": 16038,
+      "ttfbMs": 27.7
+    },
+    {
+      "route": "/contact",
+      "bytes": 17344,
+      "ttfbMs": 5.5
+    },
+    {
+      "route": "/faq",
+      "bytes": 22419,
+      "ttfbMs": 2.3
+    },
+    {
+      "route": "/about",
+      "bytes": 33140,
+      "ttfbMs": 3.5
+    },
+    {
+      "route": "/team",
+      "bytes": 16249,
+      "ttfbMs": 2.5
+    },
+    {
+      "route": "/career",
+      "bytes": 20284,
+      "ttfbMs": 2.6
+    }
+  ],
+  "checks": "HTML content, metadata, status codes, gzip, cache headers, full declared initial JS/CSS budgets, favicon, robots, sitemap, query noindex",
+  "limits": "Local unthrottled HTTP. HTML-declared assets exclude later dynamic imports; Lighthouse checks actual network activity. Not LCP, INP, CLS, real network or field Core Web Vitals."
+}

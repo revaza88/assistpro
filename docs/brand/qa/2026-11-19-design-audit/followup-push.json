@@ -1,0 +1,77 @@
+{
+  "date": "2026-11-19",
+  "timezone": "Asia/Tbilisi",
+  "task": "Follow-up update and user-requested GitHub push",
+  "branch": "codex/assist-design-audit-2026-11-19",
+  "pr": "https://github.com/revaza88/assistpro/pull/2",
+  "validated_revision": "dba65b88a22d6bbc953a10cc5063352667753c9c",
+  "validated_tree_sha": "264518fa0939425c23bb935241668ef4f21efdb6",
+  "local_equivalent_revision": "ed2002b5cdabf8f318edc0cdaeeeb14e54159b9a",
+  "tree_identity_verified": true,
+  "status": "code_checked_and_pushed_final_browser_acceptance_pending",
+  "changes": [
+    "Header adapts to enlarged text using a container query;normal desktop navigation retained",
+    "Calculator and inquiry layouts reflow with available space and text size;number labels reserve two full lines",
+    "Remove public editorial team-photo note in KA/EN/RU",
+    "Replace unsupported history,credentials,guarantees,free-consultation and financial-platform-access claims with neutral service copy",
+    "Fix EN/RU finalCta.text key mismatch;add translation-key parity and public-placeholder regression coverage"
+  ],
+  "checks": {
+    "typescript": "pass",
+    "tests": {
+      "total": 36,
+      "pass": 36,
+      "fail": 0,
+      "skip": 0
+    },
+    "production_build": "pass;15 prerenders+404",
+    "canonical_build": {
+      "commit": "dba65b88a22d6bbc953a10cc5063352667753c9c",
+      "tree": "264518fa0939425c23bb935241668ef4f21efdb6",
+      "dirty": false
+    },
+    "smoke_release": "pass;loopback5016",
+    "audit_web": "pass;15 public routes",
+    "audit_release": "pass;5 actual initial asset fingerprints",
+    "git_diff_check": "pass",
+    "github_app_ci": {
+      "check_runs": 0,
+      "statuses": 0,
+      "state": "pending",
+      "local_results_are_not_ci": true
+    }
+  },
+  "environment": {
+    "os": "Windows",
+    "browser_used_in_preceding_partial_QA": "Google Chrome157.0.8103.79",
+    "mode": "production",
+    "origin": "http://127.0.0.1:5016",
+    "INTAKE_MODE": "disabled",
+    "INDEXING_ENABLED": false
+  },
+  "browser_evidence": {
+    "previous_accepted_scoped_report": "README.md",
+    "partial_followup_source": "141e4f6b58d84789e53a87d366f30a44ea08e7d3 and earlier iterations;see local logs",
+    "observed": "Enlarged-text header/control visibility and calculator layout;RU320 public-page first screens and selected footers;selected EN1440 first screens",
+    "final_copy_browser_checked": false,
+    "new_browser_check_in_push_turn": false,
+    "blocked": "Computer Use stopped because it could not establish the Windows browser URL with enough confidence to enforce policy. No bypass attempted. Subsequent source/translation/HTTP checks completed separately."
+  },
+  "remaining": [
+    "Final browser review of the latest copy and translation-key correction",
+    "Full route/locale/theme/viewport/lower-content and control-state contrast acceptance matrix",
+    "Real devices,other browsers,assistive technology and user visual approval"
+  ],
+  "scope": {
+    "merged": false,
+    "public_deployment": false,
+    "database_activated": false,
+    "production_intake_activated": false,
+    "external_notifications": false
+  },
+  "cleanup": {
+    "owned_preview_stopped": true,
+    "owned_fixture_not_running": true
+  },
+  "details": "FOLLOWUP_PUSH.md"
+}

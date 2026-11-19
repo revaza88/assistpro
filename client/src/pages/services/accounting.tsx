@@ -1,3 +1,4 @@
+import ServiceIntro from '@/components/ServiceIntro';
 import { useTranslation } from "react-i18next";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
@@ -70,35 +71,14 @@ export default function AccountingServicePage() {
 
 
   return (
-    <div className="min-h-screen bg-white flex flex-col"> {/* Page background to white */}
+    <div className="service-page min-h-screen flex flex-col"> {/* Page background to white */}
       <Navigation />
-      
+
       <main id="main-content" tabIndex={-1} className="flex-grow">
         {/* Service Page Hero */}
-        <motion.section
-          initial={false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="service-intro py-12 sm:py-16 bg-brand-blue-50" // Consistent hero background
-        >
-          <div className="container mx-auto px-4 text-center">
-            <div className="mb-6">
-              <Link href="/" className="inline-flex items-center text-brand-blue-700 hover:underline transition-colors text-sm">
-                <ArrowLeftIcon className="w-5 h-5 mr-2" />
-                {t('nav.logo', {defaultValue: 'Home'})}
-              </Link>
-            </div>
-            <BriefcaseIcon className="w-16 h-16 sm:w-20 sm:h-20 text-brand-gold-400 mx-auto mb-6" />
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-              {t('servicesOverview.accounting.title')}
-            </h1>
-            <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed whitespace-pre-line">
-              {t('servicesOverview.accounting.description')}
-            </p>
-          </div>
-        </motion.section>
+        <ServiceIntro service="accounting" />
 
-        <div className="container mx-auto px-4 py-12 sm:py-16 lg:py-20">
+        <div id="service-details" className="service-content design-wrap">
           <motion.article
             initial={false}
             animate={{ opacity: 1, y: 0 }}
@@ -210,22 +190,18 @@ export default function AccountingServicePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" asChild className="h-auto min-h-12 whitespace-normal max-w-full bg-brand-gold-500 hover:bg-brand-gold-600 text-brand-blue-700 font-semibold shadow hover:shadow-lg text-base">
-                  <Link href="/contact?service=accounting">
+                  <Link href="/industries?service=accounting">
                     {t('services.accounting.ctaConsultation')}
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" asChild className="h-auto min-h-12 whitespace-normal max-w-full border-brand-gold-500 text-brand-gold-500 hover:bg-brand-gold-500 hover:text-brand-blue-700 font-semibold shadow hover:shadow-lg text-base">
-                   <Link href="/contact?service=accounting">
-                    {t('services.accounting.ctaContact')}
-                  </Link>
-                </Button>
+
               </div>
             </motion.section>
           </motion.article>
         </div>
       </main>
 
-      <Footer /> 
+      <Footer />
     </div>
   );
 }

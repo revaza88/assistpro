@@ -10,7 +10,7 @@ export function ThemeToggle() {
   const Icon = actualTheme === 'dark' ? MoonIcon : SunIcon;
   return <span className="header-picker theme-picker">
     <Icon aria-hidden="true" className="w-5 h-5" />
-    <select aria-label={copy[0]} value={theme} onChange={event => setTheme(event.target.value as 'light' | 'dark' | 'auto')}>
+    <select name="theme" aria-label={copy[0]} value={theme} onChange={event => setTheme(event.target.value as 'light' | 'dark' | 'auto')}>
       <option value="light">{copy[1]}</option><option value="dark">{copy[2]}</option><option value="auto">{copy[3]}</option>
     </select>
   </span>;

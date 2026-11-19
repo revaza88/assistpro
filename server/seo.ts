@@ -4,6 +4,15 @@ import { config } from './config';
 
 export const seoOrigin = siteOrigin(process.env.SITE_URL);
 export const indexingEnabled = process.env.INDEXING_ENABLED === 'true' && !!seoOrigin;
+// Supply inner-page CSS before prerendered content paints, including without JS.
+export function withPageStyles(template: string, pathname: string, styles: string[]) {
+  if (pathname === '/') return template;
+  const links = styles.map(href => {
+    if (!/^\/assets\/page-system-[a-zA-Z0-9_-]+\.css$/.test(href)) throw new Error('Invalid page stylesheet');
+    return `<link rel="stylesheet" href="${href}" />`;
+  }).join('');
+  return template.replace('<!--app-head-->', links + '<!--app-head-->');
+}
 export function pageHtml(template: string, pathname: string, query: boolean, body = '', scriptNonce = '') {
   // Substitute only the developer-owned template, before inserting page content.
   return template.replaceAll('__ASSISTPRO_CSP_NONCE__', scriptNonce).replace('<!--app-head-->', () => seoHead(pathname, seoOrigin, indexingEnabled, query) + `<meta name="intake-mode" content="${config.intakeMode === 'local' ? 'local' : 'disabled'}" />`)

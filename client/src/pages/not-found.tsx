@@ -1,31 +1,27 @@
 import Navigation from "@/components/navigation"; // Added Navigation
 import Footer from "@/components/footer"; // Added Footer
-import { Button } from "@/components/ui/button"; // For home button
+import { useTranslation } from 'react-i18next';
+import PageHeader from '@/components/PageHeader';
+import { interfaceCopy } from '@/lib/interface-copy';
 import { Link } from "wouter";
 import { ExclamationCircleIcon } from "@heroicons/react/24/outline"; // Using Heroicon
 import { motion } from "framer-motion";
 
 export default function NotFound() {
+  const { i18n } = useTranslation(), copy = interfaceCopy(i18n.language);
   return (
     <div className="min-h-screen w-full flex flex-col bg-white"> {/* Changed background */}
       <Navigation />
-      <main id="main-content" tabIndex={-1} className="flex-grow flex items-center justify-center">
+      <main id="main-content" tabIndex={-1} className="design-wrap flex-grow pb-12">
         <motion.div
           initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center p-8 max-w-md w-full"
+          className="w-full"
         >
-          <ExclamationCircleIcon className="h-20 w-20 text-brand-gold-500 mx-auto mb-6" /> {/* Updated Icon and color */}
-          <h1 className="text-3xl sm:text-4xl font-bold text-brand-blue-700 mb-4">
-            404 - Page Not Found
-          </h1>
-          <p className="text-lg text-slate-600 mb-8">
-            Oops! The page you are looking for does not exist or has been moved.
-          </p>
-          <Button asChild size="lg" className="bg-brand-blue-600 hover:bg-brand-blue-700 text-white font-semibold">
-            <Link href="/">Go to Homepage</Link>
-          </Button>
+          <PageHeader eyebrow="404" title={copy.missingTitle} description={copy.missingText}>
+            <Link href="/" className="site-button">{copy.home}</Link>
+          </PageHeader>
         </motion.div>
       </main>
       <Footer />

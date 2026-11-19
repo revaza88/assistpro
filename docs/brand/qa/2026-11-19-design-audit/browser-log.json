@@ -1,0 +1,647 @@
+[
+  {
+    "phase": "before",
+    "route": "/contact",
+    "size": "1440x900",
+    "theme": "dark",
+    "observed": true
+  },
+  {
+    "phase": "after-prototype",
+    "route": "/services/accounting",
+    "case": "after-accounting",
+    "observed": true,
+    "time": "2026-11-19T13:14:05.835Z"
+  },
+  {
+    "phase": "after-prototype",
+    "route": "/services/tax",
+    "case": "after-tax",
+    "observed": true,
+    "time": "2026-11-19T13:14:45.996Z"
+  },
+  {
+    "phase": "after-prototype",
+    "route": "/services/legal",
+    "case": "after-legal",
+    "observed": true,
+    "time": "2026-11-19T13:14:56.974Z"
+  },
+  {
+    "phase": "after-prototype",
+    "route": "/services/business",
+    "case": "after-business",
+    "observed": true,
+    "time": "2026-11-19T13:15:08.199Z"
+  },
+  {
+    "phase": "after-prototype",
+    "route": "/services/audit",
+    "case": "after-audit",
+    "observed": true,
+    "time": "2026-11-19T13:15:25.290Z"
+  },
+  {
+    "phase": "after-prototype",
+    "route": "/services/hr",
+    "case": "after-hr",
+    "observed": true,
+    "time": "2026-11-19T13:15:36.739Z"
+  },
+  {
+    "phase": "after-prototype",
+    "route": "/services/hr",
+    "case": "after-hr-lower",
+    "observed": true,
+    "time": "2026-11-19T13:15:55.808Z"
+  },
+  {
+    "phase": "after-prototype",
+    "route": "/services/hr",
+    "case": "after-footer",
+    "observed": true,
+    "time": "2026-11-19T13:16:15.485Z"
+  },
+  {
+    "phase": "after-prototype",
+    "route": "/services/hr",
+    "case": "after-footer",
+    "observed": true,
+    "time": "2026-11-19T13:16:31.187Z"
+  },
+  {
+    "phase": "after-prototype",
+    "route": "/services",
+    "case": "after-services",
+    "observed": true,
+    "time": "2026-11-19T13:16:50.822Z"
+  },
+  {
+    "phase": "after-prototype",
+    "route": "/team",
+    "case": "after-team",
+    "observed": true,
+    "time": "2026-11-19T13:17:06.872Z"
+  },
+  {
+    "phase": "after-prototype",
+    "route": "/about",
+    "case": "after-about",
+    "observed": true,
+    "time": "2026-11-19T13:17:23.953Z"
+  },
+  {
+    "phase": "after-prototype",
+    "route": "/career",
+    "case": "after-career",
+    "observed": true,
+    "time": "2026-11-19T13:18:15.130Z"
+  },
+  {
+    "phase": "after-prototype",
+    "route": "/industries",
+    "case": "after-industries",
+    "observed": true,
+    "time": "2026-11-19T13:18:50.828Z"
+  },
+  {
+    "phase": "after-prototype",
+    "route": "/calculator",
+    "case": "after-calculator",
+    "observed": true,
+    "time": "2026-11-19T13:19:30.455Z"
+  },
+  {
+    "phase": "after-prototype",
+    "route": "/contact",
+    "case": "after-contact",
+    "observed": true,
+    "time": "2026-11-19T13:19:46.160Z"
+  },
+  {
+    "phase": "after-prototype",
+    "route": "/contact",
+    "case": "final-contact-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:26:21.124Z"
+  },
+  {
+    "phase": "after-prototype",
+    "route": "/contact",
+    "case": "final-contact-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:27:03.649Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "dad5fc1d36d9f4cde0a3e42ce6eb5e61616bac02",
+    "route": "/about",
+    "case": "final-about-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:27:49.956Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/",
+    "case": "final-home-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:32:22.772Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/services",
+    "case": "final-services-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:32:29.318Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/services/accounting",
+    "case": "final-accounting-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:32:36.207Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/services/tax",
+    "case": "final-tax-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:32:42.416Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/services/legal",
+    "case": "final-legal-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:32:48.534Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/services/business",
+    "case": "final-business-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:32:57.202Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/services/audit",
+    "case": "final-audit-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:33:03.535Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/services/hr",
+    "case": "final-hr-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:33:12.789Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/team",
+    "case": "final-team-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:33:32.038Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/career",
+    "case": "final-career-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:33:39.984Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/about",
+    "case": "final-about-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:33:45.989Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/industries",
+    "case": "final-industries-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:34:04.437Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/calculator",
+    "case": "final-calculator-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:34:10.621Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/contact",
+    "case": "final-contact-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:34:18.053Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/faq",
+    "case": "final-faq-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:34:24.231Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/does-not-exist",
+    "case": "final-404-1440-dark",
+    "observed": true,
+    "time": "2026-11-19T13:34:35.485Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/services/accounting",
+    "case": "final-accounting-1440-light",
+    "observed": true,
+    "time": "2026-11-19T13:36:14.824Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/services/accounting",
+    "case": "final-accounting-390-light",
+    "observed": true,
+    "time": "2026-11-19T13:40:31.501Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/industries",
+    "case": "final-industries-390-light",
+    "observed": true,
+    "time": "2026-11-19T13:40:44.339Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/calculator",
+    "case": "final-calculator-390-light",
+    "observed": true,
+    "time": "2026-11-19T13:40:59.896Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/contact",
+    "case": "final-contact-390-light",
+    "observed": true,
+    "time": "2026-11-19T13:41:16.827Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/team",
+    "case": "final-team-390-light",
+    "observed": true,
+    "time": "2026-11-19T13:41:28.440Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/career",
+    "case": "final-career-390-light",
+    "observed": true,
+    "time": "2026-11-19T13:41:48.729Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/",
+    "case": "final-home-390-light",
+    "observed": true,
+    "time": "2026-11-19T13:41:55.638Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/contact",
+    "case": "final-contact-320-light",
+    "observed": true,
+    "time": "2026-11-19T13:43:10.315Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/calculator",
+    "case": "final-calculator-320-light",
+    "observed": true,
+    "time": "2026-11-19T13:43:21.363Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/industries",
+    "case": "final-industries-320-light",
+    "observed": true,
+    "time": "2026-11-19T13:44:19.838Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/team",
+    "case": "final-team-320-light",
+    "observed": true,
+    "time": "2026-11-19T13:44:26.897Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/career",
+    "case": "final-career-320-light",
+    "observed": true,
+    "time": "2026-11-19T13:45:34.009Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/",
+    "case": "final-home-320-light",
+    "observed": true,
+    "time": "2026-11-19T13:46:16.033Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+    "route": "/services/business",
+    "case": "final-business-320-light",
+    "observed": true,
+    "time": "2026-11-19T13:46:23.410Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/team",
+    "case": "final-team-320-light",
+    "observed": true,
+    "time": "2026-11-19T13:50:40.950Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/career",
+    "case": "final-career-320-light",
+    "observed": true,
+    "time": "2026-11-19T13:50:54.038Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/services/business",
+    "case": "final-business-320-light",
+    "observed": true,
+    "time": "2026-11-19T13:51:03.901Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/services/business",
+    "case": "final-business-768-light",
+    "observed": true,
+    "time": "2026-11-19T13:51:20.091Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/contact",
+    "case": "final-contact-768-light",
+    "observed": true,
+    "time": "2026-11-19T13:51:39.629Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/calculator",
+    "case": "final-calculator-768-light",
+    "observed": true,
+    "time": "2026-11-19T13:53:40.806Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/industries",
+    "case": "final-industries-768-light",
+    "observed": true,
+    "time": "2026-11-19T13:53:51.977Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/team",
+    "case": "final-team-768-light",
+    "observed": true,
+    "time": "2026-11-19T13:54:02.568Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/career",
+    "case": "final-career-768-light",
+    "observed": true,
+    "time": "2026-11-19T13:54:16.712Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/",
+    "case": "final-home-768-light",
+    "observed": true,
+    "time": "2026-11-19T13:54:30.589Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/",
+    "case": "breakpoint-home-767-light",
+    "observed": true,
+    "time": "2026-11-19T13:56:06.874Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/services/business",
+    "case": "breakpoint-business-766-light",
+    "observed": true,
+    "time": "2026-11-19T13:57:17.714Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/",
+    "case": "breakpoint-home-766-light",
+    "observed": true,
+    "time": "2026-11-19T13:57:28.108Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/calculator",
+    "case": "breakpoint-calculator-850-light",
+    "observed": true,
+    "time": "2026-11-19T13:57:51.849Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/calculator",
+    "case": "breakpoint-calculator-851-light",
+    "observed": true,
+    "time": "2026-11-19T13:58:05.446Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/calculator",
+    "case": "breakpoint-calculator-849-light",
+    "observed": true,
+    "time": "2026-11-19T13:58:22.613Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/industries",
+    "case": "breakpoint-industries-1023-light",
+    "observed": true,
+    "time": "2026-11-19T13:58:43.310Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/industries",
+    "case": "breakpoint-industries-1024-light",
+    "observed": true,
+    "time": "2026-11-19T13:58:57.494Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/industries",
+    "case": "breakpoint-industries-1022-light",
+    "observed": true,
+    "time": "2026-11-19T13:59:09.534Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/calculator",
+    "case": "breakpoint-calculator-540-top",
+    "observed": true,
+    "time": "2026-11-19T13:59:31.297Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/contact?source=calculator&industry=service&documents=100&employees=7&vat=false&type=monthly&rules=demo-1&sector=education&services=bookkeeping%2Ctax-advice",
+    "case": "flow-contact-390-selected",
+    "observed": true,
+    "time": "2026-11-19T14:04:22.614Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/contact?source=calculator&industry=service&documents=100&employees=7&vat=false&type=monthly&rules=demo-1&sector=education&services=bookkeeping%2Ctax-advice",
+    "case": "contact-390-en-dark-flow",
+    "observed": true,
+    "time": "2026-11-19T14:05:24.427Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/services/business",
+    "case": "business-320-ru-dark",
+    "observed": true,
+    "time": "2026-11-19T14:05:44.128Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/calculator",
+    "case": "calculator-320-ru-dark",
+    "observed": true,
+    "time": "2026-11-19T14:05:49.278Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/services/accounting",
+    "case": "after-accounting-dark-1440",
+    "observed": true,
+    "time": "2026-11-19T14:09:15.324Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/contact",
+    "case": "after-contact-dark-1440",
+    "observed": true,
+    "time": "2026-11-19T14:09:27.469Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/services/business",
+    "case": "after-business-390-light",
+    "observed": true,
+    "time": "2026-11-19T14:09:49.617Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/team",
+    "case": "after-team-390-light",
+    "observed": true,
+    "time": "2026-11-19T14:09:56.299Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/career",
+    "case": "after-career-390-light",
+    "observed": true,
+    "time": "2026-11-19T14:10:10.269Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/",
+    "case": "after-home-1440-light",
+    "observed": true,
+    "time": "2026-11-19T14:10:54.115Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/contact",
+    "case": "after-contact-390-light",
+    "observed": true,
+    "time": "2026-11-19T14:11:21.037Z"
+  },
+  {
+    "phase": "final-code",
+    "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+    "route": "/services/accounting",
+    "case": "accounting-landscape-844-390",
+    "observed": true,
+    "time": "2026-11-19T14:11:28.442Z"
+  }
+]

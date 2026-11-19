@@ -15,7 +15,7 @@ const translation = {
       hero: { // Corresponds to "1.2. Main Page - English Version (Hero Section)"
         mainTitle: '"Assist": Reliable Financial & Legal Support for Your Business in Georgia',
         subtitle: 'Save time and resources, reduce risks, and focus on what truly matters – growing your business. "Assist" offers professional outsourced accounting services in Georgia, tax, and legal consulting.',
-        mainCta: 'Free Consultation',
+        mainCta: "Request a consultation",
         secondaryCta: 'Our Services',
       },
 
@@ -23,7 +23,7 @@ const translation = {
       whyUs: { // Corresponds to "1.2. ... ("Why Us?" / "Why Choose 'Assist'?" Section)"
         title: 'Why Do Small and Medium Businesses Choose "Assist"?',
         item1: 'Personalized Approach & Care: For us, every client is unique. We listen, understand, and offer individual solutions.',
-        item2: 'Professionalism & Guaranteed Quality: Our team consists of certified and experienced specialists who provide the highest quality service.',
+        item2: "Clear working arrangements: We clarify the scope, responsibilities and exchange of information around your needs.",
         item3: 'Modern Technologies & Efficiency: We use the latest software to save your time and simplify processes for your accounting services in Georgia for small business.',
         item4: 'Full Service in One Place: From accounting to legal support – everything your business needs, all in one place.',
         cta: 'Learn More About Us',
@@ -64,7 +64,7 @@ const translation = {
       howWeWork: { // Corresponds to "1.2. ... ("How We Work?" / "Simple Steps to Collaborate" Section)"
         title: 'Start Collaborating with "Assist" in 3 Simple Steps',
         step1: 'Contact Us for a Consultation: Fill out the form or get in touch. We will analyze your needs.',
-        step2: 'Receive a Tailored Offer: Considering your business specifics, we will prepare the best terms for you.',
+        step2: "Receive a tailored proposal: Let’s discuss your needs and agree the scope and terms of the service.",
         step3: 'Begin Partnership & Receive Ongoing Support: We take care of your financial and legal matters, while you grow your business!',
       },
 
@@ -89,7 +89,7 @@ const translation = {
       // Final CTA Block (Main Page Content)
       finalCta: { // Corresponds to "1.2. ... (Final CTA Block)"
         title: 'Ready to Take Your Business to the Next Level?',
-        content: "Don't postpone organizing your financial and legal affairs. \"Assist\" is here to provide professional help and create a solid foundation for your success.",
+        text: "Don't postpone organizing your financial and legal affairs. \"Assist\" is here to provide professional help and create a solid foundation for your success.",
         cta1: 'Contact Us Now',
         cta2: 'Request a Personalized Offer',
         phoneLabel: 'Phone:',
@@ -101,7 +101,7 @@ const translation = {
       // About Section (Page: About Us)
       about: { // Corresponds to "Page: About Us (English Version)"
         h1: 'Meet "Assist" - Your Trusted and Innovative Partner for Business Growth',
-        welcome: 'Welcome to the world of "Assist"! We are a youthful, dynamic, and ambitious auditing company and a team of business process outsourcing specialists, successfully supporting small to medium-sized businesses (SMBs), startups, and individual entrepreneurs in Georgia since 2015. Our primary goal is to simplify the financial and legal labyrinths for you, enabling you to fully focus on your core business activities and conquer your set goals. The "Assist" team unites highly qualified professionals ready to share their knowledge and experience, stand by your side, and become your long-term, reliable partners.',
+        welcome: "ASSIST supports businesses with accounting, tax, legal and organisational matters. Our services are intended for small and medium businesses, startups and individual entrepreneurs. We begin by discussing your needs and clarifying the scope of work together.",
         missionTitle: 'Our Mission: Your Business\'s Peace of Mind and Growth',
         missionText: 'Our mission is to be more than just a service provider. We strive to build close partnerships with small and medium-sized companies, individual entrepreneurs, and startup initiatives. Our aim is to help them navigate the complex business world with confidence, make informed decisions, and avoid potential risks. We create an environment where complex financial and legal issues are simplified, allowing your valuable time and energy to be entirely dedicated to your business development. We believe that your success is our success.',
         whyAssistTitle: 'Why "Assist"? Your Advantages of Partnering with Us:',
@@ -109,14 +109,14 @@ const translation = {
         advantage1Text: 'We are a young, enthusiastic team constantly seeking modern, effective, and unconventional solutions. We are not afraid of challenges and are ready to offer creative outsourced accounting services Georgia and tax consulting in Georgia tailored to your unique needs.',
         advantage2Title: 'Maximum Client Focus and Direct Communication:',
         advantage2Text: 'Your business success is our top priority. At "Assist," you will find a team ready to listen attentively, understand your specific requirements, and offer personalized service. Communication with us is simple, direct, and friendly.',
-        advantage3Title: 'Highly Qualified and Experienced Team:',
-        advantage3Text: 'Behind our youthful spirit lies deep-domain knowledge and years of practical experience. Each member of the "Assist" team is a certified professional who continually enhances their qualifications to offer you top-quality legal services for businesses in Georgia and financial consultations.',
+        advantage3Title: "Attention to the work involved:",
+        advantage3Text: "We discuss how your business operates, the available documents and the services you need. This helps clarify the scope of work and the next step.",
         advantage4Title: 'Active Use of Modern Technologies at Your Service:',
-        advantage4Text: 'We actively utilize the latest software, cloud services, and digital tools. This allows our services to be maximally fast, accurate, efficient, and comfortable for you. You will have constant access to your financial data through secure and modern platforms for your accounting services in Georgia for small business.',
+        advantage4Text: "The working software, access permissions and exchange of information need to be agreed as part of the service. We can discuss your current process and the information needed to work together.",
         advantage5Title: 'Reliable Support for Startups:',
         advantage5Text: 'We particularly understand the unique needs and challenges of startups. We are ready to be your trusted partner from the very first stage of company registration in Georgia and assist you through crucial processes such as obtaining micro business status Georgia or securing international company status Georgia.',
-        ourTeamTitle: 'Our Team: The Guarantee of Your Success',
-        ourTeamText: '"Assist\'s" main asset and driving force is our team. We are proud of our professionals, who are true enthusiasts and experts in their field. A development-oriented, motivated, and friendly environment is what allows us to offer you the highest standard of service, establish long-term, trust-based partnerships, and celebrate your business achievements together. (A brief insert about a team photo or short introductions of a few team members would be great here once the visual is ready).',
+        ourTeamTitle: "Team and collaboration",
+        ourTeamText: "We value clear communication, defined responsibilities and mutual respect. You can explore our approach to collaboration on the team page.",
         valuesTitle: 'Our Fundamental Values:',
         value1: 'Professionalism and Competence: Our knowledge and experience at the service of your business.',
         value2: 'Client-Orientation: Your interests and goals are the cornerstone of our work.',
@@ -132,7 +132,7 @@ const translation = {
         accounting: {
           h1: 'Professional Accounting Services for Small and Medium Businesses in Georgia',
           intro: 'The financial health of your business and full compliance with legislation are our top priorities. "Assist" offers comprehensive outsourced accounting services Georgia designed to help you avoid problems caused by accounting errors, save time and money, and fully focus on your company\'s growth. We understand that accounting services in Georgia for small business require a special approach, so we offer solutions fully tailored to your needs.',
-          whyOutsourcingTitle: 'Why is Accounting Outsourcing the Best Choice for Your Business?',
+          whyOutsourcingTitle: "How can accounting outsourcing support your business?",
           benefitFinancial: 'Financial Savings', // Simplified for brevity, full text in component
           benefitTime: 'Time Savings',
           benefitRisk: 'Risk Minimization',
@@ -157,11 +157,11 @@ const translation = {
           reasonExperience: 'Experience and Professionalism',
           reasonIndividual: 'Individual Approach',
           reasonTech: 'Modern Technologies',
-          reasonConfidentiality: 'Confidentiality Guarantee',
-          reasonCommunication: 'Constant Communication and Support',
+          reasonConfidentiality: "Responsible handling of information",
+          reasonCommunication: "Agreed communication and support",
           finalCtaTitle: 'Ready to Entrust Your Business Accounting to Reliable Hands?',
-          finalCtaText: 'Contact us today, get a free consultation, and find out how "Assist" can help you optimize your financial processes, reduce costs, and achieve sustainable business development.',
-          ctaConsultation: 'Request a Free Consultation',
+          finalCtaText: "Tell us what you need. Let’s discuss the appropriate service, scope of work and terms of collaboration.",
+          ctaConsultation: "Request a consultation",
           ctaContact: 'Contact Us',
         },
         // Tax Service Page (3.2. Tax Services - English Version)
@@ -197,7 +197,7 @@ const translation = {
           reasonResults: 'Focus on Concrete Results',
           reasonTeamwork: 'Teamwork',
           finalCtaTitle: 'Ready to Entrust Your Tax Matters to Professionals?',
-          finalCtaText: 'Contact "Assist" today for a free initial consultation and receive qualified advice.',
+          finalCtaText: "Tell us what you need. Let’s discuss the appropriate service, scope of work and terms of collaboration.",
           ctaRequestConsultation: 'Request Tax Consultation',
           ctaContact: 'Contact Us',
         },
@@ -241,7 +241,7 @@ const translation = {
         // Audit Service Page (5.2. Audit Services - English Version)
         audit: {
           h1: 'Independent Audit Services in Georgia - Your Financial Transparency and Credibility',
-          intro: '"Assist," as a licensed auditing company, offers high-quality and independent audit services that will help you confirm the reliability of your financial information. We provide both statutory audits of financial statements and special purpose audits, including tax audits for small businesses.',
+          intro: "Audit services focus on assessing and checking financial information. The purpose, scope and required documents are clarified when discussing your inquiry.",
           whyImportantTitle: 'Why are Audit Services Important for Your Company?',
           benefitCredibility: 'Increased Credibility of Financial Statements',
           benefitInternalControls: 'Assessment and Improvement of Internal Control Systems',

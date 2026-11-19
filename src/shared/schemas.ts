@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from './validation';
 import { industryIds, serviceIds, validPhone } from './selection';
 import { calculatorInputSchema } from './pricing';
 

@@ -1,7 +1,7 @@
 import express, { type Express } from "express";
 import fs from "node:fs";
 import path from "node:path";
-import { htmlStatus, indexingEnabled, pageHtml, setupSeoRoutes } from './seo';
+import { htmlStatus, indexingEnabled, pageHtml, setupSeoRoutes, withPageStyles } from './seo';
 import { isPublicPath, pageSeo, publicPaths } from '../src/shared/seo';
 
 export function serveStatic(app: Express) {
@@ -15,6 +15,8 @@ export function serveStatic(app: Express) {
   }
 
   const template = fs.readFileSync(path.join(distPath, 'index.html'), 'utf8');
+  const pageStyles = fs.readdirSync(path.join(distPath, 'assets')).filter(file => /^page-system-[a-zA-Z0-9_-]+\.css$/.test(file)).map(file => '/assets/' + file);
+  if (pageStyles.length !== 1) throw new Error('Page stylesheet missing or ambiguous; rebuild the client before starting production.');
   const rendered = new Map<string, string>();
   for (const route of [...publicPaths, '/404']) {
     const file = (route === '/' ? 'home' : route.slice(1).replaceAll('/', '_')) + '.html';
@@ -40,6 +42,6 @@ export function serveStatic(app: Express) {
     const query = req.url.includes('?');
     const body = query ? '' : rendered.get(status === 404 ? '/404' : req.path)!;
     res.status(status).set('Cache-Control', 'no-cache').set('X-Robots-Tag', !indexingEnabled || !pageSeo(req.path).indexable || query ? 'noindex,follow' : 'index,follow')
-      .type('html').send(pageHtml(template, req.path, query, body, res.locals.scriptNonce));
+      .type('html').send(pageHtml(withPageStyles(template, req.path, pageStyles), req.path, query, body, res.locals.scriptNonce));
   });
 }

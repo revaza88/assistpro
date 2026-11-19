@@ -1,0 +1,224 @@
+{
+  "date": "2026-11-19",
+  "timezone": "Asia/Tbilisi",
+  "branch": "codex/assist-design-audit-2026-11-19",
+  "pr": "https://github.com/revaza88/assistpro/pull/2",
+  "base": "b9adf6a7cce5ba639305e76323782d7fad3c8102",
+  "validated_revision": "7ff27c81a6aa6730502e8901090dcc5a29ab9440",
+  "validated_tree_sha": "3a1f7d05fbb74270ccf7a02ac6bccc0bcf9a388f",
+  "local_browser_revision": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+  "tree_identity_verified": true,
+  "status": "scoped_design_review_ready_full_visual_acceptance_pending",
+  "environment": {
+    "os": "Windows",
+    "browser": "Google Chrome",
+    "browser_version": "157.0.8103.79",
+    "mode": "production",
+    "url": "http://127.0.0.1:5016",
+    "node": "26.13.1",
+    "npm": "11.20.0",
+    "INTAKE_MODE": "disabled",
+    "INDEXING_ENABLED": false,
+    "native_CUA": true,
+    "physical_device": false,
+    "assistive_technology": false,
+    "viewport_measurement": "Nominal DevTools CSS px, fit rounding; no programmatic DOM overflow matrix"
+  },
+  "checks": {
+    "typescript": "pass",
+    "tests": {
+      "pass": 35,
+      "fail": 0,
+      "skip": 0,
+      "new_regressions": [
+        "CSP-jitless validation with Function blocked",
+        "Inner-page pre-content stylesheet and safe path"
+      ]
+    },
+    "production_build": "pass;15 prerender+404;canonical clean source",
+    "smoke_release": "pass",
+    "audit_web": "pass;15 public routes",
+    "audit_release": {
+      "status": "pass",
+      "commit": "7ff27c81a6aa6730502e8901090dcc5a29ab9440",
+      "tree": "3a1f7d05fbb74270ccf7a02ac6bccc0bcf9a388f",
+      "dirty": false,
+      "verified_assets": 5
+    },
+    "inner_page_css": "14 inner pages+404;head CSS present;all linked assets200",
+    "logo_sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e",
+    "new_lighthouse": false,
+    "new_docker_build": false
+  },
+  "browser": {
+    "all_public_routes": "15+404 first screens at1440 KA dark, with source/iteration in browser-log.json; affected final narrow cases retested",
+    "responsive": "Primary pages selected cases320/390/768/1440; breakpoint components359/360,479/480,540/541,766/767/768,849/850/851,1022/1023/1024,1439/1440;844x390 landscape service",
+    "languages": "KA light/dark;EN contact390+business390 dark;RU business/calculator320 dark;not full cross-product",
+    "flow": "Education+bookkeeping+tax-advice selected through UI→calculator employees5→7→contact;both services,sector,7 and demo360–480 retained;contact also390",
+    "keyboard": "Menu Space/Tab/Escape/focus return,Shift+Tab;FAQ Space/Enter+visible focus",
+    "text200": "Contact320 using isolated root-font fixture;partial only",
+    "spacing": "Calculator320 using isolated CSS fixture;partial only",
+    "reduced_motion": "DevTools prefers-reduced-motion:reduce selected;navigation usable;not timing-measured",
+    "rendered_font": "Georgian H1=Noto Sans Georgian/NotoSansGeorgian-Bold,network resource21glyphs",
+    "computed": "Dark text rgb247245255/root rgb91537;light root rgb253253253/text rgb112777;full state matrix not performed",
+    "form": {
+      "origin": "loopback5017;all upstream writes blocked",
+      "data": "QA Tester / qa@example.invalid / QA message",
+      "empty_errors": "observed;focus name",
+      "loading": "observed;disabled fields and sending label",
+      "error": "simulated503;alert and retained values",
+      "retry": "simulated201;status and cleared fields",
+      "requests": 2,
+      "real_storage": false,
+      "real_delivery": false,
+      "upstream_intake": "disabled"
+    }
+  },
+  "pending": [
+    {
+      "item": "Full routes×languages×themes×viewports/lower-content matrix",
+      "reason": "Native Chrome scoped audit completed;complete combinatorial acceptance suite not run",
+      "next": "Dedicated full suite including all lower sections"
+    },
+    {
+      "item": "All hover/pressed/computed contrast states,all-page200%/spacing",
+      "reason": "Only specified states and scoped fixtures directly checked",
+      "next": "Instrumented component and accessibility acceptance suite"
+    },
+    {
+      "item": "Physical devices,other browsers,screen reader",
+      "reason": "Not used in this environment",
+      "next": "Real device and AT review"
+    },
+    {
+      "item": "Business profiles/photos/phone and existing historical claims",
+      "reason": "No new verified source supplied",
+      "next": "Owner provides/approves real information;no invention"
+    },
+    {
+      "item": "New composition and dark adaptation final visual approval",
+      "reason": "User acceptance deliberately separate",
+      "next": "Review actual screenshots and PR"
+    },
+    {
+      "item": "Tiny favicon readability",
+      "reason": "Whole Master logo retained;new symbol not authorized",
+      "next": "Explicit brand decision if compact variant needed"
+    },
+    {
+      "item": "Production release provenance configuration",
+      "reason": "Previously recorded live metadata issue;hosting/deployment outside this PR",
+      "next": "Separate authorized release step"
+    }
+  ],
+  "github": {
+    "app_commit": "7ff27c81a6aa6730502e8901090dcc5a29ab9440",
+    "draft": true,
+    "merged": false,
+    "deployed": false,
+    "main_unchanged": true,
+    "app_ci": {
+      "check_runs": 0,
+      "statuses": 0,
+      "combined_state": "pending",
+      "not_local_results": true
+    }
+  },
+  "cleanup": {
+    "owned_preview_stopped": true,
+    "owned_fixture_stopped": true
+  },
+  "artifacts": [
+    {
+      "file": "after-contact-1440-dark.png",
+      "bytes": 306176,
+      "sha256": "86708765d8bf5029cbcfb69b3e4ba88505fa9d1031a84709cc7b68ec24247fcf",
+      "width": 936,
+      "height": 585,
+      "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+      "capture": "Real Chrome production preview; see README for crops/DPR and board composition"
+    },
+    {
+      "file": "after-service-1440-dark.png",
+      "bytes": 347281,
+      "sha256": "caebb43adda025158e5639772db0a85053ddad068e6ad583f23b42e41b1cdefa",
+      "width": 936,
+      "height": 585,
+      "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+      "capture": "Real Chrome production preview; see README for crops/DPR and board composition"
+    },
+    {
+      "file": "after-team-320-light.png",
+      "bytes": 116357,
+      "sha256": "29536378d885598d51ad19be2e7d3fc125b3f00b7066cf6ab86b9de943ed7a88",
+      "width": 230,
+      "height": 608,
+      "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+      "capture": "Real Chrome production preview; see README for crops/DPR and board composition"
+    },
+    {
+      "file": "before-contact-1440-dark.png",
+      "bytes": 326978,
+      "sha256": "6c339b7d78695d9903875e3f839c65d61900cff20ee604d1b5a2a6a6453eecd1",
+      "width": 936,
+      "height": 585,
+      "source": "b9adf6a7cce5ba639305e76323782d7fad3c8102",
+      "capture": "Real Chrome production preview; see README for crops/DPR and board composition"
+    },
+    {
+      "file": "before-service-1440-dark.png",
+      "bytes": 386372,
+      "sha256": "bdd6ed9e85ec115978a608c3f5df485b9eaee1af2d1a9872ccea99c5e6cf8467",
+      "width": 936,
+      "height": 585,
+      "source": "b9adf6a7cce5ba639305e76323782d7fad3c8102",
+      "capture": "Real Chrome production preview; see README for crops/DPR and board composition"
+    },
+    {
+      "file": "before-team-320-light.png",
+      "bytes": 118267,
+      "sha256": "15717233962e39ea5d3611478b69c3bae9f4473bd4af49722d6ee6fe78e6ab17",
+      "width": 230,
+      "height": 608,
+      "source": "b6cd56e56291ad2ccf4f175535194e7134afc31b",
+      "capture": "Real Chrome production preview; see README for crops/DPR and board composition"
+    },
+    {
+      "file": "contact-390-light.png",
+      "bytes": 145037,
+      "sha256": "9ede33224f571ca8d523d1101add23f8b982dac78084c3d58b95d5b89029b047",
+      "width": 281,
+      "height": 608,
+      "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+      "capture": "Real Chrome production preview; see README for crops/DPR and board composition"
+    },
+    {
+      "file": "contact-768-light.png",
+      "bytes": 386182,
+      "sha256": "c0873734c4de589185dab4e5104ce52a8eb7ccad1b7f89e0f6606f8c47f02139",
+      "width": 1536,
+      "height": 2048,
+      "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+      "capture": "Real Chrome production preview; see README for crops/DPR and board composition"
+    },
+    {
+      "file": "home-1440-light.png",
+      "bytes": 308406,
+      "sha256": "8a08c25a77c41b688feb47c9b69dd0d206df0a946bba6484ba28bb282d6592b1",
+      "width": 936,
+      "height": 585,
+      "source": "993d3a4a87aa648125e5582b43d2af74f0957f00",
+      "capture": "Real Chrome production preview; see README for crops/DPR and board composition"
+    },
+    {
+      "file": "visual-board.png",
+      "bytes": 1433651,
+      "sha256": "f2f3738736571d306f9bc208d208301453da37235803598d1ef579e995890680",
+      "width": 1600,
+      "height": 1830,
+      "source": "Composite of new-task before b9adf6a and after993d3a4 screenshots; no generated UI",
+      "capture": "Real Chrome production preview; see README for crops/DPR and board composition"
+    }
+  ],
+  "details": "README.md"
+}

@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { isPublicPath, pageSeo, publicPaths, seoHead, siteOrigin, sitemapPaths } from '../src/shared/seo';
+import { withPageStyles } from './seo';
 
 test('all public routes have unique Georgian titles, descriptions and supported languages', () => {
   assert.equal(publicPaths.length, 15);
@@ -33,4 +34,16 @@ test('origin configuration rejects paths, credentials and non-HTTP schemes', () 
 test('sitemap excludes unknown routes and local inquiry or unconfirmed team/career content', () => {
   for (const path of sitemapPaths) assert.equal(pageSeo(path).indexable, true);
   for (const path of ['/404', '/contact', '/team', '/career', '/api/contacts']) assert.equal(sitemapPaths.includes(path), false);
+});
+
+test('inner-page prerenders receive their stylesheet before content without adding it to home', () => {
+  const template = '<head><!--app-head--></head><body><!--app-html--></body>';
+  const css = '/assets/page-system-Ab12_cd.css';
+  assert.equal(withPageStyles(template, '/', [css]), template);
+  for (const route of ['/services/accounting', '/contact', '/calculator', '/missing-page']) {
+    const html = withPageStyles(template, route, [css]);
+    assert.ok(html.indexOf(css) < html.indexOf('</head>'), route);
+    assert.match(html, /<!--app-head-->/);
+  }
+  for (const css of ['https://example.invalid/style.css', '/assets/../private.css', '/assets/page-system-x.css" onload="bad']) assert.throws(() => withPageStyles(template, '/contact', [css]));
 });
