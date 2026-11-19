@@ -88,9 +88,25 @@ main:focus-visible { outline: none; } /* Programmatic route/skip target, not a c
 .inquiry-page .selection-summary { background: var(--surface); border-color: var(--line); }
 .calculator-main .journey-steps { padding-block-start: 0; margin-block-end: 2rem; }
 .calculator-header h1 { max-inline-size: 24ch; }
-.calculator-fields .calculator-count-field label { min-block-size: 3em; }
+.calculator-fields .calculator-count-field label { min-block-size: 3.5em; }
 .calculator-fields input { font-variant-numeric: tabular-nums; }
 .calculator-result .calculator-amount { font-weight: 700; }
+/* Reflow from available content space and text size, not just viewport width.
+   The viewport media rules below remain a usable fallback without containers. */
+.calculator-main { container: assist-calculator-page / inline-size; }
+.calculator-panel { container: assist-calculator-form / inline-size; }
+.journey-main { container: assist-journey / inline-size; }
+@container assist-calculator-page (max-width:55em) {
+  .calculator-main .calculator-layout { grid-template-columns: 1fr; }
+}
+@container assist-calculator-form (max-width:30em) {
+  .calculator-panel .calculator-fields { grid-template-columns: 1fr; }
+  .calculator-fields .calculator-count-field label { min-block-size: 0; }
+  .calculator-panel .calculator-selected-type { display: block; margin-block-start: .5rem; color: var(--body); font-size: .875rem; }
+}
+@container assist-journey (max-width:40em) {
+  .journey-main .contact-layout,.journey-main .selection-layout { grid-template-columns: 1fr; }
+}
 @supports(text-wrap:pretty) { .page-lead,.service-content>article>p,.editorial-content>p { text-wrap: pretty; } }
 @media(max-width:63.9375em) {
   .editorial-main { padding-inline: 24px; }

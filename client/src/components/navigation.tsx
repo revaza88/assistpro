@@ -103,6 +103,7 @@ export default function Navigation() {
 
   return (
     <><a href="#main-content" className="skip-link">{design.skip}</a><nav ref={navRef} onKeyDown={event => { if (event.key === 'Escape' && (isMobileMenuOpen || isServicesOpen)) { event.preventDefault(); setIsMobileMenuOpen(false); setIsServicesOpen(false); (isMobileMenuOpen ? menuButtonRef : servicesButtonRef).current?.focus(); } }} className="site-header sticky top-0 z-50">
+      <div className="header-frame">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="header-topline flex flex-wrap gap-y-2 justify-between items-center min-h-16 lg:min-h-20">
           {/* Logo */}
@@ -257,6 +258,7 @@ export default function Navigation() {
           </div>
         )}
       </>
+      </div>
     </nav></>
   );
 }
