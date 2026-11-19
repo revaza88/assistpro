@@ -1,0 +1,77 @@
+[
+  {
+    "path": "/services",
+    "status": 200,
+    "stylesheet": "/assets/page-system-BGiCAZ9-.css"
+  },
+  {
+    "path": "/services/accounting",
+    "status": 200,
+    "stylesheet": "/assets/page-system-BGiCAZ9-.css"
+  },
+  {
+    "path": "/services/tax",
+    "status": 200,
+    "stylesheet": "/assets/page-system-BGiCAZ9-.css"
+  },
+  {
+    "path": "/services/legal",
+    "status": 200,
+    "stylesheet": "/assets/page-system-BGiCAZ9-.css"
+  },
+  {
+    "path": "/services/business",
+    "status": 200,
+    "stylesheet": "/assets/page-system-BGiCAZ9-.css"
+  },
+  {
+    "path": "/services/audit",
+    "status": 200,
+    "stylesheet": "/assets/page-system-BGiCAZ9-.css"
+  },
+  {
+    "path": "/services/hr",
+    "status": 200,
+    "stylesheet": "/assets/page-system-BGiCAZ9-.css"
+  },
+  {
+    "path": "/industries",
+    "status": 200,
+    "stylesheet": "/assets/page-system-BGiCAZ9-.css"
+  },
+  {
+    "path": "/calculator",
+    "status": 200,
+    "stylesheet": "/assets/page-system-BGiCAZ9-.css"
+  },
+  {
+    "path": "/contact",
+    "status": 200,
+    "stylesheet": "/assets/page-system-BGiCAZ9-.css"
+  },
+  {
+    "path": "/faq",
+    "status": 200,
+    "stylesheet": "/assets/page-system-BGiCAZ9-.css"
+  },
+  {
+    "path": "/about",
+    "status": 200,
+    "stylesheet": "/assets/page-system-BGiCAZ9-.css"
+  },
+  {
+    "path": "/team",
+    "status": 200,
+    "stylesheet": "/assets/page-system-BGiCAZ9-.css"
+  },
+  {
+    "path": "/career",
+    "status": 200,
+    "stylesheet": "/assets/page-system-BGiCAZ9-.css"
+  },
+  {
+    "path": "/__missing",
+    "status": 404,
+    "stylesheet": "/assets/page-system-BGiCAZ9-.css"
+  }
+]

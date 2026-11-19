@@ -1,3 +1,19 @@
+## ახალი მიმდინარე ეტაპი — დიზაინერული აუდიტი, 19 ნოემბერი 2026
+
+**ამ დავალებაში merge/public deployment აკრძალულია.** ქვემოთ წინა გამოქვეყნების ნებართვა ისტორიულია და ამ ეტაპს არ ეხება. PR #1 უკვე გაერთიანდა; ახალი სამუშაოა [Draft PR #2](https://github.com/revaza88/assistpro/pull/2), `codex/assist-design-audit-2026-11-19`, main b9adf6a-დან. main ამ ეტაპზე არ შეცვლილა.
+
+შემოწმებული აპლიკაცია [7ff27c8](https://github.com/revaza88/assistpro/commit/7ff27c81a6aa6730502e8901090dcc5a29ab9440), tree `3a1f7d05fbb74270ccf7a02ac6bccc0bcf9a388f`. რეალური browser993d3a4-ის მთლიანი tree ემთხვევა ამ GitHub commit-ს; canonical clean production build/HTTP audit ცალკე შესრულდა. [ახალი სრული ანგარიში](qa/2026-11-19-design-audit/README.md), [QA JSON](qa/2026-11-19-design-audit/current-run.json), [რეალური კადრების დაფა](qa/2026-11-19-design-audit/visual-board.png).
+
+17 რეესტრის საკითხი გასწორდა: ექვსი მომსახურების ზედა მოქმედება, საერთო სათაურები/შინაარსის პროპორციები, არჩევანი→კალკულატორი→მოთხოვნა, კონტაქტის mailto პრიორიტეტი, About/Team/Career/FAQ, footer, ქართული narrow გადატანა, CSP-jitless validation და prerender CSS. Master PNG/სლოგანი/პალიტრა/ფონტები/API შენარჩუნდა. **check,35/35 ტესტი,build,smoke/audit-web/audit-release pass**. ეს ახალი ადგილობრივი შედეგებია; CI check/status0, წარმატებული CI არ დადასტურებულა.
+
+Chrome157 production5016;320/390/768/1440 და კომპონენტების საზღვრები შერჩეულ შემთხვევებში, KA/EN/RU+თემები, კლავიატურა, scoped200%/spacing, reduced motion, რეალური Georgian font. desktop პრაქტიკული გზა2 მომსახურება+განათლება+თანამშრომლები7 მოთხოვნამდე და390-ზე შეჯამება დადასტურდა. ფორმის validation/loading/error/retry/success მხოლოდ loopback fixture-სიმულაციაა; upstream intake disabled, არც შენახვა და არც გარე გაგზავნა. preview/fixture შეჩერებულია.
+
+დარჩენილია სრული კომბინაციური/ქვედა შინაარსის მატრიცა, ყველა control-state computed contrast, ყველა გვერდის200%/spacing, სხვა ბრაუზერები/ფიზიკური მოწყობილობა/AT, რეალური პროფილები/ფოტოები/ტელეფონი და მომხმარებლის საბოლოო ვიზუალური შეფასება. დასახელებული შერჩეული შემთხვევების განხილვა რეკომენდებულია; სრული მიღება არ გამოცხადებულა. ბაზა/intake/notifications/indexing გამორთული დარჩეს; შემდგომი მუშაობა გააგრძელეთ PR #2-ში.
+
+![ახალი კადრების დაფა](qa/2026-11-19-design-audit/visual-board.png)
+
+---
+
 ## საჯარო გამოქვეყნება დადასტურდა — 19 ნოემბერი 2026
 
 მომხმარებლის აშკარა თანხმობით („დიახ, გადაიტანე main-ზე“) [PR #1](https://github.com/revaza88/assistpro/pull/1) გაერთიანდა **main**-ში: [fbb86db](https://github.com/revaza88/assistpro/commit/fbb86db1b3fccc25c32c449766a3075c72929cd2). ეს ცვლის ამ დავალების წინა no-merge/no-deployment ფარგლებს. main-ის განახლებას მოჰყვა არსებული ავტომატური გამოქვეყნება **https://assist.ge**-ზე; ცალკე SSH შესვლა არ დაგვჭირდა. main-ის tree ზუსტად ემთხვევა შემოწმებულ a033a70-ს; აპლიკაციის კოდი დამატებით არ შეცვლილა.
