@@ -2018,7 +2018,7 @@
     "validated_app_tree": "db75a8c07e67f24a7dfd97900e17ada5c6bdf16c",
     "preview_state": "5016 retained for local review; isolated 5017 fixture stopped"
   },
-  "latest_review": "color_review_publication",
+  "latest_review": "surface_flow_2026_11_19",
   "color_review_publication": {
     "date": "2026-11-19",
     "status": "public_update_verified_by_asset_hashes_and_fresh_browser_checks_build_metadata_pending",
@@ -2077,5 +2077,38 @@
       "pull_request_workflow_runs": 0
     },
     "public_write_requests": 0
+  },
+  "surface_flow_2026_11_19": {
+    "status": "implemented_and_locally_verified_publication_pending",
+    "branch": "codex/assist-unified-surfaces",
+    "base_commit": "a1e67ef57f8ca991676d363c7dac4516806ab04d",
+    "implementation_decision": "Single light public theme to resolve requested white-dark-white discontinuity; supersedes prior dark UI proposal. Optional preference question unanswered; recommended light direction applied.",
+    "checks": {
+      "typescript": "pass",
+      "tests": 39,
+      "fail": 0,
+      "build": "pass;15+404",
+      "smoke": "pass",
+      "audit_web": "pass;15 routes",
+      "browser": "Chrome157 Windows production loopback5016",
+      "viewports": [
+        320,
+        390,
+        1440
+      ],
+      "primary_button_computed": {
+        "foreground": "#FFFFFF",
+        "background": "#6F2ED6",
+        "contrast": 6.913
+      }
+    },
+    "report": "qa/2026-11-19-surface-flow/README.md",
+    "logo_unchanged": true,
+    "intake": "disabled",
+    "indexing": false,
+    "limits": [
+      "No physical device or AT",
+      "Full matrix not repeated"
+    ]
   }
 }

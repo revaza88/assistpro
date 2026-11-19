@@ -4,7 +4,6 @@ import { designCopy } from '@/lib/design-copy';
 import BrandLogo from '@/components/BrandLogo';
 import { Bars3Icon as MenuIcon, XMarkIcon as XIcon, ChevronDownIcon } from "@heroicons/react/24/outline"; // Using Heroicons
 import LanguageSelector from "@/components/language-selector";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 import { useTranslation } from "react-i18next";
 import { Link, useLocation, useSearch } from "wouter";
@@ -177,13 +176,11 @@ export default function Navigation() {
             <div className="pl-2">
               <LanguageSelector />
             </div>
-            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
           <div className="header-mobile-controls flex flex-wrap max-w-full items-center">
             <LanguageSelector />
-            <ThemeToggle />
             <button
               ref={menuButtonRef}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

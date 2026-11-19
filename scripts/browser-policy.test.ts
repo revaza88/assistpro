@@ -43,10 +43,10 @@ test('production CSP uses unique nonces and authorizes only template scripts', a
 
 const bootstrap = readFileSync(new URL('../client/public/theme-init.js', import.meta.url), 'utf8');
 for (const scenario of [
-  { name: 'saved dark overrides light OS', saved: 'dark', system: false, expected: 'dark', meta: 'dark' },
+  { name: 'legacy saved dark keeps the continuous light brand surface', saved: 'dark', system: false, expected: 'light', meta: 'light' },
   { name: 'saved light overrides dark OS', saved: 'light', system: true, expected: 'light', meta: 'light' },
-  { name: 'invalid storage follows OS', saved: 'unexpected', system: true, expected: 'dark', meta: 'light dark' },
-  { name: 'blocked storage follows OS', blocked: true, system: false, expected: 'light', meta: 'light dark' },
+  { name: 'dark OS cannot split the light brand surface', saved: 'unexpected', system: true, expected: 'light', meta: 'light' },
+  { name: 'blocked storage keeps the light brand surface', blocked: true, system: false, expected: 'light', meta: 'light' },
 ]) test(`prepaint theme: ${scenario.name}`, () => {
   const classes: string[] = [];
   const meta = { content: 'light dark' };
