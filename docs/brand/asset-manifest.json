@@ -211,6 +211,8 @@
     "public_deployment_performed": false,
     "UI_final_visual_acceptance": "pending",
     "validated_code_commit": "d0e24553b498ba6648b8eaee5020cf9a4bebf124",
-    "GitHub_publication": "blocked_by_automatic_approval_review; explicit_publication_permission_required"
+    "GitHub_publication": "published_as_draft_pull_request; https://github.com/revaza88/assistpro/pull/1",
+    "published_validated_code_commit": "59ad55f16149f158d1f7ef49fbfe213af329aa31",
+    "validated_code_tree": "7129367fa886d66383314a24021ca41072745df5"
   }
 }

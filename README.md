@@ -49,6 +49,8 @@ npm start
 ამ ეტაპის ფაქტობრივი ცვლილებები და შემოწმება: [მიღების ჩანაწერი](docs/brand/IMPLEMENTATION_ACCEPTANCE.md).
 18 ნოემბრის ანგარიშები ისტორიულია; ისინი ახალი ვერსიის ტესტებს არ ანაცვლებს.
 
+დარჩენილი browser QA და Codex-ის შემდეგი დავალება: [გაგრძელების ინსტრუქცია](docs/brand/CODEX_CONTINUE.md), [Draft PR #1](https://github.com/revaza88/assistpro/pull/1) და [ვიზუალური მიმოხილვა](docs/brand/ASSIST_GitHub_Handoff_v2_2.png).
+
 ## სამუშაო კონტექსტი და QA
 
 - [Sites-თან მოთხოვნების შეჯერება](docs/SITES_ALIGNMENT.md)

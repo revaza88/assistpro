@@ -631,11 +631,29 @@
   ],
   "limits": "No new logo variant; no production intake/database/outbound notifications; no WCAG certification or newly measured Lighthouse score.",
   "publication": {
-    "status": "blocked_by_automatic_approval_review",
+    "status": "published_as_draft_pull_request",
     "public_repository": true,
-    "branch_pushed": false,
-    "pull_request_created": false,
-    "reason": "Explicit user-authored permission for public GitHub publication was required by automatic review.",
-    "next_step": "Obtain explicit confirmation for the concrete reviewed branch and draft PR."
-  }
+    "branch_pushed": true,
+    "branch_url": "https://github.com/revaza88/assistpro/tree/codex/assist-brand-system-2-2",
+    "pull_request_created": true,
+    "pull_request_number": 1,
+    "pull_request_url": "https://github.com/revaza88/assistpro/pull/1",
+    "draft": true,
+    "merged": false,
+    "public_deployment_performed": false,
+    "method": "GitHub Git Data API; published file trees verified identical to reviewed local commits",
+    "published_runtime_commit": "59ad55f16149f158d1f7ef49fbfe213af329aa31",
+    "initial_documentation_commit": "2e013811751c173dd214d580ab0bcf49d76ed94e",
+    "authorization_date": "2026-11-19",
+    "authorization": "ატვირთე გითჰაბზე ეს ინფორმაცია.",
+    "next_step": "Continue actual browser acceptance and focused fixes on the same branch and Draft PR; see CODEX_CONTINUE.md.",
+    "history": [
+      {
+        "status": "blocked_by_automatic_approval_review",
+        "resolved_by": "Explicit user request to publish on 2026-11-19."
+      }
+    ]
+  },
+  "published_validated_revision": "59ad55f16149f158d1f7ef49fbfe213af329aa31",
+  "validated_tree_sha": "7129367fa886d66383314a24021ca41072745df5"
 }
