@@ -107,7 +107,7 @@ export default function Navigation() {
         <div className="header-topline flex flex-wrap gap-y-2 justify-between items-center min-h-16 lg:min-h-20">
           {/* Logo */}
           <div
-            className="flex items-center"
+            className="header-brand flex items-center"
           >
             <Link to="/" className="site-brand" onClick={() => setIsMobileMenuOpen(false)}>
               <BrandLogo />
@@ -179,18 +179,18 @@ export default function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="header-mobile-controls flex flex-wrap max-w-full items-center">
+          <div className="header-mobile-controls flex max-w-full items-center">
             <LanguageSelector />
             <button
               ref={menuButtonRef}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="inline-flex min-h-12 min-w-12 items-center justify-center p-2 rounded-md text-slate-600 hover:text-brand-blue-600 hover:bg-brand-blue-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-blue-500"
+              className="header-menu-toggle inline-flex min-h-12 min-w-12 items-center justify-center p-2 rounded-md text-slate-600 hover:text-brand-blue-600 hover:bg-brand-blue-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-blue-500"
               type="button"
               aria-label={i18n.language.startsWith('en') ? 'Menu' : i18n.language.startsWith('ru') ? 'Меню' : 'მენიუ'}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
             >
-              {isMobileMenuOpen ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+              {isMobileMenuOpen ? <XIcon aria-hidden="true" className="h-6 w-6" /> : <MenuIcon aria-hidden="true" className="h-6 w-6" />}
             </button>
           </div>
         </div>

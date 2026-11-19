@@ -45,6 +45,7 @@
 .header-picker:focus-within { outline: var(--assist-focus-width) solid var(--focus); outline-offset: var(--assist-focus-offset); }
 .header-picker select { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; opacity: 0; cursor: pointer; }
 .header-picker select:disabled { cursor: progress; }
+.language-code { display: none; }
 @media (max-width: 79.9375em) {
   .site-header { max-block-size: 100vh; max-block-size: 100dvh; overflow-y: auto; }
 }
@@ -92,6 +93,9 @@ h1[class],h2[class],h3[class] { font-weight: 700; }
 /* The full original PNG retains its near-white background and every pixel. */
 .brand-logo { display: block; inline-size: 17.5rem; max-inline-size: 100%; block-size: auto; aspect-ratio: 1405 / 235; border: 0; border-radius: 0; box-shadow: none; filter: none; mix-blend-mode: normal; }
 .header-topline { padding-block: .5rem; gap: .5rem; }
+.header-brand { min-inline-size: 0; }
+.header-mobile-controls { gap: .25rem; flex-wrap: nowrap; }
+.header-menu-toggle[aria-expanded="true"] { color: var(--action); background: var(--soft); }
 .header-frame { inline-size: 100%; container: assist-header / inline-size; }
 .header-desktop-navigation { display: none; flex-wrap: wrap; max-inline-size: 100%; }
 @media(min-width:90em) {
@@ -104,6 +108,17 @@ h1[class],h2[class],h3[class] { font-weight: 700; }
   .header-desktop-navigation { display: none; }
   .header-mobile-controls { display: flex; }
   .mobile-site-menu { display: block; }
+  .header-topline { display: grid; grid-template-columns: minmax(0,1fr) auto; column-gap: clamp(.5rem,2vw,.75rem); min-block-size: 4.5rem; padding-block: .625rem; }
+  .header-brand .site-brand { inline-size: min(13.75rem,100%); min-inline-size: 0; }
+  .header-brand .brand-logo { inline-size: 100%; }
+  .header-mobile-controls .language-picker { min-inline-size: 3rem; padding: .5rem; color: var(--ink); }
+  .header-mobile-controls .language-name,.header-mobile-controls .language-globe { display: none; }
+  .header-mobile-controls .language-code { display: inline; font-size: .875rem; font-weight: 700; letter-spacing: .04em; }
+}
+/* At enlarged text sizes, reflow deliberately rather than squeeze the full logo. */
+@container assist-header (max-width:15em) {
+  .header-topline { grid-template-columns: minmax(0,1fr); }
+  .header-mobile-controls { justify-self: end; }
 }
 .mobile-site-menu { overscroll-behavior: contain; }
 .site-button { display: inline-flex; min-block-size: 48px; align-items: center; justify-content: center; gap: 1rem; padding: .75rem 1.5rem; border: 1px solid var(--primary-edge); border-radius: var(--assist-radius-control); background: var(--primary); color: var(--primary-foreground); font-size: 1rem; line-height: 1.4; font-weight: 700; transition: background-color var(--assist-motion-fast),border-color var(--assist-motion-fast),color var(--assist-motion-fast); text-align: center; }
@@ -359,12 +374,6 @@ main .shadow-lg,main .shadow-md { box-shadow: 0 6px 24px color-mix(in srgb, var(
 .company-details details { margin-top: 1.5rem; border-top: 1px solid var(--line); }
 .company-details summary { cursor: pointer; padding-block: 1rem; min-block-size: 3rem; color: var(--action); font-weight: 700; }
 @media(max-width:47.9375em) { .company-details dl { grid-template-columns: 1fr; } }
-@media(max-width:29.9375em) {
-  .header-topline { justify-content: center; }
-  .header-topline>div:first-child { justify-content: center; inline-size: 100%; }
-  .header-mobile-controls { justify-content: flex-end; inline-size: 100%; }
-  .site-header { position: relative; }
-}
 @media(max-width:22.4375em) {
   .brand-logo { inline-size: 12.5rem; }
   .hero-heading { font-size: 2rem; }

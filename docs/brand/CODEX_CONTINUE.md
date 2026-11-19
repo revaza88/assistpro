@@ -1,3 +1,11 @@
+## მობილური ჰედერი — 19 ნოემბერი 2026
+
+მომხმარებლის მოთხოვნით მობილური header ერთ კომპაქტურ ზოლში გადავიდა: სრული Master PNG მარცხნივ,KA/EN/RU არჩევანი და48px menu მარჯვნივ. მოშორებულია479px-ზე ძველი იძულებითი ორ-რიგიანი centering; ლოგო არ მოჭრილა/შეცვლილა. მობილური header sticky-ა. 200% ტექსტზე არსებული container reflow განზრახ ორ რიგს იყენებს,რომ კონტროლები/ლოგო არ მოიჭრას. ენის სრული დასახელებები native select-ში და ხელმისაწვდომი label შენარჩუნებულია; მობილურზე არასაიმედო flag glyph შეიცვალა ენის კოდით,desktop-ის autonym უცვლელია.
+
+Chrome157 production preview:320/390 mobile,768 tablet,1440 desktop; KA/EN/RU320-ზე;menu open/Escape/შემდეგი Tab primary-ზე ხილული focus. იზოლირებული200% CSS text fixture390-ზე:logo/controls ჩანს,menu scroll-ით ბოლო CTA სრულად ხელმისაწვდომია;upstream intake disabled,write0. TypeScript,39/39 ტესტი,build15+404,smoke დაaudit-web15routes წარმატებულია. ფიზიკური მოწყობილობა/AT არ გამოყენებულა. [ანგარიში და ახალი კადრები](qa/2026-11-19-mobile-header/README.md). საჯარო ასახვა შემდგომი შემოწმებით დაფიქსირდება.
+
+---
+
 ## ერთიანი ღია თემა Assist.ge-ზე დადასტურდა — 19 ნოემბერი 2026
 
 [PR #4](https://github.com/revaza88/assistpro/pull/4) გაერთიანდა main-ში: [a4328ce](https://github.com/revaza88/assistpro/commit/a4328ce8dad6b72d8a4937b9a3ac109b27578b10). GitHub-ის canonical წყაროზე448a906 TypeScript,39/39 ტესტი,production build15+404 დაclean audit-release5assets წარმატებულია; tree bcaf912940e0b37e8cbf9c5e878ec1e8b1b1bd32. CI status0; ადგილობრივი ტესტები CI-ის შედეგს არ უდრის.
