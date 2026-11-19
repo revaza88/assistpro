@@ -17,11 +17,11 @@ const AboutPage = animatedPage(() => import('@/pages/about'));
 const ContactPage = lazy(() => import('@/pages/contact'));
 const TeamPage = animatedPage(() => import('@/pages/team'));
 const CareerPage = animatedPage(() => import('@/pages/career'));
-const AccountingServices = animatedPage(() => import('@/pages/services/accounting'));
-const TaxServices = animatedPage(() => import('@/pages/services/tax'));
+const AccountingServices = lazy(() => import('@/pages/services/accounting'));
+const TaxServices = lazy(() => import('@/pages/services/tax'));
 const LegalServices = animatedPage(() => import('@/pages/services/legal'));
 const BusinessConsulting = animatedPage(() => import('@/pages/services/business'));
-const AuditServices = animatedPage(() => import('@/pages/services/audit'));
+const AuditServices = lazy(() => import('@/pages/services/audit'));
 const HRServices = animatedPage(() => import('@/pages/services/hr'));
 
 function RouteFocus() {
