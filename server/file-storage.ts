@@ -1,7 +1,7 @@
 import { mkdirSync, readFileSync } from "node:fs";
 import { rename, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { z } from "zod";
+import { z } from '../src/shared/validation';
 import { contactFieldsSchema, jobApplicationFieldsSchema } from "../src/shared/schemas";
 import type { Contact, InsertContact, JobApplication, InsertJobApplication } from "../src/shared/types";
 import { calculateDemoEstimate, demoEstimateSchema } from '../src/shared/pricing';

@@ -16,7 +16,7 @@ export default function Footer() {
   return <footer className="site-footer"><div className="design-wrap">
     <div className="footer-grid"><div><Link href="/" className="site-brand"><BrandLogo footer /></Link><p lang="ka">{brandSlogan}</p></div>
       <div><h2>{t('nav.contact')}</h2><p>{company.address}</p><a href={'mailto:'+company.email}>{company.email}</a>{company.phone && <p><a href={'tel:'+company.phone}>{company.phone}</a></p>}</div>
-      <div><h2>{t('footer.quickLinks')}</h2><ul>{links.map(([title,href]) => <li key={href}><Link href={href}>{title}</Link></li>)}</ul></div>
+      <div><h2>{t('footer.quickLinks')}</h2><ul className="footer-links">{links.map(([title,href]) => <li key={href}><Link href={href}>{title}</Link></li>)}</ul></div>
     </div><div className="footer-bottom"><span lang="ka">© {new Date().getFullYear()} {company.legalName} · {company.identificationCode}</span><span>{t('footer.copyright').replace('2025',String(new Date().getFullYear())).replace(/^© \d{4} ASSIST[. ]*/, '')}</span></div>
   </div></footer>;
 }

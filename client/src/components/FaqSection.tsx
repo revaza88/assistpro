@@ -8,7 +8,7 @@ export default function FaqSection({ compact = false }: { compact?: boolean }) {
   const { i18n } = useTranslation();
   const copy = requestCopy(i18n.language);
   const items = faqItems(i18n.language);
-  return <section className="site-faq max-w-4xl mx-auto px-5 py-12 text-slate-700" aria-label={copy.faq}>
+  return <section className="site-faq design-wrap py-12 text-slate-700" aria-label={copy.faq}>
     {compact && <h2 className="text-3xl font-bold text-brand-blue-700 mb-6">{copy.faq}</h2>}
     <div className="space-y-3">{(compact ? items.filter(([id]) => ['multiple', 'price', 'scope'].includes(id)) : items).map(([id, question, answer]) => <details id={id} key={id} className="rounded-xl border border-slate-200 bg-white p-4 sm:p-5">
       <summary className="font-semibold min-h-12 cursor-pointer leading-relaxed focus-visible:outline-brand-blue-600"><span>{question}</span><Plus className="faq-indicator" size={20} aria-hidden="true" /></summary>

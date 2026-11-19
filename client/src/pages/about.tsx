@@ -1,3 +1,6 @@
+import PageHeader from '@/components/PageHeader';
+import { interfaceCopy } from '@/lib/interface-copy';
+import { designCopy } from '@/lib/design-copy';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Navigation from '@/components/navigation';
@@ -16,7 +19,12 @@ import {
 } from '@heroicons/react/24/outline';
 
 const AboutPage: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const ui = interfaceCopy(i18n.language);
+  // Preserve the existing wording while splitting its long introduction into
+  // readable paragraphs; the mission sits beside the story on wide screens.
+  const welcomeSentences = t('about.welcome').split(/(?<=[.!?])\s+/);
+  const welcomeParagraphs = Array.from({ length: Math.ceil(welcomeSentences.length / 2) }, (_, index) => welcomeSentences.slice(index * 2, index * 2 + 2).join(' '));
 
   const advantages = [
     { titleKey: 'about.advantage1Title', textKey: 'about.advantage1Text', icon: SparklesIcon }, // Youthful energy and innovative vision
@@ -35,33 +43,21 @@ const AboutPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white flex flex-col"> {/* Changed page background to white */}
+    <div className="editorial-page about-page min-h-screen flex flex-col"> {/* Changed page background to white */}
       <Navigation />
-      <main id="main-content" tabIndex={-1} className="flex-grow py-12 sm:py-16 lg:py-20">
+      <main id="main-content" tabIndex={-1} className="editorial-main flex-grow">
         <div className="container mx-auto px-4">
           {/* Page Header Section */}
-          <motion.header
-            initial={false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-10 sm:mb-12 lg:mb-16 py-8 bg-brand-blue-50 rounded-xl" // Light blue background for header
-          >
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-blue-700">
-              {t('about.h1')}
-            </h1>
-          </motion.header>
+          <PageHeader eyebrow="ASSIST" title={t('nav.about')} description={designCopy(i18n.language).summary} />
 
           <motion.article
             initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay:0.2 }}
             // Removed background from article as page bg is white, added shadow for depth on content blocks if needed
-            className="max-w-4xl mx-auto p-4 sm:p-6"
+            className="editorial-content"
           >
-            <p className="text-lg text-slate-700 mb-8 sm:mb-10 leading-relaxed whitespace-pre-line">
-              {t('about.welcome')}
-            </p>
-
+            <div className="about-intro-grid"><div className="about-story">{welcomeParagraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div>
             <section className="mb-10 sm:mb-12 lg:mb-16 p-6 bg-slate-50 rounded-lg shadow-md">
               <h2 className="text-2xl sm:text-3xl font-semibold text-brand-blue-600 mb-4 sm:mb-6 flex items-center">
                 <LightBulbIcon className="w-7 h-7 lg:w-8 lg:h-8 mr-3 text-brand-gold-500" />
@@ -72,11 +68,11 @@ const AboutPage: React.FC = () => {
               </p>
             </section>
 
-            <section className="mb-10 sm:mb-12 lg:mb-16">
+            </div><section className="mb-10 sm:mb-12 lg:mb-16">
               <h2 className="text-2xl sm:text-3xl font-semibold text-brand-blue-600 mb-6 sm:mb-8 text-center lg:text-left">
                 {t('about.whyAssistTitle')}
               </h2>
-              <div className="space-y-8">
+              <div className="editorial-feature-grid">
                 {advantages.map((adv, index) => {
                   const Icon = adv.icon;
                   return (
@@ -104,7 +100,7 @@ const AboutPage: React.FC = () => {
             <section className="mb-10 sm:mb-12 lg:mb-16 p-6 bg-slate-50 rounded-lg shadow-md">
               <h2 className="text-2xl sm:text-3xl font-semibold text-brand-blue-600 mb-4 sm:mb-6 flex items-center">
                  <UserGroupIcon className="w-7 h-7 lg:w-8 lg:h-8 mr-3 text-brand-gold-500" />
-                {t('about.ourTeamTitle')}
+                {ui.teamTitle}
               </h2>
               <p className="text-slate-600 leading-relaxed whitespace-pre-line">
                 {t('about.ourTeamText')}

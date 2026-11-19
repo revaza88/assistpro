@@ -2,7 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 // import { insertContactSchema, insertJobApplicationSchema } from "@shared/schema"; // Removed
-import { z } from "zod";
+import { z } from '../src/shared/validation';
 import { logger } from "./utils/logger"; // Added logger import
 import { insertContactSchema, insertJobApplicationSchema } from "../src/shared/schemas";
 import { config } from './config';
