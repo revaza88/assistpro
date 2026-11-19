@@ -1,3 +1,4 @@
 *.sh text eol=lf
 Dockerfile text eol=lf
 *.yaml text eol=lf
+client/public/theme-init.js text eol=lf

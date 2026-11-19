@@ -1,3 +1,5 @@
+> გამოქვეყნებულია:PR #5/merge091e360;public15routes/9asset fingerprints/4fonts და fresh Chrome157320/390 შემოწმება წარმატებულია. [HTTP ანგარიში](public-publication.json).
+
 # ბუნებრივი მობილური header
 
 საწყისი main064f8df;branch codex/assist-mobile-header.
@@ -10,4 +12,4 @@
 
 TypeScript/39ტესტი/build15+404/smoke/audit-web15routes წარმატებულია. Master PNG SHA-256449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e უცვლელია. INTAKE_MODE=disabled;INDEXING_ENABLED=false. ფიზიკური მობილური/AT/full orientation matrix არ გამოყენებულა/გამეორებულა.
 
-[რეალური მანამდე/შემდეგ390](header-comparison.png) · [320px](header-320.png) · [კადრების URL/დრო](browser-captures.json). Native screenshot crop-ებია;არა მაკეტები. მარცხენა კადრი public baseline,right local production. ლურჯი halo automation pointer-ია.
+[რეალური მანამდე/შემდეგ390](header-comparison.png) · [320px](header-320.png) · [კადრების URL/დრო](browser-captures.json). Native screenshot crop-ებია;არა მაკეტები. მარცხენა კადრი public baseline,right ახალი public production. ლურჯი halo automation pointer-ია.

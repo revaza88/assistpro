@@ -2123,7 +2123,7 @@
     "ci_statuses": 0
   },
   "mobile_header_2026_11_19": {
-    "status": "locally_verified_publication_pending",
+    "status": "publicly_verified_320_390_and9_asset_hashes",
     "branch": "codex/assist-mobile-header",
     "base_commit": "064f8df6d9673107374a5373c2ba827b7148c904",
     "checks": {
@@ -2155,6 +2155,17 @@
     "limitations": [
       "No physical mobile/AT",
       "Full prior page/orientation matrix not repeated"
-    ]
+    ],
+    "validated_revision": "9def91df2f1137402e61ce9bea6f575853fa5197",
+    "validated_tree": "a7231cae02cc1290f6b83dde9fcdeeb65c4584c0",
+    "merge_commit": "091e36066803f1383a4efce5c7eaf78be81a93d7",
+    "pr": "https://github.com/revaza88/assistpro/pull/5",
+    "public_report": "qa/2026-11-19-mobile-header/public-publication.json",
+    "public_browser": "Chrome157 Windows,320x844/390x844 mobile emulation;menu open/Escape close",
+    "public_pages": 15,
+    "verified_public_assets": 9,
+    "public_write_requests": 0,
+    "ci_statuses": 0,
+    "bootstrap_eol": "Committed LF preserved and pinned via .gitattributes"
   }
 }

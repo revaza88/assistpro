@@ -1,0 +1,225 @@
+{
+  "ready": true,
+  "checked_at": "2026-11-19T19:13:58.662Z",
+  "origin": "https://assist.ge",
+  "merge_commit": "091e36066803f1383a4efce5c7eaf78be81a93d7",
+  "known_tested_runtime": "9def91df2f1137402e61ce9bea6f575853fa5197",
+  "local_runtime_tree": "a7231cae02cc1290f6b83dde9fcdeeb65c4584c0",
+  "public_manifest": {
+    "schema_version": 1,
+    "commit": null,
+    "tree": null,
+    "dirty": null,
+    "built_at": "2026-11-19T19:15:52.988Z",
+    "assets": [
+      {
+        "path": "/assets/createLucideIcon-CxNr_4aI.js",
+        "sha256": "f490bae87a094c0b428d03f7804245bb6da13b6162ead7e937b5465d1e6d9fd8",
+        "bytes": 886
+      },
+      {
+        "path": "/assets/index-DYM14LP3.js",
+        "sha256": "437afe604f63f4824fa24f8d1118c66ceab2da9859b27235a0b3daa60e7c9dfc",
+        "bytes": 326316
+      },
+      {
+        "path": "/assets/index-z5PKFPp7.css",
+        "sha256": "147a1ac9fcfafd253607f6c5934ef2115d18ebe5a347c7f798a0e488068a81da",
+        "bytes": 52038
+      },
+      {
+        "path": "/assets/jsx-runtime-Dn_YclF2.js",
+        "sha256": "69d8d9b5752d3eea0762c1d71123a64791e4fb7196449a9d772feae1eb0a43b4",
+        "bytes": 7968
+      },
+      {
+        "path": "/theme-init.js",
+        "sha256": "6e510fb292b20ad381aa74cfb032118c5efe1f785e4812721a8bd0f5c8400b41",
+        "bytes": 390
+      }
+    ]
+  },
+  "pages": [
+    {
+      "route": "/",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/accounting",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/tax",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/legal",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/business",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/audit",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/hr",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/industries",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/calculator",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/contact",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/faq",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/about",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/team",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/career",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    }
+  ],
+  "verified_assets": [
+    {
+      "path": "/assets/createLucideIcon-CxNr_4aI.js",
+      "bytes": 886,
+      "sha256": "f490bae87a094c0b428d03f7804245bb6da13b6162ead7e937b5465d1e6d9fd8"
+    },
+    {
+      "path": "/assets/index-DYM14LP3.js",
+      "bytes": 326316,
+      "sha256": "437afe604f63f4824fa24f8d1118c66ceab2da9859b27235a0b3daa60e7c9dfc"
+    },
+    {
+      "path": "/assets/index-z5PKFPp7.css",
+      "bytes": 52038,
+      "sha256": "147a1ac9fcfafd253607f6c5934ef2115d18ebe5a347c7f798a0e488068a81da"
+    },
+    {
+      "path": "/assets/jsx-runtime-Dn_YclF2.js",
+      "bytes": 7968,
+      "sha256": "69d8d9b5752d3eea0762c1d71123a64791e4fb7196449a9d772feae1eb0a43b4"
+    },
+    {
+      "path": "/theme-init.js",
+      "bytes": 390,
+      "sha256": "6e510fb292b20ad381aa74cfb032118c5efe1f785e4812721a8bd0f5c8400b41"
+    },
+    {
+      "path": "/assets/page-system-B8eCfHsP.css",
+      "bytes": 9728,
+      "sha256": "24b8b7f8acdce5ea3313c80540442dd1bc85ceedba5c761d49a378afdcf6fa57"
+    },
+    {
+      "path": "/assets/en-BsEXJf43.js",
+      "bytes": 21456,
+      "sha256": "ee2a6e326593f7853eea0f42daf0b3534795ea4d3371db1d9892b7a7467ce961"
+    },
+    {
+      "path": "/assets/ru-DPE3tj1A.js",
+      "bytes": 38075,
+      "sha256": "a00bc26a718629f216b6726f9385ce196dc765352e015c51fb6cdb68bd592f8e"
+    },
+    {
+      "path": "/assets/brand/ASSIST_Locked_White_Native_1405px.png",
+      "bytes": 242575,
+      "sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e"
+    }
+  ],
+  "fonts_http200": 4,
+  "statuses": {
+    "/health": 200,
+    "/does-not-exist": 404,
+    "/robots.txt": 200,
+    "/sitemap.xml": 503
+  },
+  "public_write_requests": 0,
+  "latest_ka_about_copy_verified": true,
+  "exact_public_commit_identity": false,
+  "strict_identity_limitation": "Existing hosting build still omits Git source metadata. Asset byte identity and changed Georgian prerender verified independently; strict audit-release must remain failing.",
+  "new_browser_visual_check": true,
+  "browser_limitation": "Chrome157 Windows responsive emulation at320/390;no physical mobile/AT. Menu open/Escape checked.",
+  "source_eol_note": "Windows CRLF static bootstrap copy differed from committed LF bytes; rebuilt from exact committed blob and verified all9 public fingerprints. .gitattributes pins bootstrap LF."
+}

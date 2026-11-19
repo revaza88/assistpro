@@ -1,3 +1,13 @@
+## მობილური ჰედერი საჯაროდ ასახულია — 19 ნოემბერი 2026
+
+[PR #5](https://github.com/revaza88/assistpro/pull/5) main-ში გაერთიანდა: [091e360](https://github.com/revaza88/assistpro/commit/091e36066803f1383a4efce5c7eaf78be81a93d7). ზუსტ GitHub წყაროზე9def91d TypeScript,39/39 ტესტი,production build15+404,local clean audit-release5assets წარმატებულია. CI status0;local შედეგები CI-ად არ ჩაითვალოს.
+
+**Assist.ge-ზე ახალი header დადასტურდა:**15 საჯარო გვერდი200/ერთი H1/CSP nonce/noindex/intake disabled;9 რეალურად ჩამოტვირთული ფაილის hash/ზომა ემთხვევა build-ს;4font200. Fresh public Chrome157320×844/390×844-ზე სრული ლოგო,KA selector დაmenu ერთ ზოლშია;menu open/Escape დახურვა მუშაობს. [საჯარო ანგარიში](qa/2026-11-19-mobile-header/public-publication.json) · [საჯარო მანამდე/შემდეგ](qa/2026-11-19-mobile-header/header-comparison.png).
+
+დამატებით Windows-ის CRLF static theme-init.js ასლი განსხვავდებოდა Git-ის LF blob-სგან;ზუსტი committed blob-ით აწყობილმა build-მა public9 fingerprint გაიარა. .gitattributes-ში ამ ფაილს LF დაეფიქსირა განმეორების თავიდან ასაცილებლად. Runtime ლოგიკა უცვლელია. Existing hosting Git metadata null საკითხი ცალკეა;strict audit არ შესუსტებულა. ბაზა/production intake/indexing/გარე შეტყობინებები გამორთულია,public write0. ფიზიკური მობილური/AT არ გამოყენებულა.
+
+---
+
 ## მობილური ჰედერი — 19 ნოემბერი 2026
 
 მომხმარებლის მოთხოვნით მობილური header ერთ კომპაქტურ ზოლში გადავიდა: სრული Master PNG მარცხნივ,KA/EN/RU არჩევანი და48px menu მარჯვნივ. მოშორებულია479px-ზე ძველი იძულებითი ორ-რიგიანი centering; ლოგო არ მოჭრილა/შეცვლილა. მობილური header sticky-ა. 200% ტექსტზე არსებული container reflow განზრახ ორ რიგს იყენებს,რომ კონტროლები/ლოგო არ მოიჭრას. ენის სრული დასახელებები native select-ში და ხელმისაწვდომი label შენარჩუნებულია; მობილურზე არასაიმედო flag glyph შეიცვალა ენის კოდით,desktop-ის autonym უცვლელია.
