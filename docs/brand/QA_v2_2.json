@@ -2018,5 +2018,17 @@
     "validated_app_tree": "db75a8c07e67f24a7dfd97900e17ada5c6bdf16c",
     "preview_state": "5016 retained for local review; isolated 5017 fixture stopped"
   },
-  "latest_review": "color_review_2026_11_19"
+  "latest_review": "color_review_publication",
+  "color_review_publication": {
+    "date": "2026-11-19",
+    "status": "user_authorized_push_merge_and_existing_publication_pending_verification",
+    "user_request": "დაფუშე გითჰაბზე და გაუშვი სრულყოფილად",
+    "branch": "codex/assist-color-review-a",
+    "uploaded_code_commit": "5173122be18b0ed46c79abc73824d1a0b01008b3",
+    "tree_identity_verified": "305e3c5a08b00b39e24e1740b023a876644ad534",
+    "database": false,
+    "intake": "disabled",
+    "indexing": false,
+    "outbound_notifications": false
+  }
 }
