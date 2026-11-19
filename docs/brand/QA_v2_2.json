@@ -1,0 +1,641 @@
+{
+  "title": "ASSIST Brand System 2.2 repository verification",
+  "date": "2026-11-19",
+  "timezone": "Asia/Tbilisi",
+  "repository": "revaza88/assistpro",
+  "branch": "codex/assist-brand-system-2-2",
+  "base_commit": "ad8637e2f8d24426f8d46b60a1e6f566d3748622",
+  "validated_revision": "d0e24553b498ba6648b8eaee5020cf9a4bebf124",
+  "status": "source_build_test_and_isolated_HTTP_checks_passed; browser_visual_acceptance_pending",
+  "gates": {
+    "typecheck": {
+      "command": "npm run check",
+      "status": "passed"
+    },
+    "tests": {
+      "command": "npm test",
+      "status": "passed",
+      "passed": 31,
+      "failed": 0,
+      "skipped": 0,
+      "scope": "repository automated tests including local HTTP/API, CSP, theme/locale and asset identity"
+    },
+    "build": {
+      "command": "npm run build",
+      "status": "passed",
+      "stages": [
+        "Vite client",
+        "15 public routes and 404 prerender",
+        "Express server bundle"
+      ],
+      "initial_failure": "tsx CLI IPC pipe EPERM",
+      "repair": "node --import tsx for dev/prerender entry points; no dependency change"
+    }
+  },
+  "static_checks": {
+    "light_roles_matching_package": 19,
+    "declared_contrast_pairs": 29,
+    "declared_contrast_pairs_passed": 29,
+    "contrast_scope": "Declared source colors only; no browser computed-style audit",
+    "contrast_results": [
+      {
+        "foreground": "ink",
+        "background": "canvas",
+        "colors": [
+          "#0B1B4D",
+          "#FDFDFD"
+        ],
+        "ratio": 16.152,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "muted",
+        "background": "canvas",
+        "colors": [
+          "#5A6377",
+          "#FDFDFD"
+        ],
+        "ratio": 5.923,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "muted",
+        "background": "surface",
+        "colors": [
+          "#5A6377",
+          "#F4F4F8"
+        ],
+        "ratio": 5.491,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "white",
+        "background": "action",
+        "colors": [
+          "#FFFFFF",
+          "#6F2ED6"
+        ],
+        "ratio": 6.913,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "white",
+        "background": "action-hover",
+        "colors": [
+          "#FFFFFF",
+          "#5321A8"
+        ],
+        "ratio": 9.764,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "white",
+        "background": "action-pressed",
+        "colors": [
+          "#FFFFFF",
+          "#431A88"
+        ],
+        "ratio": 12.056,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "action",
+        "background": "canvas",
+        "colors": [
+          "#6F2ED6",
+          "#FDFDFD"
+        ],
+        "ratio": 6.796,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "action-hover",
+        "background": "action-tint",
+        "colors": [
+          "#5321A8",
+          "#F1EAFB"
+        ],
+        "ratio": 8.324,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "action-pressed",
+        "background": "action-tint",
+        "colors": [
+          "#431A88",
+          "#F1EAFB"
+        ],
+        "ratio": 10.277,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "control",
+        "background": "white",
+        "colors": [
+          "#7A8394",
+          "#FFFFFF"
+        ],
+        "ratio": 3.817,
+        "threshold": 3,
+        "passed": true
+      },
+      {
+        "foreground": "control",
+        "background": "surface",
+        "colors": [
+          "#7A8394",
+          "#F4F4F8"
+        ],
+        "ratio": 3.479,
+        "threshold": 3,
+        "passed": true
+      },
+      {
+        "foreground": "focus",
+        "background": "canvas",
+        "colors": [
+          "#6F2ED6",
+          "#FDFDFD"
+        ],
+        "ratio": 6.796,
+        "threshold": 3,
+        "passed": true
+      },
+      {
+        "foreground": "success",
+        "background": "success-surface",
+        "colors": [
+          "#16694C",
+          "#EAF6EF"
+        ],
+        "ratio": 5.991,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "error",
+        "background": "error-surface",
+        "colors": [
+          "#B42332",
+          "#FFF0F2"
+        ],
+        "ratio": 5.887,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "warning",
+        "background": "warning-surface",
+        "colors": [
+          "#805500",
+          "#FFF7E5"
+        ],
+        "ratio": 6.119,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "muted",
+        "background": "disabled",
+        "colors": [
+          "#5A6377",
+          "#DDE1EA"
+        ],
+        "ratio": 4.599,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "dark-ink",
+        "background": "dark-canvas",
+        "colors": [
+          "#F7F5FF",
+          "#090F25"
+        ],
+        "ratio": 17.584,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "dark-muted",
+        "background": "dark-surface",
+        "colors": [
+          "#C7CCE0",
+          "#121C37"
+        ],
+        "ratio": 10.539,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "ink",
+        "background": "dark-action",
+        "colors": [
+          "#0B1B4D",
+          "#D9B3FF"
+        ],
+        "ratio": 9.265,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "ink",
+        "background": "dark-action-hover",
+        "colors": [
+          "#0B1B4D",
+          "#E6CCFF"
+        ],
+        "ratio": 11.302,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "ink",
+        "background": "dark-action-pressed",
+        "colors": [
+          "#0B1B4D",
+          "#C99BF2"
+        ],
+        "ratio": 7.397,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "dark-action",
+        "background": "dark-surface",
+        "colors": [
+          "#D9B3FF",
+          "#121C37"
+        ],
+        "ratio": 9.497,
+        "threshold": 3,
+        "passed": true
+      },
+      {
+        "foreground": "dark-control",
+        "background": "dark-surface",
+        "colors": [
+          "#8D98B5",
+          "#121C37"
+        ],
+        "ratio": 5.847,
+        "threshold": 3,
+        "passed": true
+      },
+      {
+        "foreground": "dark-success",
+        "background": "dark-success-surface",
+        "colors": [
+          "#82DCB1",
+          "#123A2B"
+        ],
+        "ratio": 7.697,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "dark-error",
+        "background": "dark-error-surface",
+        "colors": [
+          "#FFB4BC",
+          "#3A1B29"
+        ],
+        "ratio": 9.138,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "dark-warning",
+        "background": "dark-warning-surface",
+        "colors": [
+          "#F4D28A",
+          "#342A17"
+        ],
+        "ratio": 9.689,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "dark-action-pressed",
+        "background": "dark-tint",
+        "colors": [
+          "#C99BF2",
+          "#202A49"
+        ],
+        "ratio": 6.35,
+        "threshold": 4.5,
+        "passed": true
+      },
+      {
+        "foreground": "dark-action",
+        "background": "ink",
+        "colors": [
+          "#D9B3FF",
+          "#0B1B4D"
+        ],
+        "ratio": 9.265,
+        "threshold": 3,
+        "passed": true
+      },
+      {
+        "foreground": "dark-disabled-ink",
+        "background": "dark-disabled",
+        "colors": [
+          "#B2BAD0",
+          "#27334F"
+        ],
+        "ratio": 6.473,
+        "threshold": 4.5,
+        "passed": true
+      }
+    ],
+    "generated_html_pages": 16,
+    "public_routes": 15,
+    "not_found_page": true,
+    "per_page_invariants": [
+      "one_h1",
+      "two_full_original_logo_images_with_exact_intrinsic_dimensions",
+      "exact_Georgian_slogan",
+      "fragment_targets_resolve",
+      "no_duplicate_ids",
+      "no_nested_anchor_button",
+      "no_NUL_bytes"
+    ],
+    "page_records": [
+      {
+        "file": "404.html",
+        "h1": 1,
+        "logos": 2,
+        "slogan": true,
+        "fragment_targets_resolved": true,
+        "nested_anchor_button": false
+      },
+      {
+        "file": "about.html",
+        "h1": 1,
+        "logos": 2,
+        "slogan": true,
+        "fragment_targets_resolved": true,
+        "nested_anchor_button": false
+      },
+      {
+        "file": "calculator.html",
+        "h1": 1,
+        "logos": 2,
+        "slogan": true,
+        "fragment_targets_resolved": true,
+        "nested_anchor_button": false
+      },
+      {
+        "file": "career.html",
+        "h1": 1,
+        "logos": 2,
+        "slogan": true,
+        "fragment_targets_resolved": true,
+        "nested_anchor_button": false
+      },
+      {
+        "file": "contact.html",
+        "h1": 1,
+        "logos": 2,
+        "slogan": true,
+        "fragment_targets_resolved": true,
+        "nested_anchor_button": false
+      },
+      {
+        "file": "faq.html",
+        "h1": 1,
+        "logos": 2,
+        "slogan": true,
+        "fragment_targets_resolved": true,
+        "nested_anchor_button": false
+      },
+      {
+        "file": "home.html",
+        "h1": 1,
+        "logos": 2,
+        "slogan": true,
+        "fragment_targets_resolved": true,
+        "nested_anchor_button": false
+      },
+      {
+        "file": "industries.html",
+        "h1": 1,
+        "logos": 2,
+        "slogan": true,
+        "fragment_targets_resolved": true,
+        "nested_anchor_button": false
+      },
+      {
+        "file": "services.html",
+        "h1": 1,
+        "logos": 2,
+        "slogan": true,
+        "fragment_targets_resolved": true,
+        "nested_anchor_button": false
+      },
+      {
+        "file": "services_accounting.html",
+        "h1": 1,
+        "logos": 2,
+        "slogan": true,
+        "fragment_targets_resolved": true,
+        "nested_anchor_button": false
+      },
+      {
+        "file": "services_audit.html",
+        "h1": 1,
+        "logos": 2,
+        "slogan": true,
+        "fragment_targets_resolved": true,
+        "nested_anchor_button": false
+      },
+      {
+        "file": "services_business.html",
+        "h1": 1,
+        "logos": 2,
+        "slogan": true,
+        "fragment_targets_resolved": true,
+        "nested_anchor_button": false
+      },
+      {
+        "file": "services_hr.html",
+        "h1": 1,
+        "logos": 2,
+        "slogan": true,
+        "fragment_targets_resolved": true,
+        "nested_anchor_button": false
+      },
+      {
+        "file": "services_legal.html",
+        "h1": 1,
+        "logos": 2,
+        "slogan": true,
+        "fragment_targets_resolved": true,
+        "nested_anchor_button": false
+      },
+      {
+        "file": "services_tax.html",
+        "h1": 1,
+        "logos": 2,
+        "slogan": true,
+        "fragment_targets_resolved": true,
+        "nested_anchor_button": false
+      },
+      {
+        "file": "team.html",
+        "h1": 1,
+        "logos": 2,
+        "slogan": true,
+        "fragment_targets_resolved": true,
+        "nested_anchor_button": false
+      }
+    ]
+  },
+  "http": {
+    "mode": "isolated_loopback_production_HTTP_test",
+    "tested_base_url": "http://127.0.0.1:42105",
+    "server_stopped_after_check": true,
+    "intake": "disabled",
+    "indexing": false,
+    "commands": [
+      {
+        "command": "node scripts/smoke-release.mjs http://127.0.0.1:42105",
+        "exit_code": 0
+      },
+      {
+        "command": "node --import tsx scripts/audit-web.ts http://127.0.0.1:42105",
+        "exit_code": 0
+      }
+    ],
+    "public_routes": [
+      "/",
+      "/services",
+      "/services/accounting",
+      "/services/tax",
+      "/services/legal",
+      "/services/business",
+      "/services/audit",
+      "/services/hr",
+      "/industries",
+      "/calculator",
+      "/contact",
+      "/faq",
+      "/about",
+      "/team",
+      "/career"
+    ],
+    "checks": [
+      "15 public routes",
+      "404",
+      "prerendered content",
+      "metadata",
+      "CSP headers",
+      "cache headers",
+      "gzip",
+      "health",
+      "robots",
+      "sitemap",
+      "query noindex",
+      "disabled POST returns 503"
+    ],
+    "served_resources": [
+      {
+        "path": "/assets/brand/ASSIST_Locked_White_Native_1405px.png",
+        "bytes": 242575,
+        "sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e",
+        "content_type": "image/png",
+        "served_identically": true
+      },
+      {
+        "path": "/assets/fonts/assist-v2/NotoSansGeorgian-Regular.woff2",
+        "bytes": 18024,
+        "sha256": "f95323085cbeb54900d769495efee4bd32ea4b83891dbf227b3289399434d88d",
+        "content_type": "font/woff2",
+        "served_identically": true
+      },
+      {
+        "path": "/assets/fonts/assist-v2/NotoSansGeorgian-Bold.woff2",
+        "bytes": 18432,
+        "sha256": "1b855ec3a0f8b65260319b2b5042cfb138a05e5f1ef686d517bb4fb2897a3b45",
+        "content_type": "font/woff2",
+        "served_identically": true
+      },
+      {
+        "path": "/assets/fonts/assist-v2/NotoSans-Regular.woff2",
+        "bytes": 70620,
+        "sha256": "335be51f607686d417e3fcf5c256c8fcdc90945d6b8f4b1681a62d5f414d07db",
+        "content_type": "font/woff2",
+        "served_identically": true
+      },
+      {
+        "path": "/assets/fonts/assist-v2/NotoSans-Bold.woff2",
+        "bytes": 69696,
+        "sha256": "0b5745eecf4f53b39115f458dd3537f2ebe75750d7b652c8980a8caee05da197",
+        "content_type": "font/woff2",
+        "served_identically": true
+      }
+    ],
+    "initial_html_declared_assets": {
+      "raw_js_bytes": 338662,
+      "gzip_js_bytes": 100042,
+      "gzip_css_bytes": 10328,
+      "budgets": {
+        "raw_js_bytes": 400000,
+        "gzip_js_bytes": 120000,
+        "gzip_css_bytes": 12000
+      },
+      "within_budgets": true
+    },
+    "limits": "Loopback HTTP; HTML-declared JS/CSS excludes fonts, image bytes and later dynamic imports. Not Lighthouse, browser layout, real mobile network or field Core Web Vitals."
+  },
+  "browser": {
+    "performed": false,
+    "screenshots_created": false,
+    "reason": "Supported managed preview retry started app on 0.0.0.0:5000 after tsx repair, but preview daemon startup timed out and returned no URL; preview stopped.",
+    "pending": [
+      "320/390/768/1440 CSS px",
+      "actual breakpoints and portrait/landscape",
+      "computed themes and Georgian/English/Russian rendering",
+      "font use in rendered pages",
+      "keyboard menu/focus/Escape",
+      "200 percent text and spacing",
+      "reduced motion",
+      "actual form/UI states",
+      "real-device and assistive-technology review"
+    ]
+  },
+  "deployment": {
+    "public_deployment_performed": false,
+    "public_domain_or_hosting_target_configured": false,
+    "UI_final_visual_acceptance": "pending"
+  },
+  "source_reports": [
+    {
+      "file": "brand-static-checks.json",
+      "sha256": "17594a979a90af4be4101ebadedfb29718d7f367a1f0f72483ba1cf9453a477d"
+    },
+    {
+      "file": "production-http.json",
+      "sha256": "152208478d321cf38c9c6d19bbbc8acd38c73bf71a4a100df4dc95e68b514d4a"
+    }
+  ],
+  "limits": "No new logo variant; no production intake/database/outbound notifications; no WCAG certification or newly measured Lighthouse score.",
+  "publication": {
+    "status": "blocked_by_automatic_approval_review",
+    "public_repository": true,
+    "branch_pushed": false,
+    "pull_request_created": false,
+    "reason": "Explicit user-authored permission for public GitHub publication was required by automatic review.",
+    "next_step": "Obtain explicit confirmation for the concrete reviewed branch and draft PR."
+  }
+}
