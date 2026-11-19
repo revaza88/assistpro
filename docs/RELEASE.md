@@ -1,3 +1,20 @@
+# მიმდინარე რელიზი — assist.ge, 19 ნოემბერი 2026
+
+დომენი მომხმარებელმა დაადასტურა: **https://assist.ge**. ქვემოთ არსებული ადრინდელი „დომენი უცნობია“ ჩანაწერები ისტორიულია. ახალი შემოწმებული runtime არის **4272cc5584e2237455ed12cc58fdb3262dd7f802**, tree **ac79d6b1294b122ff26d33d29b09303c9ab7a120**. კოდი feature branch-შია; Draft PR #1 merge არ შესრულებულა. GitHub push სერვერის restart/deploy-ს არ ნიშნავს. ახალი root HTML ძველ JS/CSS fingerprints-ს იყენებს; ახალი release.json 404-ია. ჰოსტინგის ავტორიზებული კავშირი ამ გარემოში ვერ მოიძებნა.
+
+## გასაშვები გეგმა არსებული ჰოსტინგის კავშირის მიღების შემდეგ
+
+1. დადგინდეს რეალური ჰოსტი, SSH account ან პანელი, nginx upstream, არსებული process manager (Docker/PM2/სხვა) და release directory. მაგალითის CloudPanel მისამართი ნამდვილ სამიზნედ არ ჩაითვალოს. შეინახოს მიმდინარე მუშა image/release ID და არსებული env; საიდუმლოებები არ გადავიდეს GitHub-ში.
+2. არსებული დირექტორიის ცვლილებების შენარჩუნებით შეიქმნას ცალკე clean release checkout, pinned source SHA-ით. ამ ეტაპზე source runtime: 4272cc5584e2237455ed12cc58fdb3262dd7f802; დოკუმენტაციის ახალი commit ცალკე შეიძლება მოჰყვეს. არ გამოიყენოთ hard reset ან force-push.
+3. Node24-ში npm ci → npm run check → npm test → npm run build. Docker-ის შემთხვევაში deploy.sh clean source SHA/tree-ს build ARG-ებით გადასცემს; შეინარჩუნეთ source metadata. Compose build args-ის კონტრაქტი: https://docs.docker.com/reference/compose-file/build/#args . არსებული env არ გადაიწეროს ბრმად example ფაილით.
+4. SITE_URL/CORS_ORIGIN და proxy დარჩეს დადასტურებულ HTTPS origin-ზე. INTAKE_MODE=disabled და INDEXING_ENABLED=false შენარჩუნდეს; ბაზა/მიგრაციები/გარე შეტყობინებები არ ჩაირთოს. გაეშვას მხოლოდ არსებული process manager-ის შესაბამისი რელიზი; არ შეიქმნას პარალელური კონკურენტი production პროცესი.
+5. სერვერის loopback origin-ზე შესრულდეს smoke/audit-web და audit-release expected SHA-ით. საჯარო origin-ზე მხოლოდ read-only შემოწმება: node scripts/audit-release.mjs https://assist.ge 4272cc5584e2237455ed12cc58fdb3262dd7f802. HTML, release.json და ოთხი საწყისი ფაილის bytes/hash უნდა ემთხვეოდეს; proxy არ უნდა აბრუნებდეს ძველ HTML-ს ან nonce/CSP-ის აცდენილ წყვილს. საჯარო ფორმაზე ავტომატური POST არ გაგზავნოთ.
+6. რეალურ assist.ge-ზე ნახეთ desktop/mobile, მენიუ და არჩევანი → კალკულატორი → გამორთული მიღების გვერდი. ჩავარდნისას არსებული process manager-ით დაბრუნდით წინასწარ ჩაწერილ წინა image/release-ზე და ხელახლა გადაამოწმეთ მისი health/ვერსია. ძველი მუშა გამოშვება შემოწმებამდე არ წაშალოთ.
+
+ლოკალური release candidate **assistpro:brand-4272cc5584e2** შემოწმებულია Linux Node24.22.3-ში; non-root/read-only container, 33 ტესტი, TypeScript/build და loopback HTTP/version audit წარმატებულია. ეს საჯარო deployment არ არის. ახალი დიზაინის მტკიცებულებები: [ანგარიში](brand/qa/2026-11-19-refinement/current-run.json), [დაფა](brand/qa/2026-11-19-refinement/visual-board.png).
+
+---
+
 # გამოქვეყნებისთვის მომზადება
 
 2026-11-18: მობილურის ოპტიმიზაციის შემდეგ 25 ტესტი, TypeScript და ბილდი

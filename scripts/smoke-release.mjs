@@ -9,6 +9,10 @@ for (const route of ['/', '/services/accounting', '/industries', '/calculator', 
   assert.match(html, /content="noindex,follow"/, route);
 }
 assert.equal((await fetch(base + '/health')).status, 200);
+const releaseResponse = await fetch(base + '/release.json');
+assert.equal(releaseResponse.status, 200, 'Built release identity');
+assert.match(releaseResponse.headers.get('cache-control') ?? '', /no-store/);
+assert.equal((await releaseResponse.json()).schema_version, 1);
 for (const route of ['/api/contacts', '/api/job-applications']) {
   const response = await fetch(base + route, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
   assert.equal(response.status, 503, route);

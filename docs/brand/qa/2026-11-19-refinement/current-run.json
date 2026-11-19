@@ -1,0 +1,319 @@
+{
+  "date": "2026-11-19",
+  "timezone": "Asia/Tbilisi",
+  "starting_commit": "38d7f9772cf300d06a8a70d1ce1b44dbdea08b60",
+  "validated_revision": "4272cc5584e2237455ed12cc58fdb3262dd7f802",
+  "validated_tree_sha": "ac79d6b1294b122ff26d33d29b09303c9ab7a120",
+  "local_equivalent_commit": "79364b9eb972d46ac166927f52d14ac466866bcd",
+  "tree_identity_verified": true,
+  "status": "visual_refinement_verified_in_scoped_cases_public_deployment_blocked",
+  "environment": {
+    "os": "Windows",
+    "browser": "Google Chrome",
+    "browser_version": "157.0.8103.79",
+    "version_source": "Installed executable ProductVersion",
+    "mode": "production",
+    "windows_url": "http://127.0.0.1:5014",
+    "docker_url": "http://127.0.0.1:5015",
+    "node_windows": "26.13.1",
+    "npm_windows": "11.20.0",
+    "node_docker": "24.22.3",
+    "interaction": "Native Windows Chrome CUA; DOM connector unavailable; no console safety barrier bypass",
+    "INTAKE_MODE": "disabled",
+    "INDEXING_ENABLED": false,
+    "viewport_measurement": "Nominal DevTools CSS dimensions; native fit rounding applies. No fresh DOM overflow/computed-style matrix claimed."
+  },
+  "plan": [
+    {
+      "step": 1,
+      "task": "Identify public version and existing release connection",
+      "status": "Public mismatch confirmed; hosting connection missing"
+    },
+    {
+      "step": 2,
+      "task": "Refine headline, composition and responsive dimensions using existing tokens",
+      "status": "implemented and scoped browser verified"
+    },
+    {
+      "step": 3,
+      "task": "Create a native responsive illustrative report chart, preserving original logo",
+      "status": "implemented and scoped browser verified"
+    },
+    {
+      "step": 4,
+      "task": "Unify service icons, CTA hierarchy, FAQ focus and touch targets",
+      "status": "implemented and scoped browser verified"
+    },
+    {
+      "step": 5,
+      "task": "Run browser flow, code gates and production container checks",
+      "status": "completed within listed cases"
+    },
+    {
+      "step": 6,
+      "task": "Publish branch evidence and perform verified release on configured hosting",
+      "status": "Source pushed; public release blocked by absent hosting connection"
+    }
+  ],
+  "changes": [
+    {
+      "id": "REF-01",
+      "issue": "Headline and tilted report competed visually",
+      "fix": "Phrase-based responsive headline and upright report with native SVG chart",
+      "verified": true
+    },
+    {
+      "id": "REF-02",
+      "issue": "Decorative numbering/arrows competed with service meaning",
+      "fix": "Six relevant consistent 28px Lucide icons and contextual accessible service links",
+      "verified": true
+    },
+    {
+      "id": "REF-03",
+      "issue": "Inactive chart bars were poorly distinguished in dark theme",
+      "fix": "Quiet action-outline bars with a solid active bar using existing tokens",
+      "verified": true
+    },
+    {
+      "id": "REF-04",
+      "issue": "FAQ keyboard focus needed stronger visibility",
+      "fix": "3px focus outline, native details/summary and plus indicator",
+      "verified": true
+    },
+    {
+      "id": "REF-05",
+      "issue": "Public HTML 200 alone could not establish deployed revision",
+      "fix": "Clean source release.json plus actual initial-asset size/SHA audit; deployment integration and two tests",
+      "verified": true
+    }
+  ],
+  "browser_cases": [
+    {
+      "route": "/",
+      "viewports": [
+        "1440x900",
+        "768x1024",
+        "390x844"
+      ],
+      "locale": "ka",
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "scope": "Selected initial views; captures are 1440 light,768 light,390 dark, not full Cartesian coverage"
+    },
+    {
+      "route": "/",
+      "viewports": [
+        "320x844",
+        "390x844"
+      ],
+      "locales": [
+        "en",
+        "ru"
+      ],
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "scope": "Selected initial views, wrapping and 320px chart readability; not all combinations"
+    },
+    {
+      "route": "/",
+      "viewports": [
+        "766x844",
+        "769x844"
+      ],
+      "locale": "en",
+      "theme": "light",
+      "scope": "Both sides of 768 breakpoint; single/two-column layout"
+    },
+    {
+      "routes": [
+        "/industries",
+        "/calculator",
+        "/contact"
+      ],
+      "viewport": "390x844",
+      "locale": "ka",
+      "theme": "dark",
+      "scope": "Education + bookkeeping + payroll -> calculator; employees 5 to 6 by Up; request keeps both services, industry, 6 employees and demo 350–470; intake disabled and email fallback visible; no success simulated"
+    },
+    {
+      "route": "/faq",
+      "viewport": "769x844",
+      "locale": "en",
+      "theme": "light",
+      "scope": "Click expansion, Enter collapse and visible keyboard focus verified"
+    }
+  ],
+  "gates": {
+    "typecheck": {
+      "command": "npm run check",
+      "exit_code": 0
+    },
+    "tests": {
+      "command": "npm test",
+      "passed": 33,
+      "failed": 0,
+      "skipped": 0,
+      "exit_code": 0
+    },
+    "build": {
+      "command": "npm run build",
+      "exit_code": 0,
+      "prerendered_public_routes": 15,
+      "not_found_page": true,
+      "clean_canonical_rebuild": true
+    },
+    "http": {
+      "origins": [
+        "http://127.0.0.1:5014",
+        "http://127.0.0.1:5015"
+      ],
+      "commands": [
+        "node scripts/smoke-release.mjs <origin>",
+        "node --import tsx scripts/audit-web.ts <origin>",
+        "node scripts/audit-release.mjs <origin> 4272cc5584e2237455ed12cc58fdb3262dd7f802"
+      ],
+      "exit_codes": [
+        0,
+        0,
+        0
+      ],
+      "initial_assets_hash_verified": 4
+    },
+    "budgets": {
+      "initial_js_bytes": 341590,
+      "initial_js_gzip_bytes": 101092,
+      "initial_css_gzip_bytes": 10856,
+      "passed": true
+    },
+    "docker": {
+      "image": "assistpro:brand-4272cc5584e2",
+      "node": "24.22.3",
+      "typecheck": true,
+      "tests_passed": 33,
+      "build": true,
+      "compose_validation": true,
+      "health": "healthy",
+      "user": "node",
+      "read_only": true,
+      "loopback_only": true
+    }
+  },
+  "screenshots": [
+    {
+      "path": "docs/brand/qa/2026-11-19-refinement/faq-focus.png",
+      "width": 551,
+      "height": 608,
+      "bytes": 122483,
+      "sha256": "07cd0d30257f7a2598234035648485043815b67fb2d058a28af267b3dd2d927b",
+      "source": "Crop of native Chrome viewport, fit-scaled; browser chrome excluded"
+    },
+    {
+      "path": "docs/brand/qa/2026-11-19-refinement/flow-contact.png",
+      "width": 281,
+      "height": 608,
+      "bytes": 183262,
+      "sha256": "15c85b6378ff3c0d283e3921e9dac8173606ee09c09bc76ac14bf804ec8815f8",
+      "source": "Crop of native Chrome viewport, fit-scaled; browser chrome excluded"
+    },
+    {
+      "path": "docs/brand/qa/2026-11-19-refinement/graphic-320-ru.png",
+      "width": 230,
+      "height": 608,
+      "bytes": 112373,
+      "sha256": "5c96d78f603b0d52ae58175d94eab9a9ab0bd78b1e12bd5df5f1a115c5c9b3ad",
+      "source": "Crop of native Chrome viewport, fit-scaled; browser chrome excluded"
+    },
+    {
+      "path": "docs/brand/qa/2026-11-19-refinement/home-1440-light.png",
+      "width": 2880,
+      "height": 1800,
+      "bytes": 830451,
+      "sha256": "935522dabc0d434f53154ac6d1a706354799e1a3c816eef268a8be67cfd32883",
+      "source": "Chrome DevTools Capture screenshot, DPR 2, unmodified"
+    },
+    {
+      "path": "docs/brand/qa/2026-11-19-refinement/home-390-dark.png",
+      "width": 780,
+      "height": 1688,
+      "bytes": 286198,
+      "sha256": "65af8c7e239b6a8da89266e2826d690bff63b6206c7f2310054cfdc928ad4285",
+      "source": "Chrome DevTools Capture screenshot, DPR 2, unmodified"
+    },
+    {
+      "path": "docs/brand/qa/2026-11-19-refinement/home-768-light.png",
+      "width": 1536,
+      "height": 2048,
+      "bytes": 628366,
+      "sha256": "db72f76ced5785bec213170b990af85bb74f476eeafcdec470f0cdd11f15624c",
+      "source": "Chrome DevTools Capture screenshot, DPR 2, unmodified"
+    },
+    {
+      "path": "docs/brand/qa/2026-11-19-refinement/visual-board.png",
+      "width": 1600,
+      "height": 1040,
+      "bytes": 388539,
+      "sha256": "f7331bda7020c47890f98eaaa4e7f93fc2a2af72b7d5f873fcb26bd1b6586eb6",
+      "source": "Composition of the three new real Chrome captures"
+    }
+  ],
+  "live_probe": {
+    "checked_at": "2026-11-19T11:32:20.911Z",
+    "url": "https://assist.ge/",
+    "http_status": 200,
+    "initial_assets": [
+      "/theme-init.js",
+      "/assets/index-BiFracsm.js",
+      "/assets/jsx-runtime-Dn_YclF2.js",
+      "/assets/index-DAiklZJH.css"
+    ],
+    "release_identity_status": 404,
+    "expected_runtime": "4272cc5584e2237455ed12cc58fdb3262dd7f802",
+    "public_deployment_performed": false
+  },
+  "connection_search": {
+    "ssh_profile_found": false,
+    "putty_session_found": false,
+    "production_env_found": false,
+    "open_hosting_browser_session_found": false,
+    "sites_projects_are_separate": true,
+    "github_connected": true,
+    "historical_cloudpanel_values_are_examples": true,
+    "ssh_agent_available": false
+  },
+  "preserved": {
+    "logo_sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e",
+    "slogan": "თქვენი ბიზნესის მხარდამჭერი",
+    "logo_master": "V1.2 original whole PNG",
+    "fonts": "Noto Sans Georgian / Noto Sans",
+    "architecture": "React/Vite + Express",
+    "database_not_activated": true,
+    "production_intake_not_activated": true,
+    "outbound_notifications_not_activated": true,
+    "merge_not_performed": true
+  },
+  "not_verified_this_run": [
+    "Full route x viewport x locale x theme browser matrix and all lower content",
+    "Full normal/hover/pressed/disabled/loading computed-state matrix",
+    "New full text 200%, text-spacing and reduced-motion matrix",
+    "Form validation/loading/error/retry/simulated success UI fixture",
+    "Other browsers, physical mobile devices or assistive technology",
+    "New Lighthouse/Core Web Vitals",
+    "Public deployment, production release identity and final user visual acceptance"
+  ],
+  "previous_browser_evidence": "../2026-11-19/current-run.json",
+  "cleanup": {
+    "preview_stopped": true,
+    "owned_container_removed": true,
+    "release_candidate_image_retained": true
+  },
+  "github_ci_at_runtime_revision": {
+    "workflow_runs": 0,
+    "check_runs": 0,
+    "commit_statuses": 0,
+    "success_claimed": false
+  }
+}

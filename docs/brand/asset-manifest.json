@@ -1,10 +1,25 @@
 {
-  "handoff_version": "1.0",
-  "as_of_date": "2026-11-18",
+  "handoff_version": "2.2",
+  "as_of_date": "2026-11-19",
   "timezone": "Asia/Tbilisi",
   "approved_logo_design": "original Master V1.2",
   "site_repository_inspected": true,
   "automatic_sync_configured": false,
+  "repository": {
+    "full_name": "revaza88/assistpro",
+    "url": "https://github.com/revaza88/assistpro",
+    "base_commit": "ad8637e2f8d24426f8d46b60a1e6f566d3748622",
+    "implementation_evidence": "IMPLEMENTATION_ACCEPTANCE.md",
+    "implementation_branch": "codex/assist-brand-system-2-2",
+    "machine_readable_QA": "QA_v2_2.json"
+  },
+  "decision_status": {
+    "logo_and_slogan": "user_approved_baseline",
+    "logo_provenance": "technical_source_linkage_verified",
+    "web_palette_typography_and_layout": "authorized_implementation_of_2.2_proposal; final_visual_acceptance_separate",
+    "dark_content_theme": "site_specific_adaptation; does_not_authorize_a_dark_logo_variant",
+    "current_validation": "Fresh production Chrome browser checks and two fixes; typecheck/31 tests/build/smoke/audit passed; full visual acceptance pending. See qa/2026-11-19/current-run.json."
+  },
   "slogan": {
     "text": "თქვენი ბიზნესის მხარდამჭერი",
     "status": "user_approved",
@@ -26,25 +41,28 @@
       "color_mode": "RGB",
       "contains_transparency": false,
       "bytes_changed": false,
-      "identity_status": "resolved_by_filename_matching_guideline_page_6",
-      "approved_original_master_linkage": "supplied_export_explicitly_authorized_for_site_by_user; external_master_comparison_not_performed",
+      "identity_status": "byte_identical_to_2.2_source_and_existing_reference",
+      "approved_original_master_linkage": "technical_provenance_verified_in_brand_system_2.2; see LOGO_PROVENANCE.md",
       "site_production_path": "client/public/assets/brand/ASSIST_Locked_White_Native_1405px.png",
       "checks_completed": [
-        "materialized_original_file",
-        "byte_hash_recorded",
-        "dimensions_and_color_mode_checked",
-        "visually_reviewed",
-        "production_copy_sha256_matches_reference",
-        "full_original_used_in_header_footer_and_favicon"
+        "reference_public_and_2.2_package_bytes_identical",
+        "sha256_verified",
+        "png_intrinsic_dimensions_verified",
+        "2.2_provenance_record_transferred",
+        "Chrome_mobile_desktop_whole_logo_readability_spot_checked_2026_11_19"
       ],
-      "required_next_check": null,
+      "required_next_check": "Final visual acceptance and other browsers/physical devices; see current QA scope.",
       "integration_hash_verified": true,
       "usage_authorization": {
         "date": "2026-11-18",
-        "source": "latest_user_message_in_current_conversation",
+        "source": "2026-11-18_repository_record; see pinned historical COMPLETE_INTEGRATION.md",
         "scope": "all_supplied_brand_material_including_logo_and_company_information",
         "supersedes": "earlier_instruction_to_preserve_provisional_CSS_logo"
-      }
+      },
+      "decoded_rgb_sha256": "e17b52e7df6fe73283e4231dfffd46a3c9536de11e630d4e48e81b30d35cb60f",
+      "provenance_report": "LOGO_PROVENANCE.md",
+      "provenance_data": "logo-provenance.json",
+      "use_rule": "whole_original_png_on_FDFDFD; no_decorative_logo_frame_or_effect"
     },
     {
       "path": "reference/ASSIST_Brand_Guidelines_Digital_v1_0.pdf",
@@ -64,179 +82,186 @@
       "integration_hash_verified": true
     }
   ],
-  "not_included": [
-    "font_binaries",
-    "approved_favicon",
-    "approved_dark_or_transparent_logo",
-    "approved_translated_slogans",
-    "other_PNG_sizes",
-    "six_Office_PDF_source_materials"
-  ],
-  "open_decisions": [
-    "translated_slogans_if_explicitly_requested",
-    "public_domain_and_hosting_target_not_configured"
-  ],
-  "tokens_status": "documented_palette_and_font_family_names; semantic_web_roles_proposed_not_approved",
-  "canonical_brand_standards": "https://chatgpt.com/space/page_4b64e35dc9a4819184466cda53fcca20",
-  "integration": {
-    "date": "2026-11-18",
-    "repository": "revaza88/assistpro",
-    "workspace": "D:/Assist/assistpro",
-    "inspected_commit": "88a3947057eab7a5fb0d8b0681625e4b0b55555f",
-    "scope": "local_brand_context_and_source_compliance_audit; no_runtime_brand_changes_or_publication",
-    "archive": {
-      "filename": "ASSIST_Codex_Brand_Handoff_v1_0.zip",
-      "size_bytes": 2181450,
-      "sha256": "ceeb5b1729646c1597058e172c45248b6a584cb651a98894756c01491e6385e6"
-    },
-    "original_checksum_list": "handoff-v1.0/SHA256SUMS.txt",
-    "checksum_note": "All nine archive checksums matched before integration. The original checksum list describes the handoff, not locally updated documentation. Reference PDF and PNG remain byte-identical.",
-    "report": "INTEGRATION_REPORT.md",
-    "active_instructions": [
-      "AGENTS.md"
-    ],
-    "instruction_overrides_found": false,
-    "marked_section_merged": true,
-    "existing_site_files": [
+  "fonts": {
+    "status": "source_and_HTTP_hashes_preserved; Chrome_Rendered_Fonts_verified_Noto_Sans_Georgian_and_Noto_Sans_400_700_for_observed_text",
+    "runtime_css": "client/src/fonts.css",
+    "directory": "client/public/assets/fonts/assist-v2",
+    "license_file": "client/public/assets/fonts/assist-v2/LICENSES.txt",
+    "manifest_file": "client/public/assets/fonts/assist-v2/manifest.json",
+    "files": [
       {
-        "path": "client/src/components/navigation.tsx",
-        "sha256": "e8d375768f0d1406c8661946063b96a80c576bb9df1d03cc5616c342e4391684",
-        "status": "existing_site_code_inspected_not_approved_master_asset"
+        "path": "client/public/assets/fonts/assist-v2/NotoSansGeorgian-Regular.woff2",
+        "source_package_path": "reference/assets/fonts/NotoSansGeorgian-Regular.woff2",
+        "family": "Noto Sans Georgian",
+        "weight": 400,
+        "format": "woff2",
+        "source_sha256": "f95323085cbeb54900d769495efee4bd32ea4b83891dbf227b3289399434d88d",
+        "size_bytes": 18024,
+        "license": "SIL Open Font License 1.1"
       },
       {
-        "path": "client/src/components/footer.tsx",
-        "sha256": "bfd8deb54b99ea932c567f26c6387f01f40ee1791aa6f4febeba233d9209bfaa",
-        "status": "existing_site_code_inspected_not_approved_master_asset"
+        "path": "client/public/assets/fonts/assist-v2/NotoSansGeorgian-Bold.woff2",
+        "source_package_path": "reference/assets/fonts/NotoSansGeorgian-Bold.woff2",
+        "family": "Noto Sans Georgian",
+        "weight": 700,
+        "format": "woff2",
+        "source_sha256": "1b855ec3a0f8b65260319b2b5042cfb138a05e5f1ef686d517bb4fb2897a3b45",
+        "size_bytes": 18432,
+        "license": "SIL Open Font License 1.1"
       },
       {
-        "path": "client/src/index.css",
-        "sha256": "e9e65db72e6caed06ea64983ec77eeb28c463994dc2ae31fcc0fe2c257f46162",
-        "status": "existing_site_code_inspected_not_approved_master_asset"
+        "path": "client/public/assets/fonts/assist-v2/NotoSans-Regular.woff2",
+        "source_package_path": "reference/assets/fonts/NotoSans-Regular.woff2",
+        "family": "Noto Sans",
+        "weight": 400,
+        "format": "woff2",
+        "source_sha256": "335be51f607686d417e3fcf5c256c8fcdc90945d6b8f4b1681a62d5f414d07db",
+        "size_bytes": 70620,
+        "license": "SIL Open Font License 1.1"
       },
       {
-        "path": "client/src/lib/design-copy.ts",
-        "sha256": "ab4c6d6ee820d5fb9991bf902072593b434852400eaf784f7df0b4399be8bbdf",
-        "status": "existing_site_code_inspected_not_approved_master_asset"
-      },
-      {
-        "path": "client/src/fonts.css",
-        "sha256": "82c8a25e8ec182a460675b37be73d0577a42ad16215eeb7d61a4e05c13cc6074",
-        "status": "existing_site_code_inspected_not_approved_master_asset"
-      },
-      {
-        "path": "client/public/favicon.svg",
-        "sha256": "86fece93e01d55706ec581fb5a9739a0290fa8a9bf156f737ff17f1b9f4c7aa7",
-        "status": "existing_site_code_inspected_not_approved_master_asset"
-      }
-    ],
-    "existing_approved_master_found": false,
-    "approved_logo_production_path": "client/public/assets/brand/ASSIST_Locked_White_Native_1405px.png",
-    "slogan_runtime_status": "implemented_exact_georgian_in_home_hero_and_shared_footer; old_footer_service_description_removed",
-    "reference_assets_publicly_served": "only_authorized_logo_png; internal_PDF_and_instructions_not_served",
-    "verification": {
-      "archive_files_hash_verified": 9,
-      "pdf_pages_text_read": 17,
-      "pdf_pages_visually_reviewed": [
-        10,
-        11
-      ],
-      "png_size": [
-        1405,
-        235
-      ],
-      "png_mode": "RGB",
-      "application_tests_rerun": false,
-      "reason": "Documentation and instructions only; application source unchanged"
-    }
-  },
-  "slogan_implementation": {
-    "date": "2026-11-18",
-    "source": "explicit_user_request_in_current_conversation",
-    "text": "თქვენი ბიზნესის მხარდამჭერი",
-    "language": "ka",
-    "placements": [
-      "home_hero",
-      "shared_footer_on_all_public_pages"
-    ],
-    "translated": false,
-    "footer_service_descriptor_removed": true,
-    "ordinary_service_content_preserved": true,
-    "logo_unchanged_until_master_verified": true,
-    "approved_master_linkage": "pending",
-    "qa_report": "SLOGAN_QA.md",
-    "checks": {
-      "typecheck": "passed",
-      "tests_passed": 25,
-      "build": "passed",
-      "prerender_pages_without_nul": 16,
-      "public_footer_pages_checked": 15,
-      "viewport_widths": [
-        320,
-        390,
-        768,
-        1440
-      ],
-      "language_versions": [
-        "ka",
-        "en",
-        "ru"
-      ],
-      "console_page_errors": 0
-    }
-  },
-  "web_redesign": {
-    "date": "2026-11-18",
-    "source": "explicit_user_request_in_current_conversation",
-    "status": "palette_typography_components_logo_and_company_information_integrated",
-    "report": "COMPLETE_INTEGRATION.md",
-    "palette": [
-      "#0B1B4D",
-      "#6A00FF",
-      "#8A3DFF",
-      "#D9B3FF",
-      "#FFFFFF"
-    ],
-    "fonts": [
-      "Noto Sans Georgian",
-      "Montserrat"
-    ],
-    "font_delivery": "local_woff2_unicode_subsets; no_external_browser_font_requests",
-    "logo": "full_supplied_export_authorized_by_user; unchanged_bytes",
-    "reference_assets_changed": false,
-    "fonts_added": [
-      {
-        "path": "client/public/assets/fonts/montserrat-latin.woff2",
-        "size_bytes": 37956,
-        "sha256": "06b16db7a969135d48d38c49183be7fb88d4452e2a3011957c7851941f4e4879",
-        "source": "https://fonts.googleapis.com/css2?family=Montserrat:wght@400..700&display=swap",
-        "license": "client/public/assets/fonts/Montserrat-OFL.txt"
-      },
-      {
-        "path": "client/public/assets/fonts/montserrat-cyrillic.woff2",
-        "size_bytes": 23828,
-        "sha256": "a187b077090fe8ae3fd2d7496aabbeae604819c718a282e0afc92df72b450766",
-        "source": "https://fonts.googleapis.com/css2?family=Montserrat:wght@400..700&display=swap",
-        "license": "client/public/assets/fonts/Montserrat-OFL.txt"
+        "path": "client/public/assets/fonts/assist-v2/NotoSans-Bold.woff2",
+        "source_package_path": "reference/assets/fonts/NotoSans-Bold.woff2",
+        "family": "Noto Sans",
+        "weight": 700,
+        "format": "woff2",
+        "source_sha256": "0b5745eecf4f53b39115f458dd3537f2ebe75750d7b652c8980a8caee05da197",
+        "size_bytes": 69696,
+        "license": "SIL Open Font License 1.1"
       }
     ]
   },
-  "complete_integration": {
-    "date": "2026-11-18",
-    "report": "COMPLETE_INTEGRATION.md",
-    "logo_placements": [
-      "header",
-      "footer",
-      "favicon",
-      "Open_Graph_and_Twitter_when_SITE_URL_configured"
+  "tokens": {
+    "reference": "brand-tokens.css",
+    "runtime": "client/src/brand-tokens.css",
+    "imported_by": "client/src/index.css",
+    "scope": "web_interface_only; no_logo_recoloring",
+    "status": "2.2_reference_values_with_site_theme_mapping",
+    "source_web_spec_version": "2.0 retained by Brand System 2.2",
+    "dark_theme_status": "implemented_site_specific_proposal; declared_color_contrast_passed; browser_visual_acceptance_pending"
+  },
+  "upstream_sources": [
+    {
+      "name": "ASSIST_Brand_System_v2_2.pdf",
+      "library_file_id": "libfile_eceaf95376188191b4c1474a0faa6f12",
+      "url": "https://chatgpt.com/library?file_id=libfile_eceaf95376188191b4c1474a0faa6f12&account_id=personal",
+      "sha256": "199dba0709e07078e2d92c0353a99e041965b5123a6822b92c26775dae7b5499",
+      "size_bytes": 2681437,
+      "pages": 26,
+      "copied_to_repository": false
+    },
+    {
+      "name": "ASSIST_Brand_System_v2_2.zip",
+      "library_file_id": "libfile_d93c9e088be88191a8a7edf819053fa5",
+      "url": "https://chatgpt.com/library?file_id=libfile_d93c9e088be88191a8a7edf819053fa5&account_id=personal",
+      "sha256": "9e59b11f027ef754ad05856f3d3e2002b1a699e97e3fcb8f2c6884ed8167fc75",
+      "size_bytes": 20092991,
+      "files": 152,
+      "copied_to_repository": false
+    }
+  ],
+  "favicon": {
+    "current_behavior": "existing_whole_original_png; no_new_variant_created",
+    "compact_icon_approved": false,
+    "limitation": "full_wordmark_not_readable_at_tiny_tab_icon_sizes",
+    "next_action": "specific_request_or_approved_compact_asset_before_designing_new_icon"
+  },
+  "not_included": [
+    "full_2.2_archive",
+    "full_2.2_pdf",
+    "office_templates",
+    "historical_1451px_lockup_for_runtime_use",
+    "new_svg_transparent_monochrome_dark_or_isolated_symbol_logo",
+    "new_favicon_design",
+    "approved_translated_slogans"
+  ],
+  "open_decisions": [
+    "final_visual_acceptance_of_updated_site",
+    "current_actual_browser_device_and_assistive_technology_checks_as_recorded",
+    "compact_favicon_if_separately_requested",
+    "live_social_preview_on_confirmed_domain",
+    "public_domain_and_hosting_target",
+    "production_intake_database_and_outbound_delivery_remain_deferred"
+  ],
+  "canonical_brand_standards": "https://chatgpt.com/space/page_4b64e35dc9a4819184466cda53fcca20",
+  "history": {
+    "base_commit": "ad8637e2f8d24426f8d46b60a1e6f566d3748622",
+    "previous_manifest": "https://github.com/revaza88/assistpro/blob/ad8637e2f8d24426f8d46b60a1e6f566d3748622/docs/brand/asset-manifest.json",
+    "previous_reports": [
+      "INTEGRATION_REPORT.md",
+      "SLOGAN_QA.md",
+      "REDESIGN_QA.md",
+      "COMPLETE_INTEGRATION.md"
     ],
-    "company_information_source": "reference/ASSIST_Brand_Guidelines_Digital_v1_0.pdf page 14; explicitly_authorized_by_user",
-    "legalName": "შპს \"ემ ეს ეი\"",
-    "identificationCode": "416317239",
-    "registeredAddress": "თბილისი, გორგასლის N61",
-    "bank": "სს \"თიბისი ბანკი\"",
-    "iban": "GE83TB7866336080100002",
-    "bic": "TBCBGE22",
-    "bank_account_ownership_independently_verified": false,
-    "source_reference_bytes_changed": false
+    "note": "Historical reports and v1 source bytes preserved; prior test counts are not copied into current acceptance."
+  },
+  "current_QA": {
+    "date": "2026-11-19",
+    "validated_revision": "4272cc5584e2237455ed12cc58fdb3262dd7f802",
+    "validated_tree_sha": "ac79d6b1294b122ff26d33d29b09303c9ab7a120",
+    "report": "qa/2026-11-19-refinement/current-run.json",
+    "visual_board": "qa/2026-11-19-refinement/visual-board.png",
+    "tests_passed": 33,
+    "browser_cases": "Scoped real Chrome production cases; full acceptance pending",
+    "public_deployment": false,
+    "blocker": "No confirmed hosting panel/SSH connection",
+    "logo_unchanged_sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e"
+  },
+  "previous_QA": [
+    {
+      "report": "QA_v2_2.json",
+      "latest_run": "qa/2026-11-19/current-run.json",
+      "typecheck": "passed",
+      "tests_passed": 31,
+      "tests_failed": 0,
+      "tests_skipped": 0,
+      "build": "passed",
+      "prerender_pages": 16,
+      "HTTP_public_routes": 15,
+      "browser_performed": true,
+      "browser_scope": "partial real Chrome production inspection; all routes opened, not full cross-product or every state",
+      "browser_limit": [
+        "Complete route x viewport x language x theme cross-product and below-fold content on every service page; current route inspection scope is listed explicitly.",
+        "Complete computed hover/pressed/focus/disabled/loading matrix for every control in both themes. Normal, focus, disabled and calculator error states were visually exercised; not all states were measured.",
+        "Contact validation, loading, submission error/retry and success in a separately approved isolated UI fixture. Actual production QA server stayed INTAKE_MODE=disabled, so its form cannot submit. No browser success was simulated or claimed.",
+        "Full text-spacing override on every descendant and all routes. This run used root font-size:200%, letter-spacing:.12em and word-spacing:.16em on the calculator; descendant overrides were not globally forced.",
+        "Physical devices, Safari/Firefox/Edge, screen reader and other assistive technology were not used.",
+        "Whole-logo favicon remains tiny-scale limited; new compact variant is not approved.",
+        "Final user review of palette/dark adaptation and public launch remain separate. No merge, public deployment, database, production intake or outbound notifications."
+      ],
+      "public_deployment_performed": false,
+      "UI_final_visual_acceptance": "pending",
+      "validated_code_commit": "3ad8ad4bda7e70e41e0bf21edb4290f51a440fe5",
+      "local_validated_code_commit": "ea8ed8df3d721523c5ff66ff13ec706570b176a2",
+      "validated_code_tree": "61fa0537946a36adc036486a05bfa246814ec34c",
+      "GitHub_publication": "Same Draft PR #1; runtime tree verified identical",
+      "previous_QA": {
+        "report": "QA_v2_2.json",
+        "typecheck": "passed",
+        "tests_passed": 31,
+        "tests_failed": 0,
+        "tests_skipped": 0,
+        "build": "passed",
+        "prerender_pages": 16,
+        "HTTP_public_routes": 15,
+        "HTTP_resources_byte_identical": 5,
+        "light_role_matches": 19,
+        "declared_contrast_pairs_passed": 29,
+        "browser_performed": false,
+        "browser_limit": "preview daemon startup timed out without a URL after application started; no new screenshots",
+        "public_deployment_performed": false,
+        "UI_final_visual_acceptance": "pending",
+        "validated_code_commit": "d0e24553b498ba6648b8eaee5020cf9a4bebf124",
+        "GitHub_publication": "published_as_draft_pull_request; https://github.com/revaza88/assistpro/pull/1",
+        "published_validated_code_commit": "59ad55f16149f158d1f7ef49fbfe213af329aa31",
+        "validated_code_tree": "7129367fa886d66383314a24021ca41072745df5"
+      }
+    }
+  ],
+  "illustrative_ui_graphic": {
+    "path": "client/src/components/hero-section.tsx",
+    "type": "Native responsive SVG report chart, not a logo",
+    "data_status": "Illustrative demonstration, not company results",
+    "external_image_request": false
   }
 }

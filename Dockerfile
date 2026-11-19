@@ -3,6 +3,9 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --include=dev
 COPY . .
+ARG RELEASE_COMMIT
+ARG RELEASE_TREE
+ARG RELEASE_DIRTY
 RUN npm run check && npm test && npm run build
 
 FROM node:24-bookworm-slim AS runtime

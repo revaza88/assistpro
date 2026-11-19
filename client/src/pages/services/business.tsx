@@ -165,14 +165,8 @@ export default function BusinessAssistServicePage() {
                     {t('services.business.ctaRequestConsultation')}
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" asChild className="h-auto min-h-12 whitespace-normal max-w-full border-brand-gold-500 text-brand-gold-500 hover:bg-brand-gold-500 hover:text-brand-blue-700 font-semibold shadow hover:shadow-lg text-base">
-                   <Link href="#statuses-info-section">
-                    {t('services.business.ctaLearnMoreStatuses')}
-                  </Link>
-                </Button>
               </div>
             </motion.section>
-            <div id="statuses-info-section" className="mt-10"></div> {/* This id is for the "Learn More" button scroll target */}
           </motion.article>
         </div>
       </main>

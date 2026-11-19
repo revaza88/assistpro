@@ -1,0 +1,304 @@
+{
+  "title": "ASSIST — Master source linkage verification",
+  "version": "2.2",
+  "verified_date": "2026-11-19",
+  "verdict": "TECHNICAL_PROVENANCE_VERIFIED",
+  "not_a_new_design_approval": true,
+  "current_usable_asset": "ASSIST_Locked_White_Native_1405px.png / existing assist-logo-original.png",
+  "historical_source_not_for_current_use": "1451x312 historical lockup contains the removed services descriptor; evidence only.",
+  "files": {
+    "frozen_original_jpeg": {
+      "size_bytes": 246997,
+      "dimensions": [
+        1536,
+        1152
+      ],
+      "mode": "RGB",
+      "transparent": false,
+      "file_sha256": "2dfb1fa3fd708cea52b90de36d65c7c04d85fb08951844bbd834ac1b0b106eda",
+      "decoded_rgb_sha256": "71d8c89813089010604b264bbae5338290c0989878012b9ca64b0bfd1b0628c9",
+      "historical_local_filename": "ASSIST_Master_Reference_V1.jpg"
+    },
+    "v1_2_reference_board": {
+      "size_bytes": 1170725,
+      "dimensions": [
+        1536,
+        1152
+      ],
+      "mode": "RGB",
+      "transparent": false,
+      "file_sha256": "f043b4cd95468a66c01e08d0018635b36b9f0265e161e1a4d482bc6a59d6a3a1",
+      "decoded_rgb_sha256": "e47444f8c80a3bebe77ada0c45a694c07ccac43ea1d93b50cd6eaaaacb211bc2",
+      "historical_local_filename": "ASSIST_V1_2_CR02_Georgian_Captions.png"
+    },
+    "historical_main_lockup_cr40": {
+      "size_bytes": 342065,
+      "dimensions": [
+        1451,
+        312
+      ],
+      "mode": "RGB",
+      "transparent": false,
+      "file_sha256": "9a5420d9dc1b1d0ab9341535c2ce96aa4e847f1385af95e730d5428089581394",
+      "decoded_rgb_sha256": "35fc11d9a3a2f82cbec789073326a63be594b7156668a0f554ec7fa36a3e14dc",
+      "historical_local_filename": "ASSIST_Reference_Main_Lockup_V1.png"
+    },
+    "historical_main_lockup_phase1": {
+      "size_bytes": 342065,
+      "dimensions": [
+        1451,
+        312
+      ],
+      "mode": "RGB",
+      "transparent": false,
+      "file_sha256": "9a5420d9dc1b1d0ab9341535c2ce96aa4e847f1385af95e730d5428089581394",
+      "decoded_rgb_sha256": "35fc11d9a3a2f82cbec789073326a63be594b7156668a0f554ec7fa36a3e14dc",
+      "historical_local_filename": "ASSIST_Reference_Main_Lockup_V1.png"
+    },
+    "cr35_clean_proof_cr40": {
+      "size_bytes": 242575,
+      "dimensions": [
+        1405,
+        235
+      ],
+      "mode": "RGB",
+      "transparent": false,
+      "file_sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e",
+      "decoded_rgb_sha256": "e17b52e7df6fe73283e4231dfffd46a3c9536de11e630d4e48e81b30d35cb60f",
+      "historical_local_filename": "ASSIST_CR35_Clean_Wordmark_Raster_PROOF.png"
+    },
+    "cr35_clean_proof_cr43": {
+      "size_bytes": 242575,
+      "dimensions": [
+        1405,
+        235
+      ],
+      "mode": "RGB",
+      "transparent": false,
+      "file_sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e",
+      "decoded_rgb_sha256": "e17b52e7df6fe73283e4231dfffd46a3c9536de11e630d4e48e81b30d35cb60f",
+      "historical_local_filename": "ASSIST_CR35_Clean_Wordmark_Raster_PROOF.png"
+    },
+    "cr43_native_logo": {
+      "size_bytes": 242575,
+      "dimensions": [
+        1405,
+        235
+      ],
+      "mode": "RGB",
+      "transparent": false,
+      "file_sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e",
+      "decoded_rgb_sha256": "e17b52e7df6fe73283e4231dfffd46a3c9536de11e630d4e48e81b30d35cb60f",
+      "historical_local_filename": "ASSIST_Locked_White_Native_1405px.png"
+    },
+    "current_package_logo": {
+      "size_bytes": 242575,
+      "dimensions": [
+        1405,
+        235
+      ],
+      "mode": "RGB",
+      "transparent": false,
+      "file_sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e",
+      "decoded_rgb_sha256": "e17b52e7df6fe73283e4231dfffd46a3c9536de11e630d4e48e81b30d35cb60f",
+      "historical_local_filename": "assist-logo-original.png"
+    }
+  },
+  "source_archives": [
+    {
+      "name": "ASSIST_Phase_01_Audit_Package.zip",
+      "sha256": "82555d77a3e966ec6a450f2abc41d306f89242e3d90809827cd65362872b24dc"
+    },
+    {
+      "name": "ASSIST_CR40_Production_Gate_Package.zip",
+      "sha256": "632583151a280c9257580467b85c0f5d3bf7e6ed4cc960d0118440ba4487c463"
+    },
+    {
+      "name": "ASSIST_CR43_Original_Use_Package.zip",
+      "sha256": "52f42afa25bddccaa55671438cae2f87c888ee8fb9f32801a1107d0241bcf9b6"
+    }
+  ],
+  "technical_checks": {
+    "historical_hash_matches_cr35_cr40": true,
+    "same_historical_bytes_in_two_archives": true,
+    "original_jpeg_hash_matches_phase1": true,
+    "v12_hash_matches_cr03_cr43": true,
+    "main_lockup_is_exact_rgb_crop_of_original_jpeg": true,
+    "main_lockup_is_exact_rgb_crop_of_v12_board": true,
+    "current_native_bytes_match_cr43_manifest": true,
+    "all_four_current_native_clean_copies_byte_identical": true,
+    "changes_confined_to_documented_background_cleanup": true,
+    "analysis_only_cleanup_and_crop_replay_exactly_matches_current_native": true,
+    "source_files_unchanged_after_analysis": true
+  },
+  "coordinate_convention": "zero-based [left, top, right, bottom]; right and bottom exclusive",
+  "relationships": {
+    "original_jpeg_or_v12_board_to_historical_lockup": {
+      "bbox": [
+        74,
+        48,
+        1525,
+        360
+      ],
+      "different_rgb_pixels": 0
+    },
+    "historical_lockup_to_native": {
+      "crop_bbox": [
+        15,
+        15,
+        1420,
+        250
+      ],
+      "raw_crop_is_identical": false,
+      "raw_crop_different_pixels": 1070,
+      "raw_crop_different_channels": 2960,
+      "difference_bbox_in_native": [
+        0,
+        0,
+        83,
+        37
+      ],
+      "difference_bbox_in_historical_source": [
+        15,
+        15,
+        98,
+        52
+      ],
+      "documented_cleanup_bbox_in_historical_source": [
+        0,
+        0,
+        98,
+        52
+      ],
+      "observed_changed_pixel_rgb": [
+        253,
+        253,
+        253
+      ],
+      "all_pixels_outside_cleanup_equal": true
+    },
+    "in_memory_cleanup_replay": {
+      "fill_bbox": [
+        0,
+        0,
+        98,
+        52
+      ],
+      "fill_rgb": [
+        253,
+        253,
+        253
+      ],
+      "crop_bbox": [
+        15,
+        15,
+        1420,
+        250
+      ],
+      "different_pixels": 0,
+      "rgb_sha256": "e17b52e7df6fe73283e4231dfffd46a3c9536de11e630d4e48e81b30d35cb60f",
+      "image_file_exported": false
+    }
+  },
+  "evidence_levels": {
+    "user_constraint": {
+      "decision": "დავტოვოთ ორიგინალი",
+      "decision_time": "2026-11-17T17:26:49Z",
+      "provenance": "Current-task retrieval of the explicit prior user decision; separate from artifact assertions",
+      "scope": "Retain original Master V1.2; reject CR-42 reconstruction; does not itself state a file hash or approve new production formats."
+    },
+    "documentary_mapping": "CR-43 Decision/QA and CR-44 book map original-selected use to named1405x235 RGBPNG. These are working records, not a separate user signature on each file.",
+    "measured_binary_evidence": "Recovered actual archive member bytes, matching documented hashes, zero-difference comparisons outside the documented cleanup, byte-identical clean/native/current copies."
+  },
+  "closed": [
+    "Historical source identity and hash",
+    "Original/V1.2-to-current-native technical provenance",
+    "Exact current existing asset identity"
+  ],
+  "not_closed_by_this_check": [
+    "Final vector approval",
+    "New transparent, monochrome, dark-background or isolated-symbol variant approval",
+    "Physical print/ICC/CMYK approval",
+    "Target-device readability approval",
+    "Approval of the entire new brandbook release"
+  ],
+  "sources": [
+    {
+      "id": "phase1",
+      "name": "ASSIST_Phase_01_Audit_Package.zip",
+      "library_file_id": "libfile_9954f4d505048191871a507d0c84392f",
+      "file_id": "file_00000000a65881f484374a09ab468f02",
+      "members_used": [
+        "ASSIST_Master_Reference_V1.jpg",
+        "ASSIST_Reference_Main_Lockup_V1.png",
+        "ASSIST_Master_Manifest_V1.json"
+      ]
+    },
+    {
+      "id": "cr03",
+      "name": "ASSIST_CR03_Technical_Report.md",
+      "library_file_id": "libfile_8144e373ff708191a9c05cd73c1c496f",
+      "file_id": "file_00000000f03482109c3f4e564857b151",
+      "claim": "V1.2 reference board filename/hash; A and I detail coordinates; candidate vectors not approved"
+    },
+    {
+      "id": "cr35",
+      "name": "ASSIST_CR35_Vector_Handoff_Spec.md",
+      "library_file_id": "libfile_25f96c7e6a3c819190a11199efdeb6dd",
+      "file_id": "file_0000000095dc81f6a90e74ce7cea4a7b",
+      "claim": "1451x312 source and hash; only upper-left x=0..97,y=0..51 cleanup; proof not vector or print release"
+    },
+    {
+      "id": "cr40",
+      "name": "ASSIST_CR40_Production_Gate.md",
+      "library_file_id": "libfile_f22883274cb8819195dbc4aadd8ed08f",
+      "file_id": "file_0000000036f08210a449e539a4ad9d20",
+      "claim": "Historical source hash and production hold"
+    },
+    {
+      "id": "cr40_package",
+      "name": "ASSIST_CR40_Production_Gate_Package.zip",
+      "library_file_id": "libfile_59b44ba2dac48191a6f7804d4e1d0ae9",
+      "file_id": "file_00000000d6e08210831d45d737e52bca",
+      "members_used": [
+        "ASSIST_Reference_Main_Lockup_V1.png",
+        "ASSIST_CR35_Clean_Wordmark_Raster_PROOF.png",
+        "ASSIST_CR40_Manifest.json"
+      ]
+    },
+    {
+      "id": "cr43",
+      "name": "ASSIST_CR43_Original_Use_Package.zip",
+      "library_file_id": "libfile_45e8d66a4d448191bf1538934120a5a0",
+      "file_id": "file_0000000060c48230b3c9abd6eedfad8b",
+      "members_used": [
+        "01_REFERENCE/ASSIST_V1_2_CR02_Georgian_Captions.png",
+        "01_REFERENCE/ASSIST_CR35_Clean_Wordmark_Raster_PROOF.png",
+        "02_ORIGINAL_PNG/ASSIST_Locked_White_Native_1405px.png",
+        "03_RULES/Decision_CR43.md",
+        "03_RULES/Asset_Register_and_QA.json",
+        "manifest_sha256.json"
+      ]
+    },
+    {
+      "id": "cr44",
+      "name": "ASSIST_CR44_Brand_Book_Original_v0_10.pdf",
+      "library_file_id": "libfile_be2f4a214a408191a35974e5c2b79cf6",
+      "file_id": "file_000000009ffc820abc38b8c7892cc666",
+      "pages_used": [
+        1,
+        2,
+        3,
+        6,
+        10
+      ],
+      "claim": "Native1405x235 current original-use asset; excludes rejected/unapproved variants; references user retain-original decision"
+    },
+    {
+      "id": "native_library",
+      "name": "ASSIST_Locked_White_Native_1405px.png",
+      "library_file_id": "libfile_4c77799c82b0819180ad62372650c140",
+      "file_id": "file_000000003fec822fa5791a10f0eefa47"
+    }
+  ]
+}

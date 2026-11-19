@@ -1,23 +1,35 @@
-/* ASSIST handoff 1.0 | 2026-11-18
- * Source: ASSIST_Brand_Guidelines_Digital_v1_0.pdf, pages 4-5.
- * Status: documented reference values, not a new approved website theme.
- * Additive declarations only. This file is not imported automatically.
- * Adapt names/locations to the current site's styling system when integrating.
- * Font binaries and @font-face rules are intentionally not supplied.
- * Never use these tokens to redraw or recolor the logo image.
+/* ASSIST Brand System 2.2 — documented web reference, 2026-11-19.
+ * Source: the web 2.0 values retained by the 2.2 brand package.
+ * Reference only: do not import this global stylesheet into the application.
+ * Map roles into the existing runtime theme and validate each theme separately.
+ * UI values do not recolor the original logo; dark adaptations are site proposals.
  */
 :root {
-  --assist-brand-navy: #0B1B4D;
-  --assist-brand-purple: #6A00FF;
-  --assist-brand-purple-secondary: #8A3DFF;
-  --assist-brand-lilac: #D9B3FF;
-  --assist-brand-white: #FFFFFF;
-
-  --assist-font-georgian: "Noto Sans Georgian", sans-serif;
-  --assist-font-latin: "Montserrat", sans-serif;
+  --canvas: #FDFDFD;
+  --surface: #F4F4F8;
+  --white: #FFFFFF;
+  --ink: #0B1B4D;
+  --muted: #5A6377;
+  --action: #6F2ED6;
+  --action-hover: #5321A8;
+  --action-pressed: #431A88;
+  --action-tint: #F1EAFB;
+  --rule: #D9DDE7;
+  --control: #7A8394;
+  --focus: #6F2ED6;
+  --success: #16694C;
+  --success-surface: #EAF6EF;
+  --error: #B42332;
+  --error-surface: #FFF0F2;
+  --warning: #805500;
+  --warning-surface: #FFF7E5;
+  --disabled: #DDE1EA;
+  --font-body: "Noto Sans Georgian", "Noto Sans", sans-serif;
+  --font-latin: "Noto Sans", sans-serif;
+  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
+  --space-6: 1.5rem; --space-8: 2rem; --space-12: 3rem; --space-16: 4rem;
+  --space-24: 6rem; --space-32: 8rem;
+  --radius-control: .375rem; --radius-group: .75rem;
+  --content-max: 77.5rem; --motion-fast: 150ms;
+  --focus-width: 3px; --focus-offset: 3px;
 }
-
-/* Semantic roles (button, link, focus, disabled, background) remain an
- * implementation choice in the existing site. Validate actual contrast,
- * Georgian text, responsive layout, and font loading after integration.
- */

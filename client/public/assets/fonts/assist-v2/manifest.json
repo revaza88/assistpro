@@ -1,0 +1,68 @@
+[
+  {
+    "file": "NotoSansGeorgian-Regular.woff2",
+    "family": "NotoSansGeorgian",
+    "weight": 400,
+    "license": "SIL Open Font License 1.1",
+    "source_ttf": "NotoSansGeorgian-Regular.ttf",
+    "format": "WOFF2",
+    "subset": "Georgian, Latin, Cyrillic, punctuation, currency and symbols available in source",
+    "bytes": 18024,
+    "sha256": "f95323085cbeb54900d769495efee4bd32ea4b83891dbf227b3289399434d88d",
+    "source_package": "ASSIST_Brand_System_v2_2.zip",
+    "source_path": "reference/assets/fonts/NotoSansGeorgian-Regular.woff2",
+    "verified_script_samples": [
+      "Georgian"
+    ]
+  },
+  {
+    "file": "NotoSansGeorgian-Bold.woff2",
+    "family": "NotoSansGeorgian",
+    "weight": 700,
+    "license": "SIL Open Font License 1.1",
+    "source_ttf": "NotoSansGeorgian-Bold.ttf",
+    "format": "WOFF2",
+    "subset": "Georgian, Latin, Cyrillic, punctuation, currency and symbols available in source",
+    "bytes": 18432,
+    "sha256": "1b855ec3a0f8b65260319b2b5042cfb138a05e5f1ef686d517bb4fb2897a3b45",
+    "source_package": "ASSIST_Brand_System_v2_2.zip",
+    "source_path": "reference/assets/fonts/NotoSansGeorgian-Bold.woff2",
+    "verified_script_samples": [
+      "Georgian"
+    ]
+  },
+  {
+    "file": "NotoSans-Regular.woff2",
+    "family": "NotoSans",
+    "weight": 400,
+    "license": "SIL Open Font License 1.1",
+    "source_ttf": "NotoSans-Regular.ttf",
+    "format": "WOFF2",
+    "subset": "Georgian, Latin, Cyrillic, punctuation, currency and symbols available in source",
+    "bytes": 70620,
+    "sha256": "335be51f607686d417e3fcf5c256c8fcdc90945d6b8f4b1681a62d5f414d07db",
+    "source_package": "ASSIST_Brand_System_v2_2.zip",
+    "source_path": "reference/assets/fonts/NotoSans-Regular.woff2",
+    "verified_script_samples": [
+      "Latin",
+      "Cyrillic"
+    ]
+  },
+  {
+    "file": "NotoSans-Bold.woff2",
+    "family": "NotoSans",
+    "weight": 700,
+    "license": "SIL Open Font License 1.1",
+    "source_ttf": "NotoSans-Bold.ttf",
+    "format": "WOFF2",
+    "subset": "Georgian, Latin, Cyrillic, punctuation, currency and symbols available in source",
+    "bytes": 69696,
+    "sha256": "0b5745eecf4f53b39115f458dd3537f2ebe75750d7b652c8980a8caee05da197",
+    "source_package": "ASSIST_Brand_System_v2_2.zip",
+    "source_path": "reference/assets/fonts/NotoSans-Bold.woff2",
+    "verified_script_samples": [
+      "Latin",
+      "Cyrillic"
+    ]
+  }
+]

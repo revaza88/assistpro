@@ -1,5 +1,12 @@
 # CloudPanel Deployment Guide for AssistPro
 
+> **Historical template, not the confirmed configuration of assist.ge.**
+> The private IP, account, paths, database and tokens below are old examples.
+> Follow [docs/RELEASE.md](docs/RELEASE.md) for the current Node 24+, disabled-intake
+> release process. Do not create a database or apply these example settings to a
+> live server. The actual hosting account/process/release directory must first
+> be identified. A GitHub push alone is not a deployment.
+
 ## 📋 Pre-deployment Checklist
 
 ### ✅ Prerequisites Check:
