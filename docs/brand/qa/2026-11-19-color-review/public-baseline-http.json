@@ -1,0 +1,224 @@
+{
+  "ready": true,
+  "checked_at": "2026-11-19T16:57:49.393Z",
+  "origin": "https://assist.ge",
+  "merge_commit": "8ebae9bd15d2824bb082a1c48f0f22b9046de58f",
+  "known_tested_runtime": "dba65b88a22d6bbc953a10cc5063352667753c9c",
+  "local_runtime_tree": "264518fa0939425c23bb935241668ef4f21efdb6",
+  "public_manifest": {
+    "schema_version": 1,
+    "commit": null,
+    "tree": null,
+    "dirty": null,
+    "built_at": "2026-11-19T16:37:31.470Z",
+    "assets": [
+      {
+        "path": "/assets/createLucideIcon-CxNr_4aI.js",
+        "sha256": "f490bae87a094c0b428d03f7804245bb6da13b6162ead7e937b5465d1e6d9fd8",
+        "bytes": 886
+      },
+      {
+        "path": "/assets/index-BTurmdoC.js",
+        "sha256": "09d7677a28182257de6e1c6b36e4bdb208a998aacf1683ac0e243e3fe723019c",
+        "bytes": 329031
+      },
+      {
+        "path": "/assets/index-DWdCzlLb.css",
+        "sha256": "698546cef6b89b1953127385de2bc6b9b118a098da78162778a8635412cad667",
+        "bytes": 51733
+      },
+      {
+        "path": "/assets/jsx-runtime-Dn_YclF2.js",
+        "sha256": "69d8d9b5752d3eea0762c1d71123a64791e4fb7196449a9d772feae1eb0a43b4",
+        "bytes": 7968
+      },
+      {
+        "path": "/theme-init.js",
+        "sha256": "c93d04eda293e648cc053acbd9890f2bf36d46656e5f0c8fe5b0405c3d6fb697",
+        "bytes": 522
+      }
+    ]
+  },
+  "pages": [
+    {
+      "route": "/",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/accounting",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/tax",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/legal",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/business",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/audit",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/hr",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/industries",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/calculator",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/contact",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/faq",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/about",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/team",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/career",
+      "status": 200,
+      "one_h1": true,
+      "intake_disabled": true,
+      "noindex": true,
+      "csp_nonce_matches": true
+    }
+  ],
+  "verified_assets": [
+    {
+      "path": "/assets/createLucideIcon-CxNr_4aI.js",
+      "bytes": 886,
+      "sha256": "f490bae87a094c0b428d03f7804245bb6da13b6162ead7e937b5465d1e6d9fd8"
+    },
+    {
+      "path": "/assets/index-BTurmdoC.js",
+      "bytes": 329031,
+      "sha256": "09d7677a28182257de6e1c6b36e4bdb208a998aacf1683ac0e243e3fe723019c"
+    },
+    {
+      "path": "/assets/index-DWdCzlLb.css",
+      "bytes": 51733,
+      "sha256": "698546cef6b89b1953127385de2bc6b9b118a098da78162778a8635412cad667"
+    },
+    {
+      "path": "/assets/jsx-runtime-Dn_YclF2.js",
+      "bytes": 7968,
+      "sha256": "69d8d9b5752d3eea0762c1d71123a64791e4fb7196449a9d772feae1eb0a43b4"
+    },
+    {
+      "path": "/theme-init.js",
+      "bytes": 522,
+      "sha256": "c93d04eda293e648cc053acbd9890f2bf36d46656e5f0c8fe5b0405c3d6fb697"
+    },
+    {
+      "path": "/assets/page-system-B8eCfHsP.css",
+      "bytes": 9728,
+      "sha256": "24b8b7f8acdce5ea3313c80540442dd1bc85ceedba5c761d49a378afdcf6fa57"
+    },
+    {
+      "path": "/assets/en-CMnXSWaq.js",
+      "bytes": 21456,
+      "sha256": "9a55cac6febf3626687ee72cb93ae30dd5a29766fdf67e5c2ee39635d66af50c"
+    },
+    {
+      "path": "/assets/ru-C8QpEFC0.js",
+      "bytes": 38075,
+      "sha256": "829b0d7bc0ca582c13cd59eb23c88c87804722ac2495c8ee947ef2cbb4352320"
+    },
+    {
+      "path": "/assets/brand/ASSIST_Locked_White_Native_1405px.png",
+      "bytes": 242575,
+      "sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e"
+    }
+  ],
+  "fonts_http200": 4,
+  "statuses": {
+    "/health": 200,
+    "/does-not-exist": 404,
+    "/robots.txt": 200,
+    "/sitemap.xml": 503
+  },
+  "public_write_requests": 0,
+  "latest_ka_about_copy_verified": true,
+  "exact_public_commit_identity": false,
+  "strict_identity_limitation": "Existing hosting build still omits Git source metadata. Asset byte identity and changed Georgian prerender verified independently; strict audit-release must remain failing.",
+  "new_browser_visual_check": false,
+  "browser_limitation": "Previous Computer Use ended because Windows browser URL could not be verified; this publication check is read-only HTTP, not visual acceptance."
+}

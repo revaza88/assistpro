@@ -18,6 +18,7 @@ export default function HeroSection() {
       <div className="report-scene" role="img" aria-label={copy.illustration + ' — ' + copy.report}>
         <div className="report-paper" aria-hidden="true"><div className="report-meta"><span>{copy.overview}</span><span className="report-index">01 — 06</span></div><div className="report-title">{copy.report}</div><p className="report-caption">{copy.chart}</p><strong className="report-amount">₾ 48,250</strong>
           <svg className="report-chart" viewBox="0 0 360 148" fill="none" aria-hidden="true" focusable="false">
+            <defs><pattern id="report-active-hatch" patternUnits="userSpaceOnUse" width="8" height="8"><rect width="8" height="8" className="report-chart-active-fill" /><path d="M-2 2L2-2M0 8L8 0M6 10L10 6" className="report-chart-hatch" /></pattern></defs>
             {[36,76,116].map(y => <path key={y} d={`M0 ${y}H360`} className="report-chart-rule" />)}
             {[42,60,52,88,114,102].map((height,index) => <rect key={index} x={index*61+6} y={136-height} width="40" height={height} rx="5" className={index === 4 ? 'report-chart-bar report-chart-bar-active' : 'report-chart-bar'} />)}
             <path d="M26 91L87 73L148 81L209 45L270 19L331 31" className="report-chart-trend" />

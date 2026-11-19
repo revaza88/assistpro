@@ -1,0 +1,265 @@
+[
+  {
+    "case": "before-public-dark-desktop",
+    "document": "426 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: https://assist.ge/ ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "სისტემური",
+    "time": "2026-11-19T16:54:10.654Z"
+  },
+  {
+    "case": "before-public-light-desktop",
+    "document": "426 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: https://assist.ge/ ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T16:54:48.154Z"
+  },
+  {
+    "case": "before-public-light-mobile",
+    "document": "426 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: https://assist.ge/ ID: RootWebArea",
+    "width": "390",
+    "height": "844",
+    "theme": "ღია",
+    "time": "2026-11-19T16:56:16.744Z"
+  },
+  {
+    "case": "before-public-services",
+    "document": "1389 document მომსახურებები | ასისტი Value: https://assist.ge/services ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T16:56:47.251Z"
+  },
+  {
+    "case": "before-public-faq",
+    "document": "1553 document ხშირი კითხვები | ასისტი Value: https://assist.ge/faq ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T16:56:56.709Z"
+  },
+  {
+    "case": "before-public-footer",
+    "document": "1553 document ხშირი კითხვები | ასისტი Value: https://assist.ge/faq ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T16:56:57.186Z"
+  },
+  {
+    "case": "before-public-contact",
+    "document": "1805 document კონტაქტი და მოკლე მოთხოვნა | ასისტი Value: https://assist.ge/contact ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T16:57:10.574Z"
+  },
+  {
+    "case": "before-public-calculator",
+    "document": "2025 document ფასის დემო კალკულატორი | ასისტი Value: https://assist.ge/calculator ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T16:57:23.739Z"
+  },
+  {
+    "case": "before-public-calculator-result",
+    "document": "2025 document ფასის დემო კალკულატორი | ასისტი Value: https://assist.ge/calculator ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T16:57:24.134Z"
+  },
+  {
+    "case": "before-public-light-mobile",
+    "document": "2299 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: https://assist.ge/ ID: RootWebArea",
+    "width": "390",
+    "height": "844",
+    "theme": "ღია",
+    "time": "2026-11-19T17:02:33.428Z"
+  },
+  {
+    "case": "before-local-light-desktop",
+    "document": "2531 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: http://127.0.0.1:5016/ ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T17:03:16.908Z"
+  },
+  {
+    "case": "palette-directions-abc",
+    "document": "2976 document ASSIST · A / B / C ფერების შედარება Value: http://127.0.0.1:5017/__qa/palettes ID: RootWebArea",
+    "width": "1440",
+    "height": "1100",
+    "time": "2026-11-19T17:05:06.499Z"
+  },
+  {
+    "case": "after-a-light-desktop",
+    "document": "3312 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: http://127.0.0.1:5016/ ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T17:06:59.379Z"
+  },
+  {
+    "case": "after-primary-keyboard-focus-desktop",
+    "document": "3312 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: http://127.0.0.1:5016/ ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T17:08:13.436Z"
+  },
+  {
+    "case": "after-secondary-keyboard-focus-desktop",
+    "document": "3312 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: http://127.0.0.1:5016/ ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T17:08:36.932Z"
+  },
+  {
+    "case": "after-calculator-desktop",
+    "document": "3312 document ფასის დემო კალკულატორი | ასისტი Value: http://127.0.0.1:5016/calculator ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T17:08:49.710Z"
+  },
+  {
+    "case": "after-calculator-result-desktop",
+    "document": "3312 document ფასის დემო კალკულატორი | ასისტი Value: http://127.0.0.1:5016/calculator ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T17:08:50.116Z"
+  },
+  {
+    "case": "after-services-desktop",
+    "document": "3812 document მომსახურებები | ასისტი Value: http://127.0.0.1:5016/services ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T17:09:19.978Z"
+  },
+  {
+    "case": "after-faq-desktop",
+    "document": "3977 document ხშირი კითხვები | ასისტი Value: http://127.0.0.1:5016/faq ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T17:09:33.124Z"
+  },
+  {
+    "case": "after-footer-desktop",
+    "document": "3977 document ხშირი კითხვები | ასისტი Value: http://127.0.0.1:5016/faq ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T17:09:33.612Z"
+  },
+  {
+    "case": "after-contact-disabled-desktop",
+    "document": "4061 document კონტაქტი და მოკლე მოთხოვნა | ასისტი Value: http://127.0.0.1:5016/contact ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T17:11:26.239Z"
+  },
+  {
+    "case": "form-dark-normal-fixture",
+    "document": "4436 document კონტაქტი და მოკლე მოთხოვნა | ასისტი Value: http://127.0.0.1:5017/contact?sector=education&services=bookkeeping ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "სისტემური",
+    "time": "2026-11-19T17:12:50.017Z"
+  },
+  {
+    "case": "form-dark-error-focus-fixture",
+    "document": "4436 document კონტაქტი და მოკლე მოთხოვნა | ასისტი Value: http://127.0.0.1:5017/contact?sector=education&services=bookkeeping ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "სისტემური",
+    "time": "2026-11-19T17:13:15.489Z"
+  },
+  {
+    "case": "form-dark-server-error-fixture",
+    "document": "4436 document კონტაქტი და მოკლე მოთხოვნა | ასისტი Value: http://127.0.0.1:5017/contact?sector=education&services=bookkeeping ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "სისტემური",
+    "time": "2026-11-19T17:13:27.703Z"
+  },
+  {
+    "case": "form-dark-loading-fixture",
+    "document": "4436 document კონტაქტი და მოკლე მოთხოვნა | ასისტი Value: http://127.0.0.1:5017/contact?sector=education&services=bookkeeping ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "სისტემური",
+    "time": "2026-11-19T17:13:59.606Z"
+  },
+  {
+    "case": "form-dark-success-fixture",
+    "document": "4436 document კონტაქტი და მოკლე მოთხოვნა | ასისტი Value: http://127.0.0.1:5017/contact?sector=education&services=bookkeeping ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "სისტემური",
+    "time": "2026-11-19T17:19:06.545Z"
+  },
+  {
+    "case": "form-light-error-mobile-fixture",
+    "document": "33415 document კონტაქტი და მოკლე მოთხოვნა | ასისტი Value: http://127.0.0.1:5017/contact?sector=education&services=bookkeeping ID: RootWebArea",
+    "width": "390",
+    "height": "844",
+    "theme": "ღია",
+    "time": "2026-11-19T17:22:58.792Z"
+  },
+  {
+    "case": "after-a-light-mobile",
+    "document": "45573 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: http://127.0.0.1:5016/ ID: RootWebArea",
+    "width": "390",
+    "height": "844",
+    "theme": "ღია",
+    "time": "2026-11-19T17:23:06.040Z"
+  },
+  {
+    "case": "after-a-light-mobile",
+    "document": "45573 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: http://127.0.0.1:5016/ ID: RootWebArea",
+    "width": "390",
+    "height": "844",
+    "theme": "ღია",
+    "time": "2026-11-19T17:23:36.336Z"
+  },
+  {
+    "case": "after-a-light-tablet",
+    "document": "45573 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: http://127.0.0.1:5016/ ID: RootWebArea",
+    "width": "768",
+    "height": "1024",
+    "theme": "ღია",
+    "time": "2026-11-19T17:23:53.940Z"
+  },
+  {
+    "case": "after-a-light-desktop",
+    "document": "45573 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: http://127.0.0.1:5016/ ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T17:24:06.537Z"
+  },
+  {
+    "case": "after-a-dark-desktop",
+    "document": "45573 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: http://127.0.0.1:5016/ ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "მუქი",
+    "time": "2026-11-19T17:24:15.665Z"
+  },
+  {
+    "case": "after-contact-disabled-desktop",
+    "document": "66846 document კონტაქტი და მოკლე მოთხოვნა | ასისტი Value: http://127.0.0.1:5016/contact ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T17:24:25.880Z"
+  }
+]

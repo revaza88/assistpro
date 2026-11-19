@@ -1,0 +1,66 @@
+[
+  {
+    "case": "after-secondary-transparent-normal",
+    "values": [
+      "1972 tree item (selectable) CSS property name: background-color CSS property value: rgba(0, 0, 0, 0)",
+      "1979 tree item (selectable) CSS property name: border-bottom-color CSS property value: rgb(116, 111, 105)",
+      "3632 tree item (selectable) CSS property name: border-left-color CSS property value: rgb(116, 111, 105)",
+      "3639 tree item (selectable) CSS property name: border-right-color CSS property value: rgb(116, 111, 105)",
+      "3646 tree item (selectable) CSS property name: border-top-color CSS property value: rgb(116, 111, 105)",
+      "3653 tree item (selectable) CSS property name: color CSS property value: rgb(11, 27, 77)",
+      "3655 tree item (selectable) CSS property name: color-scheme CSS property value: light",
+      "3659 tree item (selectable) CSS property name: text-decoration-color CSS property value: rgb(11, 27, 77)",
+      "3666 tree item (selectable) CSS property name: transition-property CSS property value: background-color, border-color, color",
+      "3670 tree item (selectable) CSS property name: -webkit-tap-highlight-color CSS property value: rgba(0, 0, 0, 0)"
+    ],
+    "time": "2026-11-19T17:08:12.692Z"
+  },
+  {
+    "case": "primary-header-normal",
+    "values": [
+      "1972 tree item (selectable) CSS property name: background-color CSS property value: rgb(111, 46, 214)",
+      "1979 tree item (selectable) CSS property name: border-bottom-color CSS property value: rgb(148, 101, 229)",
+      "3632 tree item (selectable) CSS property name: border-left-color CSS property value: rgb(148, 101, 229)",
+      "3639 tree item (selectable) CSS property name: border-right-color CSS property value: rgb(148, 101, 229)",
+      "3646 tree item (selectable) CSS property name: border-top-color CSS property value: rgb(148, 101, 229)",
+      "3653 tree item (selectable) CSS property name: color CSS property value: rgb(255, 255, 255)",
+      "3655 tree item (selectable) CSS property name: color-scheme CSS property value: light",
+      "3659 tree item (selectable) CSS property name: text-decoration-color CSS property value: rgb(255, 255, 255)",
+      "4734 tree item (selectable) CSS property name: transition-property CSS property value: background-color, border-color, color",
+      "4738 tree item (selectable) CSS property name: -webkit-tap-highlight-color CSS property value: rgba(0, 0, 0, 0)"
+    ],
+    "time": "2026-11-19T17:14:55.887Z"
+  },
+  {
+    "case": "primary-hover-forced-devtools",
+    "values": [
+      "8337 tree item (selectable) CSS property name: background-color CSS property value: rgb(83, 33, 168)",
+      "8344 tree item (selectable) CSS property name: border-bottom-color CSS property value: rgb(148, 101, 229)",
+      "8351 tree item (selectable) CSS property name: border-left-color CSS property value: rgb(148, 101, 229)",
+      "8358 tree item (selectable) CSS property name: border-right-color CSS property value: rgb(148, 101, 229)",
+      "8365 tree item (selectable) CSS property name: border-top-color CSS property value: rgb(148, 101, 229)",
+      "8372 tree item (selectable) CSS property name: color CSS property value: rgb(255, 255, 255)",
+      "8379 tree item (selectable) CSS property name: color-scheme CSS property value: light",
+      "8383 tree item (selectable) CSS property name: text-decoration-color CSS property value: rgb(255, 255, 255)",
+      "8390 tree item (selectable) CSS property name: transition-property CSS property value: background-color, border-color, color",
+      "8394 tree item (selectable) CSS property name: -webkit-tap-highlight-color CSS property value: rgba(0, 0, 0, 0)"
+    ],
+    "time": "2026-11-19T17:16:29.204Z"
+  },
+  {
+    "case": "primary-pressed-forced-devtools",
+    "values": [
+      "11997 tree item (selectable) CSS property name: background-color CSS property value: rgb(67, 26, 136)",
+      "12004 tree item (selectable) CSS property name: border-bottom-color CSS property value: rgb(148, 101, 229)",
+      "12011 tree item (selectable) CSS property name: border-left-color CSS property value: rgb(148, 101, 229)",
+      "12018 tree item (selectable) CSS property name: border-right-color CSS property value: rgb(148, 101, 229)",
+      "12025 tree item (selectable) CSS property name: border-top-color CSS property value: rgb(148, 101, 229)",
+      "12032 tree item (selectable) CSS property name: color CSS property value: rgb(255, 255, 255)",
+      "12039 tree item (selectable) CSS property name: color-scheme CSS property value: light",
+      "12043 tree item (selectable) CSS property name: text-decoration-color CSS property value: rgb(255, 255, 255)",
+      "12050 tree item (selectable) CSS property name: transition-property CSS property value: background-color, border-color, color",
+      "12054 tree item (selectable) CSS property name: -webkit-tap-highlight-color CSS property value: rgba(0, 0, 0, 0)"
+    ],
+    "time": "2026-11-19T17:16:50.516Z"
+  }
+]

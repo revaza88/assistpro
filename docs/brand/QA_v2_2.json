@@ -1959,5 +1959,76 @@
     },
     "strict_audit_release_passed": false,
     "clock_note": "Local verification and hosting build clocks differ; deployment is established by downloaded file hashes, not timestamp ordering."
+  },
+  "color_review_2026_11_19": {
+    "status": "staging_proposal_A_pending_user_approval_no_merge_no_public_deploy",
+    "branch": "codex/assist-color-review-a",
+    "base_revision": "651ac11b875f01f811eb96d43e2913cd1383c999",
+    "report": "qa/2026-11-19-color-review/README.md",
+    "browser": "Chrome 157.0.8103.79, Windows native UI, responsive emulation",
+    "mode": "production loopback 5016",
+    "widths_inspected": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "screenshots": "qa/2026-11-19-color-review/",
+    "computed_colors": "qa/2026-11-19-color-review/browser-computed.json",
+    "contrast": "qa/2026-11-19-color-review/contrast-report.json",
+    "checks": {
+      "typescript": "pass",
+      "tests": {
+        "total": 39,
+        "pass": 39,
+        "fail": 0,
+        "skip": 0
+      },
+      "build": "pass;15 prerenders+404",
+      "smoke": "pass;loopback5016",
+      "audit_web": "pass;15 routes",
+      "logo_sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e",
+      "ci": "not run for local staging branch",
+      "audit_release": "pass; clean e039f2f, 5 downloaded initial asset fingerprints"
+    },
+    "form_simulation": {
+      "upstream_intake": "disabled",
+      "calls": 3,
+      "simulated_statuses": [
+        503,
+        503,
+        201
+      ],
+      "stored_records": 0,
+      "outbound_notifications": 0
+    },
+    "limits": [
+      "User palette acceptance pending",
+      "No physical mobile device or assistive technology",
+      "Full three-language/breakpoint matrix not repeated",
+      "Not a full WCAG certification"
+    ],
+    "publication": {
+      "main_updated": false,
+      "assist_ge_deployed": false,
+      "intake_enabled": false,
+      "indexing_enabled": false
+    },
+    "validated_app_revision": "e039f2f0a451d4554373cb1b88f3cec94db7a589",
+    "validated_app_tree": "db75a8c07e67f24a7dfd97900e17ada5c6bdf16c",
+    "preview_state": "5016 retained for local review; isolated 5017 fixture stopped"
+  },
+  "latest_review": "color_review_publication",
+  "color_review_publication": {
+    "date": "2026-11-19",
+    "status": "user_authorized_push_merge_and_existing_publication_pending_verification",
+    "user_request": "დაფუშე გითჰაბზე და გაუშვი სრულყოფილად",
+    "branch": "codex/assist-color-review-a",
+    "uploaded_code_commit": "5173122be18b0ed46c79abc73824d1a0b01008b3",
+    "tree_identity_verified": "305e3c5a08b00b39e24e1740b023a876644ad534",
+    "database": false,
+    "intake": "disabled",
+    "indexing": false,
+    "outbound_notifications": false
   }
 }
