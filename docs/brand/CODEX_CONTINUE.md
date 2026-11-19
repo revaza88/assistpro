@@ -1,3 +1,17 @@
+## ფერების A ვერსია გამოქვეყნებულია — 19 ნოემბერი 2026
+
+[PR #3](https://github.com/revaza88/assistpro/pull/3) მომხმარებლის მოთხოვნით გაერთიანდა main-ში: [8c27b27](https://github.com/revaza88/assistpro/commit/8c27b2734fb1d0963d74e092b9a675613a43cb26). არსებული გამოქვეყნების პროცესით **https://assist.ge-ზე ახალი ფერები რეალურად აისახა**. Master V1.2 PNG, სლოგანი, ტექსტები, განლაგება, API და ფორმა/კალკულატორის ლოგიკა უცვლელია. ახალი ჰოსტინგი/DNS/ბაზა არ შექმნილა.
+
+GitHub-ის ზუსტ წყაროზე `267107e191cd3d12548b2e7208439f76792f297f` თავიდან წარმატებით შესრულდა TypeScript,39/39 ტესტი,production build15+404,disabled-intake smoke და clean audit-release (5 საწყისი asset). Merge-ის runtime ფაილები უცვლელია. CI status/workflow runs0; ადგილობრივი ტესტები CI-ის წარმატებად არ ჩაითვალოს.
+
+საჯარო read-only HTTP:15 გვერდი200/ერთი H1/noindex/intake disabled/CSP nonce;9 ჩამოტვირთული asset-ის ზომა/SHA-256 ემთხვევა შემოწმებულ build-ს, მათ შორის CSS/JS,inner CSS,EN/RU და Master PNG;4 ფონტი200;health200,404,robots200,sitemap503. Public write0. [მანქანური ანგარიში](qa/2026-11-19-color-review/public-publication.json).
+
+ახალი საჯარო Chrome157 შემოწმება:1440×900 და390×844 responsive emulation; ახალი თბილი ფონი/navy სათაური/იისფერი primary და შტრიხიანი გრაფიკი რეალურად ჩანს. Home primary ხსნის industries-ს,secondary — calculator-ს; contact-ის გამორთული რეჟიმიც ვიზუალურად შემოწმდა. [დესკტოპი](qa/2026-11-19-color-review/published-desktop.png) · [მობილური](qa/2026-11-19-color-review/published-mobile.png) · [browser ჩანაწერი](qa/2026-11-19-color-review/public-browser-captures.json). ფიზიკური მოწყობილობა/AT არ გამოყენებულა; სრული წინა მატრიცა არ გამეორებულა.
+
+**დარჩენილი ტექნიკური საკითხი:**live release.json-ის commit/tree/dirty კვლავ null-ია, რადგან ჰოსტინგის build-ს Git metadata არ მიეწოდება. Strict public audit-release ამიტომ ვერ გადის და არ შესუსტებულა; ახალი ფაილების რეალური თანხვედრა დამოუკიდებლად დადასტურებულია. ჰოსტინგის metadata კონფიგურაცია ცალკე დარჩა. ბაზა/production intake/გარე შეტყობინებები და ინდექსაცია არ გააქტიურებულა. ქვემოთ staging-only ჩანაწერი ისტორიულია და ამ გამოქვეყნებას აღარ ზღუდავს.
+
+---
+
 ## ფერების A ვერსიის გამოქვეყნების ნებართვა — 19 ნოემბერი 2026
 
 მომხმარებლის ახალი მოთხოვნა — „დაფუშე გითჰაბზე და გაუშვი სრულყოფილად“ — ამ კონკრეტული შემოწმებული ფერთა ვერსიისთვის ცვლის ქვემოთ ისტორიულ staging-only/no-merge შეზღუდვას. ნებადართულია GitHub push, PR merge და არსებული assist.ge გამოქვეყნების პროცესის გამოყენება. ეს არ ააქტიურებს ბაზას, production intake-ს, ინდექსაციას ან გარე შეტყობინებებს.

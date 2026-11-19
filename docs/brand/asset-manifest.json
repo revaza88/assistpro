@@ -280,12 +280,14 @@
   "color_review_proposal": {
     "date": "2026-11-19",
     "branch": "codex/assist-color-review-a",
-    "status": "A_staging_only_pending_user_approval",
+    "status": "user_authorized_A_publication_verified",
     "runtime_tokens": "client/src/brand-tokens.css",
     "reference_tokens_unchanged": "docs/brand/brand-tokens.css",
     "report": "qa/2026-11-19-color-review/README.md",
     "logo_modified": false,
     "brand_bands": "#FDFDFD",
-    "public_deployment": false
+    "public_deployment": true,
+    "merge_commit": "8c27b2734fb1d0963d74e092b9a675613a43cb26",
+    "publication_evidence": "qa/2026-11-19-color-review/public-publication.json"
   }
 }

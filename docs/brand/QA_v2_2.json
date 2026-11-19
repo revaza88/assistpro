@@ -2021,7 +2021,7 @@
   "latest_review": "color_review_publication",
   "color_review_publication": {
     "date": "2026-11-19",
-    "status": "user_authorized_push_merge_and_existing_publication_pending_verification",
+    "status": "public_update_verified_by_asset_hashes_and_fresh_browser_checks_build_metadata_pending",
     "user_request": "დაფუშე გითჰაბზე და გაუშვი სრულყოფილად",
     "branch": "codex/assist-color-review-a",
     "uploaded_code_commit": "5173122be18b0ed46c79abc73824d1a0b01008b3",
@@ -2029,6 +2029,53 @@
     "database": false,
     "intake": "disabled",
     "indexing": false,
-    "outbound_notifications": false
+    "outbound_notifications": false,
+    "pr": "https://github.com/revaza88/assistpro/pull/3",
+    "merge_commit": "8c27b2734fb1d0963d74e092b9a675613a43cb26",
+    "validated_revision": "267107e191cd3d12548b2e7208439f76792f297f",
+    "canonical_check": "pass",
+    "canonical_tests": {
+      "total": 39,
+      "pass": 39,
+      "fail": 0,
+      "skip": 0
+    },
+    "canonical_build": "pass;15+404,clean",
+    "local_audit_release": "pass;5 assets",
+    "public_report": "qa/2026-11-19-color-review/public-publication.json",
+    "public_pages": 15,
+    "public_verified_assets": 9,
+    "public_fonts": 4,
+    "public_browser": {
+      "origin": "https://assist.ge",
+      "mode": "public production",
+      "viewports": [
+        {
+          "width": 1440,
+          "height": 900
+        },
+        {
+          "width": 390,
+          "height": 844
+        }
+      ],
+      "screenshots": [
+        "published-desktop.png",
+        "published-mobile.png"
+      ],
+      "actions": [
+        "Secondary home CTA opened /calculator",
+        "Primary home CTA opened /industries",
+        "Contact page disabled-intake notice and disabled fields visibly verified"
+      ],
+      "public_form_submissions": 0
+    },
+    "exact_public_commit_identity": false,
+    "strict_public_audit_release": "blocked: hosting does not provide Git source metadata",
+    "github_ci": {
+      "statuses": 0,
+      "pull_request_workflow_runs": 0
+    },
+    "public_write_requests": 0
   }
 }

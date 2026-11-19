@@ -1,0 +1,42 @@
+[
+  {
+    "case": "published-a-desktop",
+    "document": "66999 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: https://assist.ge/ ID: RootWebArea",
+    "width": "1440",
+    "height": "900",
+    "theme": "ღია",
+    "time": "2026-11-19T17:38:41.521Z"
+  },
+  {
+    "case": "published-a-mobile",
+    "document": "66999 document ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი Value: https://assist.ge/ ID: RootWebArea",
+    "width": "390",
+    "height": "844",
+    "theme": "ღია",
+    "time": "2026-11-19T17:38:59.190Z"
+  },
+  {
+    "case": "published-calculator-mobile",
+    "document": "66999 document ფასის დემო კალკულატორი | ასისტი Value: https://assist.ge/calculator ID: RootWebArea",
+    "width": "390",
+    "height": "844",
+    "theme": "ღია",
+    "time": "2026-11-19T17:39:10.668Z"
+  },
+  {
+    "case": "published-industries-mobile",
+    "document": "76963 document ინდუსტრიისა და მომსახურებების არჩევა | ასისტი Value: https://assist.ge/industries ID: RootWebArea",
+    "width": "390",
+    "height": "844",
+    "theme": "ღია",
+    "time": "2026-11-19T17:39:34.307Z"
+  },
+  {
+    "case": "published-contact-disabled-mobile",
+    "document": "80432 document კონტაქტი და მოკლე მოთხოვნა | ასისტი Value: https://assist.ge/contact ID: RootWebArea",
+    "width": "390",
+    "height": "844",
+    "theme": "ღია",
+    "time": "2026-11-19T17:39:56.639Z"
+  }
+]
