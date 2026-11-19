@@ -289,5 +289,14 @@
     "public_deployment": true,
     "merge_commit": "8c27b2734fb1d0963d74e092b9a675613a43cb26",
     "publication_evidence": "qa/2026-11-19-color-review/public-publication.json"
+  },
+  "current_public_theme": {
+    "decision": "unified_light_surfaces",
+    "reason": "User requested natural continuity instead of white-dark-white bands",
+    "logo_band": "#FDFDFD",
+    "canvas": "#FAF8F5",
+    "panels": "#F0EDE8",
+    "report": "qa/2026-11-19-surface-flow/README.md",
+    "publication": "pending"
   }
 }
