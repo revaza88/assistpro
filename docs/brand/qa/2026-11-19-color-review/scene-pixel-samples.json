@@ -1,0 +1,74 @@
+[
+  {
+    "x": 535,
+    "case": "before-public-light-desktop",
+    "hex": "#F1EAFA",
+    "y": 300
+  },
+  {
+    "x": 535,
+    "case": "before-public-light-desktop",
+    "hex": "#F2EBFB",
+    "y": 350
+  },
+  {
+    "x": 535,
+    "case": "before-public-light-desktop",
+    "hex": "#F2EFFA",
+    "y": 500
+  },
+  {
+    "x": 535,
+    "case": "before-public-light-desktop",
+    "hex": "#F3F0F7",
+    "y": 675
+  },
+  {
+    "x": 855,
+    "case": "before-public-light-desktop",
+    "hex": "#F3F2FA",
+    "y": 500
+  },
+  {
+    "x": 853,
+    "case": "before-public-light-desktop",
+    "hex": "#F4F3F9",
+    "y": 675
+  },
+  {
+    "x": 535,
+    "case": "after-a-light-desktop",
+    "hex": "#EDEAE3",
+    "y": 300
+  },
+  {
+    "x": 535,
+    "case": "after-a-light-desktop",
+    "hex": "#EDEAE3",
+    "y": 350
+  },
+  {
+    "x": 535,
+    "case": "after-a-light-desktop",
+    "hex": "#EDEAE3",
+    "y": 500
+  },
+  {
+    "x": 535,
+    "case": "after-a-light-desktop",
+    "hex": "#EDEAE1",
+    "y": 675
+  },
+  {
+    "x": 855,
+    "case": "after-a-light-desktop",
+    "hex": "#EDEAE5",
+    "y": 500
+  },
+  {
+    "x": 853,
+    "case": "after-a-light-desktop",
+    "hex": "#EDEAE1",
+    "y": 675
+  }
+]

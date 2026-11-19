@@ -1,0 +1,288 @@
+{
+  "scope": "Staging proposal A; no merge or public deployment",
+  "baseline": {
+    "gradient": {
+      "css": "linear-gradient(145deg,#F1EAFB,#F4F4F8), grid #D9DDE7 at 0.22",
+      "method": "101 sRGB interpolated positions, each with/without composited grid; separate rendered screenshot background samples below. CSS values, not antialiased text pixels.",
+      "sampledMinimum": 4.975
+    },
+    "chartFillOnWhite": 1.173,
+    "chartOutlineOnWhite": 6.913,
+    "darkChartFillOnPaper": 1.194,
+    "darkChartOutlineOnPaper": 9.497,
+    "interpretation": "Low fill contrast was a hierarchy weakness, not an AA failure: original outlines pass 3:1. Decorative separators/shadows are not required controls."
+  },
+  "browser": "Chrome 157.0.8103.79, Windows native UI; responsive emulation, production build",
+  "computedEvidence": "browser-computed.json",
+  "pairs": [
+    {
+      "name": "Body / warm canvas",
+      "foreground": "#0B1B4D",
+      "background": "#FAF8F5",
+      "ratio": 15.499,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "Muted / warm canvas",
+      "foreground": "#505967",
+      "background": "#FAF8F5",
+      "ratio": 6.679,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "Link / warm canvas",
+      "foreground": "#6031A7",
+      "background": "#FAF8F5",
+      "ratio": 7.941,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "White label / action",
+      "foreground": "#FFFFFF",
+      "background": "#6F2ED6",
+      "ratio": 6.913,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "White label / action-hover",
+      "foreground": "#FFFFFF",
+      "background": "#5321A8",
+      "ratio": 9.764,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "White label / action-pressed",
+      "foreground": "#FFFFFF",
+      "background": "#431A88",
+      "ratio": 12.056,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "Input boundary / white",
+      "foreground": "#746F69",
+      "background": "#FFFFFF",
+      "ratio": 4.976,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "name": "Focus / warm canvas",
+      "foreground": "#6F2ED6",
+      "background": "#FAF8F5",
+      "ratio": 6.521,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "name": "Primary edge / dark tint",
+      "foreground": "#9465E5",
+      "background": "#202A49",
+      "ratio": 3.528,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "name": "Error / status surface",
+      "foreground": "#B42332",
+      "background": "#FFF0F2",
+      "ratio": 5.887,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "Success / status surface",
+      "foreground": "#16694C",
+      "background": "#EAF6EF",
+      "ratio": 5.991,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "Dark error / status surface",
+      "foreground": "#FFB4BC",
+      "background": "#3A1B29",
+      "ratio": 9.138,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "Dark success / status surface",
+      "foreground": "#82DCB1",
+      "background": "#123A2B",
+      "ratio": 7.697,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "Dark body / canvas",
+      "foreground": "#F7F5FF",
+      "background": "#090F25",
+      "ratio": 17.584,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "Dark muted / surface",
+      "foreground": "#C7CCE0",
+      "background": "#121C37",
+      "ratio": 10.539,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "name": "Dark focus / tint",
+      "foreground": "#D9B3FF",
+      "background": "#202A49",
+      "ratio": 7.954,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "name": "Chart edge / white",
+      "foreground": "#596882",
+      "background": "#FFFFFF",
+      "ratio": 5.634,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "name": "Chart edge / fill",
+      "foreground": "#596882",
+      "background": "#E7EAF0",
+      "ratio": 4.675,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "name": "Dark chart edge / dark fill",
+      "foreground": "#9BA8C4",
+      "background": "#202A49",
+      "ratio": 5.905,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "name": "White hatch / primary bar",
+      "foreground": "#FFFFFF",
+      "background": "#6F2ED6",
+      "ratio": 6.913,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "name": "Disabled field text / neutral surface",
+      "foreground": "#505967",
+      "background": "#F0EDE8",
+      "ratio": 6.064,
+      "minimum": 4.5,
+      "pass": true
+    }
+  ],
+  "renderedScenePixels": [
+    {
+      "hex": "#F1EAFA",
+      "x": 535,
+      "y": 300,
+      "case": "before-public-light-desktop",
+      "textContrast": 5.132
+    },
+    {
+      "hex": "#F2EBFB",
+      "x": 535,
+      "y": 350,
+      "case": "before-public-light-desktop",
+      "textContrast": 5.179
+    },
+    {
+      "hex": "#F2EFFA",
+      "x": 535,
+      "y": 500,
+      "case": "before-public-light-desktop",
+      "textContrast": 5.308
+    },
+    {
+      "hex": "#F3F0F7",
+      "x": 535,
+      "y": 675,
+      "case": "before-public-light-desktop",
+      "textContrast": 5.341
+    },
+    {
+      "hex": "#F3F2FA",
+      "x": 855,
+      "y": 500,
+      "case": "before-public-light-desktop",
+      "textContrast": 5.42
+    },
+    {
+      "hex": "#F4F3F9",
+      "x": 853,
+      "y": 675,
+      "case": "before-public-light-desktop",
+      "textContrast": 5.461
+    },
+    {
+      "hex": "#EDEAE3",
+      "x": 535,
+      "y": 300,
+      "case": "after-a-light-desktop",
+      "textContrast": 5.893
+    },
+    {
+      "hex": "#EDEAE3",
+      "x": 535,
+      "y": 350,
+      "case": "after-a-light-desktop",
+      "textContrast": 5.893
+    },
+    {
+      "hex": "#EDEAE3",
+      "x": 535,
+      "y": 500,
+      "case": "after-a-light-desktop",
+      "textContrast": 5.893
+    },
+    {
+      "hex": "#EDEAE1",
+      "x": 535,
+      "y": 675,
+      "case": "after-a-light-desktop",
+      "textContrast": 5.886
+    },
+    {
+      "hex": "#EDEAE5",
+      "x": 855,
+      "y": 500,
+      "case": "after-a-light-desktop",
+      "textContrast": 5.901
+    },
+    {
+      "hex": "#EDEAE1",
+      "x": 853,
+      "y": 675,
+      "case": "after-a-light-desktop",
+      "textContrast": 5.886
+    }
+  ],
+  "decorativeShadow": {
+    "method": "Navy 6% alpha composited on flat A scene; not required UI information",
+    "rgb": [
+      223.44,
+      220.64,
+      218
+    ],
+    "mutedTextContrast": 5.215
+  },
+  "limitations": [
+    "Sampled color roles are not a full WCAG certification",
+    "Forced DevTools hover/active and actual keyboard focus are distinguished",
+    "Form loading/error/retry/success are isolated local UI simulations; upstream intake remains disabled",
+    "No physical mobile device or assistive technology used"
+  ]
+}

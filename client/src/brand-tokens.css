@@ -1,20 +1,26 @@
 /* ASSIST Brand System 2.2. UI roles only: never recolor the original logo.
- * Exact light values: supplied tokens/tokens.css. Dark values are a compatibility
+ * Color review A is a staging proposal awaiting user approval. Logo unchanged.
+ * The original supplied tokens remain documented in docs/brand/brand-tokens.css.
+ * Dark values are a compatibility
  * extension for the existing site theme, not a new logo or approved brand master.
  * This is the runtime source of color, typography and component-role values.
  */
 :root {
-  --assist-canvas: #FDFDFD;
-  --assist-surface: #F4F4F8;
+  --assist-canvas: #FAF8F5;
+  --assist-brand-band: #FDFDFD;
+  --assist-surface: #FFFFFF;
+  --assist-surface-alt: #F0EDE8;
   --assist-white: #FFFFFF;
   --assist-ink: #0B1B4D;
-  --assist-muted: #5A6377;
+  --assist-muted: #505967;
   --assist-action: #6F2ED6;
   --assist-action-hover: #5321A8;
   --assist-action-pressed: #431A88;
+  --assist-primary-edge: #9465E5;
+  --assist-link: #6031A7;
   --assist-action-tint: #F1EAFB;
-  --assist-rule: #D9DDE7;
-  --assist-control: #7A8394;
+  --assist-rule: #D8D3CB;
+  --assist-control: #746F69;
   --assist-focus: #6F2ED6;
   --assist-success: #16694C;
   --assist-success-surface: #EAF6EF;
@@ -23,6 +29,11 @@
   --assist-warning: #805500;
   --assist-warning-surface: #FFF7E5;
   --assist-disabled: #DDE1EA;
+  --assist-report-scene: #EDE9E3;
+  --assist-chart-fill: #E7EAF0;
+  --assist-chart-edge: #596882;
+  --assist-chart-trend: #6031A7;
+  --assist-on-navy-muted: #E1E4EF;
 
   --assist-font-body: "Noto Sans Georgian", "Noto Sans", sans-serif;
   --assist-font-latin: "Noto Sans", sans-serif;
@@ -53,4 +64,7 @@
   --assist-dark-warning-surface: #342A17;
   --assist-dark-disabled: #27334F;
   --assist-dark-disabled-ink: #B2BAD0;
+  --assist-dark-chart-fill: #202A49;
+  --assist-dark-chart-edge: #9BA8C4;
+  --assist-dark-report-scene: #172138;
 }
