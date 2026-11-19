@@ -1,0 +1,234 @@
+{
+  "checked_at": "2026-11-19T11:49:43.380Z",
+  "origin": "https://assist.ge",
+  "github_merge_commit": "fbb86db1b3fccc25c32c449766a3075c72929cd2",
+  "known_tested_asset_source": "4272cc5584e2237455ed12cc58fdb3262dd7f802",
+  "actual_public_manifest": {
+    "schema_version": 1,
+    "commit": null,
+    "tree": null,
+    "dirty": null,
+    "built_at": "2026-11-19T11:49:44.297Z",
+    "assets": [
+      {
+        "path": "/assets/index-BIfPlk0J.css",
+        "sha256": "65d6dcef511577bc7a2212e8a12b06763004a3d27d958430fbeb72bf6ee937ca",
+        "bytes": 51598
+      },
+      {
+        "path": "/assets/index-Dyg4xfSY.js",
+        "sha256": "5a5c0f5e384a49cb9d3173204c99a349db3863274893c5fb3e27ca4422dc6a12",
+        "bytes": 333100
+      },
+      {
+        "path": "/assets/jsx-runtime-Dn_YclF2.js",
+        "sha256": "69d8d9b5752d3eea0762c1d71123a64791e4fb7196449a9d772feae1eb0a43b4",
+        "bytes": 7968
+      },
+      {
+        "path": "/theme-init.js",
+        "sha256": "c93d04eda293e648cc053acbd9890f2bf36d46656e5f0c8fe5b0405c3d6fb697",
+        "bytes": 522
+      }
+    ]
+  },
+  "asset_identity_verified": true,
+  "exact_public_commit_identity_available": false,
+  "strict_audit_release_passed": false,
+  "strict_audit_limitation": "Hosting build did not receive RELEASE_COMMIT/RELEASE_TREE/RELEASE_DIRTY; source fields are null. Strict audit intentionally rejects unknown provenance. Four downloaded initial assets independently match the tested build byte-for-byte.",
+  "pages": [
+    {
+      "route": "/",
+      "status": 200,
+      "one_h1": true,
+      "intake": "disabled",
+      "indexing": false,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services",
+      "status": 200,
+      "one_h1": true,
+      "intake": "disabled",
+      "indexing": false,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/accounting",
+      "status": 200,
+      "one_h1": true,
+      "intake": "disabled",
+      "indexing": false,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/tax",
+      "status": 200,
+      "one_h1": true,
+      "intake": "disabled",
+      "indexing": false,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/legal",
+      "status": 200,
+      "one_h1": true,
+      "intake": "disabled",
+      "indexing": false,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/business",
+      "status": 200,
+      "one_h1": true,
+      "intake": "disabled",
+      "indexing": false,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/audit",
+      "status": 200,
+      "one_h1": true,
+      "intake": "disabled",
+      "indexing": false,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/services/hr",
+      "status": 200,
+      "one_h1": true,
+      "intake": "disabled",
+      "indexing": false,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/industries",
+      "status": 200,
+      "one_h1": true,
+      "intake": "disabled",
+      "indexing": false,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/calculator",
+      "status": 200,
+      "one_h1": true,
+      "intake": "disabled",
+      "indexing": false,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/contact",
+      "status": 200,
+      "one_h1": true,
+      "intake": "disabled",
+      "indexing": false,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/faq",
+      "status": 200,
+      "one_h1": true,
+      "intake": "disabled",
+      "indexing": false,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/about",
+      "status": 200,
+      "one_h1": true,
+      "intake": "disabled",
+      "indexing": false,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/team",
+      "status": 200,
+      "one_h1": true,
+      "intake": "disabled",
+      "indexing": false,
+      "csp_nonce_matches": true
+    },
+    {
+      "route": "/career",
+      "status": 200,
+      "one_h1": true,
+      "intake": "disabled",
+      "indexing": false,
+      "csp_nonce_matches": true
+    }
+  ],
+  "assets": [
+    {
+      "path": "/assets/index-BIfPlk0J.css",
+      "sha256": "65d6dcef511577bc7a2212e8a12b06763004a3d27d958430fbeb72bf6ee937ca",
+      "bytes": 51598,
+      "actual_hash_matches": true
+    },
+    {
+      "path": "/assets/index-Dyg4xfSY.js",
+      "sha256": "5a5c0f5e384a49cb9d3173204c99a349db3863274893c5fb3e27ca4422dc6a12",
+      "bytes": 333100,
+      "actual_hash_matches": true
+    },
+    {
+      "path": "/assets/jsx-runtime-Dn_YclF2.js",
+      "sha256": "69d8d9b5752d3eea0762c1d71123a64791e4fb7196449a9d772feae1eb0a43b4",
+      "bytes": 7968,
+      "actual_hash_matches": true
+    },
+    {
+      "path": "/theme-init.js",
+      "sha256": "c93d04eda293e648cc053acbd9890f2bf36d46656e5f0c8fe5b0405c3d6fb697",
+      "bytes": 522,
+      "actual_hash_matches": true
+    }
+  ],
+  "original_logo_hash_matches": true,
+  "local_fonts_http_ok": 4,
+  "statuses": {
+    "/health": 200,
+    "/does-not-exist": 404,
+    "/robots.txt": 200,
+    "/sitemap.xml": 503
+  },
+  "write_requests_sent": 0,
+  "github_ci": {
+    "workflow_runs": 0,
+    "check_runs": 0,
+    "commit_statuses": 0
+  },
+  "browser": {
+    "browser": "Chrome",
+    "version": "157.0.8103.79",
+    "mode": "public production HTTPS",
+    "cases": [
+      "Home ka dark 390x844",
+      "Home ka dark 1440x900"
+    ],
+    "scope": "Initial home views, native DevTools emulation; not a new full acceptance matrix"
+  },
+  "deployment_mechanism": "After user-approved PR merge to main, public assets changed from index-BiFracsm.js/index-DAiklZJH.css to index-Dyg4xfSY.js/index-BIfPlk0J.css. Existing automatic publication observed; no SSH credentials needed for this path.",
+  "temporary_restart_502_observed": true,
+  "final_http_healthy": true,
+  "screenshots": [
+    {
+      "path": "docs/brand/qa/2026-11-19-refinement/live-390.png",
+      "width": 281,
+      "height": 608,
+      "sha256": "b82ced989ca8b5b57b24e07ca07e4f65ada017e9a9b3b6d6e92574dbab01b72a",
+      "type": "Actual public Chrome native viewport crop, fit-scaled; original website pixels, no browser chrome",
+      "css_viewport": "390x844"
+    },
+    {
+      "path": "docs/brand/qa/2026-11-19-refinement/live-1440.png",
+      "width": 936,
+      "height": 585,
+      "sha256": "739c125008bdd386dcb22968d4ad642499eb48c675887572ed7aab74adf40853",
+      "type": "Actual public Chrome native viewport crop, fit-scaled; original website pixels, no browser chrome",
+      "css_viewport": "1440x900"
+    }
+  ],
+  "user_authorized_main_merge": true,
+  "previous_no_merge_scope_superseded_by_explicit_user_reply": "დიახ, გადაიტანე main-ზე"
+}

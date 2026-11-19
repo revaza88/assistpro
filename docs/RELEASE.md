@@ -1,3 +1,15 @@
+# assist.ge — მოქმედი გამოქვეყნების გზა
+
+19 ნოემბერი 2026: მომხმარებლის თანხმობით PR #1 გაერთიანდა main-ში (fbb86db1b3fccc25c32c449766a3075c72929cd2). **main-ის განახლებას მოჰყვა არსებული ავტომატური გამოქვეყნება https://assist.ge-ზე**. 17–18 ნოემბრის ისტორიული პროცესი სწორედ GitHub main-ის update იყო; ცალკე დადასტურებული SSH deployment ჩანაწერი არ მოიძებნა. ამ გზისთვის ახალი ჰოსტინგი, DNS ან Sites project არ შექმნათ. შემდეგი სამუშაოსას ჯერ შეამოწმეთ განშტოება, მომხმარებლის merge/deployment scope და მიმდინარე remote HEAD; მარტო feature branch-ის push live საიტს არ განაახლებს.
+
+საჯარო შემოწმება: [15 გვერდი, actual JS/CSS hashes, ლოგო, ფონტები და browser კადრები](brand/qa/2026-11-19-refinement/public-release.json). INTAKE_MODE=disabled / INDEXING_ENABLED=false შენარჩუნებულია, write მოთხოვნა არ გაგზავნილა. აპლიკაციის check/33 tests/build შედეგები მანამდე შესრულებული იგივე კოდის შემოწმებაა.
+
+ღია ტექნიკური საკითხი: hosting build-ის release.json commit/tree/dirty არის null; strict audit-release **არ გადის**. საწყისი asset-ების ზომა/hash დამოუკიდებლად ზუსტად დაემთხვა ცნობილ შემოწმებულ build-ს, ამიტომ ვიზუალური განახლება დადასტურებულია, მაგრამ სრული Git provenance არა. existing hosting pipeline-ში გადასაცემია RELEASE_COMMIT, RELEASE_TREE, RELEASE_DIRTY=false მხოლოდ clean source-ისთვის. ნუ ჩაწერთ გამოგონილ SHA-ს და ნუ შეასუსტებთ strict audit-ს. Docker deploy.sh საჭირო არგუმენტებს უკვე გადასცემს, არსებული ავტომატური ჰოსტინგის build კი ჯერ არა.
+
+ქვემოთ ძველი „ჰოსტინგის კავშირი არ მოიძებნა“ აღწერს მხოლოდ პირდაპირი SSH/panel წვდომის მდგომარეობას; main-ის ავტომატური გზა უკვე დადასტურებულია. პანელი ჯერ საჭიროა მხოლოდ build metadata-ს კონფიგურაციისა და სხვა hosting ოპერაციებისთვის.
+
+---
+
 # მიმდინარე რელიზი — assist.ge, 19 ნოემბერი 2026
 
 დომენი მომხმარებელმა დაადასტურა: **https://assist.ge**. ქვემოთ არსებული ადრინდელი „დომენი უცნობია“ ჩანაწერები ისტორიულია. ახალი შემოწმებული runtime არის **4272cc5584e2237455ed12cc58fdb3262dd7f802**, tree **ac79d6b1294b122ff26d33d29b09303c9ab7a120**. კოდი feature branch-შია; Draft PR #1 merge არ შესრულებულა. GitHub push სერვერის restart/deploy-ს არ ნიშნავს. ახალი root HTML ძველ JS/CSS fingerprints-ს იყენებს; ახალი release.json 404-ია. ჰოსტინგის ავტორიზებული კავშირი ამ გარემოში ვერ მოიძებნა.

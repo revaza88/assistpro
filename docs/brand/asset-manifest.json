@@ -203,9 +203,11 @@
     "visual_board": "qa/2026-11-19-refinement/visual-board.png",
     "tests_passed": 33,
     "browser_cases": "Scoped real Chrome production cases; full acceptance pending",
-    "public_deployment": false,
-    "blocker": "No confirmed hosting panel/SSH connection",
-    "logo_unchanged_sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e"
+    "public_deployment": true,
+    "blocker": "Visual publication is verified. Hosting Git commit/tree metadata is missing; strict release identity audit remains open.",
+    "logo_unchanged_sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e",
+    "publication_merge_commit": "fbb86db1b3fccc25c32c449766a3075c72929cd2",
+    "public_evidence": "qa/2026-11-19-refinement/public-release.json"
   },
   "previous_QA": [
     {

@@ -4,7 +4,7 @@
   "timezone": "Asia/Tbilisi",
   "repository": "revaza88/assistpro",
   "branch": "codex/assist-brand-system-2-2",
-  "status": "visual_refinement_verified_in_scoped_cases_public_deployment_blocked",
+  "status": "public_update_verified_by_asset_hashes_full_visual_acceptance_and_build_provenance_pending",
   "validated_revision": "4272cc5584e2237455ed12cc58fdb3262dd7f802",
   "validated_tree_sha": "ac79d6b1294b122ff26d33d29b09303c9ab7a120",
   "current_run": {
@@ -1411,5 +1411,19 @@
       },
       "recommendation": "Accept the two focused fixes in the inspected cases. Do not treat this partial browser matrix as full final visual/release acceptance."
     }
-  ]
+  ],
+  "delivery": {
+    "date": "2026-11-19",
+    "user_authorized_merge": true,
+    "merge_commit": "fbb86db1b3fccc25c32c449766a3075c72929cd2",
+    "public_url": "https://assist.ge",
+    "publication_observed": true,
+    "public_assets_match_tested_build": true,
+    "public_readonly_pages_verified": 15,
+    "browser_public_home_spot_checks": 2,
+    "exact_public_commit_provenance": false,
+    "strict_audit_release_passed": false,
+    "evidence": "qa/2026-11-19-refinement/public-release.json",
+    "full_visual_acceptance": false
+  }
 }

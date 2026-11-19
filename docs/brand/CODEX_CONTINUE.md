@@ -1,3 +1,15 @@
+## საჯარო გამოქვეყნება დადასტურდა — 19 ნოემბერი 2026
+
+მომხმარებლის აშკარა თანხმობით („დიახ, გადაიტანე main-ზე“) [PR #1](https://github.com/revaza88/assistpro/pull/1) გაერთიანდა **main**-ში: [fbb86db](https://github.com/revaza88/assistpro/commit/fbb86db1b3fccc25c32c449766a3075c72929cd2). ეს ცვლის ამ დავალების წინა no-merge/no-deployment ფარგლებს. main-ის განახლებას მოჰყვა არსებული ავტომატური გამოქვეყნება **https://assist.ge**-ზე; ცალკე SSH შესვლა არ დაგვჭირდა. main-ის tree ზუსტად ემთხვევა შემოწმებულ a033a70-ს; აპლიკაციის კოდი დამატებით არ შეცვლილა.
+
+ახალმა read-only HTTPS შემოწმებამ დაადასტურა 15 გვერდის HTTP200/ერთი H1/გამორთული intake/noindex/შესაბამისი CSP nonce; ოთხი ჩამოტვირთული საწყისი JS/CSS ფაილის ზომა და SHA-256 ზუსტად ემთხვევა შემოწმებულ build-ს. Master PNG-ის hash და ოთხივე ფონტის HTTP პასუხიც შემოწმდა. health200, არარსებული გვერდი404, robots200, გამორთული sitemap503. საჯარო POST არ გაგზავნილა. რეალური Chrome157-ში ნახულია მთავარი გვერდი KA dark390×844 და1440×900.
+
+**გამოქვეყნება და წყაროს მეტამონაცემები გამიჯნულია:** /release.json უკვე200/no-store-ია და asset fingerprints სწორია, მაგრამ commit/tree/dirty null რჩება, რადგან ჰოსტინგის build-ს Git metadata/RELEASE_* არგუმენტები არ მიეწოდა. მკაცრი audit-release ამ მიზეზით კვლავ ვერ გადის; წარმატებად არ ჩაითვალოს. დარჩენილია build გარემოში RELEASE_COMMIT/RELEASE_TREE/RELEASE_DIRTY გადაცემა არსებული პანელის კონფიგურაციით. GitHub-ზე merge SHA-ს 0 workflow/check/status ჩანაწერი ჰქონდა; რეალური გამოქვეყნების მტკიცებულება HTTP/ფაილების შემოწმებაა, არა CI. სრული ვიზუალური მიღების ღია შემთხვევები ძალაში რჩება.
+
+[საჯარო შემოწმების JSON](qa/2026-11-19-refinement/public-release.json) · [საჯარო მობილური კადრი](qa/2026-11-19-refinement/live-390.png) · [საჯარო desktop კადრი](qa/2026-11-19-refinement/live-1440.png). ქვემოთ არსებული „deployment დაბლოკილია/merge არ შესრულებულა“ ჩანაწერები აღწერს ამ თანხმობამდე მდგომარეობას.
+
+---
+
 # მიმდინარე გაგრძელება — ვიზუალური დახვეწა
 
 Runtime **4272cc5584e2237455ed12cc58fdb3262dd7f802**, tree **ac79d6b1294b122ff26d33d29b09303c9ab7a120**. [ახალი ანგარიში](qa/2026-11-19-refinement/current-run.json) და [დაფა](qa/2026-11-19-refinement/visual-board.png). 33 ტესტი/check/build და Windows/Node24 Docker production HTTP/version audit წარმატებულია. ქვემოთ მოცემული 31-ტესტიანი ეტაპი ისტორიულია.
