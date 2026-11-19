@@ -23,7 +23,7 @@
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development node --import tsx server/dev.ts",
-    "build": "vite build && node --import tsx scripts/prerender.ts && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "build": "vite build && node --import tsx scripts/prerender.ts && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist && node scripts/release-manifest.mjs",
     "start": "cross-env NODE_ENV=production node dist/index.js",
     "check": "tsc",
     "clean": "powershell -Command \"Get-ChildItem -Path ./ -Recurse -Include '*-new.*', '*-backup.*', '*-old.*', '*.bak' | Remove-Item -Force\"",
@@ -34,7 +34,8 @@
     "pm2:restart": "pm2 restart assistpro",
     "pm2:logs": "pm2 logs assistpro",
     "health": "curl -f http://localhost:3000/health || curl -f http://localhost:5000/health",
-    "test": "node --import tsx --test server/storage.test.ts server/inquiry.test.ts server/pricing.test.ts server/seo.test.ts server/http.test.ts scripts/browser-policy.test.ts scripts/client-bundle.test.ts scripts/brand-assets.test.ts"
+    "test": "node --import tsx --test server/storage.test.ts server/inquiry.test.ts server/pricing.test.ts server/seo.test.ts server/http.test.ts scripts/browser-policy.test.ts scripts/client-bundle.test.ts scripts/brand-assets.test.ts scripts/release.test.mjs",
+    "audit:release": "node scripts/audit-release.mjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

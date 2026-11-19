@@ -1,7 +1,12 @@
 services:
   web:
     image: ${ASSISTPRO_IMAGE:-assistpro:release-candidate}
-    build: .
+    build:
+      context: .
+      args:
+        RELEASE_COMMIT: ${ASSISTPRO_RELEASE_COMMIT:-}
+        RELEASE_TREE: ${ASSISTPRO_RELEASE_TREE:-}
+        RELEASE_DIRTY: ${ASSISTPRO_RELEASE_DIRTY:-}
     init: true
     restart: unless-stopped
     env_file: ${APP_ENV_FILE:-.env.production}

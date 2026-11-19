@@ -68,7 +68,7 @@ function CalculatorForm({ search }: { search: string }) {
           <p>{!result ? copy.numberError : result.kind === 'individual' ? copy.recovery : copy.excluded}</p>
         </div>
         <dl className="calculator-details"><div><dt>{copy.version}</dt><dd>{demoRules.version}</dd></div></dl>
-        {parsed.success && <Link href={calculatorHref('/contact', parsed.data, selection ?? undefined)} className="site-button site-button-lime w-full mt-5">{copy.discuss} →</Link>}
+        {parsed.success && <Link href={calculatorHref('/contact', parsed.data, selection ?? undefined)} className="site-button site-button-lime w-full mt-5">{copy.discuss}</Link>}
         <p className="calculator-scope">{copy.scope}</p>
       </aside>
     </div>

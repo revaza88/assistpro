@@ -21,6 +21,14 @@ export function serveStatic(app: Express) {
     rendered.set(route, fs.readFileSync(path.resolve('dist/prerender', file), 'utf8'));
   }
   setupSeoRoutes(app);
+  // Cache identity with the HTML template: a restart changes both together.
+  const releaseFile = path.resolve('dist/release.json');
+  const release = fs.existsSync(releaseFile) ? JSON.parse(fs.readFileSync(releaseFile, 'utf8')) : null;
+  app.get('/release.json', (_req, res) => {
+    res.set({ 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' });
+    if (!release) { res.status(404).json({ error: 'Release identity unavailable' }); return; }
+    res.json(release);
+  });
   app.get('/index.html', (_req, res) => { res.redirect(301, '/'); });
   app.use('/assets', express.static(path.join(distPath, 'assets'), { maxAge: '1y', immutable: true, index: false }));
   app.use(express.static(distPath, { index: false, redirect: false, maxAge: 0 }));
