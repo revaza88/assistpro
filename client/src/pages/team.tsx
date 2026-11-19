@@ -122,16 +122,12 @@ const TeamPage: React.FC = () => {
               <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('team.finalCtaTitle')}</h2>
               <p className="mb-8 text-slate-100 whitespace-pre-line text-lg">{t('team.finalCtaText')}</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/career">
-                  <Button size="lg" className="bg-brand-gold-500 hover:bg-brand-gold-600 text-brand-blue-700 font-semibold w-full sm:w-auto text-base">
-                    {t('team.ctaCareer')}
-                  </Button>
-                </Link>
-                <Link to="/career">
-                  <Button size="lg" variant="outline" className="border-brand-gold-500 text-brand-gold-500 hover:bg-brand-gold-500 hover:text-brand-blue-700 font-semibold w-full sm:w-auto text-base">
-                    {t('team.ctaOpenPositions')}
-                  </Button>
-                </Link>
+                <Button size="lg" asChild className="bg-brand-gold-500 hover:bg-brand-gold-600 text-brand-blue-700 font-semibold w-full sm:w-auto text-base">
+                  <Link to="/career">{t('team.ctaCareer')}</Link>
+                </Button>
+                <Button size="lg" variant="outline" asChild className="border-brand-gold-500 text-brand-gold-500 hover:bg-brand-gold-500 hover:text-brand-blue-700 font-semibold w-full sm:w-auto text-base">
+                  <Link to="/career">{t('team.ctaOpenPositions')}</Link>
+                </Button>
               </div>
             </motion.div>
           </motion.article>

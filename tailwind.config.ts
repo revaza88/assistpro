@@ -63,8 +63,8 @@ export default {
           ring: "var(--sidebar-ring)",
         },
         // Compatibility aliases mapped to ASSIST navy/lilac. Primary actions use purple.
-        'brand-blue': { DEFAULT: '#0b1b4d', 50: '#f1ebff', 100: '#e7ddfa', 500: '#0b1b4d', 600: '#0b1b4d', 700: '#0b1b4d' },
-        'brand-gold': { DEFAULT: '#d9b3ff', 100: '#f1ebff', 400: '#d9b3ff', 500: '#d9b3ff', 600: '#c79bf5' },
+        'brand-blue': { DEFAULT: 'var(--assist-ink)', 50: 'var(--soft)', 100: 'var(--soft)', 500: 'var(--action)', 600: 'var(--assist-ink)', 700: 'var(--ink)' },
+        'brand-gold': { DEFAULT: 'var(--highlight)', 100: 'var(--soft)', 400: 'var(--highlight)', 500: 'var(--highlight)', 600: 'var(--highlight)' },
       },
       keyframes: {
         "accordion-down": {

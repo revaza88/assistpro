@@ -4,6 +4,7 @@ import Navigation from '@/components/navigation';
 import Footer from '@/components/footer';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
+import { company } from '@/lib/company';
 import { motion } from 'framer-motion';
 import {
   BriefcaseIcon,
@@ -102,7 +103,7 @@ const CareerPage: React.FC = () => {
             </section>
 
             <section className="mb-10 sm:mb-12 lg:mb-16">
-              <h2 className="text-2xl sm:text-3xl font-semibold text-brand-blue-600 mb-6 sm:mb-8 text-center">
+              <h2 id="open-positions" tabIndex={-1} className="text-2xl sm:text-3xl font-semibold text-brand-blue-600 mb-6 sm:mb-8 text-center">
                 {t('career.openPositionsTitle')}
               </h2>
               {hasVacancies ? (
@@ -139,9 +140,9 @@ const CareerPage: React.FC = () => {
                     {t('career.noVacancyNote')}
                   </p>
                   <Button variant="link" asChild className="text-brand-gold-500 hover:text-brand-gold-600 text-lg p-0 h-auto font-semibold">
-                    <Link href="#send-cv-form">
+                    <a href={'mailto:' + company.email}>
                       {t('career.ctaSendCv')} <PlusCircleIcon className="w-5 h-5 ml-2" />
-                    </Link>
+                    </a>
                   </Button>
                 </motion.div>
               )}
@@ -157,11 +158,11 @@ const CareerPage: React.FC = () => {
               <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('career.finalCtaTitle')}</h2>
               <p className="mb-8 text-slate-100 whitespace-pre-line text-lg">{t('career.finalCtaText')}</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-brand-gold-500 hover:bg-brand-gold-600 text-brand-blue-700 font-semibold w-full sm:w-auto text-base">
-                  {t('career.ctaViewAllVacancies')}
+                <Button size="lg" asChild className="bg-brand-gold-500 hover:bg-brand-gold-600 text-brand-blue-700 font-semibold w-full sm:w-auto text-base">
+                  <a href="#open-positions">{t('career.openPositionsTitle')}</a>
                 </Button>
-                <Button size="lg" variant="outline" className="border-brand-gold-500 text-brand-gold-500 hover:bg-brand-gold-500 hover:text-brand-blue-700 font-semibold w-full sm:w-auto text-base">
-                  {t('career.ctaContactHr')}
+                <Button size="lg" variant="outline" asChild className="border-brand-gold-500 text-brand-gold-500 hover:bg-brand-gold-500 hover:text-brand-blue-700 font-semibold w-full sm:w-auto text-base">
+                  <a href={'mailto:' + company.email}>{t('nav.contact')}</a>
                 </Button>
               </div>
             </motion.div>

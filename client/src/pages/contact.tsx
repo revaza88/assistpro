@@ -99,15 +99,15 @@ export default function ContactPage() {
         <Link href="/faq" className="inline-flex min-h-12 items-center underline text-brand-blue-700">{copy.faq}</Link>
       </div>
       <form ref={form} onSubmit={handleSubmit} method="post" action="/api/contacts" noValidate aria-busy={submitting} className="rounded-xl border border-slate-200 p-5 sm:p-6 space-y-5">
-        <fieldset disabled={!ready || !localIntake || submitting || !selection} className="space-y-5 disabled:opacity-70">
+        <fieldset disabled={!ready || !localIntake || submitting || !selection} className="space-y-5">
           <legend className="sr-only">{copy.contactTitle}</legend>
           <div><label htmlFor="name" className="font-semibold">{copy.name}</label><input id="name" name="name" autoComplete="name" required maxLength={80} value={draft.name} onChange={event => change('name', event.target.value)} aria-invalid={!!errors.name} aria-describedby={errors.name ? 'name-error' : undefined} className={fieldClass} />{error('name')}</div>
           <div><label htmlFor="contact" className="font-semibold">{copy.channel}</label><input id="contact" name="contact" type="text" autoComplete="off" autoCapitalize="none" spellCheck={false} required maxLength={254} value={draft.contact} onChange={event => change('contact', event.target.value)} aria-invalid={!!errors.contact} aria-describedby={errors.contact ? 'contact-error' : undefined} className={fieldClass} />{error('contact')}</div>
           <div><label htmlFor="message" className="font-semibold">{copy.message}</label><textarea id="message" name="message" rows={4} maxLength={5000} value={draft.message} onChange={event => change('message', event.target.value)} aria-invalid={!!errors.message} aria-describedby={errors.message ? 'message-hint message-error' : 'message-hint'} className={fieldClass} /><p id="message-hint" className="text-sm mt-2 leading-relaxed">{copy.caution}</p>{error('message')}</div>
           <label className="flex items-start gap-3 min-h-12 py-2"><input id="privacy" type="checkbox" name="privacy" checked={draft.privacy} onChange={event => change('privacy', event.target.checked)} required aria-invalid={!!errors.privacy} aria-describedby={errors.privacy ? 'privacy-error' : undefined} className="w-5 h-5 mt-1 shrink-0 accent-blue-600" /><span className="text-sm leading-relaxed">{copy.consent}</span></label>{error('privacy')}
-          <button type="submit" className="site-button w-full">{submitting ? copy.sending : copy.send}</button>
+          <button type="submit" aria-busy={submitting} className="site-button w-full">{submitting ? copy.sending : copy.send}</button>
         </fieldset>
-        {status && <p role={status === 'success' ? 'status' : 'alert'} className={status === 'success' ? 'text-green-800' : 'text-red-700'}>{status === 'success' ? copy.sent : copy.failed}</p>}
+        {status && <p role={status === 'success' ? 'status' : 'alert'} className={`form-status form-status--${status}`}>{status === 'success' ? copy.sent : copy.failed}</p>}
       </form>
     </div>
     <CompanyDetails />
