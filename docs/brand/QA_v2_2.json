@@ -1,659 +1,1094 @@
 {
-  "title": "ASSIST Brand System 2.2 repository verification",
+  "title": "ASSIST Brand System 2.2 — current and historical QA",
   "date": "2026-11-19",
   "timezone": "Asia/Tbilisi",
   "repository": "revaza88/assistpro",
   "branch": "codex/assist-brand-system-2-2",
-  "base_commit": "ad8637e2f8d24426f8d46b60a1e6f566d3748622",
-  "validated_revision": "d0e24553b498ba6648b8eaee5020cf9a4bebf124",
-  "status": "source_build_test_and_isolated_HTTP_checks_passed; browser_visual_acceptance_pending",
-  "gates": {
-    "typecheck": {
-      "command": "npm run check",
-      "status": "passed"
+  "status": "focused_browser_fixes_verified; local_gates_passed; full_visual_acceptance_pending",
+  "validated_revision": "3ad8ad4bda7e70e41e0bf21edb4290f51a440fe5",
+  "validated_tree_sha": "61fa0537946a36adc036486a05bfa246814ec34c",
+  "current_run": {
+    "date": "2026-11-19",
+    "timezone": "Asia/Tbilisi",
+    "starting_commit": "0351f3589e1e6ecc59de833a96fccf079387babe",
+    "validated_local_code_commit": "ea8ed8df3d721523c5ff66ff13ec706570b176a2",
+    "published_equivalent_code_commit": "3ad8ad4bda7e70e41e0bf21edb4290f51a440fe5",
+    "validated_code_tree": "61fa0537946a36adc036486a05bfa246814ec34c",
+    "tree_identity_verified": true,
+    "environment": {
+      "os": "Windows",
+      "browser": "Google Chrome",
+      "browser_version": "157.0.8103.79",
+      "browser_version_source": "installed Chrome executable ProductVersion",
+      "mode": "production",
+      "url": "http://127.0.0.1:5013",
+      "node": "26.13.1",
+      "npm": "11.20.0",
+      "INTAKE_MODE": "disabled",
+      "INDEXING_ENABLED": false,
+      "interaction": "Native Windows Chrome through CUA; browser DOM connector unavailable",
+      "viewport_measurement": "Chrome DevTools nominal CSS sizes. Device-fit rounding observed: 851 nominal yielded computed body width 851.2px; no pixel-perfect DOM overflow measurement claimed.",
+      "test_server_stopped_after_QA": true
     },
-    "tests": {
-      "command": "npm test",
-      "status": "passed",
-      "passed": 31,
-      "failed": 0,
-      "skipped": 0,
-      "scope": "repository automated tests including local HTTP/API, CSP, theme/locale and asset identity"
+    "fixes": [
+      {
+        "id": "B22-01",
+        "route": "/services/tax",
+        "case": "320x844, RU",
+        "before": "консультирование leaves its final letter on a third line",
+        "after": "28px rem-based Russian service heading below 359px keeps the word whole; reflow fallback retained",
+        "files": [
+          "client/src/index.css"
+        ],
+        "retested": true
+      },
+      {
+        "id": "B22-02",
+        "route": "/calculator",
+        "case": "1024x768 and 320x844, RU",
+        "before": "Selected monthly service type is truncated in a half-width native select",
+        "after": "Industry/type selects span the form grid. A wrapping, aria-hidden duplicate of the selected type is shown below 480px; native selected option remains the accessible value. Monthly/recovery checked.",
+        "files": [
+          "client/src/index.css",
+          "client/src/pages/calculator.tsx"
+        ],
+        "retested": true
+      }
+    ],
+    "gates": {
+      "typecheck": {
+        "command": "npm run check",
+        "exit_code": 0
+      },
+      "tests": {
+        "command": "npm test",
+        "exit_code": 0,
+        "passed": 31,
+        "failed": 0,
+        "skipped": 0
+      },
+      "build": {
+        "command": "npm run build",
+        "exit_code": 0,
+        "prerendered_public_routes": 15,
+        "not_found_page": true
+      },
+      "smoke": {
+        "command": "node scripts/smoke-release.mjs http://127.0.0.1:5013",
+        "exit_code": 0
+      },
+      "http_audit": {
+        "command": "node --import tsx scripts/audit-web.ts http://127.0.0.1:5013",
+        "exit_code": 0,
+        "public_routes": 15,
+        "raw_initial_JS_bytes": 338662,
+        "gzip_initial_JS_bytes": 100038,
+        "gzip_initial_CSS_bytes": 10394
+      }
     },
-    "build": {
-      "command": "npm run build",
-      "status": "passed",
-      "stages": [
-        "Vite client",
-        "15 public routes and 404 prerender",
-        "Express server bundle"
+    "browser": {
+      "performed": true,
+      "acceptance": "partial; focused fixes verified; full acceptance remains pending",
+      "all_public_routes_opened": true,
+      "route_inspection_scope": "Initial viewport of 15 routes, not exhaustive below-fold acceptance. Home and flow pages additionally scrolled. All route templates inspected at narrow/mobile and wide/desktop sizes across KA/EN/RU as detailed below.",
+      "route_groups": [
+        {
+          "routes": [
+            "/",
+            "/industries",
+            "/calculator",
+            "/contact"
+          ],
+          "nominal_viewports": [
+            "320x844",
+            "1440x900"
+          ],
+          "languages": [
+            "ka",
+            "en"
+          ],
+          "scope": "Home and actual selection/calculator/inquiry path; mobile KA education+bookkeeping+filings with employees7, desktop EN education+bookkeeping+tax_advice with employees9. Values preserved. Disabled inquiry and email fallback observed."
+        },
+        {
+          "routes": [
+            "/services",
+            "/services/accounting",
+            "/services/tax",
+            "/services/legal",
+            "/services/business",
+            "/services/audit",
+            "/services/hr",
+            "/about",
+            "/team",
+            "/career",
+            "/faq"
+          ],
+          "nominal_viewports": [
+            "320x844",
+            "1440x900"
+          ],
+          "languages": [
+            "ru at 320",
+            "ka at 1440"
+          ],
+          "scope": "Top-of-page render, full header logo, heading/copy reflow, primary navigation; service below-fold content not all traversed."
+        }
       ],
-      "initial_failure": "tsx CLI IPC pipe EPERM",
-      "repair": "node --import tsx for dev/prerender entry points; no dependency change"
-    }
-  },
-  "static_checks": {
-    "light_roles_matching_package": 19,
-    "declared_contrast_pairs": 29,
-    "declared_contrast_pairs_passed": 29,
-    "contrast_scope": "Declared source colors only; no browser computed-style audit",
-    "contrast_results": [
-      {
-        "foreground": "ink",
-        "background": "canvas",
-        "colors": [
-          "#0B1B4D",
-          "#FDFDFD"
+      "additional_viewports": [
+        "390x844",
+        "768x1024",
+        "844x390",
+        "1024x768"
+      ],
+      "breakpoint_spot_checks": {
+        "route": "/",
+        "language": "en",
+        "theme": "light",
+        "nominal_widths": [
+          359,
+          360,
+          479,
+          480,
+          540,
+          541,
+          639,
+          640,
+          767,
+          768,
+          850,
+          851,
+          1023,
+          1024,
+          1279,
+          1280,
+          1439,
+          1440
         ],
-        "ratio": 16.152,
-        "threshold": 4.5,
-        "passed": true
+        "height": 900,
+        "scope": "Header and hero initial viewport; not every route at every breakpoint"
       },
-      {
-        "foreground": "muted",
-        "background": "canvas",
-        "colors": [
-          "#5A6377",
-          "#FDFDFD"
+      "calculator_breakpoint": {
+        "widths": [
+          849,
+          850,
+          851
         ],
-        "ratio": 5.923,
-        "threshold": 4.5,
-        "passed": true
+        "height": 900,
+        "language": "en",
+        "result": "One-column to two-column transition observed; no clipped continuation action in inspected view"
       },
-      {
-        "foreground": "muted",
-        "background": "surface",
-        "colors": [
-          "#5A6377",
-          "#F4F4F8"
-        ],
-        "ratio": 5.491,
-        "threshold": 4.5,
-        "passed": true
+      "themes": {
+        "light": true,
+        "dark": true,
+        "header_footer_bands": "Direct whole PNG on computed rgb(253,253,253) in dark mode; no plaque/frame/shadow; exact live Georgian slogan observed in KA/EN/RU",
+        "status": "implementation proposal; final visual user acceptance pending"
       },
-      {
-        "foreground": "white",
-        "background": "action",
-        "colors": [
-          "#FFFFFF",
-          "#6F2ED6"
-        ],
-        "ratio": 6.913,
-        "threshold": 4.5,
-        "passed": true
+      "fonts": "Rendered Fonts showed NotoSansGeorgian-Regular/Bold and NotoSans-Regular/Bold as Network resources. Georgian and Cyrillic glyphs observed; no reliance on CSS family declaration alone.",
+      "keyboard": {
+        "viewport": "390x844",
+        "language": "en",
+        "Tab": true,
+        "ShiftTab": true,
+        "Enter": true,
+        "Space": true,
+        "Escape": true,
+        "focus_return": "Escape returns visible outline to mobile menu button; Tab then Space opens services disclosure; Shift+Tab/Tab/Enter reopens menu"
       },
-      {
-        "foreground": "white",
-        "background": "action-hover",
-        "colors": [
-          "#FFFFFF",
-          "#5321A8"
-        ],
-        "ratio": 9.764,
-        "threshold": 4.5,
-        "passed": true
+      "calculator_validation": {
+        "case": "employees=-1 then 7",
+        "result": "Visible associated text error, invalid input border and visible keyboard focus; valid result restored"
       },
-      {
-        "foreground": "white",
-        "background": "action-pressed",
-        "colors": [
-          "#FFFFFF",
-          "#431A88"
-        ],
-        "ratio": 12.056,
-        "threshold": 4.5,
-        "passed": true
+      "text_adaptation": {
+        "scope": "RU calculator at 851x900 and 320x900; temporary DevTools html style font-size200%, letter-spacing.12em, word-spacing.16em; cleared by reload",
+        "result": "Header wraps and calculator continuation remains reachable by vertical scroll; long words can wrap. Partial text-spacing test, not a full WCAG override suite."
       },
-      {
-        "foreground": "action",
-        "background": "canvas",
-        "colors": [
-          "#6F2ED6",
-          "#FDFDFD"
-        ],
-        "ratio": 6.796,
-        "threshold": 4.5,
-        "passed": true
+      "reduced_motion": {
+        "method": "DevTools Rendering prefers-reduced-motion:reduce",
+        "computed_animation_duration": "1e-05s",
+        "computed_transition_duration": "1e-05s",
+        "emulation_restored": true
       },
-      {
-        "foreground": "action-hover",
-        "background": "action-tint",
-        "colors": [
-          "#5321A8",
-          "#F1EAFB"
-        ],
-        "ratio": 8.324,
-        "threshold": 4.5,
-        "passed": true
-      },
-      {
-        "foreground": "action-pressed",
-        "background": "action-tint",
-        "colors": [
-          "#431A88",
-          "#F1EAFB"
-        ],
-        "ratio": 10.277,
-        "threshold": 4.5,
-        "passed": true
-      },
-      {
-        "foreground": "control",
-        "background": "white",
-        "colors": [
-          "#7A8394",
-          "#FFFFFF"
-        ],
-        "ratio": 3.817,
-        "threshold": 3,
-        "passed": true
-      },
-      {
-        "foreground": "control",
-        "background": "surface",
-        "colors": [
-          "#7A8394",
-          "#F4F4F8"
-        ],
-        "ratio": 3.479,
-        "threshold": 3,
-        "passed": true
-      },
-      {
-        "foreground": "focus",
-        "background": "canvas",
-        "colors": [
-          "#6F2ED6",
-          "#FDFDFD"
-        ],
-        "ratio": 6.796,
-        "threshold": 3,
-        "passed": true
-      },
-      {
-        "foreground": "success",
-        "background": "success-surface",
-        "colors": [
-          "#16694C",
-          "#EAF6EF"
-        ],
-        "ratio": 5.991,
-        "threshold": 4.5,
-        "passed": true
-      },
-      {
-        "foreground": "error",
-        "background": "error-surface",
-        "colors": [
-          "#B42332",
-          "#FFF0F2"
-        ],
-        "ratio": 5.887,
-        "threshold": 4.5,
-        "passed": true
-      },
-      {
-        "foreground": "warning",
-        "background": "warning-surface",
-        "colors": [
-          "#805500",
-          "#FFF7E5"
-        ],
-        "ratio": 6.119,
-        "threshold": 4.5,
-        "passed": true
-      },
-      {
-        "foreground": "muted",
-        "background": "disabled",
-        "colors": [
-          "#5A6377",
-          "#DDE1EA"
-        ],
-        "ratio": 4.599,
-        "threshold": 4.5,
-        "passed": true
-      },
-      {
-        "foreground": "dark-ink",
-        "background": "dark-canvas",
-        "colors": [
-          "#F7F5FF",
-          "#090F25"
-        ],
-        "ratio": 17.584,
-        "threshold": 4.5,
-        "passed": true
-      },
-      {
-        "foreground": "dark-muted",
-        "background": "dark-surface",
-        "colors": [
-          "#C7CCE0",
-          "#121C37"
-        ],
-        "ratio": 10.539,
-        "threshold": 4.5,
-        "passed": true
-      },
-      {
-        "foreground": "ink",
-        "background": "dark-action",
-        "colors": [
-          "#0B1B4D",
-          "#D9B3FF"
-        ],
-        "ratio": 9.265,
-        "threshold": 4.5,
-        "passed": true
-      },
-      {
-        "foreground": "ink",
-        "background": "dark-action-hover",
-        "colors": [
-          "#0B1B4D",
-          "#E6CCFF"
-        ],
-        "ratio": 11.302,
-        "threshold": 4.5,
-        "passed": true
-      },
-      {
-        "foreground": "ink",
-        "background": "dark-action-pressed",
-        "colors": [
-          "#0B1B4D",
-          "#C99BF2"
-        ],
-        "ratio": 7.397,
-        "threshold": 4.5,
-        "passed": true
-      },
-      {
-        "foreground": "dark-action",
-        "background": "dark-surface",
-        "colors": [
-          "#D9B3FF",
-          "#121C37"
-        ],
-        "ratio": 9.497,
-        "threshold": 3,
-        "passed": true
-      },
-      {
-        "foreground": "dark-control",
-        "background": "dark-surface",
-        "colors": [
-          "#8D98B5",
-          "#121C37"
-        ],
-        "ratio": 5.847,
-        "threshold": 3,
-        "passed": true
-      },
-      {
-        "foreground": "dark-success",
-        "background": "dark-success-surface",
-        "colors": [
-          "#82DCB1",
-          "#123A2B"
-        ],
-        "ratio": 7.697,
-        "threshold": 4.5,
-        "passed": true
-      },
-      {
-        "foreground": "dark-error",
-        "background": "dark-error-surface",
-        "colors": [
-          "#FFB4BC",
-          "#3A1B29"
-        ],
-        "ratio": 9.138,
-        "threshold": 4.5,
-        "passed": true
-      },
-      {
-        "foreground": "dark-warning",
-        "background": "dark-warning-surface",
-        "colors": [
-          "#F4D28A",
-          "#342A17"
-        ],
-        "ratio": 9.689,
-        "threshold": 4.5,
-        "passed": true
-      },
-      {
-        "foreground": "dark-action-pressed",
-        "background": "dark-tint",
-        "colors": [
-          "#C99BF2",
-          "#202A49"
-        ],
-        "ratio": 6.35,
-        "threshold": 4.5,
-        "passed": true
-      },
-      {
-        "foreground": "dark-action",
-        "background": "ink",
-        "colors": [
-          "#D9B3FF",
-          "#0B1B4D"
-        ],
-        "ratio": 9.265,
-        "threshold": 3,
-        "passed": true
-      },
-      {
-        "foreground": "dark-disabled-ink",
-        "background": "dark-disabled",
-        "colors": [
-          "#B2BAD0",
-          "#27334F"
-        ],
-        "ratio": 6.473,
-        "threshold": 4.5,
-        "passed": true
-      }
-    ],
-    "generated_html_pages": 16,
-    "public_routes": 15,
-    "not_found_page": true,
-    "per_page_invariants": [
-      "one_h1",
-      "two_full_original_logo_images_with_exact_intrinsic_dimensions",
-      "exact_Georgian_slogan",
-      "fragment_targets_resolve",
-      "no_duplicate_ids",
-      "no_nested_anchor_button",
-      "no_NUL_bytes"
-    ],
-    "page_records": [
-      {
-        "file": "404.html",
-        "h1": 1,
-        "logos": 2,
-        "slogan": true,
-        "fragment_targets_resolved": true,
-        "nested_anchor_button": false
-      },
-      {
-        "file": "about.html",
-        "h1": 1,
-        "logos": 2,
-        "slogan": true,
-        "fragment_targets_resolved": true,
-        "nested_anchor_button": false
-      },
-      {
-        "file": "calculator.html",
-        "h1": 1,
-        "logos": 2,
-        "slogan": true,
-        "fragment_targets_resolved": true,
-        "nested_anchor_button": false
-      },
-      {
-        "file": "career.html",
-        "h1": 1,
-        "logos": 2,
-        "slogan": true,
-        "fragment_targets_resolved": true,
-        "nested_anchor_button": false
-      },
-      {
-        "file": "contact.html",
-        "h1": 1,
-        "logos": 2,
-        "slogan": true,
-        "fragment_targets_resolved": true,
-        "nested_anchor_button": false
-      },
-      {
-        "file": "faq.html",
-        "h1": 1,
-        "logos": 2,
-        "slogan": true,
-        "fragment_targets_resolved": true,
-        "nested_anchor_button": false
-      },
-      {
-        "file": "home.html",
-        "h1": 1,
-        "logos": 2,
-        "slogan": true,
-        "fragment_targets_resolved": true,
-        "nested_anchor_button": false
-      },
-      {
-        "file": "industries.html",
-        "h1": 1,
-        "logos": 2,
-        "slogan": true,
-        "fragment_targets_resolved": true,
-        "nested_anchor_button": false
-      },
-      {
-        "file": "services.html",
-        "h1": 1,
-        "logos": 2,
-        "slogan": true,
-        "fragment_targets_resolved": true,
-        "nested_anchor_button": false
-      },
-      {
-        "file": "services_accounting.html",
-        "h1": 1,
-        "logos": 2,
-        "slogan": true,
-        "fragment_targets_resolved": true,
-        "nested_anchor_button": false
-      },
-      {
-        "file": "services_audit.html",
-        "h1": 1,
-        "logos": 2,
-        "slogan": true,
-        "fragment_targets_resolved": true,
-        "nested_anchor_button": false
-      },
-      {
-        "file": "services_business.html",
-        "h1": 1,
-        "logos": 2,
-        "slogan": true,
-        "fragment_targets_resolved": true,
-        "nested_anchor_button": false
-      },
-      {
-        "file": "services_hr.html",
-        "h1": 1,
-        "logos": 2,
-        "slogan": true,
-        "fragment_targets_resolved": true,
-        "nested_anchor_button": false
-      },
-      {
-        "file": "services_legal.html",
-        "h1": 1,
-        "logos": 2,
-        "slogan": true,
-        "fragment_targets_resolved": true,
-        "nested_anchor_button": false
-      },
-      {
-        "file": "services_tax.html",
-        "h1": 1,
-        "logos": 2,
-        "slogan": true,
-        "fragment_targets_resolved": true,
-        "nested_anchor_button": false
-      },
-      {
-        "file": "team.html",
-        "h1": 1,
-        "logos": 2,
-        "slogan": true,
-        "fragment_targets_resolved": true,
-        "nested_anchor_button": false
-      }
-    ]
-  },
-  "http": {
-    "mode": "isolated_loopback_production_HTTP_test",
-    "tested_base_url": "http://127.0.0.1:42105",
-    "server_stopped_after_check": true,
-    "intake": "disabled",
-    "indexing": false,
-    "commands": [
-      {
-        "command": "node scripts/smoke-release.mjs http://127.0.0.1:42105",
-        "exit_code": 0
-      },
-      {
-        "command": "node --import tsx scripts/audit-web.ts http://127.0.0.1:42105",
-        "exit_code": 0
-      }
-    ],
-    "public_routes": [
-      "/",
-      "/services",
-      "/services/accounting",
-      "/services/tax",
-      "/services/legal",
-      "/services/business",
-      "/services/audit",
-      "/services/hr",
-      "/industries",
-      "/calculator",
-      "/contact",
-      "/faq",
-      "/about",
-      "/team",
-      "/career"
-    ],
-    "checks": [
-      "15 public routes",
-      "404",
-      "prerendered content",
-      "metadata",
-      "CSP headers",
-      "cache headers",
-      "gzip",
-      "health",
-      "robots",
-      "sitemap",
-      "query noindex",
-      "disabled POST returns 503"
-    ],
-    "served_resources": [
-      {
-        "path": "/assets/brand/ASSIST_Locked_White_Native_1405px.png",
-        "bytes": 242575,
-        "sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e",
-        "content_type": "image/png",
-        "served_identically": true
-      },
-      {
-        "path": "/assets/fonts/assist-v2/NotoSansGeorgian-Regular.woff2",
-        "bytes": 18024,
-        "sha256": "f95323085cbeb54900d769495efee4bd32ea4b83891dbf227b3289399434d88d",
-        "content_type": "font/woff2",
-        "served_identically": true
-      },
-      {
-        "path": "/assets/fonts/assist-v2/NotoSansGeorgian-Bold.woff2",
-        "bytes": 18432,
-        "sha256": "1b855ec3a0f8b65260319b2b5042cfb138a05e5f1ef686d517bb4fb2897a3b45",
-        "content_type": "font/woff2",
-        "served_identically": true
-      },
-      {
-        "path": "/assets/fonts/assist-v2/NotoSans-Regular.woff2",
-        "bytes": 70620,
-        "sha256": "335be51f607686d417e3fcf5c256c8fcdc90945d6b8f4b1681a62d5f414d07db",
-        "content_type": "font/woff2",
-        "served_identically": true
-      },
-      {
-        "path": "/assets/fonts/assist-v2/NotoSans-Bold.woff2",
-        "bytes": 69696,
-        "sha256": "0b5745eecf4f53b39115f458dd3537f2ebe75750d7b652c8980a8caee05da197",
-        "content_type": "font/woff2",
-        "served_identically": true
-      }
-    ],
-    "initial_html_declared_assets": {
-      "raw_js_bytes": 338662,
-      "gzip_js_bytes": 100042,
-      "gzip_css_bytes": 10328,
-      "budgets": {
-        "raw_js_bytes": 400000,
-        "gzip_js_bytes": 120000,
-        "gzip_css_bytes": 12000
-      },
-      "within_budgets": true
+      "real_device": false,
+      "assistive_technology": false,
+      "screenshots": [
+        {
+          "path": "docs/brand/qa/2026-11-19/calculator-1024-ru-after.png",
+          "bytes": 222646,
+          "width_px": 810,
+          "height_px": 607,
+          "sha256": "87460ab9100ce5e70fd60e7c4c5b7adc310debacef13e13bb212204435ae202a",
+          "capture": "Real native Chrome window screenshot cropped to website viewport; OS/DevTools fit scaling retained"
+        },
+        {
+          "path": "docs/brand/qa/2026-11-19/calculator-320-ru-after.png",
+          "bytes": 107660,
+          "width_px": 230,
+          "height_px": 608,
+          "sha256": "6ab274e1b4b336cd8f03a8ca984d057be3cd85f8145b5210fef51973bc76c53b",
+          "capture": "Real native Chrome window screenshot cropped to website viewport; OS/DevTools fit scaling retained"
+        },
+        {
+          "path": "docs/brand/qa/2026-11-19/final-home-1440-light.png",
+          "bytes": 888902,
+          "width_px": 2880,
+          "height_px": 1800,
+          "sha256": "4bfd5fdb7b0e0409fe29e20a4ba72bdf651127d3bbe1d4fa3c6b3f838b89865b",
+          "capture": "Chrome DevTools Capture screenshot, DPR 2, unmodified PNG"
+        },
+        {
+          "path": "docs/brand/qa/2026-11-19/final-home-390-dark.png",
+          "bytes": 294000,
+          "width_px": 780,
+          "height_px": 1688,
+          "sha256": "553e3537a7c886d51f413e3259543ba886b7bbbb940f2be2c4150001a7dd94f2",
+          "capture": "Chrome DevTools Capture screenshot, DPR 2, unmodified PNG"
+        },
+        {
+          "path": "docs/brand/qa/2026-11-19/final-home-768-light.png",
+          "bytes": 644664,
+          "width_px": 1536,
+          "height_px": 2048,
+          "sha256": "441fea05cd748f38b9463f2a8d3583d122f81e115f983e6300a2744a2067cca1",
+          "capture": "Chrome DevTools Capture screenshot, DPR 2, unmodified PNG"
+        },
+        {
+          "path": "docs/brand/qa/2026-11-19/footer-1440-dark.png",
+          "bytes": 185656,
+          "width_px": 936,
+          "height_px": 585,
+          "sha256": "76776405444363d2dc8ba65f9f3e70e3421413ddae1ab72260f10d760630f016",
+          "capture": "Real native Chrome window screenshot cropped to website viewport; OS/DevTools fit scaling retained"
+        },
+        {
+          "path": "docs/brand/qa/2026-11-19/tax-320-ru-after.png",
+          "bytes": 124816,
+          "width_px": 230,
+          "height_px": 608,
+          "sha256": "3a4dc0369315319a7c540e4453804490d2d108b77631c0c2d116cb7e57ff3e36",
+          "capture": "Real native Chrome window screenshot cropped to website viewport; OS/DevTools fit scaling retained"
+        },
+        {
+          "path": "docs/brand/qa/2026-11-19/tax-320-ru-before.png",
+          "bytes": 118593,
+          "width_px": 230,
+          "height_px": 608,
+          "sha256": "b3b49cac24069f608a4ae7e8656ade30b69d4f6772e4bc7c8d17f5945a5da000",
+          "capture": "Real native Chrome window screenshot cropped to website viewport; OS/DevTools fit scaling retained"
+        },
+        {
+          "path": "docs/brand/qa/2026-11-19/visual-board.png",
+          "bytes": 411824,
+          "width_px": 1600,
+          "height_px": 1040,
+          "sha256": "6634880d8c40090bab31801f6832d376255fd2220bb652e32962c6aaae08a5af",
+          "capture": "Composition of the three final real Chrome captures, scaled proportionally"
+        }
+      ]
     },
-    "limits": "Loopback HTTP; HTML-declared JS/CSS excludes fonts, image bytes and later dynamic imports. Not Lighthouse, browser layout, real mobile network or field Core Web Vitals."
-  },
-  "browser": {
-    "performed": false,
-    "screenshots_created": false,
-    "reason": "Supported managed preview retry started app on 0.0.0.0:5000 after tsx repair, but preview daemon startup timed out and returned no URL; preview stopped.",
-    "pending": [
-      "320/390/768/1440 CSS px",
-      "actual breakpoints and portrait/landscape",
-      "computed themes and Georgian/English/Russian rendering",
-      "font use in rendered pages",
-      "keyboard menu/focus/Escape",
-      "200 percent text and spacing",
-      "reduced motion",
-      "actual form/UI states",
-      "real-device and assistive-technology review"
-    ]
-  },
-  "deployment": {
-    "public_deployment_performed": false,
-    "public_domain_or_hosting_target_configured": false,
-    "UI_final_visual_acceptance": "pending"
-  },
-  "source_reports": [
-    {
-      "file": "brand-static-checks.json",
-      "sha256": "17594a979a90af4be4101ebadedfb29718d7f367a1f0f72483ba1cf9453a477d"
+    "computed_style_evidence": {
+      "computed-body-light": [
+        "tree item (selectable) CSS property name: background-color CSS property value: rgb(253, 253, 253)",
+        "tree item (selectable) CSS property name: border-bottom-color CSS property value: rgb(217, 221, 231)",
+        "tree item (selectable) CSS property name: border-left-color CSS property value: rgb(217, 221, 231)",
+        "tree item (selectable) CSS property name: border-right-color CSS property value: rgb(217, 221, 231)",
+        "tree item (selectable) CSS property name: border-top-color CSS property value: rgb(217, 221, 231)",
+        "tree item (selectable) CSS property name: color CSS property value: rgb(11, 27, 77)",
+        "tree item (selectable) CSS property name: color-scheme CSS property value: light",
+        "tree item (selectable) CSS property name: -webkit-tap-highlight-color CSS property value: rgba(0, 0, 0, 0)"
+      ],
+      "computed-body-dark": [
+        "tree item (selectable) CSS property name: background-color CSS property value: rgb(9, 15, 37)",
+        "tree item (selectable) CSS property name: border-bottom-color CSS property value: rgb(69, 80, 113)",
+        "tree item (selectable) CSS property name: border-left-color CSS property value: rgb(69, 80, 113)",
+        "tree item (selectable) CSS property name: border-right-color CSS property value: rgb(69, 80, 113)",
+        "tree item (selectable) CSS property name: border-top-color CSS property value: rgb(69, 80, 113)",
+        "tree item (selectable) CSS property name: color CSS property value: rgb(247, 245, 255)",
+        "tree item (selectable) CSS property name: color-scheme CSS property value: dark",
+        "tree item (selectable) CSS property name: -webkit-tap-highlight-color CSS property value: rgba(0, 0, 0, 0)"
+      ],
+      "computed-header-dark": [
+        "tree item (selectable) CSS property name: background-color CSS property value: rgb(253, 253, 253)",
+        "tree item (selectable) CSS property name: border-bottom-color CSS property value: rgb(217, 221, 231)",
+        "tree item (selectable) CSS property name: border-left-color CSS property value: rgb(217, 221, 231)",
+        "tree item (selectable) CSS property name: border-right-color CSS property value: rgb(217, 221, 231)",
+        "tree item (selectable) CSS property name: border-top-color CSS property value: rgb(217, 221, 231)",
+        "tree item (selectable) CSS property name: color CSS property value: rgb(11, 27, 77)",
+        "tree item (selectable) CSS property name: color-scheme CSS property value: light",
+        "tree item (selectable) CSS property name: -webkit-tap-highlight-color CSS property value: rgba(0, 0, 0, 0)"
+      ],
+      "computed-footer-dark": [
+        "tree item (selectable) CSS property name: background-color CSS property value: rgb(253, 253, 253)",
+        "tree item (selectable) CSS property name: border-bottom-color CSS property value: rgb(217, 221, 231)",
+        "tree item (selectable) CSS property name: border-left-color CSS property value: rgb(217, 221, 231)",
+        "tree item (selectable) CSS property name: border-right-color CSS property value: rgb(217, 221, 231)",
+        "tree item (selectable) CSS property name: border-top-color CSS property value: rgb(217, 221, 231)",
+        "tree item (selectable) CSS property name: color CSS property value: rgb(90, 99, 119)",
+        "tree item (selectable) CSS property name: color-scheme CSS property value: light",
+        "tree item (selectable) CSS property name: -webkit-tap-highlight-color CSS property value: rgba(0, 0, 0, 0)"
+      ],
+      "rendered-fonts-en": [
+        "tree item (selectable) CSS property name: font-family CSS property value: \"Noto Sans Georgian\", \"Noto Sans\", sans-serif",
+        "tree item (selectable) CSS property name: font-feature-settings CSS property value: normal",
+        "tree item (selectable) CSS property name: font-size CSS property value: 39.408px",
+        "tree item (selectable) CSS property name: font-size-adjust CSS property value: 0.536",
+        "tree item (selectable) CSS property name: font-variation-settings CSS property value: normal",
+        "tree item (selectable) CSS property name: font-weight CSS property value: 700",
+        "tree item (selectable) CSS property name: -webkit-font-smoothing CSS property value: antialiased",
+        "text Noto Sans",
+        "text NotoSans-Bold",
+        "text (27 glyphs)",
+        "text Noto Sans Georgian",
+        "text NotoSansGeorgian-Bold",
+        "text (4 glyphs)"
+      ],
+      "rendered-fonts-ka-bold": [
+        "tree item (selectable) CSS property name: font-family CSS property value: \"Noto Sans Georgian\", \"Noto Sans\", sans-serif",
+        "tree item (selectable) CSS property name: font-feature-settings CSS property value: normal",
+        "tree item (selectable) CSS property name: font-size CSS property value: 39.408px",
+        "tree item (selectable) CSS property name: font-size-adjust CSS property value: 0.536",
+        "tree item (selectable) CSS property name: font-variation-settings CSS property value: normal",
+        "tree item (selectable) CSS property name: font-weight CSS property value: 700",
+        "tree item (selectable) CSS property name: -webkit-font-smoothing CSS property value: antialiased",
+        "text Noto Sans Georgian",
+        "text NotoSansGeorgian-Bold",
+        "text (33 glyphs)",
+        "text Noto Sans",
+        "text NotoSans-Bold",
+        "text (2 glyphs)"
+      ],
+      "rendered-fonts-ka-regular": [
+        "tree item (selectable) CSS property name: font-family CSS property value: \"Noto Sans Georgian\", \"Noto Sans\", sans-serif",
+        "tree item (selectable) CSS property name: font-feature-settings CSS property value: normal",
+        "tree item (selectable) CSS property name: font-size CSS property value: 17px",
+        "tree item (selectable) CSS property name: font-size-adjust CSS property value: 0.536",
+        "tree item (selectable) CSS property name: font-variation-settings CSS property value: normal",
+        "tree item (selectable) CSS property name: -webkit-font-smoothing CSS property value: antialiased",
+        "text Noto Sans Georgian",
+        "text NotoSansGeorgian-Regular",
+        "text (89 glyphs)",
+        "text Noto Sans",
+        "text NotoSans-Regular",
+        "text (2 glyphs)"
+      ],
+      "rendered-fonts-ru-regular": [
+        "tree item (selectable) CSS property name: font-family CSS property value: \"Noto Sans Georgian\", \"Noto Sans\", sans-serif",
+        "tree item (selectable) CSS property name: font-feature-settings CSS property value: normal",
+        "tree item (selectable) CSS property name: font-size CSS property value: 17px",
+        "tree item (selectable) CSS property name: font-size-adjust CSS property value: 0.536",
+        "tree item (selectable) CSS property name: font-variation-settings CSS property value: normal",
+        "tree item (selectable) CSS property name: -webkit-font-smoothing CSS property value: antialiased",
+        "text Noto Sans",
+        "text NotoSans-Regular",
+        "text (69 glyphs)",
+        "text Noto Sans Georgian",
+        "text NotoSansGeorgian-Regular",
+        "text (8 glyphs)"
+      ],
+      "reduced-motion-computed": [
+        "tree item (selectable) CSS property name: animation-duration CSS property value: 1e-05s",
+        "tree item (selectable) CSS property name: transition-duration CSS property value: 1e-05s",
+        "combo box (settable, string) Emulate CSS media feature prefers-reduced-motion Value: prefers-reduced-motion: reduce ID: labelledControl4624"
+      ]
     },
-    {
-      "file": "production-http.json",
-      "sha256": "152208478d321cf38c9c6d19bbbc8acd38c73bf71a4a100df4dc95e68b514d4a"
-    }
-  ],
-  "limits": "No new logo variant; no production intake/database/outbound notifications; no WCAG certification or newly measured Lighthouse score.",
-  "publication": {
-    "status": "published_as_draft_pull_request",
-    "public_repository": true,
-    "branch_pushed": true,
-    "branch_url": "https://github.com/revaza88/assistpro/tree/codex/assist-brand-system-2-2",
-    "pull_request_created": true,
-    "pull_request_number": 1,
-    "pull_request_url": "https://github.com/revaza88/assistpro/pull/1",
-    "draft": true,
-    "merged": false,
-    "public_deployment_performed": false,
-    "method": "GitHub Git Data API; published file trees verified identical to reviewed local commits",
-    "published_runtime_commit": "59ad55f16149f158d1f7ef49fbfe213af329aa31",
-    "initial_documentation_commit": "2e013811751c173dd214d580ab0bcf49d76ed94e",
-    "authorization_date": "2026-11-19",
-    "authorization": "ატვირთე გითჰაბზე ეს ინფორმაცია.",
-    "next_step": "Continue actual browser acceptance and focused fixes on the same branch and Draft PR; see CODEX_CONTINUE.md.",
-    "history": [
+    "contrast_from_observed_computed_pairs": [
       {
-        "status": "blocked_by_automatic_approval_review",
-        "resolved_by": "Explicit user request to publish on 2026-11-19."
+        "foreground": "#0B1B4D",
+        "background": "#FDFDFD",
+        "ratio": 16.15
+      },
+      {
+        "foreground": "#F7F5FF",
+        "background": "#090F25",
+        "ratio": 17.58
+      },
+      {
+        "foreground": "#5A6377",
+        "background": "#FDFDFD",
+        "ratio": 5.92
       }
-    ]
+    ],
+    "limits": [
+      "Complete route x viewport x language x theme cross-product and below-fold content on every service page; current route inspection scope is listed explicitly.",
+      "Complete computed hover/pressed/focus/disabled/loading matrix for every control in both themes. Normal, focus, disabled and calculator error states were visually exercised; not all states were measured.",
+      "Contact validation, loading, submission error/retry and success in a isolated UI fixture without enabling production intake. Actual production QA server stayed INTAKE_MODE=disabled, so its form cannot submit. No browser success was simulated or claimed.",
+      "Full text-spacing override on every descendant and all routes. This run used root font-size:200%, letter-spacing:.12em and word-spacing:.16em on the calculator; descendant overrides were not globally forced.",
+      "Physical devices, Safari/Firefox/Edge, screen reader and other assistive technology were not used.",
+      "Whole-logo favicon remains tiny-scale limited; new compact variant is not approved.",
+      "Final user review of palette/dark adaptation and public launch remain separate. No merge, public deployment, database, production intake or outbound notifications."
+    ],
+    "publication": {
+      "branch": "codex/assist-brand-system-2-2",
+      "draft_pr": "https://github.com/revaza88/assistpro/pull/1",
+      "runtime_commit": "3ad8ad4bda7e70e41e0bf21edb4290f51a440fe5",
+      "method": "GitHub Git Data API, expected head lease, force:false; fetched tree identical to local reviewed code",
+      "ci_at_runtime_commit": {
+        "pull_request_workflow_runs": [],
+        "commit_statuses": [],
+        "meaning": "No CI result returned for this SHA at observation; local gates are separate",
+        "check_runs": []
+      },
+      "merge": false,
+      "public_deployment": false
+    },
+    "recommendation": "Accept the two focused fixes in the inspected cases. Do not treat this partial browser matrix as full final visual/release acceptance."
   },
-  "published_validated_revision": "59ad55f16149f158d1f7ef49fbfe213af329aa31",
-  "validated_tree_sha": "7129367fa886d66383314a24021ca41072745df5"
+  "prior_evidence": {
+    "title": "ASSIST Brand System 2.2 repository verification",
+    "date": "2026-11-19",
+    "timezone": "Asia/Tbilisi",
+    "repository": "revaza88/assistpro",
+    "branch": "codex/assist-brand-system-2-2",
+    "base_commit": "ad8637e2f8d24426f8d46b60a1e6f566d3748622",
+    "validated_revision": "d0e24553b498ba6648b8eaee5020cf9a4bebf124",
+    "status": "source_build_test_and_isolated_HTTP_checks_passed; browser_visual_acceptance_pending",
+    "gates": {
+      "typecheck": {
+        "command": "npm run check",
+        "status": "passed"
+      },
+      "tests": {
+        "command": "npm test",
+        "status": "passed",
+        "passed": 31,
+        "failed": 0,
+        "skipped": 0,
+        "scope": "repository automated tests including local HTTP/API, CSP, theme/locale and asset identity"
+      },
+      "build": {
+        "command": "npm run build",
+        "status": "passed",
+        "stages": [
+          "Vite client",
+          "15 public routes and 404 prerender",
+          "Express server bundle"
+        ],
+        "initial_failure": "tsx CLI IPC pipe EPERM",
+        "repair": "node --import tsx for dev/prerender entry points; no dependency change"
+      }
+    },
+    "static_checks": {
+      "light_roles_matching_package": 19,
+      "declared_contrast_pairs": 29,
+      "declared_contrast_pairs_passed": 29,
+      "contrast_scope": "Declared source colors only; no browser computed-style audit",
+      "contrast_results": [
+        {
+          "foreground": "ink",
+          "background": "canvas",
+          "colors": [
+            "#0B1B4D",
+            "#FDFDFD"
+          ],
+          "ratio": 16.152,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "muted",
+          "background": "canvas",
+          "colors": [
+            "#5A6377",
+            "#FDFDFD"
+          ],
+          "ratio": 5.923,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "muted",
+          "background": "surface",
+          "colors": [
+            "#5A6377",
+            "#F4F4F8"
+          ],
+          "ratio": 5.491,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "white",
+          "background": "action",
+          "colors": [
+            "#FFFFFF",
+            "#6F2ED6"
+          ],
+          "ratio": 6.913,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "white",
+          "background": "action-hover",
+          "colors": [
+            "#FFFFFF",
+            "#5321A8"
+          ],
+          "ratio": 9.764,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "white",
+          "background": "action-pressed",
+          "colors": [
+            "#FFFFFF",
+            "#431A88"
+          ],
+          "ratio": 12.056,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "action",
+          "background": "canvas",
+          "colors": [
+            "#6F2ED6",
+            "#FDFDFD"
+          ],
+          "ratio": 6.796,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "action-hover",
+          "background": "action-tint",
+          "colors": [
+            "#5321A8",
+            "#F1EAFB"
+          ],
+          "ratio": 8.324,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "action-pressed",
+          "background": "action-tint",
+          "colors": [
+            "#431A88",
+            "#F1EAFB"
+          ],
+          "ratio": 10.277,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "control",
+          "background": "white",
+          "colors": [
+            "#7A8394",
+            "#FFFFFF"
+          ],
+          "ratio": 3.817,
+          "threshold": 3,
+          "passed": true
+        },
+        {
+          "foreground": "control",
+          "background": "surface",
+          "colors": [
+            "#7A8394",
+            "#F4F4F8"
+          ],
+          "ratio": 3.479,
+          "threshold": 3,
+          "passed": true
+        },
+        {
+          "foreground": "focus",
+          "background": "canvas",
+          "colors": [
+            "#6F2ED6",
+            "#FDFDFD"
+          ],
+          "ratio": 6.796,
+          "threshold": 3,
+          "passed": true
+        },
+        {
+          "foreground": "success",
+          "background": "success-surface",
+          "colors": [
+            "#16694C",
+            "#EAF6EF"
+          ],
+          "ratio": 5.991,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "error",
+          "background": "error-surface",
+          "colors": [
+            "#B42332",
+            "#FFF0F2"
+          ],
+          "ratio": 5.887,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "warning",
+          "background": "warning-surface",
+          "colors": [
+            "#805500",
+            "#FFF7E5"
+          ],
+          "ratio": 6.119,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "muted",
+          "background": "disabled",
+          "colors": [
+            "#5A6377",
+            "#DDE1EA"
+          ],
+          "ratio": 4.599,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "dark-ink",
+          "background": "dark-canvas",
+          "colors": [
+            "#F7F5FF",
+            "#090F25"
+          ],
+          "ratio": 17.584,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "dark-muted",
+          "background": "dark-surface",
+          "colors": [
+            "#C7CCE0",
+            "#121C37"
+          ],
+          "ratio": 10.539,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "ink",
+          "background": "dark-action",
+          "colors": [
+            "#0B1B4D",
+            "#D9B3FF"
+          ],
+          "ratio": 9.265,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "ink",
+          "background": "dark-action-hover",
+          "colors": [
+            "#0B1B4D",
+            "#E6CCFF"
+          ],
+          "ratio": 11.302,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "ink",
+          "background": "dark-action-pressed",
+          "colors": [
+            "#0B1B4D",
+            "#C99BF2"
+          ],
+          "ratio": 7.397,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "dark-action",
+          "background": "dark-surface",
+          "colors": [
+            "#D9B3FF",
+            "#121C37"
+          ],
+          "ratio": 9.497,
+          "threshold": 3,
+          "passed": true
+        },
+        {
+          "foreground": "dark-control",
+          "background": "dark-surface",
+          "colors": [
+            "#8D98B5",
+            "#121C37"
+          ],
+          "ratio": 5.847,
+          "threshold": 3,
+          "passed": true
+        },
+        {
+          "foreground": "dark-success",
+          "background": "dark-success-surface",
+          "colors": [
+            "#82DCB1",
+            "#123A2B"
+          ],
+          "ratio": 7.697,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "dark-error",
+          "background": "dark-error-surface",
+          "colors": [
+            "#FFB4BC",
+            "#3A1B29"
+          ],
+          "ratio": 9.138,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "dark-warning",
+          "background": "dark-warning-surface",
+          "colors": [
+            "#F4D28A",
+            "#342A17"
+          ],
+          "ratio": 9.689,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "dark-action-pressed",
+          "background": "dark-tint",
+          "colors": [
+            "#C99BF2",
+            "#202A49"
+          ],
+          "ratio": 6.35,
+          "threshold": 4.5,
+          "passed": true
+        },
+        {
+          "foreground": "dark-action",
+          "background": "ink",
+          "colors": [
+            "#D9B3FF",
+            "#0B1B4D"
+          ],
+          "ratio": 9.265,
+          "threshold": 3,
+          "passed": true
+        },
+        {
+          "foreground": "dark-disabled-ink",
+          "background": "dark-disabled",
+          "colors": [
+            "#B2BAD0",
+            "#27334F"
+          ],
+          "ratio": 6.473,
+          "threshold": 4.5,
+          "passed": true
+        }
+      ],
+      "generated_html_pages": 16,
+      "public_routes": 15,
+      "not_found_page": true,
+      "per_page_invariants": [
+        "one_h1",
+        "two_full_original_logo_images_with_exact_intrinsic_dimensions",
+        "exact_Georgian_slogan",
+        "fragment_targets_resolve",
+        "no_duplicate_ids",
+        "no_nested_anchor_button",
+        "no_NUL_bytes"
+      ],
+      "page_records": [
+        {
+          "file": "404.html",
+          "h1": 1,
+          "logos": 2,
+          "slogan": true,
+          "fragment_targets_resolved": true,
+          "nested_anchor_button": false
+        },
+        {
+          "file": "about.html",
+          "h1": 1,
+          "logos": 2,
+          "slogan": true,
+          "fragment_targets_resolved": true,
+          "nested_anchor_button": false
+        },
+        {
+          "file": "calculator.html",
+          "h1": 1,
+          "logos": 2,
+          "slogan": true,
+          "fragment_targets_resolved": true,
+          "nested_anchor_button": false
+        },
+        {
+          "file": "career.html",
+          "h1": 1,
+          "logos": 2,
+          "slogan": true,
+          "fragment_targets_resolved": true,
+          "nested_anchor_button": false
+        },
+        {
+          "file": "contact.html",
+          "h1": 1,
+          "logos": 2,
+          "slogan": true,
+          "fragment_targets_resolved": true,
+          "nested_anchor_button": false
+        },
+        {
+          "file": "faq.html",
+          "h1": 1,
+          "logos": 2,
+          "slogan": true,
+          "fragment_targets_resolved": true,
+          "nested_anchor_button": false
+        },
+        {
+          "file": "home.html",
+          "h1": 1,
+          "logos": 2,
+          "slogan": true,
+          "fragment_targets_resolved": true,
+          "nested_anchor_button": false
+        },
+        {
+          "file": "industries.html",
+          "h1": 1,
+          "logos": 2,
+          "slogan": true,
+          "fragment_targets_resolved": true,
+          "nested_anchor_button": false
+        },
+        {
+          "file": "services.html",
+          "h1": 1,
+          "logos": 2,
+          "slogan": true,
+          "fragment_targets_resolved": true,
+          "nested_anchor_button": false
+        },
+        {
+          "file": "services_accounting.html",
+          "h1": 1,
+          "logos": 2,
+          "slogan": true,
+          "fragment_targets_resolved": true,
+          "nested_anchor_button": false
+        },
+        {
+          "file": "services_audit.html",
+          "h1": 1,
+          "logos": 2,
+          "slogan": true,
+          "fragment_targets_resolved": true,
+          "nested_anchor_button": false
+        },
+        {
+          "file": "services_business.html",
+          "h1": 1,
+          "logos": 2,
+          "slogan": true,
+          "fragment_targets_resolved": true,
+          "nested_anchor_button": false
+        },
+        {
+          "file": "services_hr.html",
+          "h1": 1,
+          "logos": 2,
+          "slogan": true,
+          "fragment_targets_resolved": true,
+          "nested_anchor_button": false
+        },
+        {
+          "file": "services_legal.html",
+          "h1": 1,
+          "logos": 2,
+          "slogan": true,
+          "fragment_targets_resolved": true,
+          "nested_anchor_button": false
+        },
+        {
+          "file": "services_tax.html",
+          "h1": 1,
+          "logos": 2,
+          "slogan": true,
+          "fragment_targets_resolved": true,
+          "nested_anchor_button": false
+        },
+        {
+          "file": "team.html",
+          "h1": 1,
+          "logos": 2,
+          "slogan": true,
+          "fragment_targets_resolved": true,
+          "nested_anchor_button": false
+        }
+      ]
+    },
+    "http": {
+      "mode": "isolated_loopback_production_HTTP_test",
+      "tested_base_url": "http://127.0.0.1:42105",
+      "server_stopped_after_check": true,
+      "intake": "disabled",
+      "indexing": false,
+      "commands": [
+        {
+          "command": "node scripts/smoke-release.mjs http://127.0.0.1:42105",
+          "exit_code": 0
+        },
+        {
+          "command": "node --import tsx scripts/audit-web.ts http://127.0.0.1:42105",
+          "exit_code": 0
+        }
+      ],
+      "public_routes": [
+        "/",
+        "/services",
+        "/services/accounting",
+        "/services/tax",
+        "/services/legal",
+        "/services/business",
+        "/services/audit",
+        "/services/hr",
+        "/industries",
+        "/calculator",
+        "/contact",
+        "/faq",
+        "/about",
+        "/team",
+        "/career"
+      ],
+      "checks": [
+        "15 public routes",
+        "404",
+        "prerendered content",
+        "metadata",
+        "CSP headers",
+        "cache headers",
+        "gzip",
+        "health",
+        "robots",
+        "sitemap",
+        "query noindex",
+        "disabled POST returns 503"
+      ],
+      "served_resources": [
+        {
+          "path": "/assets/brand/ASSIST_Locked_White_Native_1405px.png",
+          "bytes": 242575,
+          "sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e",
+          "content_type": "image/png",
+          "served_identically": true
+        },
+        {
+          "path": "/assets/fonts/assist-v2/NotoSansGeorgian-Regular.woff2",
+          "bytes": 18024,
+          "sha256": "f95323085cbeb54900d769495efee4bd32ea4b83891dbf227b3289399434d88d",
+          "content_type": "font/woff2",
+          "served_identically": true
+        },
+        {
+          "path": "/assets/fonts/assist-v2/NotoSansGeorgian-Bold.woff2",
+          "bytes": 18432,
+          "sha256": "1b855ec3a0f8b65260319b2b5042cfb138a05e5f1ef686d517bb4fb2897a3b45",
+          "content_type": "font/woff2",
+          "served_identically": true
+        },
+        {
+          "path": "/assets/fonts/assist-v2/NotoSans-Regular.woff2",
+          "bytes": 70620,
+          "sha256": "335be51f607686d417e3fcf5c256c8fcdc90945d6b8f4b1681a62d5f414d07db",
+          "content_type": "font/woff2",
+          "served_identically": true
+        },
+        {
+          "path": "/assets/fonts/assist-v2/NotoSans-Bold.woff2",
+          "bytes": 69696,
+          "sha256": "0b5745eecf4f53b39115f458dd3537f2ebe75750d7b652c8980a8caee05da197",
+          "content_type": "font/woff2",
+          "served_identically": true
+        }
+      ],
+      "initial_html_declared_assets": {
+        "raw_js_bytes": 338662,
+        "gzip_js_bytes": 100042,
+        "gzip_css_bytes": 10328,
+        "budgets": {
+          "raw_js_bytes": 400000,
+          "gzip_js_bytes": 120000,
+          "gzip_css_bytes": 12000
+        },
+        "within_budgets": true
+      },
+      "limits": "Loopback HTTP; HTML-declared JS/CSS excludes fonts, image bytes and later dynamic imports. Not Lighthouse, browser layout, real mobile network or field Core Web Vitals."
+    },
+    "browser": {
+      "performed": false,
+      "screenshots_created": false,
+      "reason": "Supported managed preview retry started app on 0.0.0.0:5000 after tsx repair, but preview daemon startup timed out and returned no URL; preview stopped.",
+      "pending": [
+        "320/390/768/1440 CSS px",
+        "actual breakpoints and portrait/landscape",
+        "computed themes and Georgian/English/Russian rendering",
+        "font use in rendered pages",
+        "keyboard menu/focus/Escape",
+        "200 percent text and spacing",
+        "reduced motion",
+        "actual form/UI states",
+        "real-device and assistive-technology review"
+      ]
+    },
+    "deployment": {
+      "public_deployment_performed": false,
+      "public_domain_or_hosting_target_configured": false,
+      "UI_final_visual_acceptance": "pending"
+    },
+    "source_reports": [
+      {
+        "file": "brand-static-checks.json",
+        "sha256": "17594a979a90af4be4101ebadedfb29718d7f367a1f0f72483ba1cf9453a477d"
+      },
+      {
+        "file": "production-http.json",
+        "sha256": "152208478d321cf38c9c6d19bbbc8acd38c73bf71a4a100df4dc95e68b514d4a"
+      }
+    ],
+    "limits": "No new logo variant; no production intake/database/outbound notifications; no WCAG certification or newly measured Lighthouse score.",
+    "publication": {
+      "status": "published_as_draft_pull_request",
+      "public_repository": true,
+      "branch_pushed": true,
+      "branch_url": "https://github.com/revaza88/assistpro/tree/codex/assist-brand-system-2-2",
+      "pull_request_created": true,
+      "pull_request_number": 1,
+      "pull_request_url": "https://github.com/revaza88/assistpro/pull/1",
+      "draft": true,
+      "merged": false,
+      "public_deployment_performed": false,
+      "method": "GitHub Git Data API; published file trees verified identical to reviewed local commits",
+      "published_runtime_commit": "59ad55f16149f158d1f7ef49fbfe213af329aa31",
+      "initial_documentation_commit": "2e013811751c173dd214d580ab0bcf49d76ed94e",
+      "authorization_date": "2026-11-19",
+      "authorization": "ატვირთე გითჰაბზე ეს ინფორმაცია.",
+      "next_step": "Continue actual browser acceptance and focused fixes on the same branch and Draft PR; see CODEX_CONTINUE.md.",
+      "history": [
+        {
+          "status": "blocked_by_automatic_approval_review",
+          "resolved_by": "Explicit user request to publish on 2026-11-19."
+        }
+      ]
+    },
+    "published_validated_revision": "59ad55f16149f158d1f7ef49fbfe213af329aa31",
+    "validated_tree_sha": "7129367fa886d66383314a24021ca41072745df5"
+  }
 }

@@ -18,7 +18,7 @@
     "logo_provenance": "technical_source_linkage_verified",
     "web_palette_typography_and_layout": "authorized_implementation_of_2.2_proposal; final_visual_acceptance_separate",
     "dark_content_theme": "site_specific_adaptation; does_not_authorize_a_dark_logo_variant",
-    "current_validation": "typecheck_passed; tests_31_of_31_passed; build_passed; isolated_HTTP_and_static_checks_passed; browser_visual_acceptance_pending_preview_infrastructure"
+    "current_validation": "Fresh production Chrome browser checks and two fixes; typecheck/31 tests/build/smoke/audit passed; full visual acceptance pending. See qa/2026-11-19/current-run.json."
   },
   "slogan": {
     "text": "თქვენი ბიზნესის მხარდამჭერი",
@@ -48,9 +48,10 @@
         "reference_public_and_2.2_package_bytes_identical",
         "sha256_verified",
         "png_intrinsic_dimensions_verified",
-        "2.2_provenance_record_transferred"
+        "2.2_provenance_record_transferred",
+        "Chrome_mobile_desktop_whole_logo_readability_spot_checked_2026_11_19"
       ],
-      "required_next_check": "actual_updated_site_mobile_and_desktop_readability; see IMPLEMENTATION_ACCEPTANCE.md",
+      "required_next_check": "Final visual acceptance and other browsers/physical devices; see current QA scope.",
       "integration_hash_verified": true,
       "usage_authorization": {
         "date": "2026-11-18",
@@ -82,7 +83,7 @@
     }
   ],
   "fonts": {
-    "status": "integrated_source_hashes_and_HTTP_delivery_verified; actual_browser_rendering_unverified",
+    "status": "source_and_HTTP_hashes_preserved; Chrome_Rendered_Fonts_verified_Noto_Sans_Georgian_and_Noto_Sans_400_700_for_observed_text",
     "runtime_css": "client/src/fonts.css",
     "directory": "client/public/assets/fonts/assist-v2",
     "license_file": "client/public/assets/fonts/assist-v2/LICENSES.txt",
@@ -196,6 +197,7 @@
   },
   "current_QA": {
     "report": "QA_v2_2.json",
+    "latest_run": "qa/2026-11-19/current-run.json",
     "typecheck": "passed",
     "tests_passed": 31,
     "tests_failed": 0,
@@ -203,16 +205,43 @@
     "build": "passed",
     "prerender_pages": 16,
     "HTTP_public_routes": 15,
-    "HTTP_resources_byte_identical": 5,
-    "light_role_matches": 19,
-    "declared_contrast_pairs_passed": 29,
-    "browser_performed": false,
-    "browser_limit": "preview daemon startup timed out without a URL after application started; no new screenshots",
+    "browser_performed": true,
+    "browser_scope": "partial real Chrome production inspection; all routes opened, not full cross-product or every state",
+    "browser_limit": [
+      "Complete route x viewport x language x theme cross-product and below-fold content on every service page; current route inspection scope is listed explicitly.",
+      "Complete computed hover/pressed/focus/disabled/loading matrix for every control in both themes. Normal, focus, disabled and calculator error states were visually exercised; not all states were measured.",
+      "Contact validation, loading, submission error/retry and success in a separately approved isolated UI fixture. Actual production QA server stayed INTAKE_MODE=disabled, so its form cannot submit. No browser success was simulated or claimed.",
+      "Full text-spacing override on every descendant and all routes. This run used root font-size:200%, letter-spacing:.12em and word-spacing:.16em on the calculator; descendant overrides were not globally forced.",
+      "Physical devices, Safari/Firefox/Edge, screen reader and other assistive technology were not used.",
+      "Whole-logo favicon remains tiny-scale limited; new compact variant is not approved.",
+      "Final user review of palette/dark adaptation and public launch remain separate. No merge, public deployment, database, production intake or outbound notifications."
+    ],
     "public_deployment_performed": false,
     "UI_final_visual_acceptance": "pending",
-    "validated_code_commit": "d0e24553b498ba6648b8eaee5020cf9a4bebf124",
-    "GitHub_publication": "published_as_draft_pull_request; https://github.com/revaza88/assistpro/pull/1",
-    "published_validated_code_commit": "59ad55f16149f158d1f7ef49fbfe213af329aa31",
-    "validated_code_tree": "7129367fa886d66383314a24021ca41072745df5"
+    "validated_code_commit": "3ad8ad4bda7e70e41e0bf21edb4290f51a440fe5",
+    "local_validated_code_commit": "ea8ed8df3d721523c5ff66ff13ec706570b176a2",
+    "validated_code_tree": "61fa0537946a36adc036486a05bfa246814ec34c",
+    "GitHub_publication": "Same Draft PR #1; runtime tree verified identical",
+    "previous_QA": {
+      "report": "QA_v2_2.json",
+      "typecheck": "passed",
+      "tests_passed": 31,
+      "tests_failed": 0,
+      "tests_skipped": 0,
+      "build": "passed",
+      "prerender_pages": 16,
+      "HTTP_public_routes": 15,
+      "HTTP_resources_byte_identical": 5,
+      "light_role_matches": 19,
+      "declared_contrast_pairs_passed": 29,
+      "browser_performed": false,
+      "browser_limit": "preview daemon startup timed out without a URL after application started; no new screenshots",
+      "public_deployment_performed": false,
+      "UI_final_visual_acceptance": "pending",
+      "validated_code_commit": "d0e24553b498ba6648b8eaee5020cf9a4bebf124",
+      "GitHub_publication": "published_as_draft_pull_request; https://github.com/revaza88/assistpro/pull/1",
+      "published_validated_code_commit": "59ad55f16149f158d1f7ef49fbfe213af329aa31",
+      "validated_code_tree": "7129367fa886d66383314a24021ca41072745df5"
+    }
   }
 }
