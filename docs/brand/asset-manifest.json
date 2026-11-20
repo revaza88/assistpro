@@ -1,6 +1,6 @@
 {
   "handoff_version": "2.2",
-  "as_of_date": "2026-11-19",
+  "as_of_date": "2026-11-20",
   "timezone": "Asia/Tbilisi",
   "approved_logo_design": "original Master V1.2",
   "site_repository_inspected": true,
@@ -8,18 +8,19 @@
   "repository": {
     "full_name": "revaza88/assistpro",
     "url": "https://github.com/revaza88/assistpro",
-    "base_commit": "ad8637e2f8d24426f8d46b60a1e6f566d3748622",
+    "base_commit": "f8e4b3f7964a25216f3305ccccd34c92ca6eb86a",
     "implementation_evidence": "IMPLEMENTATION_ACCEPTANCE.md",
-    "implementation_branch": "codex/assist-design-audit-2026-11-19",
-    "machine_readable_QA": "QA_v2_2.json",
-    "current_review_pr": "https://github.com/revaza88/assistpro/pull/2"
+    "implementation_branch": "codex/assist-brand-docs-light-theme-2026-11-20",
+    "machine_readable_QA": "asset-manifest.json",
+    "current_review_pr": "https://github.com/revaza88/assistpro/pull/6",
+    "machine_readable_QA_section": "current_QA"
   },
   "decision_status": {
     "logo_and_slogan": "user_approved_baseline",
     "logo_provenance": "technical_source_linkage_verified",
-    "web_palette_typography_and_layout": "authorized_implementation_of_2.2_proposal; final_visual_acceptance_separate",
-    "dark_content_theme": "site_specific_adaptation; does_not_authorize_a_dark_logo_variant",
-    "current_validation": "Fresh production Chrome browser checks and two fixes; typecheck/31 tests/build/smoke/audit passed; full visual acceptance pending. See qa/2026-11-19/current-run.json."
+    "web_palette_typography_and_layout": "palette_A_unified_light_theme_and_mobile_header_user_approved; other_visual_acceptance_as_recorded",
+    "dark_content_theme": "historical_adaptation; public_UI_uses_unified_light; compatibility_code_retained; no_dark_logo_authorized",
+    "current_validation": "Documentation and CSS-comment reconciliation only; no new browser or application test run. Existing PR #3–#5 evidence remains in IMPLEMENTATION_ACCEPTANCE.md and the dated QA reports."
   },
   "slogan": {
     "text": "თქვენი ბიზნესის მხარდამჭერი",
@@ -137,9 +138,9 @@
     "runtime": "client/src/brand-tokens.css",
     "imported_by": "client/src/index.css",
     "scope": "web_interface_only; no_logo_recoloring",
-    "status": "2.2_reference_values_with_site_theme_mapping",
+    "status": "approved_palette_A_runtime_values; original_2.0_2.2_reference_preserved",
     "source_web_spec_version": "2.0 retained by Brand System 2.2",
-    "dark_theme_status": "implemented_site_specific_proposal; declared_color_contrast_passed; browser_visual_acceptance_pending"
+    "dark_theme_status": "retained_compatibility; not_active_public_theme; historical_contrast_evidence_preserved"
   },
   "upstream_sources": [
     {
@@ -177,11 +178,11 @@
     "approved_translated_slogans"
   ],
   "open_decisions": [
-    "final_visual_acceptance_of_updated_site",
+    "remaining_visual_acceptance_outside_approved_palette_A_unified_light_theme_and_mobile_header",
     "current_actual_browser_device_and_assistive_technology_checks_as_recorded",
     "compact_favicon_if_separately_requested",
     "live_social_preview_on_confirmed_domain",
-    "public_domain_and_hosting_target",
+    "hosting_git_metadata_and_strict_release_identity_followed_separately",
     "production_intake_database_and_outbound_delivery_remain_deferred"
   ],
   "canonical_brand_standards": "https://chatgpt.com/space/page_4b64e35dc9a4819184466cda53fcca20",
@@ -194,21 +195,86 @@
       "REDESIGN_QA.md",
       "COMPLETE_INTEGRATION.md"
     ],
-    "note": "Historical reports and v1 source bytes preserved; prior test counts are not copied into current acceptance."
+    "note": "Historical reports and v1 source bytes preserved; prior test counts are not copied into current acceptance.",
+    "pre_light_theme_reconciliation": {
+      "recorded_date": "2026-11-20",
+      "source_commit": "f8e4b3f7964a25216f3305ccccd34c92ca6eb86a",
+      "source_manifest": "https://github.com/revaza88/assistpro/blob/f8e4b3f7964a25216f3305ccccd34c92ca6eb86a/docs/brand/asset-manifest.json",
+      "as_of_date": "2026-11-19",
+      "repository": {
+        "full_name": "revaza88/assistpro",
+        "url": "https://github.com/revaza88/assistpro",
+        "base_commit": "ad8637e2f8d24426f8d46b60a1e6f566d3748622",
+        "implementation_evidence": "IMPLEMENTATION_ACCEPTANCE.md",
+        "implementation_branch": "codex/assist-design-audit-2026-11-19",
+        "machine_readable_QA": "QA_v2_2.json",
+        "current_review_pr": "https://github.com/revaza88/assistpro/pull/2"
+      },
+      "decision_status": {
+        "logo_and_slogan": "user_approved_baseline",
+        "logo_provenance": "technical_source_linkage_verified",
+        "web_palette_typography_and_layout": "authorized_implementation_of_2.2_proposal; final_visual_acceptance_separate",
+        "dark_content_theme": "site_specific_adaptation; does_not_authorize_a_dark_logo_variant",
+        "current_validation": "Fresh production Chrome browser checks and two fixes; typecheck/31 tests/build/smoke/audit passed; full visual acceptance pending. See qa/2026-11-19/current-run.json."
+      },
+      "tokens": {
+        "reference": "brand-tokens.css",
+        "runtime": "client/src/brand-tokens.css",
+        "imported_by": "client/src/index.css",
+        "scope": "web_interface_only; no_logo_recoloring",
+        "status": "2.2_reference_values_with_site_theme_mapping",
+        "source_web_spec_version": "2.0 retained by Brand System 2.2",
+        "dark_theme_status": "implemented_site_specific_proposal; declared_color_contrast_passed; browser_visual_acceptance_pending"
+      },
+      "current_QA": {
+        "date": "2026-11-19",
+        "validated_revision": "4272cc5584e2237455ed12cc58fdb3262dd7f802",
+        "validated_tree_sha": "ac79d6b1294b122ff26d33d29b09303c9ab7a120",
+        "report": "qa/2026-11-19-refinement/current-run.json",
+        "visual_board": "qa/2026-11-19-refinement/visual-board.png",
+        "tests_passed": 33,
+        "browser_cases": "Scoped real Chrome production cases; full acceptance pending",
+        "public_deployment": true,
+        "blocker": "Visual publication is verified. Hosting Git commit/tree metadata is missing; strict release identity audit remains open.",
+        "logo_unchanged_sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e",
+        "publication_merge_commit": "fbb86db1b3fccc25c32c449766a3075c72929cd2",
+        "public_evidence": "qa/2026-11-19-refinement/public-release.json"
+      },
+      "open_decisions": [
+        "final_visual_acceptance_of_updated_site",
+        "current_actual_browser_device_and_assistive_technology_checks_as_recorded",
+        "compact_favicon_if_separately_requested",
+        "live_social_preview_on_confirmed_domain",
+        "public_domain_and_hosting_target",
+        "production_intake_database_and_outbound_delivery_remain_deferred"
+      ]
+    }
   },
   "current_QA": {
-    "date": "2026-11-19",
-    "validated_revision": "4272cc5584e2237455ed12cc58fdb3262dd7f802",
-    "validated_tree_sha": "ac79d6b1294b122ff26d33d29b09303c9ab7a120",
-    "report": "qa/2026-11-19-refinement/current-run.json",
-    "visual_board": "qa/2026-11-19-refinement/visual-board.png",
-    "tests_passed": 33,
-    "browser_cases": "Scoped real Chrome production cases; full acceptance pending",
-    "public_deployment": true,
-    "blocker": "Visual publication is verified. Hosting Git commit/tree metadata is missing; strict release identity audit remains open.",
-    "logo_unchanged_sha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e",
-    "publication_merge_commit": "fbb86db1b3fccc25c32c449766a3075c72929cd2",
-    "public_evidence": "qa/2026-11-19-refinement/public-release.json"
+    "date": "2026-11-20",
+    "scope": "documentation_and_CSS_comment_reconciliation_only",
+    "runtime_baseline_commit": "f8e4b3f7964a25216f3305ccccd34c92ca6eb86a",
+    "review_pr": "https://github.com/revaza88/assistpro/pull/6",
+    "report": "IMPLEMENTATION_ACCEPTANCE.md",
+    "runtime_declarations_changed": false,
+    "logo_assets_changed": false,
+    "historical_evidence_preserved": true,
+    "application_tests_rerun": false,
+    "browser_performed": false,
+    "public_deployment_revalidated": false,
+    "validation": {
+      "approved_two_file_content_preserved": true,
+      "light_color_token_value_pairs_matched": 28,
+      "CSS_declarations_byte_identical": true,
+      "historical_manifest_snapshot_preserved": true,
+      "prior_acceptance_record_preserved_verbatim": true
+    },
+    "historical_UI_evidence": [
+      "qa/2026-11-19-color-review/README.md",
+      "qa/2026-11-19-surface-flow/README.md",
+      "qa/2026-11-19-mobile-header/README.md"
+    ],
+    "limits": "Static documentation verification only. Earlier application/browser/publication results retain their own dates and scope; no new hosting or release-identity result is claimed."
   },
   "previous_QA": [
     {
@@ -299,5 +365,18 @@
     "report": "qa/2026-11-19-surface-flow/README.md",
     "publication": "verified_on_assist_ge",
     "merge_commit": "a4328ce8dad6b72d8a4937b9a3ac109b27578b10"
+  },
+  "current_mobile_header": {
+    "decision": "compact_sticky_header_with_accessible_reflow",
+    "decision_date": "2026-11-19",
+    "merge_commit": "091e36066803f1383a4efce5c7eaf78be81a93d7",
+    "rules": "BRAND_FOR_WEB.md, section 4.1",
+    "runtime_sources": [
+      "client/src/components/navigation.tsx",
+      "client/src/index.css"
+    ],
+    "report": "qa/2026-11-19-mobile-header/README.md",
+    "publication_evidence": "qa/2026-11-19-mobile-header/public-publication.json",
+    "logo_modified": false
   }
 }
