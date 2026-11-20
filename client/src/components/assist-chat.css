@@ -1,7 +1,7 @@
 .assist-chat-entry {padding:1rem; text-align:center; background:var(--assist-brand-band); border-top:1px solid var(--line)}
 .assist-chat {width:min(40rem,calc(100% - 1rem)); max-height:85vh; max-height:85dvh; margin:auto; padding:clamp(.75rem,3vw,1.5rem); border:1px solid var(--control); border-radius:var(--assist-radius-group); background:var(--surface); color:var(--ink); overflow:auto; overflow-wrap:anywhere; overscroll-behavior:contain}
 .assist-chat::backdrop {background:rgb(11 27 77 / .45); overflow:hidden; overscroll-behavior:contain}
-.assist-chat-head {display:flex; align-items:start; justify-content:space-between; gap:.75rem; flex-wrap:wrap}
+.assist-chat-head {display:flex; align-items:start; justify-content:space-between; gap:.75rem; flex-wrap:wrap; position:sticky; top:-1px; z-index:1; background:var(--surface); padding-bottom:.5rem; border-bottom:1px solid var(--line)}
 .assist-chat h2 {font-size:1.25rem; font-weight:700; margin:0}
 .assist-chat h3,.assist-chat label,.assist-chat legend {font-weight:700}
 .assist-chat p,.assist-chat form,.assist-chat section,.assist-chat fieldset {margin-block:.8rem; line-height:1.7}
