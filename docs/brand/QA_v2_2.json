@@ -2309,7 +2309,7 @@
     "report": "../SEO_AI_READINESS.md",
     "evidence": "../seo/qa/2026-11-20/result.json"
   },
-  "latest_task_status": "Local intake journey and receipt tested; employee delivery not confirmed; no publication/intake/indexing approval",
+  "latest_task_status": "Internal pilot blocked: storage/replay/disable checks passed; no authorised employee recipient, owner or workflow",
   "intake_journey_run": {
     "date": "2026-11-20",
     "applicationRevision": "cef77888d26dbd1a1cefb9e1b1a0006164ee8e52",
@@ -2337,5 +2337,42 @@
       "indexingEnabled": false,
       "formPostRequests": 0
     }
+  },
+  "intake_pilot_run": {
+    "date": "2026-11-20",
+    "branch": "codex/assist-intake-pilot-qa",
+    "sourceCommit": "535989447eac8c49cdcc0da46a5b97e20a77acc2",
+    "report": "../INTAKE_PILOT_QA_2026_11_20.md",
+    "result": "../qa/2026-11-20-pilot/result.json",
+    "tests": {
+      "typescript": "pass",
+      "total": 49,
+      "pass": 49,
+      "fail": 0,
+      "build": "pass",
+      "localReleaseAssets": 7
+    },
+    "lostReply": {
+      "storedId": 1,
+      "retryId": 1,
+      "countAfterRetry": 1
+    },
+    "intentionalSecond": {
+      "id": 2,
+      "totalCount": 2,
+      "sameContact": true
+    },
+    "disabled": {
+      "status": 503,
+      "count": 2
+    },
+    "employeeReceived": false,
+    "responsible": null,
+    "transferFailureRecovery": "unverified: no authorised recipient/transport",
+    "publicRequests": 0,
+    "outboundNotifications": 0,
+    "mainMerge": false,
+    "applicationChanges": false,
+    "decision": "შიდა პილოტი დაბლოკილია"
   }
 }

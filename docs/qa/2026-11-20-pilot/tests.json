@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-20",
+  "timezone": "Asia/Tbilisi",
+  "typescript": "npm run check: pass",
+  "npmTest": {
+    "total": 49,
+    "pass": 49,
+    "fail": 0,
+    "newCase": "a lost successful HTTP reply replays the same receipt; a new intent with the same contact stays distinct"
+  },
+  "build": {
+    "command": "npm run build",
+    "pass": true,
+    "prerenders": 45,
+    "localized404s": 3,
+    "sourceCommit": "535989447eac8c49cdcc0da46a5b97e20a77acc2",
+    "clean": true
+  },
+  "productionBuildScenario": {
+    "command": "npm run qa:intake-pilot",
+    "pass": true,
+    "localRelease": {
+      "origin": "http://127.0.0.1:61163",
+      "commit": "535989447eac8c49cdcc0da46a5b97e20a77acc2",
+      "tree": "05e2736bd86dec800c273fdbb3107607d8f163c0",
+      "verified_assets": 7
+    }
+  },
+  "ci": "not run",
+  "newBrowserCheck": "not repeated; application UI unchanged",
+  "decision": "შიდა პილოტი დაბლოკილია"
+}
