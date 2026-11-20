@@ -1,8 +1,10 @@
 /* ASSIST Brand System 2.2. UI roles only: never recolor the original logo.
- * Color review A is a staging proposal awaiting user approval. Logo unchanged.
- * The original supplied tokens remain documented in docs/brand/brand-tokens.css.
- * Dark values are a compatibility
- * extension for the existing site theme, not a new logo or approved brand master.
+ * Color revision A is approved and merged in PR #3; PR #4 sets the public UI
+ * to one continuous light theme. The original Master V1.2 logo is unchanged.
+ * The original supplied tokens remain documented in docs/brand/brand-tokens.css
+ * as a historical reference, not a second runtime theme.
+ * Dark values are retained for compatibility; they are not the active public
+ * theme and do not authorize a new logo variant or brand master.
  * This is the runtime source of color, typography and component-role values.
  */
 :root {
