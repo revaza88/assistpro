@@ -5,10 +5,15 @@ import { z } from '../src/shared/validation';
 import { contactFieldsSchema, jobApplicationFieldsSchema } from "../src/shared/schemas";
 import type { Contact, InsertContact, JobApplication, InsertJobApplication } from "../src/shared/types";
 import { calculateDemoEstimate, demoEstimateSchema } from '../src/shared/pricing';
+import { createHash } from 'node:crypto';
+
+export class ContactReplayConflict extends Error {}
 
 const savedDataSchema = z.object({
   version: z.literal(1),
   contacts: z.array(contactFieldsSchema.extend({
+    idempotencyKey: z.string().uuid().optional(),
+    payloadFingerprint: z.string().regex(/^[a-f0-9]{64}$/).optional(),
     demoEstimate: demoEstimateSchema.optional(),
     id: z.number().int().positive(), createdAt: z.coerce.date(),
     phone: z.string().nullish(), company: z.string().nullish(), service: z.string().nullish(),
@@ -35,8 +40,10 @@ export class FileStorage {
     }
   }
 
-  private save<T>(update: (next: SavedData) => T): Promise<T> {
+  private save<T>(update: (next: SavedData) => T, replay?: (current: SavedData) => T | undefined): Promise<T> {
     const operation = this.writes.then(async () => {
+      const previous = replay?.(this.data);
+      if (previous !== undefined) return structuredClone(previous);
       const next = structuredClone(this.data);
       const result = update(next);
       const temporaryFile = `${this.file}.tmp`;
@@ -49,9 +56,11 @@ export class FileStorage {
     return operation;
   }
 
-  createContact(input: InsertContact): Promise<Contact> {
+  createContact(input: InsertContact, idempotencyKey?: string): Promise<Contact> {
+    const payloadFingerprint = idempotencyKey ? createHash('sha256').update(JSON.stringify(input)).digest('hex') : undefined;
     return this.save(next => {
       const contact = {
+        idempotencyKey, payloadFingerprint,
         ...input, id: next.contacts.reduce((max, item) => Math.max(max, item.id), 0) + 1,
         demoEstimate: input.calculator ? calculateDemoEstimate(input.calculator) : undefined,
         createdAt: new Date(), privacy: input.privacy ?? false,
@@ -59,6 +68,12 @@ export class FileStorage {
       };
       next.contacts.push(contact);
       return contact;
+    }, current => {
+      if (!idempotencyKey) return undefined;
+      const previous = current.contacts.find(item => item.idempotencyKey === idempotencyKey);
+      if (!previous) return undefined;
+      if (previous.payloadFingerprint !== payloadFingerprint) throw new ContactReplayConflict('Submission key already belongs to another payload');
+      return previous;
     });
   }
 

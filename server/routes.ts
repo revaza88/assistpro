@@ -6,6 +6,7 @@ import { z } from '../src/shared/validation';
 import { logger } from "./utils/logger"; // Added logger import
 import { insertContactSchema, insertJobApplicationSchema } from "../src/shared/schemas";
 import { config } from './config';
+import { ContactReplayConflict } from './file-storage';
 
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -76,18 +77,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
     if (config.intakeMode !== 'local') { res.status(503).json({ success: false, code: 'INTAKE_DISABLED', message: 'Online intake is not enabled. Contact info@assist.ge.' }); return; }
     try {
       const validatedData = insertContactSchema.parse(req.body);
-      const contact = await storage.createContact(validatedData);
+      const header = req.get('Idempotency-Key');
+      const idempotencyKey = header === undefined ? undefined : z.string().uuid().parse(header);
+      const contact = await storage.createContact(validatedData, idempotencyKey);
       
       // Log the contact submission
       logger.info("Contact saved", { id: contact.id });
       
       res.status(201).json({ 
         success: true, 
-        message: "თქვენი შეტყობინება წარმატებით გაიგზავნა",
+        message: "Saved in local test storage. Employee delivery is not configured.",
+        intake: 'local',
+        delivery: 'not_configured',
         id: contact.id 
       });
     } catch (error) {
-      if (error instanceof z.ZodError) {
+      if (error instanceof ContactReplayConflict) {
+        res.status(409).json({ success: false, code: 'SUBMISSION_CONFLICT', message: 'Submission key already used for another inquiry.' });
+      } else if (error instanceof z.ZodError) {
         res.status(400).json({ 
           success: false, 
           message: "არასწორი მონაცემები", 

@@ -34,6 +34,23 @@ test('HTTP feature flags report the effective configuration, including false', a
   });
 });
 
+test('contact consent and idempotent retries preserve one full local inquiry with honest delivery status', async () => {
+  await fixture('true', async (base,file) => {
+    const key='123e4567-e89b-42d3-a456-426614174000';
+    const payload={firstName:'Journey QA',email:'journey@example.invalid',industry:'education',services:['bookkeeping','tax-advice'],privacy:true};
+    const send=(body:unknown,submissionKey=key)=>fetch(base+'/api/contacts',{method:'POST',headers:{'Content-Type':'application/json','Idempotency-Key':submissionKey},body:JSON.stringify(body)});
+    for(const privacy of [false,undefined])assert.equal((await send({...payload,privacy})).status,400);
+    assert.equal((await send(payload,'invalid-key')).status,400);
+    await assert.rejects(readFile(file),{code:'ENOENT'});
+    const responses=await Promise.all([send(payload),send(payload)]);
+    for(const response of responses){assert.equal(response.status,201);const receipt=await response.json();assert.equal(receipt.id,1);assert.equal(receipt.intake,'local');assert.equal(receipt.delivery,'not_configured');}
+    assert.equal((await send({...payload,industry:'retail'})).status,409);
+    const data=JSON.parse(await readFile(file,'utf8'));assert.equal(data.contacts.length,1);
+    assert.equal(data.contacts[0].privacy,true);assert.equal(data.contacts[0].industry,'education');
+    assert.deepEqual(data.contacts[0].services,['bookkeeping','tax-advice']);
+  });
+});
+
 test('HTTP errors hide private content and reject oversized bodies before storage', async () => {
   await fixture('true', async (base, file, logs) => {
     const malformed = await fetch(base + '/api/contacts', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{QA_PRIVATE_INPUT}' });
