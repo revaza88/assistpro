@@ -27,6 +27,7 @@ if (config.features.rateLimiting) {
 }
 
 // Body parsing middleware
+app.use('/api/chat', express.json({ limit: '4kb' }));
 app.use(express.json({ limit: config.bodyLimit }));
 app.use(express.urlencoded({ extended: false, limit: config.bodyLimit }));
 

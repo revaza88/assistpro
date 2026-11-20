@@ -12,6 +12,7 @@ declare global {
 }
 
 export const requestTracing = (req: Request, res: Response, next: NextFunction) => {
+  if (req.path === '/api/chat' || req.path.startsWith('/api/chat/')) { next(); return; }
   const traceId = randomBytes(6).toString('base64url');
   req.traceId = traceId;
   

@@ -6,10 +6,12 @@ import { z } from '../src/shared/validation';
 import { logger } from "./utils/logger"; // Added logger import
 import { insertContactSchema, insertJobApplicationSchema } from "../src/shared/schemas";
 import { config } from './config';
+import { registerChat } from './chat/routes';
 import { ContactReplayConflict } from './file-storage';
 
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  registerChat(app);
   // Health check endpoint with detailed information
   app.get("/health", (req, res) => {
     const memUsage = process.memoryUsage();

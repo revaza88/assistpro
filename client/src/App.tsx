@@ -2,6 +2,7 @@ import { Switch, Route, useLocation } from "wouter";
 import { lazy, Suspense, useEffect, type ComponentType } from 'react';
 import SeoHead from './components/SeoHead';
 import Home from "@/pages/home";
+const AssistChat = lazy(() => import('@/components/AssistChat'));
 // Animation code is needed by detail pages, not the initial home/calculator path.
 const animatedPage = (load: () => Promise<{ default: ComponentType }>) => lazy(async () => {
   const [{ default: Page }, { default: Frame }] = await Promise.all([load(), import('@/components/MotionPage')]);
@@ -61,6 +62,7 @@ function App() {
     <InquiryDraftProvider>
       <Suspense fallback={<p role="status" className="p-8 text-center">იტვირთება… / Loading…</p>}>
         <SeoHead /><Router /><RouteFocus />
+        <Suspense fallback={null}><AssistChat /></Suspense>
       </Suspense>
     </InquiryDraftProvider>
   );
