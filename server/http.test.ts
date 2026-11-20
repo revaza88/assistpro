@@ -6,6 +6,7 @@ import { once } from 'node:events';
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
+import { lostReplyAndNewIntent } from '../scripts/lib/intake-pilot-scenario.mjs';
 
 async function fixture(flags: string, run: (base: string, file: string, logs: () => string) => Promise<void>) {
   const directory = await mkdtemp(path.join(tmpdir(), 'assist-http-'));
@@ -26,6 +27,16 @@ async function fixture(flags: string, run: (base: string, file: string, logs: ()
   } finally { const closed = once(child, 'close'); child.kill(); await closed; await rm(directory, { recursive: true, force: true }); }
 }
 const post = (base: string, route: string, value: unknown) => fetch(base + route, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(value) });
+
+test('a lost successful HTTP reply replays the same receipt; a new intent with the same contact stays distinct', async () => {
+  await fixture('true',async(base,file)=>{
+    const {report}=await lostReplyAndNewIntent(base,file);
+    assert.equal(report.first.storedBeforeDisconnect.count,1);
+    assert.equal(report.first.responseReachedClient,false);
+    assert.equal(report.retry.id,1);assert.equal(report.retry.count,1);
+    assert.equal(report.intentionalSecond.id,2);assert.equal(report.intentionalSecond.totalCount,2);
+  });
+});
 
 test('HTTP feature flags report the effective configuration, including false', async () => {
   for (const flag of ['true', 'false']) await fixture(flag, async base => {
