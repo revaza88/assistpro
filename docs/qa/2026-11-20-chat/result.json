@@ -1,0 +1,92 @@
+{
+  "checked_at": "2026-11-20T12:10:14.826Z",
+  "browser": "157.0.8103.79",
+  "release": {
+    "schema_version": 1,
+    "commit": "732a08f214e5092175134b4092cb00e9090286f8",
+    "tree": "7060a8f27a94590464cabc5ba17467d6f5240dfb",
+    "dirty": false,
+    "built_at": "2026-11-20T12:09:32.764Z",
+    "assets": [
+      {
+        "path": "/assets/chat-copy-BY9WW5VO.js",
+        "sha256": "27057840c99f20f25062488864297cc2d8b559cd03ad12211a7c967be2ede6ab",
+        "bytes": 32617
+      },
+      {
+        "path": "/assets/createLucideIcon-CxNr_4aI.js",
+        "sha256": "f490bae87a094c0b428d03f7804245bb6da13b6162ead7e937b5465d1e6d9fd8",
+        "bytes": 886
+      },
+      {
+        "path": "/assets/footer--1oXfqqW.js",
+        "sha256": "30d12dde581ccf88cdb77561440df94fb8146fbd8b0c78d0ef1efa887392ea36",
+        "bytes": 32743
+      },
+      {
+        "path": "/assets/index-BtxYtz81.css",
+        "sha256": "cce853b80e663b65724028227526df821f42245a763464f9a48b21a110721588",
+        "bytes": 52059
+      },
+      {
+        "path": "/assets/index-DmsNAtxM.js",
+        "sha256": "2916edb34598e2ee7b656309d2578fd926a4e655f2cae1651aee34c06e11df66",
+        "bytes": 274964
+      },
+      {
+        "path": "/assets/jsx-runtime-Dn_YclF2.js",
+        "sha256": "69d8d9b5752d3eea0762c1d71123a64791e4fb7196449a9d772feae1eb0a43b4",
+        "bytes": 7968
+      },
+      {
+        "path": "/assets/users-round-D4oE2pov.js",
+        "sha256": "ef180280c50587408e331210b743a2c03d757a54b7b27f2311348bc9170ae2bc",
+        "bytes": 18057
+      },
+      {
+        "path": "/theme-init.js",
+        "sha256": "6e510fb292b20ad381aa74cfb032118c5efe1f785e4812721a8bd0f5c8400b41",
+        "bytes": 390
+      }
+    ]
+  },
+  "mode": "production; CHAT_MODE=simulation; INTAKE_MODE=disabled; INDEXING_ENABLED=false",
+  "checks": [
+    {
+      "case": "KA full path through calculator and disabled contact; corrected draft; Escape return; Tab/Shift+Tab; 320px + 200% text; keyboard newline",
+      "pass": true
+    },
+    {
+      "case": "ka source, two clarifications, editable mailto, focus, overflow",
+      "width": 390,
+      "pass": true
+    },
+    {
+      "case": "en source, two clarifications, editable mailto, focus, overflow",
+      "width": 390,
+      "pass": true
+    },
+    {
+      "case": "ru source, two clarifications, editable mailto, focus, overflow",
+      "width": 320,
+      "pass": true
+    },
+    {
+      "case": "1440px desktop: existing industry not reasked; both selected services in draft",
+      "pass": true
+    },
+    {
+      "case": "24 localized approved source routes return 200",
+      "pass": true
+    },
+    {
+      "case": "Disabled mode: no input, FAQ/email available",
+      "pass": true
+    }
+  ],
+  "external_requests": 0,
+  "intake_posts": 0,
+  "mail_actions": 0,
+  "physical_phone": false,
+  "screen_reader": false
+}

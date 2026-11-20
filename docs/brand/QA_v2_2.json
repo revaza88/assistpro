@@ -2374,5 +2374,40 @@
     "mainMerge": false,
     "applicationChanges": false,
     "decision": "შიდა პილოტი დაბლოკილია"
+  },
+  "chat_pilot_2026_11_20": {
+    "branch": "codex/assist-ai-chat-pilot",
+    "tested_application_commit": "732a08f214e5092175134b4092cb00e9090286f8",
+    "report": "../AI_CHAT_PILOT.md",
+    "check": "pass",
+    "tests": {
+      "pass": 82,
+      "fail": 0
+    },
+    "build": "pass",
+    "local_strict_release": "pass",
+    "browser": "isolated headless Chrome 157.0.8103.79",
+    "viewports": [
+      "390x844",
+      "320x844",
+      "1440x844"
+    ],
+    "large_text": "200% at 320px",
+    "languages": [
+      "ka",
+      "en",
+      "ru"
+    ],
+    "mode": "simulation; default disabled",
+    "real_model_tested": false,
+    "external_requests": 0,
+    "intake_posts": 0,
+    "mail_actions": 0,
+    "logo_palette_slogan_mobile_header_changed": false,
+    "physical_device_tested": false,
+    "screen_reader_tested": false,
+    "employee_receipt": "not_confirmed",
+    "hosting_provenance": "unresolved",
+    "public_deployment": false
   }
 }
