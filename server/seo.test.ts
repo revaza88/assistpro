@@ -2,8 +2,22 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { isPublicPath, pageSeo, publicPaths, localizedPublicPaths, seoHead, siteOrigin, sitemapPaths, structuredData } from '../src/shared/seo';
 import { withPageStyles, robotsText, sitemapXml, pageHtml } from './seo';
-import { localizedPath, siteLanguages, splitLocalePath } from '../src/shared/localization';
+import { localizedHref, localizedPath, siteLanguages, splitLocalePath } from '../src/shared/localization';
+import { parseSelection } from '../src/shared/selection';
+import { parseCalculatorQuery } from '../src/shared/pricing';
 import { company } from '../src/shared/company';
+
+test('language links preserve a complete inquiry query from Wouter and native location search', () => {
+  const query='source=calculator&industry=service&documents=100&employees=5&vat=false&type=monthly&rules=demo-1&sector=education&services=bookkeeping%2Cpayroll';
+  for(const language of siteLanguages)for(const search of [query,'?'+query]) {
+    const destination=new URL(localizedHref('/en/contact',language,search,'#main-content'),'https://assist.example');
+    assert.equal(destination.pathname,localizedPath('/contact',language));
+    assert.equal(destination.hash,'#main-content');
+    assert.deepEqual(parseSelection(destination.search),{industry:'education',services:['bookkeeping','payroll']});
+    assert.deepEqual(parseCalculatorQuery(destination.search),{industry:'service',documents:100,employees:5,vat:false,type:'monthly'});
+  }
+  assert.equal(localizedHref('/contact','en'),'/en/contact');
+});
 
 test('all public routes have unique Georgian titles, descriptions and supported languages', () => {
   assert.equal(publicPaths.length, 15);

@@ -10,6 +10,12 @@ export function localizedPath(path: string, language: SiteLanguage) {
   const base = splitLocalePath(path).path;
   return language === 'ka' ? base : '/' + language + (base === '/' ? '/' : base);
 }
+// Wouter returns search without '?'; window.location.search includes it.
+export function localizedHref(path: string, language: SiteLanguage, search = '', hash = '') {
+  const query = search.replace(/^\?/, '');
+  const fragment = hash.replace(/^#/, '');
+  return localizedPath(path, language) + (query ? '?' + query : '') + (fragment ? '#' + fragment : '');
+}
 export function prerenderFile(path: string) {
   return (path === '/' ? 'home' : path.slice(1).replaceAll('/', '_')) + '.html';
 }
