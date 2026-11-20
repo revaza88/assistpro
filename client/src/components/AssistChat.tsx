@@ -33,6 +33,7 @@ export default function AssistChat() {
  return <>
   <dialog ref={dialog} className="assist-chat" aria-labelledby="assist-chat-title" aria-describedby="assist-chat-intro" onClose={()=>request.current?.abort()}>
    <header className="assist-chat-head"><h2 id="assist-chat-title">{c.title}</h2><button type="button" className="site-button site-button-outline" onClick={()=>dialog.current?.close()} autoFocus>{c.close}</button></header>
+   <div className="assist-chat-body">
    <p className="assist-chat-badge">{c.badge}</p><p id="assist-chat-intro">{c.intro}</p><p>{labels.unavailable}</p><p id="assist-chat-caution">{c.caution}</p>
    {!ready?<p role="status">{c.busy}</p>:!enabled?<p role="status">{c.disabled}</p>:<>
     <form onSubmit={ask}><label htmlFor="assist-chat-question">{c.question}</label><textarea id="assist-chat-question" aria-describedby="assist-chat-caution" maxLength={500} rows={3} value={question} onChange={e=>setQuestion(e.target.value)} required/><button type="submit" className="site-button" disabled={busy||!question.trim()}>{busy?c.busy:c.send}</button></form>
@@ -48,6 +49,7 @@ export default function AssistChat() {
     <button type="button" className="site-button site-button-outline" disabled={busy} onClick={()=>{request.current?.abort();setContext(initial());setQuestion('');setReply(null);setDraft(null);setError('');}}>{c.clear}</button>
    </>}
    <nav className="assist-chat-links" aria-label={c.follow}><Link href="/faq" onClick={()=>dialog.current?.close()}>{c.faq}</Link><a href={`mailto:${chatEmail}`}>{chatEmail}</a></nav>
+   </div>
   </dialog>
  </>;
 }
