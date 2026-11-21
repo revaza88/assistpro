@@ -2,6 +2,9 @@ import { Request, Response, NextFunction } from "express";
 import { logger } from "../utils/logger";
 
 export const requestLogger = (req: Request, res: Response, next: NextFunction) => {
+  if (req.path.startsWith('/api/test-staff')) { next(); return; }
+  // No chat content, response or contact data enters the request log.
+  if (req.path === '/api/chat' || req.path.startsWith('/api/chat/')) { next(); return; }
   const start = Date.now();
   const path = req.path;
   let capturedJsonResponse: Record<string, any> | undefined = undefined;

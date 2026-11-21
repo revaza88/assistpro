@@ -1,0 +1,6 @@
+{
+  "origin": "http://127.0.0.1:5140",
+  "commit": "732a08f214e5092175134b4092cb00e9090286f8",
+  "tree": "7060a8f27a94590464cabc5ba17467d6f5240dfb",
+  "verified_assets": 8
+}

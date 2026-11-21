@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { GlobeAltIcon } from '@heroicons/react/24/outline';
-import { changeSiteLanguage, type SiteLanguage } from '@/lib/i18n';
+import type { SiteLanguage } from '@/lib/i18n';
+import { localizedHref } from '@shared/localization';
 
 const languages = [
   { code: 'ka', name: 'ქართული', flag: '🇬🇪' },
@@ -18,8 +19,9 @@ export default function LanguageSelector() {
   const change = async (language: SiteLanguage) => {
     setLoading(true); setFailed(false);
     try {
-      await changeSiteLanguage(language);
       try { localStorage.setItem('language', language); } catch { /* The current tab still works. */ }
+      const target = localizedHref(window.location.pathname,language,window.location.search,window.location.hash);
+      window.location.assign(target);
     } catch { setFailed(true); }
     finally { setLoading(false); }
   };

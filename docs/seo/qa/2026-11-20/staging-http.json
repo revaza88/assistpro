@@ -1,0 +1,420 @@
+{
+  "base": "http://127.0.0.1:5017",
+  "origin": "https://assist.ge",
+  "indexing": false,
+  "checkedAt": "2026-11-19T20:51:34.103Z",
+  "pages": [
+    {
+      "path": "/",
+      "lang": "ka",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "ბუღალტერია და ბიზნესის მხარდაჭერა | ასისტი",
+      "bytes": 29159,
+      "schema": true
+    },
+    {
+      "path": "/services",
+      "lang": "ka",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "მომსახურებები | ასისტი",
+      "bytes": 19761,
+      "schema": true
+    },
+    {
+      "path": "/services/accounting",
+      "lang": "ka",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "ბუღალტრული აუთსორსინგი | ასისტი",
+      "bytes": 22608,
+      "schema": true
+    },
+    {
+      "path": "/services/tax",
+      "lang": "ka",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "საგადასახადო კონსულტაცია | ასისტი",
+      "bytes": 21695,
+      "schema": true
+    },
+    {
+      "path": "/services/legal",
+      "lang": "ka",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "იურიდიული მომსახურება | ასისტი",
+      "bytes": 30393,
+      "schema": true
+    },
+    {
+      "path": "/services/business",
+      "lang": "ka",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "რეგისტრაცია და ბიზნეს ასისტი | ასისტი",
+      "bytes": 29858,
+      "schema": true
+    },
+    {
+      "path": "/services/audit",
+      "lang": "ka",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "აუდიტი და ანგარიშგება | ასისტი",
+      "bytes": 22181,
+      "schema": true
+    },
+    {
+      "path": "/services/hr",
+      "lang": "ka",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "HR მომსახურება | ასისტი",
+      "bytes": 24828,
+      "schema": true
+    },
+    {
+      "path": "/industries",
+      "lang": "ka",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "ინდუსტრიისა და მომსახურებების არჩევა | ასისტი",
+      "bytes": 19976,
+      "schema": true
+    },
+    {
+      "path": "/calculator",
+      "lang": "ka",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "ფასის დემო კალკულატორი | ასისტი",
+      "bytes": 17034,
+      "schema": true
+    },
+    {
+      "path": "/contact",
+      "lang": "ka",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "კონტაქტი და მოკლე მოთხოვნა | ასისტი",
+      "bytes": 18235,
+      "schema": true
+    },
+    {
+      "path": "/faq",
+      "lang": "ka",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "ხშირი კითხვები | ასისტი",
+      "bytes": 23238,
+      "schema": true
+    },
+    {
+      "path": "/about",
+      "lang": "ka",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "ჩვენ შესახებ | ასისტი",
+      "bytes": 31478,
+      "schema": true
+    },
+    {
+      "path": "/team",
+      "lang": "ka",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "გუნდის შესახებ | ასისტი",
+      "bytes": 17353,
+      "schema": true
+    },
+    {
+      "path": "/career",
+      "lang": "ka",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "კარიერა | ასისტი",
+      "bytes": 21130,
+      "schema": true
+    },
+    {
+      "path": "/en/",
+      "lang": "en",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Accounting and business support | ASSIST",
+      "bytes": 22733,
+      "schema": true
+    },
+    {
+      "path": "/en/services",
+      "lang": "en",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Services | ASSIST",
+      "bytes": 16286,
+      "schema": true
+    },
+    {
+      "path": "/en/services/accounting",
+      "lang": "en",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Outsourced accounting | ASSIST",
+      "bytes": 16879,
+      "schema": true
+    },
+    {
+      "path": "/en/services/tax",
+      "lang": "en",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Tax consultation in Georgia | ASSIST",
+      "bytes": 16454,
+      "schema": true
+    },
+    {
+      "path": "/en/services/legal",
+      "lang": "en",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Legal services | ASSIST",
+      "bytes": 25738,
+      "schema": true
+    },
+    {
+      "path": "/en/services/business",
+      "lang": "en",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Registration and business assistance | ASSIST",
+      "bytes": 25253,
+      "schema": true
+    },
+    {
+      "path": "/en/services/audit",
+      "lang": "en",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Audit and reporting | ASSIST",
+      "bytes": 16483,
+      "schema": true
+    },
+    {
+      "path": "/en/services/hr",
+      "lang": "en",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "HR services | ASSIST",
+      "bytes": 20913,
+      "schema": true
+    },
+    {
+      "path": "/en/industries",
+      "lang": "en",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Choose your industry and services | ASSIST",
+      "bytes": 17038,
+      "schema": true
+    },
+    {
+      "path": "/en/calculator",
+      "lang": "en",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Demo cost calculator | ASSIST",
+      "bytes": 14164,
+      "schema": true
+    },
+    {
+      "path": "/en/contact",
+      "lang": "en",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Contact and inquiry | ASSIST",
+      "bytes": 15537,
+      "schema": true
+    },
+    {
+      "path": "/en/faq",
+      "lang": "en",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Frequently asked questions | ASSIST",
+      "bytes": 18666,
+      "schema": true
+    },
+    {
+      "path": "/en/about",
+      "lang": "en",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "About us | ASSIST",
+      "bytes": 24507,
+      "schema": true
+    },
+    {
+      "path": "/en/team",
+      "lang": "en",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "About the team | ASSIST",
+      "bytes": 15176,
+      "schema": true
+    },
+    {
+      "path": "/en/career",
+      "lang": "en",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Careers | ASSIST",
+      "bytes": 18539,
+      "schema": true
+    },
+    {
+      "path": "/ru/",
+      "lang": "ru",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Бухгалтерия и поддержка бизнеса | АССИСТ",
+      "bytes": 25524,
+      "schema": true
+    },
+    {
+      "path": "/ru/services",
+      "lang": "ru",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Услуги | АССИСТ",
+      "bytes": 17851,
+      "schema": true
+    },
+    {
+      "path": "/ru/services/accounting",
+      "lang": "ru",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Бухгалтерский аутсорсинг | АССИСТ",
+      "bytes": 19483,
+      "schema": true
+    },
+    {
+      "path": "/ru/services/tax",
+      "lang": "ru",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Налоговые консультации в Грузии | АССИСТ",
+      "bytes": 18885,
+      "schema": true
+    },
+    {
+      "path": "/ru/services/legal",
+      "lang": "ru",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Юридические услуги | АССИСТ",
+      "bytes": 27891,
+      "schema": true
+    },
+    {
+      "path": "/ru/services/business",
+      "lang": "ru",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Регистрация и бизнес-поддержка | АССИСТ",
+      "bytes": 27448,
+      "schema": true
+    },
+    {
+      "path": "/ru/services/audit",
+      "lang": "ru",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Аудит и отчётность | АССИСТ",
+      "bytes": 18968,
+      "schema": true
+    },
+    {
+      "path": "/ru/services/hr",
+      "lang": "ru",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "HR-услуги | АССИСТ",
+      "bytes": 22649,
+      "schema": true
+    },
+    {
+      "path": "/ru/industries",
+      "lang": "ru",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Выбор отрасли и услуг | АССИСТ",
+      "bytes": 18208,
+      "schema": true
+    },
+    {
+      "path": "/ru/calculator",
+      "lang": "ru",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Демо-калькулятор стоимости | АССИСТ",
+      "bytes": 15483,
+      "schema": true
+    },
+    {
+      "path": "/ru/contact",
+      "lang": "ru",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Контакты и запрос | АССИСТ",
+      "bytes": 16667,
+      "schema": true
+    },
+    {
+      "path": "/ru/faq",
+      "lang": "ru",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Частые вопросы | АССИСТ",
+      "bytes": 20460,
+      "schema": true
+    },
+    {
+      "path": "/ru/about",
+      "lang": "ru",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "О нас | АССИСТ",
+      "bytes": 27879,
+      "schema": true
+    },
+    {
+      "path": "/ru/team",
+      "lang": "ru",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "О команде | АССИСТ",
+      "bytes": 16227,
+      "schema": true
+    },
+    {
+      "path": "/ru/career",
+      "lang": "ru",
+      "status": 200,
+      "robots": "noindex,follow",
+      "title": "Карьера | АССИСТ",
+      "bytes": 19709,
+      "schema": true
+    }
+  ],
+  "internalLinks": 84,
+  "sitemapStatus": 503,
+  "sitemapUrls": 0,
+  "redirects": 4,
+  "notFound": 4,
+  "queryContextNoindex": true,
+  "gptbotPolicyUnchanged": true
+}

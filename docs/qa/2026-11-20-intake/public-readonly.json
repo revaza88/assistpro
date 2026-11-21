@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-11-20T04:13:03.989Z",
+  "method": "GET only, no public form submission",
+  "pages": [
+    {
+      "path": "/",
+      "status": 200,
+      "intake": "disabled",
+      "robots": "noindex,follow"
+    },
+    {
+      "path": "/contact",
+      "status": 200,
+      "intake": "disabled",
+      "robots": "noindex,follow",
+      "formDisabled": true
+    }
+  ],
+  "identity": {
+    "commit": null,
+    "tree": null,
+    "dirty": null
+  },
+  "strictRelease": {
+    "pass": false,
+    "reason": "Build source commit is unknown"
+  },
+  "publicWrites": 0
+}

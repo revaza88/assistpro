@@ -1,6 +1,8 @@
+import serviceSearch from '../service-search/en';
 import { siteCopy } from '../site-copy';
 
 const translation = {
+      serviceSearch,
       // Navigation
       nav: {
         about: 'About Us', // from Text

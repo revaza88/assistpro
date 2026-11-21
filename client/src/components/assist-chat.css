@@ -1,0 +1,19 @@
+.assist-chat-entry {padding:1rem; text-align:center; background:var(--assist-brand-band); border-top:1px solid var(--line)}
+.assist-chat {width:min(40rem,calc(100% - 1rem)); max-width:calc(100% - 1rem); max-height:85vh; max-height:85dvh; margin:auto; padding:0; border:1px solid var(--control); border-radius:var(--assist-radius-group); background:var(--surface); color:var(--ink); overflow:hidden; overflow-wrap:anywhere; overscroll-behavior:contain}
+.assist-chat[open] {display:flex; flex-direction:column}
+.assist-chat-body {padding:clamp(.75rem,3vw,1.5rem); overflow:auto; min-height:0; overscroll-behavior:contain; scroll-padding-block:1rem}
+.assist-chat::backdrop {background:rgb(11 27 77 / .45); overflow:hidden; overscroll-behavior:contain}
+.assist-chat-head {display:flex; align-items:start; justify-content:space-between; gap:.5rem; flex-wrap:wrap; flex:none; background:var(--surface); padding:clamp(.75rem,3vw,1.5rem); border-bottom:1px solid var(--line)}
+.assist-chat-head h2 {flex:1 1 12rem}
+.assist-chat-head .site-button {flex:0 0 auto; overflow-wrap:normal; word-break:normal}
+.assist-chat h2 {font-size:1.25rem; font-weight:700; margin:0}
+.assist-chat h3,.assist-chat label,.assist-chat legend {font-weight:700}
+.assist-chat p,.assist-chat form,.assist-chat section,.assist-chat fieldset {margin-block:.8rem; line-height:1.7}
+.assist-chat textarea {display:block; width:100%; max-width:100%; box-sizing:border-box; resize:vertical; font:inherit; font-size:1rem; color:var(--ink); background:var(--surface); border:1px solid var(--control); border-radius:var(--assist-radius-control); padding:.65rem; margin-block:.4rem .8rem}
+.assist-chat .site-button {white-space:normal; height:auto; min-height:3rem; max-width:100%; margin:.25rem .35rem .25rem 0}
+.assist-chat-badge {color:var(--assist-link); font-weight:700}
+.assist-chat-error {color:var(--error); border-left:3px solid currentColor; padding:.5rem}
+.assist-chat-links {display:flex; gap:1rem; flex-wrap:wrap; margin-top:1rem}
+.assist-chat a {text-decoration:underline; text-underline-offset:.2em}
+.assist-chat li {margin-bottom:.6rem}
+@supports(height:100dvh){.assist-chat{max-height:calc(100dvh - 1rem)}}

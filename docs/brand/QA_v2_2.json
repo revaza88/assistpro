@@ -2167,5 +2167,300 @@
     "public_write_requests": 0,
     "ci_statuses": 0,
     "bootstrap_eol": "Committed LF preserved and pinned via .gitattributes"
+  },
+  "seo_ai_staging_run": {
+    "date": "2026-11-20",
+    "timezone": "Asia/Tbilisi",
+    "repository": "revaza88/assistpro",
+    "branch": "codex/assist-seo-multilingual-staging",
+    "application_revision": "f5008ad8c1d1628f4e5c0eab7a0ea6a9bcdc7087",
+    "application_tree": "a80e33d3706087e5562954c6c623940d91d0adaa",
+    "base_revision": "f8e4b3f7964a25216f3305ccccd34c92ca6eb86a",
+    "application_diff_after_commit": false,
+    "build_manifest": "Final schema change passed check/tests/build immediately before its code commit; subsequent amendment changes only a source comment to label descriptions as drafts. Application output is unchanged by that comment. Release identity regenerated; uncommitted documentation truthfully makes dirty=true.",
+    "mode": "production build on Windows, Node26.13.1, Vite8.3.8",
+    "checks": {
+      "typescript": "pass",
+      "tests": {
+        "total": 44,
+        "pass": 44,
+        "fail": 0
+      },
+      "build": "pass: 45 localized prerenders + 3 localized 404s",
+      "http": {
+        "staging": {
+          "pages": 45,
+          "internalLinks": 84,
+          "sitemap": 503,
+          "intake": "disabled",
+          "indexing": false
+        },
+        "loopback_launch_simulation": {
+          "pages": 45,
+          "internalLinks": 84,
+          "sitemap": 200,
+          "sitemapUrls": 30,
+          "intake": "disabled",
+          "indexing": true,
+          "canonicalOrigin": "https://assist.example"
+        }
+      },
+      "html": "lang, one H1, visible priority copy, canonical, reciprocal hreflang, parseable confirmed JSON-LD, matching CSP nonce, robots HTTP/meta, redirects, 404, query canonical/noindex, internal-link status; raw HTTP without JS",
+      "bundleBudgets": "pass existing complete declared initial JS/CSS + gzip/cache/favicon HTTP audit",
+      "browser": "Native Chrome157.0.8103.79: EN accounting rendered at 390x844 emulation, full logo/palette A, English H1/copy, prefixed links, 0 console messages. Further UI actions blocked by minimized window/user-input guard.",
+      "ci": "not run; local branch only"
+    },
+    "publicChanges": {
+      "deployment": false,
+      "merge": false,
+      "push": false,
+      "noindexRemoved": false,
+      "searchConsole": false,
+      "intakeChanged": false,
+      "database": false,
+      "notifications": false,
+      "gptbotTrainingPolicyChanged": false
+    },
+    "preserved": {
+      "logoSha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e",
+      "palette": "A",
+      "slogan": "თქვენი ბიზნესის მხარდამჭერი",
+      "formLogic": true
+    },
+    "screenshots": [
+      {
+        "file": "baseline-home-mobile.jpg",
+        "source": "Lighthouse actual final-screenshot audit, not a mockup",
+        "url": "http://127.0.0.1:5016/",
+        "fetchedAt": "2026-11-19T20:16:13.323Z",
+        "viewport": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      },
+      {
+        "file": "final-home-mobile.jpg",
+        "source": "Lighthouse actual final-screenshot audit, not a mockup",
+        "url": "http://127.0.0.1:5017/",
+        "fetchedAt": "2026-11-19T20:51:38.422Z",
+        "viewport": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      },
+      {
+        "file": "final-accounting-mobile.jpg",
+        "source": "Lighthouse actual final-screenshot audit, not a mockup",
+        "url": "http://127.0.0.1:5017/services/accounting",
+        "fetchedAt": "2026-11-19T20:51:52.839Z",
+        "viewport": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      },
+      {
+        "file": "final-tax-mobile.jpg",
+        "source": "Lighthouse actual final-screenshot audit, not a mockup",
+        "url": "http://127.0.0.1:5017/services/tax",
+        "fetchedAt": "2026-11-19T20:52:06.203Z",
+        "viewport": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      },
+      {
+        "file": "final-audit-mobile.jpg",
+        "source": "Lighthouse actual final-screenshot audit, not a mockup",
+        "url": "http://127.0.0.1:5017/services/audit",
+        "fetchedAt": "2026-11-19T20:52:19.036Z",
+        "viewport": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      }
+    ],
+    "limitations": [
+      "Full native-browser KA/EN/RU journey and language-select/query/hash interaction not completed after Chrome became minimized; HTTP/unit coverage is not that browser check.",
+      "No physical mobile or assistive technology used.",
+      "Remaining legal/business/HR long copy needs editorial/legal confirmation before 30-URL full indexing launch.",
+      "No external schema validator, Search Console, CrUX/field metrics or actual bot access observed.",
+      "Public hosting Git identity null remains a separate known issue.",
+      "Lighthouse single local laboratory runs; no statistical or field performance claim.",
+      "Published site intentionally remains noindex with missing SITE_URL/canonical and sitemap503 until separate approval."
+    ],
+    "publicFinalGate": "public-final-gate.json",
+    "schemaVocabulary": "Schema.org Service/inLanguage documentation checked: generic Service uses mainEntityOfPage, not unsupported inLanguage.",
+    "nativeBrowserObservedStage": "EN accounting rendering checked before final schema-only correction; complete browser matrix remains open.",
+    "report": "../SEO_AI_READINESS.md",
+    "evidence": "../seo/qa/2026-11-20/result.json"
+  },
+  "latest_task_status": "Internal pilot blocked: storage/replay/disable checks passed; no authorised employee recipient, owner or workflow",
+  "intake_journey_run": {
+    "date": "2026-11-20",
+    "applicationRevision": "cef77888d26dbd1a1cefb9e1b1a0006164ee8e52",
+    "branch": "codex/assist-intake-journey-qa",
+    "report": "../INTAKE_JOURNEY_QA_2026_11_20.md",
+    "result": "../qa/2026-11-20-intake/result.json",
+    "checks": {
+      "typescript": "pass",
+      "tests": 48,
+      "build": "pass",
+      "localStrictRelease": "pass7assets",
+      "publicStrictRelease": "blocked: unknown commit/tree",
+      "nativeMobile": "KA full path + EN/RU decisive stages",
+      "physicalPhone": false
+    },
+    "storage": "verified local JSON only",
+    "employeeReceipt": "not_confirmed",
+    "publicMutations": {
+      "mainMerge": false,
+      "gitPush": false,
+      "deployment": false,
+      "formEnabled": false,
+      "database": false,
+      "notifications": false,
+      "indexingEnabled": false,
+      "formPostRequests": 0
+    }
+  },
+  "intake_pilot_run": {
+    "date": "2026-11-20",
+    "branch": "codex/assist-intake-pilot-qa",
+    "sourceCommit": "535989447eac8c49cdcc0da46a5b97e20a77acc2",
+    "report": "../INTAKE_PILOT_QA_2026_11_20.md",
+    "result": "../qa/2026-11-20-pilot/result.json",
+    "tests": {
+      "typescript": "pass",
+      "total": 49,
+      "pass": 49,
+      "fail": 0,
+      "build": "pass",
+      "localReleaseAssets": 7
+    },
+    "lostReply": {
+      "storedId": 1,
+      "retryId": 1,
+      "countAfterRetry": 1
+    },
+    "intentionalSecond": {
+      "id": 2,
+      "totalCount": 2,
+      "sameContact": true
+    },
+    "disabled": {
+      "status": 503,
+      "count": 2
+    },
+    "employeeReceived": false,
+    "responsible": null,
+    "transferFailureRecovery": "unverified: no authorised recipient/transport",
+    "publicRequests": 0,
+    "outboundNotifications": 0,
+    "mainMerge": false,
+    "applicationChanges": false,
+    "decision": "შიდა პილოტი დაბლოკილია"
+  },
+  "chat_pilot_2026_11_20": {
+    "branch": "codex/assist-ai-chat-pilot",
+    "tested_application_commit": "732a08f214e5092175134b4092cb00e9090286f8",
+    "report": "../AI_CHAT_PILOT.md",
+    "check": "pass",
+    "tests": {
+      "pass": 82,
+      "fail": 0
+    },
+    "build": "pass",
+    "local_strict_release": "pass",
+    "browser": "isolated headless Chrome 157.0.8103.79",
+    "viewports": [
+      "390x844",
+      "320x844",
+      "1440x844"
+    ],
+    "large_text": "200% at 320px",
+    "languages": [
+      "ka",
+      "en",
+      "ru"
+    ],
+    "mode": "simulation; default disabled",
+    "real_model_tested": false,
+    "external_requests": 0,
+    "intake_posts": 0,
+    "mail_actions": 0,
+    "logo_palette_slogan_mobile_header_changed": false,
+    "physical_device_tested": false,
+    "screen_reader_tested": false,
+    "employee_receipt": "not_confirmed",
+    "hosting_provenance": "unresolved",
+    "public_deployment": false
+  },
+  "reviewed_handoff_2026_11_21": {
+    "initial_commit": "2f8fb2905bf52e8f9582065919469d7eda8aa3c4",
+    "tested_application_commit": "440a5ae939392e146ab28425340dccc6ee537dfc",
+    "report": "../HANDOFF_QA_2026_11_21.md",
+    "baseline_chat": "pass",
+    "model": "simulation",
+    "check": "pass",
+    "tests": {
+      "pass": 85,
+      "fail": 0
+    },
+    "build": "clean; pass",
+    "strict_local_release": "pass; 8 assets",
+    "browser": "headless Chrome 157.0.8103.79; 390x844",
+    "storage": "isolated local FileStorage",
+    "request_id": 1,
+    "count_after_lost_reply_retry_restart": 1,
+    "authorized_synthetic_staff_lookup": "HTTP 200 and CLI; same ID, creation time, services",
+    "other_test_role": 403,
+    "notification": "failure/recovery simulated; actualDelivery=false",
+    "deliberate_new_intent_id": 2,
+    "final_count": 2,
+    "disabled_post": 503,
+    "external_requests": 0,
+    "real_employee_confirmed": false,
+    "physical_phone_tested": false,
+    "public_deployment": false,
+    "production_intake_enabled": false,
+    "hosting_provenance": "separate; unresolved",
+    "logo_palette_header_changed": false
+  },
+  "pr7_review_2026_11_21": {
+    "report": "../PR7_REVIEW_2026_11_21.md",
+    "tested_application_commit": "a669f6a4f8efa75e27ec6965994c0ae488a4f346",
+    "local_check": "pass",
+    "local_tests": {
+      "pass": 87,
+      "fail": 0
+    },
+    "local_build": "clean; pass",
+    "local_browser": "KA/EN/RU 320/390/1440px; 200% text; pass",
+    "lifecycle": "delayed response, queued close and config refresh pass; controlled HTTP fixtures",
+    "handoff": "pass; synthetic recipient and notification simulation only",
+    "initial_remote_ci_head": "4f0a6a1cc0b7bfbfd10d5f3b0540aa840031d5c5",
+    "initial_remote_ci_runs": [
+      44886294372,
+      44886293055
+    ],
+    "initial_remote_ci_result": "both success; final head checked separately in PR",
+    "deployment": false,
+    "public_intake_enabled": false,
+    "main_merge": false
   }
 }

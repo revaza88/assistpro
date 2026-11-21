@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-11-20T04:23:57.081Z",
+  "origin": "http://127.0.0.1:5019",
+  "recordCount": 1,
+  "id": 1,
+  "industry": "education",
+  "services": [
+    "bookkeeping",
+    "payroll"
+  ],
+  "consent": true,
+  "demoEstimate": {
+    "version": "demo-1",
+    "isDemo": true,
+    "currency": "GEL",
+    "vatIncluded": false,
+    "kind": "range",
+    "low": 340,
+    "high": 460
+  },
+  "receipts": [
+    {
+      "success": true,
+      "message": "Saved in local test storage. Employee delivery is not configured.",
+      "intake": "local",
+      "delivery": "not_configured",
+      "id": 1
+    },
+    {
+      "success": true,
+      "message": "Saved in local test storage. Employee delivery is not configured.",
+      "intake": "local",
+      "delivery": "not_configured",
+      "id": 1
+    }
+  ],
+  "fileUnchanged": true,
+  "fileSha256": "8363222489f6c374e665532002c6281b354782c75b93963e43cf4272ca0f1e9e",
+  "missingConsentStatus": 400,
+  "changedPayloadStatus": 409,
+  "employeeReceipt": "not_confirmed",
+  "outboundMessages": 0
+}

@@ -11,6 +11,10 @@ export const errorHandler = (
   if (res.headersSent) { next(err); return; }
   const requestedStatus = err.status || err.statusCode;
   const status = Number.isInteger(requestedStatus) && requestedStatus >= 400 && requestedStatus <= 599 ? requestedStatus : 500;
+  if (req.path === '/api/chat' || req.path.startsWith('/api/chat/')) {
+    res.status(status).json({ code: status === 413 ? 'CHAT_TOO_LARGE' : 'CHAT_UNAVAILABLE', email: 'info@assist.ge' });
+    return;
+  }
   const publicMessages: Record<number, string> = { 400: 'Invalid request', 413: 'Request body too large', 415: 'Unsupported content type' };
   const message = config.isProduction ? publicMessages[status] ?? 'Request failed' : err.message || 'Internal Server Error';
   

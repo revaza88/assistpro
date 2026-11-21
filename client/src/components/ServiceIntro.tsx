@@ -6,21 +6,25 @@ import { inquiryEntryHref } from '@shared/calculator-context';
 import { parseSelection, selectionHref } from '@shared/selection';
 import { requestCopy } from '@/lib/request-copy';
 import { interfaceCopy } from '@/lib/interface-copy';
+import { pageSeo } from '@shared/seo';
 
 const serviceKeys = { accounting: 'accounting', tax: 'tax', legal: 'legal', business: 'businessAssist', audit: 'audit', hr: 'hr' } as const;
 const icons = { accounting: Calculator, tax: Landmark, legal: Scale, business: Building2, audit: SearchCheck, hr: UsersRound };
-export default function ServiceIntro({ service }: { service: keyof typeof serviceKeys }) {
+export function serviceSelectionHref(service: keyof typeof serviceKeys, search: string) {
+  return /(?:^|[?&])(?:sector|services|service|source)=/.test(search) ? inquiryEntryHref('/industries', search) : selectionHref('/industries', parseSelection('service=' + service)!);
+}
+export default function ServiceIntro({ service, title, description }: { service: keyof typeof serviceKeys; title?: string; description?: string }) {
   const { t, i18n } = useTranslation(), search = useSearch();
   const copy = interfaceCopy(i18n.language), Icon = icons[service];
-  const hasContext = /(?:^|[?&])(?:sector|services|service|source)=/.test(search);
-  const href = hasContext ? inquiryEntryHref('/industries', search) : selectionHref('/industries', parseSelection('service=' + service)!);
+  const href = serviceSelectionHref(service,search);
+  const lang = i18n.language.startsWith('en') ? 1 : i18n.language.startsWith('ru') ? 2 : 0;
   return <section className="service-intro"><div className="design-wrap">
-    <Link href="/services" className="service-breadcrumb">{t('nav.services')}</Link>
+    <nav aria-label={['ნავიგაციის ბილიკი','Breadcrumb','Навигационная цепочка'][lang]} className="service-breadcrumb-trail"><ol><li><Link href="/">{['მთავარი','Home','Главная'][lang]}</Link></li><li><Link href="/services">{t('nav.services')}</Link></li><li aria-current="page">{pageSeo('/services/'+service,i18n.language).label}</li></ol></nav>
     <div className="service-hero-grid"><div className="service-hero-heading">
       <Icon className="service-heading-icon" size={32} strokeWidth={1.5} aria-hidden="true" />
-      <h1>{t('servicesOverview.' + serviceKeys[service] + '.title')}</h1>
+      <h1>{title ?? t('servicesOverview.' + serviceKeys[service] + '.title')}</h1>
     </div>
-    <p className="page-lead service-description">{t('servicesOverview.' + serviceKeys[service] + '.description')}</p>
+    <p className="page-lead service-description">{description ?? t('servicesOverview.' + serviceKeys[service] + '.description')}</p>
     <div className="service-next">
       <h2>{copy.next}</h2><p>{copy.choose}</p>
       <Link href={href} className="site-button">{requestCopy(i18n.language).quote}</Link>

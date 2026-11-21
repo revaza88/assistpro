@@ -1,19 +1,23 @@
 import { createRoot, hydrateRoot } from "react-dom/client";
+import { Router } from 'wouter';
+import { splitLocalePath } from '@shared/localization';
 import App from "./App";
 import "./fonts.css";
 import "./index.css";
 import { changeSiteLanguage } from './lib/i18n';
 
 const root = document.getElementById('root')!;
-let savedLanguage: string | null = null;
-try { savedLanguage = localStorage.getItem('language'); } catch { /* Optional preference. */ }
 async function mount() {
-  let translated = false;
-  if (savedLanguage === 'en' || savedLanguage === 'ru') {
-    try { await changeSiteLanguage(savedLanguage); translated = true; }
-    catch { /* Keep the prerendered Georgian page usable if loading fails. */ }
+  const { language, prefix } = splitLocalePath(window.location.pathname);
+  try { await changeSiteLanguage(language); }
+  catch {
+    // Keep the already translated initial HTML readable if an optional chunk fails.
+    const status = document.createElement('p'); status.setAttribute('role','alert');
+    status.textContent = language === 'ru' ? 'Не удалось загрузить интерактивные элементы. Обновите страницу.' : 'Interactive controls could not load. Reload the page.';
+    root.prepend(status); return;
   }
-  if (root.childElementCount && !translated) hydrateRoot(root, <App />);
-  else createRoot(root).render(<App />);
+  const application = <Router base={prefix}><App /></Router>;
+  if (root.childElementCount) hydrateRoot(root, application);
+  else createRoot(root).render(application);
 }
 void mount();

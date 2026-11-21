@@ -1,0 +1,80 @@
+{
+  "checkedAt": "2026-11-20T04:49:17.270Z",
+  "sourceCommit": "535989447eac8c49cdcc0da46a5b97e20a77acc2",
+  "localRelease": {
+    "origin": "http://127.0.0.1:61163",
+    "commit": "535989447eac8c49cdcc0da46a5b97e20a77acc2",
+    "tree": "05e2736bd86dec800c273fdbb3107607d8f163c0",
+    "verified_assets": 7
+  },
+  "sourceStatus": "",
+  "environment": "Existing production build; isolated loopback HTTP processes; INTAKE_MODE local/disabled/local; INDEXING_ENABLED=false",
+  "fixture": ".artifacts\\intake-pilot-u5ZaZA",
+  "applicationChanges": false,
+  "scenario": {
+    "first": {
+      "id": 1,
+      "upstreamStatus": 201,
+      "responseReachedClient": false,
+      "connectionFailure": "fetch failed",
+      "storedBeforeDisconnect": {
+        "id": 1,
+        "count": 1,
+        "createdAt": "2026-11-20T04:49:16.019Z"
+      }
+    },
+    "retry": {
+      "status": 201,
+      "id": 1,
+      "count": 1,
+      "fileUnchanged": true,
+      "delivery": "not_configured"
+    },
+    "intentionalSecond": {
+      "status": 201,
+      "id": 2,
+      "sameContact": true,
+      "samePayload": true,
+      "newKey": true,
+      "totalCount": 2
+    }
+  },
+  "disabled": {
+    "status": 503,
+    "code": "INTAKE_DISABLED",
+    "emailAlternative": "info@assist.ge",
+    "htmlExplainsDisabled": true,
+    "formDisabled": true,
+    "storeUnchanged": true,
+    "count": 2
+  },
+  "restoredIntake": {
+    "id": 1,
+    "count": 2,
+    "sameOriginalCreatedAt": true,
+    "fileUnchanged": true,
+    "delivery": "not_configured"
+  },
+  "employeeDemo": {
+    "kind": "Local JSON read via existing FileStorage, not a recipient/work queue",
+    "id": 1,
+    "services": [
+      "bookkeeping",
+      "payroll"
+    ],
+    "industry": "education",
+    "receivedAtLocalStorage": "2026-11-20T04:49:16.019Z",
+    "responsible": null,
+    "employeeReceiptConfirmed": false,
+    "delivery": "not_configured",
+    "newToInProgress": "გადაუმოწმებელია — პროექტში თანამშრომლის სამუშაო რიგი/სტატუსები არ არსებობს",
+    "transferFailureAndRecovery": "გადაუმოწმებელია — ნებადართული სატესტო მიმღები და გადაცემის მექანიზმი არ არსებობს",
+    "requiredStatement": "შენახვა დადასტურდა; თანამშრომელთან მიღება არ დადასტურდა"
+  },
+  "totalRecords": 2,
+  "recordsForFirstIntent": 1,
+  "externalNotifications": 0,
+  "publicRequests": 0,
+  "decision": "შიდა პილოტი დაბლოკილია",
+  "reason": "No authorised employee recipient, owner or workflow exists. Storage/retry/disable checks pass; actual handoff is unverified."
+}

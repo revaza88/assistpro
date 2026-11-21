@@ -1,0 +1,134 @@
+{
+  "base": "http://127.0.0.1:5018",
+  "indexing": true,
+  "pages": 15,
+  "rawEntryJsBytes": 274630,
+  "gzipEntryJsBytes": 78299,
+  "rawInitialJsBytes": 359518,
+  "gzipInitialJsBytes": 107650,
+  "gzipInitialCssBytes": 11146,
+  "initialAssets": [
+    {
+      "kind": "script",
+      "path": "/theme-init.js",
+      "rawBytes": 390,
+      "gzipBytes": 390
+    },
+    {
+      "kind": "script",
+      "path": "/assets/index-DXz1mUDJ.js",
+      "rawBytes": 274630,
+      "gzipBytes": 78299
+    },
+    {
+      "kind": "script",
+      "path": "/assets/jsx-runtime-Dn_YclF2.js",
+      "rawBytes": 7968,
+      "gzipBytes": 3067
+    },
+    {
+      "kind": "script",
+      "path": "/assets/footer-YY-50pZZ.js",
+      "rawBytes": 57587,
+      "gzipBytes": 18975
+    },
+    {
+      "kind": "script",
+      "path": "/assets/createLucideIcon-CxNr_4aI.js",
+      "rawBytes": 886,
+      "gzipBytes": 886
+    },
+    {
+      "kind": "script",
+      "path": "/assets/users-round-B6_g0J3l.js",
+      "rawBytes": 18057,
+      "gzipBytes": 6033
+    },
+    {
+      "kind": "stylesheet",
+      "path": "/assets/index-BtxYtz81.css",
+      "rawBytes": 52059,
+      "gzipBytes": 11146
+    }
+  ],
+  "medianLocalTtfbMs": 3.6,
+  "pageChecks": [
+    {
+      "route": "/",
+      "bytes": 29216,
+      "ttfbMs": 14.1
+    },
+    {
+      "route": "/services",
+      "bytes": 19818,
+      "ttfbMs": 4.1
+    },
+    {
+      "route": "/services/accounting",
+      "bytes": 22705,
+      "ttfbMs": 3.3
+    },
+    {
+      "route": "/services/tax",
+      "bytes": 21792,
+      "ttfbMs": 2.6
+    },
+    {
+      "route": "/services/legal",
+      "bytes": 30470,
+      "ttfbMs": 2.9
+    },
+    {
+      "route": "/services/business",
+      "bytes": 29935,
+      "ttfbMs": 2.4
+    },
+    {
+      "route": "/services/audit",
+      "bytes": 22278,
+      "ttfbMs": 3.6
+    },
+    {
+      "route": "/services/hr",
+      "bytes": 24905,
+      "ttfbMs": 3.3
+    },
+    {
+      "route": "/industries",
+      "bytes": 20035,
+      "ttfbMs": 2.5
+    },
+    {
+      "route": "/calculator",
+      "bytes": 17093,
+      "ttfbMs": 3
+    },
+    {
+      "route": "/contact",
+      "bytes": 18294,
+      "ttfbMs": 2.8
+    },
+    {
+      "route": "/faq",
+      "bytes": 23295,
+      "ttfbMs": 3.6
+    },
+    {
+      "route": "/about",
+      "bytes": 31535,
+      "ttfbMs": 2.1
+    },
+    {
+      "route": "/team",
+      "bytes": 17412,
+      "ttfbMs": 3.4
+    },
+    {
+      "route": "/career",
+      "bytes": 21189,
+      "ttfbMs": 2.4
+    }
+  ],
+  "checks": "HTML content, metadata, status codes, gzip, cache headers, full declared initial JS/CSS budgets, favicon, robots, sitemap, query noindex",
+  "limits": "Local unthrottled HTTP. HTML-declared assets exclude later dynamic imports; Lighthouse checks actual network activity. Not LCP, INP, CLS, real network or field Core Web Vitals."
+}

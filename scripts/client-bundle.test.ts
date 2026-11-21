@@ -16,7 +16,9 @@ test('optional translations load on demand and match the reviewed dictionaries',
   for (const language of ['ka', 'en', 'ru'] as const) {
     await changeSiteLanguage(language);
     assert.equal(i18n.language, language);
-    assert.equal(createHash('sha256').update(JSON.stringify(i18n.getResourceBundle(language, 'translation'))).digest('hex'), expected[language]);
+    const { serviceSearch, ...legacy } = i18n.getResourceBundle(language, 'translation');
+    assert.equal(createHash('sha256').update(JSON.stringify(legacy)).digest('hex'), expected[language]);
+    assert.ok(serviceSearch.accounting.faq.length >= 3);
   }
   await changeSiteLanguage('ka');
 });

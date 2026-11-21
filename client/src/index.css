@@ -231,6 +231,8 @@ h1[class],h2[class],h3[class] { font-weight: 700; }
 .footer-grid a:not(.site-brand) { display: inline-flex; align-items: center; min-height: 44px; }
 .footer-grid a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .footer-bottom { border-top: 1px solid var(--line); padding-block: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 15px; font-size: .875rem; }
+.footer-languages { display: flex; flex-wrap: wrap; gap: 1rem; }
+.footer-languages a { min-block-size: 44px; display: inline-flex; align-items: center; text-decoration: underline; text-underline-offset: .25em; }
 .selection-page main>h1,.inquiry-page main>h1,.faq-page header>h1 { font-weight: 700; font-size: clamp(1.875rem,calc(1rem + 2.55vw),2.875rem); }
 .selection-page fieldset,.inquiry-page form { background: var(--surface); border-color: var(--line); box-shadow: none; }
 .selection-page select,.inquiry-page input,.inquiry-page textarea { background: var(--field-surface); border-color: var(--control); border-radius: var(--assist-radius-control); }

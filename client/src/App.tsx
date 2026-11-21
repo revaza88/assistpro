@@ -2,6 +2,7 @@ import { Switch, Route, useLocation } from "wouter";
 import { lazy, Suspense, useEffect, type ComponentType } from 'react';
 import SeoHead from './components/SeoHead';
 import Home from "@/pages/home";
+const AssistChat = lazy(() => import('@/components/AssistChat'));
 // Animation code is needed by detail pages, not the initial home/calculator path.
 const animatedPage = (load: () => Promise<{ default: ComponentType }>) => lazy(async () => {
   const [{ default: Page }, { default: Frame }] = await Promise.all([load(), import('@/components/MotionPage')]);
@@ -17,11 +18,11 @@ const AboutPage = animatedPage(() => import('@/pages/about'));
 const ContactPage = lazy(() => import('@/pages/contact'));
 const TeamPage = animatedPage(() => import('@/pages/team'));
 const CareerPage = animatedPage(() => import('@/pages/career'));
-const AccountingServices = animatedPage(() => import('@/pages/services/accounting'));
-const TaxServices = animatedPage(() => import('@/pages/services/tax'));
+const AccountingServices = lazy(() => import('@/pages/services/accounting'));
+const TaxServices = lazy(() => import('@/pages/services/tax'));
 const LegalServices = animatedPage(() => import('@/pages/services/legal'));
 const BusinessConsulting = animatedPage(() => import('@/pages/services/business'));
-const AuditServices = animatedPage(() => import('@/pages/services/audit'));
+const AuditServices = lazy(() => import('@/pages/services/audit'));
 const HRServices = animatedPage(() => import('@/pages/services/hr'));
 
 function RouteFocus() {
@@ -61,6 +62,7 @@ function App() {
     <InquiryDraftProvider>
       <Suspense fallback={<p role="status" className="p-8 text-center">იტვირთება… / Loading…</p>}>
         <SeoHead /><Router /><RouteFocus />
+        <Suspense fallback={null}><AssistChat /></Suspense>
       </Suspense>
     </InquiryDraftProvider>
   );

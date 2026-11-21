@@ -1,6 +1,8 @@
+import serviceSearch from '../service-search/ka';
 import { siteCopy } from '../site-copy';
 
 const translation = {
+      serviceSearch,
       // Navigation
       nav: {
         about: 'ჩვენ შესახებ',

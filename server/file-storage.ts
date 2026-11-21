@@ -5,11 +5,17 @@ import { z } from '../src/shared/validation';
 import { contactFieldsSchema, jobApplicationFieldsSchema } from "../src/shared/schemas";
 import type { Contact, InsertContact, JobApplication, InsertJobApplication } from "../src/shared/types";
 import { calculateDemoEstimate, demoEstimateSchema } from '../src/shared/pricing';
+import { createHash } from 'node:crypto';
+
+export class ContactReplayConflict extends Error {}
 
 const savedDataSchema = z.object({
   version: z.literal(1),
   contacts: z.array(contactFieldsSchema.extend({
+    idempotencyKey: z.string().uuid().optional(),
+    payloadFingerprint: z.string().regex(/^[a-f0-9]{64}$/).optional(),
     demoEstimate: demoEstimateSchema.optional(),
+    testHandoff: z.object({ assignee: z.string().min(1).max(80), notification: z.enum(['not_attempted','failed','simulated']), attempts: z.number().int().nonnegative() }).optional(),
     id: z.number().int().positive(), createdAt: z.coerce.date(),
     phone: z.string().nullish(), company: z.string().nullish(), service: z.string().nullish(),
   })),
@@ -35,8 +41,10 @@ export class FileStorage {
     }
   }
 
-  private save<T>(update: (next: SavedData) => T): Promise<T> {
+  private save<T>(update: (next: SavedData) => T, replay?: (current: SavedData) => T | undefined): Promise<T> {
     const operation = this.writes.then(async () => {
+      const previous = replay?.(this.data);
+      if (previous !== undefined) return structuredClone(previous);
       const next = structuredClone(this.data);
       const result = update(next);
       const temporaryFile = `${this.file}.tmp`;
@@ -49,22 +57,50 @@ export class FileStorage {
     return operation;
   }
 
-  createContact(input: InsertContact): Promise<Contact> {
+  createContact(input: InsertContact, idempotencyKey?: string, testAssignee?: string): Promise<Contact> {
+    const payloadFingerprint = idempotencyKey ? createHash('sha256').update(JSON.stringify(input)).digest('hex') : undefined;
     return this.save(next => {
       const contact = {
+        idempotencyKey, payloadFingerprint,
         ...input, id: next.contacts.reduce((max, item) => Math.max(max, item.id), 0) + 1,
+        ...(testAssignee ? { testHandoff: { assignee: testAssignee, notification: 'not_attempted' as const, attempts: 0 } } : {}),
         demoEstimate: input.calculator ? calculateDemoEstimate(input.calculator) : undefined,
         createdAt: new Date(), privacy: input.privacy ?? false,
         industry: input.industry ?? 'other', services: input.services ?? [],
       };
       next.contacts.push(contact);
       return contact;
+    }, current => {
+      if (!idempotencyKey) return undefined;
+      const previous = current.contacts.find(item => item.idempotencyKey === idempotencyKey);
+      if (!previous) return undefined;
+      if (previous.payloadFingerprint !== payloadFingerprint) throw new ContactReplayConflict('Submission key already belongs to another payload');
+      return previous;
     });
   }
 
   async getAllContacts(): Promise<Contact[]> {
     await this.writes;
     return structuredClone(this.data.contacts);
+  }
+
+  async getTestContact(id: number, assignee: string): Promise<Contact | undefined> {
+    await this.writes;
+    const record = this.data.contacts.find(item => item.id === id && item.testHandoff?.assignee === assignee);
+    return record ? structuredClone(record) : undefined;
+  }
+
+  recordTestNotification(id: number, assignee: string, success: boolean): Promise<Contact> {
+    return this.save(next => {
+      const record = next.contacts.find(item => item.id === id && item.testHandoff?.assignee === assignee);
+      if (!record?.testHandoff) throw new Error('TEST_RECORD_NOT_FOUND');
+      record.testHandoff.attempts++;
+      record.testHandoff.notification = success ? 'simulated' : 'failed';
+      return record;
+    }, current => {
+      const record = current.contacts.find(item => item.id === id && item.testHandoff?.assignee === assignee);
+      return record?.testHandoff?.notification === 'simulated' ? record : undefined;
+    });
   }
 
   createJobApplication(input: InsertJobApplication): Promise<JobApplication> {

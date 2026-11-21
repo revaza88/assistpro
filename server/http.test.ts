@@ -6,6 +6,7 @@ import { once } from 'node:events';
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
+import { lostReplyAndNewIntent } from '../scripts/lib/intake-pilot-scenario.mjs';
 
 async function fixture(flags: string, run: (base: string, file: string, logs: () => string) => Promise<void>) {
   const directory = await mkdtemp(path.join(tmpdir(), 'assist-http-'));
@@ -27,10 +28,37 @@ async function fixture(flags: string, run: (base: string, file: string, logs: ()
 }
 const post = (base: string, route: string, value: unknown) => fetch(base + route, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(value) });
 
+test('a lost successful HTTP reply replays the same receipt; a new intent with the same contact stays distinct', async () => {
+  await fixture('true',async(base,file)=>{
+    const {report}=await lostReplyAndNewIntent(base,file);
+    assert.equal(report.first.storedBeforeDisconnect.count,1);
+    assert.equal(report.first.responseReachedClient,false);
+    assert.equal(report.retry.id,1);assert.equal(report.retry.count,1);
+    assert.equal(report.intentionalSecond.id,2);assert.equal(report.intentionalSecond.totalCount,2);
+  });
+});
+
 test('HTTP feature flags report the effective configuration, including false', async () => {
   for (const flag of ['true', 'false']) await fixture(flag, async base => {
     const health = await (await fetch(base + '/health')).json();
     assert.deepEqual(health.features, { compression: flag === 'true', rateLimiting: flag === 'true', monitoring: flag === 'true' });
+  });
+});
+
+test('contact consent and idempotent retries preserve one full local inquiry with honest delivery status', async () => {
+  await fixture('true', async (base,file) => {
+    const key='123e4567-e89b-42d3-a456-426614174000';
+    const payload={firstName:'Journey QA',email:'journey@example.invalid',industry:'education',services:['bookkeeping','tax-advice'],privacy:true};
+    const send=(body:unknown,submissionKey=key)=>fetch(base+'/api/contacts',{method:'POST',headers:{'Content-Type':'application/json','Idempotency-Key':submissionKey},body:JSON.stringify(body)});
+    for(const privacy of [false,undefined])assert.equal((await send({...payload,privacy})).status,400);
+    assert.equal((await send(payload,'invalid-key')).status,400);
+    await assert.rejects(readFile(file),{code:'ENOENT'});
+    const responses=await Promise.all([send(payload),send(payload)]);
+    for(const response of responses){assert.equal(response.status,201);const receipt=await response.json();assert.equal(receipt.id,1);assert.equal(receipt.intake,'local');assert.equal(receipt.delivery,'not_configured');}
+    assert.equal((await send({...payload,industry:'retail'})).status,409);
+    const data=JSON.parse(await readFile(file,'utf8'));assert.equal(data.contacts.length,1);
+    assert.equal(data.contacts[0].privacy,true);assert.equal(data.contacts[0].industry,'education');
+    assert.deepEqual(data.contacts[0].services,['bookkeeping','tax-advice']);
   });
 });
 

@@ -30,21 +30,24 @@ export default function ContactPage() {
   const { draft, update, clear } = useInquiryDraft();
   const [errors, setErrors] = useState<Partial<Record<Field, ErrorKey>>>({});
   const [status, setStatus] = useState<'success' | 'error' | null>(null);
+  const [receipt, setReceipt] = useState<number | null>(null);
+  const attempt = useRef<{ payload: string; key: string } | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [ready, setReady] = useState(false);
   const [localIntake, setLocalIntake] = useState(false);
   useEffect(() => { setLocalIntake(document.querySelector('meta[name="intake-mode"]')?.getAttribute('content') === 'local'); setReady(true); }, []);
   const busy = useRef(false);
   const form = useRef<HTMLFormElement>(null);
-  useEffect(() => { setErrors({}); setStatus(null); }, [search]);
+  useEffect(() => { setErrors({}); setStatus(null); setReceipt(null); }, [search]);
   const change = (field: Field, value: string | boolean) => {
     update({ [field]: value });
     setErrors(previous => ({ ...previous, [field]: undefined }));
     setStatus(null);
+    setReceipt(null);
   };
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    if (busy.current || !selection || !localIntake) return;
+    if (busy.current || status === 'success' || !selection || !localIntake) return;
     const contact = draft.contact.trim();
     const payload = {
       firstName: draft.name, email: contact.includes('@') ? contact : '', phone: contact.includes('@') ? '' : contact,
@@ -68,13 +71,16 @@ export default function ContactPage() {
     busy.current = true;
     setSubmitting(true);
     try {
+      const serialized = JSON.stringify(parsed.data);
+      if (attempt.current?.payload !== serialized) attempt.current = { payload: serialized, key: crypto.randomUUID() };
       const response = await fetch('/api/contacts', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(parsed.data), signal: AbortSignal.timeout(15000),
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': attempt.current.key },
+        body: serialized, signal: AbortSignal.timeout(15000),
       });
       const body = await response.json();
       if (!response.ok || body.success !== true || !Number.isInteger(body.id)) throw new Error('Submission failed');
       clear();
+      setReceipt(body.id);
       setStatus('success');
     } catch {
       setStatus('error');
@@ -105,7 +111,7 @@ export default function ContactPage() {
       <form ref={form} onSubmit={handleSubmit} method="post" action="/api/contacts" noValidate aria-busy={submitting} aria-describedby={!localIntake ? 'intake-status' : undefined} className="inquiry-form rounded-xl border border-slate-200 p-5 sm:p-6 space-y-5">
         <h2>{ui.form}</h2>
         {!localIntake && <p id="intake-status" className="intake-status">{copy.unavailable}</p>}
-        <fieldset disabled={!ready || !localIntake || submitting || !selection} className="space-y-5">
+        <fieldset disabled={!ready || !localIntake || submitting || status === 'success' || !selection} className="space-y-5">
           <legend className="sr-only">{copy.contactTitle}</legend>
           <div><label htmlFor="name" className="font-semibold">{copy.name}</label><input id="name" name="name" autoComplete="name" required maxLength={80} value={draft.name} onChange={event => change('name', event.target.value)} aria-invalid={!!errors.name} aria-describedby={errors.name ? 'name-error' : undefined} className={fieldClass} />{error('name')}</div>
           <div><label htmlFor="contact" className="font-semibold">{copy.channel}</label><input id="contact" name="contact" type="text" autoComplete="off" autoCapitalize="none" spellCheck={false} required maxLength={254} value={draft.contact} onChange={event => change('contact', event.target.value)} aria-invalid={!!errors.contact} aria-describedby={errors.contact ? 'contact-error' : undefined} className={fieldClass} />{error('contact')}</div>
@@ -113,7 +119,7 @@ export default function ContactPage() {
           <label className="flex items-start gap-3 min-h-12 py-2"><input id="privacy" type="checkbox" name="privacy" checked={draft.privacy} onChange={event => change('privacy', event.target.checked)} required aria-invalid={!!errors.privacy} aria-describedby={errors.privacy ? 'privacy-error' : undefined} className="w-5 h-5 mt-1 shrink-0 accent-blue-600" /><span className="text-sm leading-relaxed">{copy.consent}</span></label>{error('privacy')}
           <button type="submit" aria-busy={submitting} className="site-button w-full">{submitting ? copy.sending : copy.send}</button>
         </fieldset>
-        {status && <p role={status === 'success' ? 'status' : 'alert'} className={`form-status form-status--${status}`}>{status === 'success' ? copy.sent : copy.failed}</p>}
+        {status && <p role={status === 'success' ? 'status' : 'alert'} className={`form-status form-status--${status}`}>{status === 'success' ? <>{copy.sent}{receipt !== null && <span className="block mt-2">{copy.receipt}: #{receipt}</span>}</> : copy.failed}</p>}
       </form>
     </div>
     <CompanyDetails />

@@ -1,0 +1,158 @@
+{
+  "date": "2026-11-20",
+  "timezone": "Asia/Tbilisi",
+  "repository": "revaza88/assistpro",
+  "branch": "codex/assist-intake-journey-qa",
+  "applicationRevision": "cef77888d26dbd1a1cefb9e1b1a0006164ee8e52",
+  "applicationTree": "644f84965365e501463bc7eb12e3fed3ce2480bd",
+  "baseRevision": "00bead8ca5f4511a18732297b77e0016420b506c",
+  "publicMainBaseline": "f8e4b3f7964a25216f3305ccccd34c92ca6eb86a",
+  "environment": {
+    "os": "Windows",
+    "node": "26.13.1",
+    "browser": "Chrome157.0.8103.79 via native UI",
+    "viewport": "390x844 CSS px emulation",
+    "mode": "production build",
+    "localIntake": "127.0.0.1:5019 INTAKE_MODE=local",
+    "disabledIntake": "127.0.0.1:5020 INTAKE_MODE=disabled",
+    "indexing": false,
+    "physicalPhone": false,
+    "assistiveTechnology": false
+  },
+  "checks": {
+    "typescript": "pass",
+    "tests": {
+      "total": 48,
+      "pass": 48,
+      "fail": 0
+    },
+    "build": "pass: 45 localized prerenders +3 localized404",
+    "localStrictRelease": {
+      "origin": "http://127.0.0.1:5019",
+      "commit": "cef77888d26dbd1a1cefb9e1b1a0006164ee8e52",
+      "tree": "644f84965365e501463bc7eb12e3fed3ce2480bd",
+      "verified_assets": 7
+    },
+    "disabledSmoke": "pass: noindex, prerender, health,404 and both intake POST endpoints503; disabled fixture file absent",
+    "kaNativeScenario": "Manufacturing + bookkeeping/payroll -> demo -> inquiry -> fill synthetic draft -> Back twice -> change industry to education -> demo -> inquiry; both services and draft preserved",
+    "consent": "Native UI error/focus and no file observed; API false/missing consent400",
+    "writeFailure": "Real empty .tmp-directory blocker causes500; form/draft/consent preserved, no success or record; unblock retry saved one",
+    "doubleClick": "Initial bug reproduced and fixed; native final double click keeps #1 visible with disabled form; final active fixture has one record",
+    "languageLink": "Observed malformed footer contactsource=...; fixed common query separator; actual EN footer -> RU keeps complete context",
+    "enRu": "Native mobile calculator and inquiry labels/actions/context checked. No extra EN/RU inquiry submissions",
+    "apiReplays": {
+      "checkedAt": "2026-11-20T04:23:57.081Z",
+      "origin": "http://127.0.0.1:5019",
+      "recordCount": 1,
+      "id": 1,
+      "industry": "education",
+      "services": [
+        "bookkeeping",
+        "payroll"
+      ],
+      "consent": true,
+      "demoEstimate": {
+        "version": "demo-1",
+        "isDemo": true,
+        "currency": "GEL",
+        "vatIncluded": false,
+        "kind": "range",
+        "low": 340,
+        "high": 460
+      },
+      "receipts": [
+        {
+          "success": true,
+          "message": "Saved in local test storage. Employee delivery is not configured.",
+          "intake": "local",
+          "delivery": "not_configured",
+          "id": 1
+        },
+        {
+          "success": true,
+          "message": "Saved in local test storage. Employee delivery is not configured.",
+          "intake": "local",
+          "delivery": "not_configured",
+          "id": 1
+        }
+      ],
+      "fileUnchanged": true,
+      "fileSha256": "8363222489f6c374e665532002c6281b354782c75b93963e43cf4272ca0f1e9e",
+      "missingConsentStatus": 400,
+      "changedPayloadStatus": 409,
+      "employeeReceipt": "not_confirmed",
+      "outboundMessages": 0
+    },
+    "publicReadOnly": {
+      "checkedAt": "2026-11-20T04:13:03.989Z",
+      "method": "GET only, no public form submission",
+      "pages": [
+        {
+          "path": "/",
+          "status": 200,
+          "intake": "disabled",
+          "robots": "noindex,follow"
+        },
+        {
+          "path": "/contact",
+          "status": 200,
+          "intake": "disabled",
+          "robots": "noindex,follow",
+          "formDisabled": true
+        }
+      ],
+      "identity": {
+        "commit": null,
+        "tree": null,
+        "dirty": null
+      },
+      "strictRelease": {
+        "pass": false,
+        "reason": "Build source commit is unknown"
+      },
+      "publicWrites": 0
+    },
+    "ci": "not run; no remote push"
+  },
+  "employeeHandoff": {
+    "storage": "verified single-process local JSON only",
+    "recipient": "not configured",
+    "notificationChannel": "not configured",
+    "acknowledgement": "not confirmed",
+    "requiredStatus": "შენახვა შემოწმდა; თანამშრომელთან მიღება არ დადასტურდა",
+    "outboundMessages": 0
+  },
+  "preserved": {
+    "logoSha256": "449ff8c94c993a29bc58f9e0e43bb04d594088e367eeb015fd094fbd73191a5e",
+    "palette": "A",
+    "slogan": "თქვენი ბიზნესის მხარდამჭერი",
+    "priorSeo": true,
+    "pr4Surfaces": true,
+    "pr5MobileHeader": true
+  },
+  "publicMutations": {
+    "mainMerge": false,
+    "gitPush": false,
+    "deployment": false,
+    "formEnabled": false,
+    "database": false,
+    "notifications": false,
+    "indexingEnabled": false,
+    "formPostRequests": 0
+  },
+  "limits": [
+    "Local JSON/replay serialization is not a production/multiple-process datastore.",
+    "Idempotency requires the same key and unchanged payload; legacy no-key clients retain compatibility.",
+    "Personal draft is memory-only; full reload/language navigation clears it.",
+    "Native success UI was retested on77b5d63; subsequent language-only changes retested oncef7788. Unchanged selection/calculator pages were not redesigned or re-audited.",
+    "Public strict release still fails with unknown commit/tree; no audit was weakened."
+  ],
+  "evidence": {
+    "browser": "browser-observations.json",
+    "receipt": "api-replay.json",
+    "public": "public-readonly.json",
+    "localRelease": "local-release.json",
+    "rawScreenshots": ".artifacts/journey-intake-20261120/browser/ (ignored, local only; includes browser chrome)"
+  },
+  "postTestState": "5019 local intake process stopped after QA; 5020 loopback disabled preview remains; repeat with a fresh fixture on5021."
+}
