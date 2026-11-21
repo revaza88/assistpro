@@ -7,11 +7,12 @@ import i18n, { changeSiteLanguage } from '../client/src/lib/i18n';
 test('optional translations load on demand and match the reviewed dictionaries', async () => {
   assert.equal(i18n.hasResourceBundle('en', 'translation'), false);
   assert.equal(i18n.hasResourceBundle('ru', 'translation'), false);
-  // Fingerprints include the reviewed public-copy corrections in all languages.
+  // Reviewed copy: responsibility is agreed before work begins, matching FAQ.
+  // Keep dictionary fingerprints strict after the bounded KA/EN/RU correction.
   const expected = {
-    ka: '4eb32fe20fc2e795de133fff2c8dfa92e2ac68210333b1207e83b55d0801d5c3',
-    en: '5991a7e609495ff7c97060c64d00d1dd6b5030d03e45b6dc0f728528b2d55f34',
-    ru: '297bb7da315e218ff84f8ffd0431da03adf692c6a30e0536d039cbdc6298809d',
+    ka: '1b3e7ae4d7ba423ef09816ee99e8ea1b020cc2c5fe82a206ee8ea57f127dd6c1',
+    en: '6656bb10c73faeb51ab1d56fd7dc20840d0aba136f8d0544754a605e625a842a',
+    ru: '4edd430ba2d12ceea54f105d3e9305a610f81480ebd619ae54ce5aed28c2ff4d',
   };
   for (const language of ['ka', 'en', 'ru'] as const) {
     await changeSiteLanguage(language);

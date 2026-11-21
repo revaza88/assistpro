@@ -123,7 +123,7 @@ const translation = {
         value1: 'Professionalism and Competence: Our knowledge and experience at the service of your business.',
         value2: 'Client-Orientation: Your interests and goals are the cornerstone of our work.',
         value3: 'Innovation and Continuous Growth: We learn, develop, and implement new approaches for your better service.',
-        value4: 'Transparency and Accountability: We operate openly and take full responsibility for the services we provide.',
+        value4: 'Transparency and Accountability: Scope, deliverables, frequency and responsibilities are agreed before work begins.',
         value5: 'Teamwork and Mutual Respect: We are a unified team striving towards a common goal.',
         closingCall: '"Assist" is ready to become your trusted advisor and supporter at every stage of business management, including VAT filing and refund Georgia and overall business formation Tbilisi, including Georgia LLC formation. Contact us today, and let\'s plan the path to your success together!',
       },
@@ -137,7 +137,7 @@ const translation = {
           whyOutsourcingTitle: "How can accounting outsourcing support your business?",
           benefitFinancial: 'Financial Savings', // Simplified for brevity, full text in component
           benefitTime: 'Time Savings',
-          benefitRisk: 'Risk Minimization',
+          benefitRisk: 'Agreed Scope and Responsibilities: Scope, deliverables, frequency and responsibilities are agreed before work begins. Historical cleanup and special projects are discussed separately.',
           benefitExpertise: 'Access to Expert Knowledge',
           benefitFocus: 'Focus on Core Activities',
           servicesIncludeTitle: '"Assist\'s" Accounting Services Include:',

@@ -1,4 +1,23 @@
 {
+  "content_consistency_review_2026_11_21": {
+    "base_commit": "b04f97aa390fa949ad5d638b6124a81e2831e627",
+    "branch": "codex/assist-content-consistency-2026-11-21",
+    "scope": "About responsibility wording and dormant accounting copy aligned with existing FAQ in KA/EN/RU",
+    "check": "passed",
+    "tests": { "passed": 87, "failed": 0 },
+    "build": "passed; working-tree source correctly marked dirty",
+    "browser": "Chrome 157.0.8103.79; Windows; isolated production build",
+    "responsive_checks": 27,
+    "widths_css_px": [320, 390, 1440],
+    "routes": ["/about", "/services/accounting", "/faq"],
+    "languages": ["ka", "en", "ru"],
+    "horizontal_overflow_detected": false,
+    "external_browser_requests": 0,
+    "physical_device_tested": false,
+    "public_deployment_performed": false,
+    "report": "../CONTENT_CONSISTENCY_QA_2026_11_21.md",
+    "open": ["Editorial owner acceptance", "Real employee receipt", "Hosting build provenance (deferred)"]
+  },
   "title": "ASSIST Brand System 2.2 — current and historical QA",
   "date": "2026-11-19",
   "timezone": "Asia/Tbilisi",
