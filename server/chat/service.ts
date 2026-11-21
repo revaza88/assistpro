@@ -1,5 +1,5 @@
 import { z } from '../../src/shared/validation';
-import { industryIds, serviceIds } from '../../src/shared/selection';
+import { industryIds, serviceIds, type ServiceId } from '../../src/shared/selection';
 import type { ChatLanguage, ChatReply } from '../../src/shared/chat';
 import { source, type KnowledgeId } from './knowledge';
 
@@ -38,21 +38,28 @@ export async function answerChat(input: ChatInput, provider: ChatProvider = simu
  let need: ChatReply['need'];
  const text = input.message.toLowerCase();
  // Client supplies the prior structured context, never a transcript or a session ID.
+ if (id === 'accounting') {
  if (/მაღაზი|ვაჭრობ|retail|shop|торгов|магазин/.test(text)) { context.selection.industry = 'retail'; context.industryKnown = true; }
  const industries: [typeof industryIds[number],RegExp][] = [['education',/განათლებ|სკოლ|სასწავლ|education|school|образован|школ/],['medical',/მედიც|კლინიკ|medical|clinic|медицин|клиник/],['logistics',/ლოგისტ|logistic|логист/],['wholesale',/საბითუმ|wholesale|оптов/],['distribution',/დისტრიბ|distribution|дистриб/],['manufacturing',/წარმოებ|manufactur|производ/],['hotels',/სასტუმრ|hotel|гостиниц/],['startups',/სტარტაპ|startup|стартап/],['service',/^მომსახურება$|^services$|^услуги$|მომსახურების სფერო/],['other',/ჯერ არ ვიცი|სხვა|not sure|other|другое|пока не знаю/]];
  for(const [industry,pattern] of industries)if(pattern.test(text)){context.selection.industry=industry;context.industryKnown=true;break;}
  if (/აღდგენა|cleanup|восстанов/.test(text)) context.task = 'cleanup';
  if (/ხელფას|payroll|зарплат/.test(text)) context.task = 'payroll';
  if (/მიმდინარე|ყოველთვ|monthly|ongoing|текущ|ежемесяч/.test(text)) context.task = 'monthly';
+ if (!context.task) {
+  const selectedTasks = context.selection.services.filter(s => ['bookkeeping','cleanup','payroll'].includes(s));
+  if (selectedTasks.length === 1) context.task = selectedTasks[0] === 'bookkeeping' ? 'monthly' : selectedTasks[0] as 'cleanup' | 'payroll';
+ }
+ }
  // These topic-specific questions are the only two clarification fields.
  if (id === 'accounting') {
   context.intent = 'accounting';
   if (!context.industryKnown) need = 'industry';
-  else if (!context.task && !context.selection.services.some(s => s === 'cleanup' || s === 'payroll')) need = 'task';
+  else if (!context.task) need = 'task';
   const service = context.task === 'cleanup' ? 'cleanup' : context.task === 'payroll' ? 'payroll' : 'bookkeeping';
   if (!need) context.selection.services = serviceIds.filter(s => context.selection.services.includes(s) || s === service);
  } else {
-  const service = ({ tax:'tax-advice', audit:'financial-audit', legal:'legal', business:'business', hr:'hr' } as const)[id as 'tax'];
+  const services: Partial<Record<KnowledgeId, ServiceId>> = { tax:'tax-advice', audit:'financial-audit', legal:'legal', business:'business', hr:'hr' };
+  const service = id && Object.hasOwn(services,id) ? services[id] : undefined;
   if (service) context.selection.services = serviceIds.filter(s => context.selection.services.includes(s) || s === service);
  }
  const item = source(need ? 'process' : id ?? 'contact', language);

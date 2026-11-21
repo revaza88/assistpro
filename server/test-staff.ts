@@ -22,6 +22,9 @@ export function registerTestStaff(app: Express, storage: FileStorage) {
   const authorize = (req:Request,res:Response,next:NextFunction) => {
     res.set({ 'Cache-Control':'no-store', 'X-Robots-Tag':'noindex' });
     if (!['127.0.0.1','::1','::ffff:127.0.0.1'].includes(req.socket.remoteAddress ?? '')) {res.sendStatus(403);return;}
+    let hostname='';
+    try { hostname=new URL('http://'+req.get('host')).hostname; } catch { /* Reject malformed hosts. */ }
+    if (!['127.0.0.1','localhost','[::1]'].includes(hostname) || req.get('forwarded') || req.get('x-forwarded-for') || req.get('x-forwarded-host')) {res.sendStatus(403);return;}
     const token = req.get('Authorization')?.match(/^Bearer ([a-f0-9]{64})$/)?.[1];
     if (!token) {res.status(401).json({code:'TEST_STAFF_UNAUTHORIZED'});return;}
     const bytes = digest(token);
@@ -33,19 +36,23 @@ export function registerTestStaff(app: Express, storage: FileStorage) {
   const validId = (id:string) => /^[1-9]\d{0,8}$/.test(id) ? Number(id) : null;
   app.get('/api/test-staff/requests/:id',async(req,res) => {
     const id=validId(req.params.id);if(!id){res.sendStatus(400);return;}
+    try {
     const record=await storage.getTestContact(id,settings.assignee);
     if(!record){res.sendStatus(404);return;}
     const {firstName,lastName,email,phone,message,industry,services,createdAt,testHandoff}=record;
     res.json({testOnly:true,id,firstName,lastName,email,phone,message,industry,services,createdAt,testHandoff});
+    } catch {res.status(503).json({code:'TEST_LOOKUP_UNAVAILABLE'});}
   });
   app.post('/api/test-staff/requests/:id/notification-attempt',async(req,res) => {
     const id=validId(req.params.id);if(!id){res.sendStatus(400);return;}
-    if (!await storage.getTestContact(id,settings.assignee)) {res.sendStatus(404);return;}
+    let stored=false;
     try {
+      if (!await storage.getTestContact(id,settings.assignee)) {res.sendStatus(404);return;}
+      stored=true;
       // Deliberate simulation: this module has no outbound transport.
       const record=await storage.recordTestNotification(id,settings.assignee,process.env.TEST_NOTIFICATION_RESULT === 'success');
       res.status(record.testHandoff?.notification === 'failed'?502:200).json({testOnly:true,id,stored:true,notification:record.testHandoff?.notification,attempts:record.testHandoff?.attempts,actualDelivery:false});
-    } catch {res.status(503).json({code:'TEST_NOTIFICATION_STATE_UNAVAILABLE',stored:true,id,actualDelivery:false});}
+    } catch {res.status(503).json({code:'TEST_NOTIFICATION_STATE_UNAVAILABLE',stored,id,actualDelivery:false});}
   });
   return settings;
 }

@@ -18,18 +18,28 @@ export default function AssistChat() {
  const initial=():ChatContext=>({selection:parseSelection(search)??structuredClone(emptySelection),industryKnown:new URLSearchParams(search).has('sector')});
  const [context,setContext]=useState<ChatContext>(initial), [reply,setReply]=useState<ChatReply|null>(null), [question,setQuestion]=useState(''),[enabled,setEnabled]=useState(false),[ready,setReady]=useState(false),[busy,setBusy]=useState(false),[error,setError]=useState(''),[draft,setDraft]=useState<string|null>(null);
  const dialog=useRef<HTMLDialogElement>(null), request=useRef<AbortController|null>(null), inFlight=useRef(false);
+ const revision=useRef(0), configuration=useRef<AbortController|null>(null);
+ function cancelAnswer(){revision.current++;request.current?.abort();request.current=null;inFlight.current=false;setBusy(false);}
+ function close(){cancelAnswer();configuration.current?.abort();}
  const [testIntake,setTestIntake]=useState(false);
  // In memory only. Preserve the latest site selection on calculator/contact navigation.
- useEffect(()=>{const value=parseSelection(search);if(value&&new URLSearchParams(search).has('sector')){setContext(old=>({...old,selection:value,industryKnown:true}));setReply(null);setDraft(null);}},[search]);
- useEffect(()=>{setReply(null);setError('');setDraft(null);},[lang]);
- useEffect(()=>()=>request.current?.abort(),[]);
- async function open(){dialog.current?.showModal();if(!ready){try{const r=await fetch('/api/chat/config',{cache:'no-store'});const data=await r.json();setEnabled(r.ok&&data.enabled===true&&data.mode==='simulation');setTestIntake(r.ok&&data.testIntakeEnabled===true);}catch{setEnabled(false);setTestIntake(false);}setReady(true);}}
+ useEffect(()=>{cancelAnswer();const value=parseSelection(search);if(value&&new URLSearchParams(search).has('sector')){setContext({selection:value,industryKnown:true});setReply(null);setDraft(null);}},[search]);
+ useEffect(()=>{cancelAnswer();setReply(null);setError('');setDraft(null);},[lang]);
+ useEffect(()=>()=>{revision.current++;request.current?.abort();configuration.current?.abort();},[]);
+ async function open(){
+  dialog.current?.showModal();configuration.current?.abort();const controller=new AbortController();configuration.current=controller;setReady(false);setError('');
+  const timeout=setTimeout(()=>controller.abort(),3000);
+  try{const r=await fetch('/api/chat/config',{cache:'no-store',signal:controller.signal});const data=await r.json();if(configuration.current!==controller||!dialog.current?.open)return;setEnabled(r.ok&&data.enabled===true&&data.mode==='simulation');setTestIntake(r.ok&&data.testIntakeEnabled===true);}
+  catch{if(configuration.current===controller){setEnabled(false);setTestIntake(false);}}
+  finally{clearTimeout(timeout);if(configuration.current===controller)setReady(true);}
+ }
  async function ask(event?:FormEvent, next=context, message=question){
   event?.preventDefault();if(inFlight.current||!message.trim()||!enabled)return;
   inFlight.current=true;setBusy(true);setError('');setDraft(null);setReply(null);
+  const version=++revision.current;
   const controller=new AbortController();request.current=controller;const timeout=setTimeout(()=>controller.abort(),5000);
-  try{const r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({language:lang,message,context:next}),signal:controller.signal});const data=await r.json();if(!r.ok){setError(data.code==='SENSITIVE_DATA'?c.sensitive:c.error);return;}setReply(data);setContext(data.context);setQuestion('');}
-  catch{setError(c.error);}finally{clearTimeout(timeout);setBusy(false);inFlight.current=false;}
+  try{const r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({language:lang,message,context:next}),signal:controller.signal});const data=await r.json();if(version!==revision.current||!dialog.current?.open)return;if(!r.ok){setError(data.code==='SENSITIVE_DATA'?c.sensitive:c.error);return;}setReply(data);setContext(data.context);setQuestion('');}
+  catch{if(version===revision.current)setError(c.error);}finally{clearTimeout(timeout);if(version===revision.current){setBusy(false);inFlight.current=false;request.current=null;}}
  }
  useEffect(()=>{const listener=()=>{void open();};window.addEventListener('assist-chat-open',listener);return()=>window.removeEventListener('assist-chat-open',listener);});
  function review(){setDraft([c.summary,`${c.industry}: ${labels.industryLabels[industryIds.indexOf(context.selection.industry)]}`,`${c.selected}: ${context.selection.services.map(s=>labels.serviceLabels[serviceIds.indexOf(s)]).join(', ')}`,context.task?`${c.task}: ${c[context.task]}`:'',c.demo].filter(Boolean).join('\n'));}
@@ -37,7 +47,7 @@ export default function AssistChat() {
  const calculation=parseCalculatorQuery(search);
  const contactHref=calculation?calculatorHref('/contact',calculation,context.selection):selectionHref('/contact',context.selection);
  return <>
-  <dialog ref={dialog} className="assist-chat" aria-labelledby="assist-chat-title" aria-describedby="assist-chat-intro" onClose={()=>request.current?.abort()}>
+  <dialog ref={dialog} className="assist-chat" aria-labelledby="assist-chat-title" aria-describedby="assist-chat-intro" onClose={close}>
    <header className="assist-chat-head"><h2 id="assist-chat-title">{c.title}</h2><button type="button" className="site-button site-button-outline" onClick={()=>dialog.current?.close()} autoFocus>{c.close}</button></header>
    <div className="assist-chat-body">
    <p className="assist-chat-badge">{c.badge}</p><p id="assist-chat-intro">{c.intro}</p><p>{testIntake?handoff.notice:labels.unavailable}</p><p id="assist-chat-caution">{c.caution}</p>
@@ -52,7 +62,7 @@ export default function AssistChat() {
     </div>}
     {!reply?.need&&context.selection.services.length>0&&<><p>{c.follow}</p><p>{c.demo}</p><Link className="site-button site-button-outline" href={calc} onClick={()=>dialog.current?.close()}>{c.calculator}</Link><button type="button" className="site-button" onClick={review}>{c.preview}</button></>}
     {draft!==null&&<section><h3>{c.draft}</h3><label htmlFor="assist-chat-draft">{c.edit}</label><textarea id="assist-chat-draft" rows={7} maxLength={1200} value={draft} onChange={e=>setDraft(e.target.value)}/><p>{c.mailNotice}</p><a className="site-button" href={`mailto:${chatEmail}?subject=${encodeURIComponent(c.subject)}&body=${encodeURIComponent(draft)}`}>{c.openMail}</a>{testIntake&&<Link className="site-button site-button-outline" href={contactHref} onClick={()=>{updateInquiry({message:draft,privacy:false});dialog.current?.close();}}>{handoff.button}</Link>}</section>}
-    <button type="button" className="site-button site-button-outline" disabled={busy} onClick={()=>{request.current?.abort();setContext(initial());setQuestion('');setReply(null);setDraft(null);setError('');}}>{c.clear}</button>
+    <button type="button" className="site-button site-button-outline" onClick={()=>{cancelAnswer();setContext(initial());setQuestion('');setReply(null);setDraft(null);setError('');}}>{c.clear}</button>
    </>}
    <nav className="assist-chat-links" aria-label={c.follow}><Link href="/faq" onClick={()=>dialog.current?.close()}>{c.faq}</Link><a href={`mailto:${chatEmail}`}>{chatEmail}</a></nav>
    </div>
