@@ -1,3 +1,9 @@
+# იზოლირებული მიღების ახალი მტკიცებულება — 2026-11-21
+
+`codex/assist-ai-chat-pilot`, შემოწმებული აპლიკაცია `440a5ae939392e146ab28425340dccc6ee537dfc`: [ჩატი → review → არსებული ფორმა → #1 → ავტორიზებული სინთეზური test-staff lookup](HANDOFF_QA_2026_11_21.md). 85 ტესტი/check/build/local strict release და ქართული mobile browser passed. შეტყობინება მხოლოდ ცალკე სიმულაციაა; production საცავი/რეალური თანამშრომელი/არხი კვლავ ღიაა. `TEST_STAFF_MODE` ნაგულისხმევად გამორთულია და loopback/local/.artifacts/სინთეზურ credentials-ს მოითხოვს. **ეს flag-ები ჰოსტინგზე არ გადაიტანოთ; main merge/push/deploy/ონლაინ მიღება/ინდექსაცია/შეტყობინებების ჩართვა ამ დავალებაში არ შესრულდეს.** საჯარო release.json წარმომავლობის საკითხი უცვლელად ცალკეა.
+
+---
+
 # AI ჩატის დახურული ვერსია — 2026-11-20
 
 `codex/assist-ai-chat-pilot`: [წყაროებით შეზღუდული სიმულაცია, ახალი QA და სამეტაპიანი მიღების ზღვრები](AI_CHAT_PILOT.md). შემოწმებული აპლიკაცია `732a08f214e5092175134b4092cb00e9090286f8`: check, 82 ტესტი, production build, local strict release audit და headless Chrome KA/EN/RU გზა წარმატებულია. ეს არ არის რეალური მოდელის ან თანამშრომლის მიღების დადასტურება.

@@ -2409,5 +2409,36 @@
     "employee_receipt": "not_confirmed",
     "hosting_provenance": "unresolved",
     "public_deployment": false
+  },
+  "reviewed_handoff_2026_11_21": {
+    "initial_commit": "2f8fb2905bf52e8f9582065919469d7eda8aa3c4",
+    "tested_application_commit": "440a5ae939392e146ab28425340dccc6ee537dfc",
+    "report": "../HANDOFF_QA_2026_11_21.md",
+    "baseline_chat": "pass",
+    "model": "simulation",
+    "check": "pass",
+    "tests": {
+      "pass": 85,
+      "fail": 0
+    },
+    "build": "clean; pass",
+    "strict_local_release": "pass; 8 assets",
+    "browser": "headless Chrome 157.0.8103.79; 390x844",
+    "storage": "isolated local FileStorage",
+    "request_id": 1,
+    "count_after_lost_reply_retry_restart": 1,
+    "authorized_synthetic_staff_lookup": "HTTP 200 and CLI; same ID, creation time, services",
+    "other_test_role": 403,
+    "notification": "failure/recovery simulated; actualDelivery=false",
+    "deliberate_new_intent_id": 2,
+    "final_count": 2,
+    "disabled_post": 503,
+    "external_requests": 0,
+    "real_employee_confirmed": false,
+    "physical_phone_tested": false,
+    "public_deployment": false,
+    "production_intake_enabled": false,
+    "hosting_provenance": "separate; unresolved",
+    "logo_palette_header_changed": false
   }
 }
