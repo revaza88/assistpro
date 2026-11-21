@@ -2,6 +2,7 @@ import type { IndustryId, ServiceId } from './selection';
 import type { CalculatorInput, DemoEstimate } from './pricing';
 
 export type Contact = {
+  testHandoff?: { assignee: string; notification: 'not_attempted' | 'failed' | 'simulated'; attempts: number };
   calculator?: CalculatorInput;
   demoEstimate?: DemoEstimate;
   id: number;

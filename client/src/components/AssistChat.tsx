@@ -3,23 +3,27 @@ import { useTranslation } from 'react-i18next';
 import { useSearch, Link } from 'wouter';
 import type { ChatContext, ChatReply, ChatLanguage, ChatTask } from '@shared/chat';
 import { chatEmail } from '@shared/chat';
-import { parseSelection, emptySelection, industryIds, serviceIds, type IndustryId } from '@shared/selection';
+import { parseSelection, selectionHref, emptySelection, industryIds, serviceIds, type IndustryId } from '@shared/selection';
 import { calculatorForSelection, calculatorHref, parseCalculatorQuery } from '@shared/calculator-context';
 import { requestCopy } from '@/lib/request-copy';
 import { chatCopy } from '@/lib/chat-copy';
+import { useInquiryDraft } from '@/contexts/inquiry-draft';
 import './assist-chat.css';
 
 export default function AssistChat() {
  const {i18n}=useTranslation();const lang=(i18n.language.startsWith('en')?'en':i18n.language.startsWith('ru')?'ru':'ka') as ChatLanguage;
  const c=chatCopy(lang), labels=requestCopy(lang), search=useSearch();
+ const {update:updateInquiry}=useInquiryDraft();
+ const handoff = {ka:{button:'გადატანა სატესტო მოთხოვნაში',notice:'მხოლოდ იზოლირებული ტესტი: მონახაზი შეგიძლიათ არსებულ ფორმაში გადაიტანოთ. საკონტაქტო მონაცემებს ფორმაში ამატებთ; AI მათ არ იღებს.'},en:{button:'Continue to test inquiry',notice:'Isolated test only: transfer the reviewed draft to the existing form. Add contact details there; they are not sent to AI.'},ru:{button:'Перейти к тестовому запросу',notice:'Только изолированный тест: перенесите проверенный черновик в существующую форму. Контакты вводятся там и не передаются AI.'}}[lang];
  const initial=():ChatContext=>({selection:parseSelection(search)??structuredClone(emptySelection),industryKnown:new URLSearchParams(search).has('sector')});
  const [context,setContext]=useState<ChatContext>(initial), [reply,setReply]=useState<ChatReply|null>(null), [question,setQuestion]=useState(''),[enabled,setEnabled]=useState(false),[ready,setReady]=useState(false),[busy,setBusy]=useState(false),[error,setError]=useState(''),[draft,setDraft]=useState<string|null>(null);
  const dialog=useRef<HTMLDialogElement>(null), request=useRef<AbortController|null>(null), inFlight=useRef(false);
+ const [testIntake,setTestIntake]=useState(false);
  // In memory only. Preserve the latest site selection on calculator/contact navigation.
  useEffect(()=>{const value=parseSelection(search);if(value&&new URLSearchParams(search).has('sector')){setContext(old=>({...old,selection:value,industryKnown:true}));setReply(null);setDraft(null);}},[search]);
  useEffect(()=>{setReply(null);setError('');setDraft(null);},[lang]);
  useEffect(()=>()=>request.current?.abort(),[]);
- async function open(){dialog.current?.showModal();if(!ready){try{const r=await fetch('/api/chat/config',{cache:'no-store'});const data=await r.json();setEnabled(r.ok&&data.enabled===true&&data.mode==='simulation');}catch{setEnabled(false);}setReady(true);}}
+ async function open(){dialog.current?.showModal();if(!ready){try{const r=await fetch('/api/chat/config',{cache:'no-store'});const data=await r.json();setEnabled(r.ok&&data.enabled===true&&data.mode==='simulation');setTestIntake(r.ok&&data.testIntakeEnabled===true);}catch{setEnabled(false);setTestIntake(false);}setReady(true);}}
  async function ask(event?:FormEvent, next=context, message=question){
   event?.preventDefault();if(inFlight.current||!message.trim()||!enabled)return;
   inFlight.current=true;setBusy(true);setError('');setDraft(null);setReply(null);
@@ -30,11 +34,13 @@ export default function AssistChat() {
  useEffect(()=>{const listener=()=>{void open();};window.addEventListener('assist-chat-open',listener);return()=>window.removeEventListener('assist-chat-open',listener);});
  function review(){setDraft([c.summary,`${c.industry}: ${labels.industryLabels[industryIds.indexOf(context.selection.industry)]}`,`${c.selected}: ${context.selection.services.map(s=>labels.serviceLabels[serviceIds.indexOf(s)]).join(', ')}`,context.task?`${c.task}: ${c[context.task]}`:'',c.demo].filter(Boolean).join('\n'));}
  const calc=calculatorHref('/calculator',parseCalculatorQuery(search)??calculatorForSelection(context.selection),context.selection);
+ const calculation=parseCalculatorQuery(search);
+ const contactHref=calculation?calculatorHref('/contact',calculation,context.selection):selectionHref('/contact',context.selection);
  return <>
   <dialog ref={dialog} className="assist-chat" aria-labelledby="assist-chat-title" aria-describedby="assist-chat-intro" onClose={()=>request.current?.abort()}>
    <header className="assist-chat-head"><h2 id="assist-chat-title">{c.title}</h2><button type="button" className="site-button site-button-outline" onClick={()=>dialog.current?.close()} autoFocus>{c.close}</button></header>
    <div className="assist-chat-body">
-   <p className="assist-chat-badge">{c.badge}</p><p id="assist-chat-intro">{c.intro}</p><p>{labels.unavailable}</p><p id="assist-chat-caution">{c.caution}</p>
+   <p className="assist-chat-badge">{c.badge}</p><p id="assist-chat-intro">{c.intro}</p><p>{testIntake?handoff.notice:labels.unavailable}</p><p id="assist-chat-caution">{c.caution}</p>
    {!ready?<p role="status">{c.busy}</p>:!enabled?<p role="status">{c.disabled}</p>:<>
     <form onSubmit={ask}><label htmlFor="assist-chat-question">{c.question}</label><textarea id="assist-chat-question" aria-describedby="assist-chat-caution" maxLength={500} rows={3} value={question} onChange={e=>setQuestion(e.target.value)} required/><button type="submit" className="site-button" disabled={busy||!question.trim()}>{busy?c.busy:c.send}</button></form>
     <p role="status" aria-live="polite" aria-atomic="true">{busy?c.busy:reply?reply.text:''}</p>
@@ -45,7 +51,7 @@ export default function AssistChat() {
      {reply.need==='task'&&<fieldset><legend>{c.task}</legend>{(['monthly','cleanup','payroll'] as const).map(task=><button key={task} type="button" className="site-button site-button-outline" disabled={busy} onClick={()=>{const next={...context,task:task as ChatTask};setContext(next);void ask(undefined,next,c[task]);}}>{c[task]}</button>)}</fieldset>}
     </div>}
     {!reply?.need&&context.selection.services.length>0&&<><p>{c.follow}</p><p>{c.demo}</p><Link className="site-button site-button-outline" href={calc} onClick={()=>dialog.current?.close()}>{c.calculator}</Link><button type="button" className="site-button" onClick={review}>{c.preview}</button></>}
-    {draft!==null&&<section><h3>{c.draft}</h3><label htmlFor="assist-chat-draft">{c.edit}</label><textarea id="assist-chat-draft" rows={7} maxLength={1200} value={draft} onChange={e=>setDraft(e.target.value)}/><p>{c.mailNotice}</p><a className="site-button" href={`mailto:${chatEmail}?subject=${encodeURIComponent(c.subject)}&body=${encodeURIComponent(draft)}`}>{c.openMail}</a></section>}
+    {draft!==null&&<section><h3>{c.draft}</h3><label htmlFor="assist-chat-draft">{c.edit}</label><textarea id="assist-chat-draft" rows={7} maxLength={1200} value={draft} onChange={e=>setDraft(e.target.value)}/><p>{c.mailNotice}</p><a className="site-button" href={`mailto:${chatEmail}?subject=${encodeURIComponent(c.subject)}&body=${encodeURIComponent(draft)}`}>{c.openMail}</a>{testIntake&&<Link className="site-button site-button-outline" href={contactHref} onClick={()=>{updateInquiry({message:draft,privacy:false});dialog.current?.close();}}>{handoff.button}</Link>}</section>}
     <button type="button" className="site-button site-button-outline" disabled={busy} onClick={()=>{request.current?.abort();setContext(initial());setQuestion('');setReply(null);setDraft(null);setError('');}}>{c.clear}</button>
    </>}
    <nav className="assist-chat-links" aria-label={c.follow}><Link href="/faq" onClick={()=>dialog.current?.close()}>{c.faq}</Link><a href={`mailto:${chatEmail}`}>{chatEmail}</a></nav>

@@ -34,7 +34,7 @@
     "pm2:restart": "pm2 restart assistpro",
     "pm2:logs": "pm2 logs assistpro",
     "health": "curl -f http://localhost:3000/health || curl -f http://localhost:5000/health",
-    "test": "node --import tsx --test server/chat/chat.test.ts server/storage.test.ts server/inquiry.test.ts server/pricing.test.ts server/seo.test.ts server/http.test.ts scripts/browser-policy.test.ts scripts/client-bundle.test.ts scripts/brand-assets.test.ts scripts/release.test.mjs scripts/validation-csp.test.ts scripts/color-contrast.test.ts",
+    "test": "node --import tsx --test server/test-staff.test.ts server/chat/chat.test.ts server/storage.test.ts server/inquiry.test.ts server/pricing.test.ts server/seo.test.ts server/http.test.ts scripts/browser-policy.test.ts scripts/client-bundle.test.ts scripts/brand-assets.test.ts scripts/release.test.mjs scripts/validation-csp.test.ts scripts/color-contrast.test.ts",
     "audit:release": "node scripts/audit-release.mjs",
     "audit:seo": "node --import tsx scripts/audit-seo.ts",
     "qa:intake-pilot": "node --import tsx scripts/intake-pilot-qa.ts"

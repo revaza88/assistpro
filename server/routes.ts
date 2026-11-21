@@ -6,11 +6,13 @@ import { z } from '../src/shared/validation';
 import { logger } from "./utils/logger"; // Added logger import
 import { insertContactSchema, insertJobApplicationSchema } from "../src/shared/schemas";
 import { config } from './config';
+import { registerTestStaff } from './test-staff';
 import { registerChat } from './chat/routes';
 import { ContactReplayConflict } from './file-storage';
 
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  const testStaff = registerTestStaff(app, storage);
   registerChat(app);
   // Health check endpoint with detailed information
   app.get("/health", (req, res) => {
@@ -81,16 +83,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const validatedData = insertContactSchema.parse(req.body);
       const header = req.get('Idempotency-Key');
       const idempotencyKey = header === undefined ? undefined : z.string().uuid().parse(header);
-      const contact = await storage.createContact(validatedData, idempotencyKey);
+      const contact = await storage.createContact(validatedData, idempotencyKey, testStaff?.assignee);
       
       // Log the contact submission
       logger.info("Contact saved", { id: contact.id });
       
       res.status(201).json({ 
         success: true, 
-        message: "Saved in local test storage. Employee delivery is not configured.",
+        message: testStaff ? "Saved in isolated test storage. Synthetic staff lookup is available; notification is tested separately." : "Saved in local test storage. Employee delivery is not configured.",
         intake: 'local',
-        delivery: 'not_configured',
+        delivery: testStaff ? 'test_lookup_available' : 'not_configured',
         id: contact.id 
       });
     } catch (error) {
