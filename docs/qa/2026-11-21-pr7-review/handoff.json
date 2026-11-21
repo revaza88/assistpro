@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-11-21T08:43:02.494Z",
-  "sourceCommit": "c3ff1a2b68c6c6a2f55aed14c045d2514cf99630",
-  "fixture": "D:\\Assist\\assist-ai-chat\\.artifacts\\handoff-runs\\run-E9JY3e",
+  "checkedAt": "2026-11-21T08:47:01.048Z",
+  "sourceCommit": "a669f6a4f8efa75e27ec6965994c0ae488a4f346",
+  "fixture": "D:\\Assist\\assist-ai-chat\\.artifacts\\handoff-runs\\run-Gm5F0P",
   "model": "simulation; no real model",
   "storage": "single-process isolated FileStorage; not production",
   "checks": [
@@ -16,9 +16,9 @@
   "actualNotificationDelivery": false,
   "physicalPhone": false,
   "release": {
-    "origin": "http://127.0.0.1:50262",
-    "commit": "c3ff1a2b68c6c6a2f55aed14c045d2514cf99630",
-    "tree": "97918eeeae6aab482f50732a53ea3559576573f3",
+    "origin": "http://127.0.0.1:49618",
+    "commit": "a669f6a4f8efa75e27ec6965994c0ae488a4f346",
+    "tree": "e3539dd061f0d27a2ca4a53ff2dd6584ef5f97ea",
     "verified_assets": 8
   },
   "browser": "157.0.8103.79",
@@ -37,7 +37,7 @@
     "services": [
       "bookkeeping"
     ],
-    "createdAt": "2026-11-21T08:43:08.838Z",
+    "createdAt": "2026-11-21T08:47:06.409Z",
     "testHandoff": {
       "assignee": "qa-responsible",
       "notification": "not_attempted",

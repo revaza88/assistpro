@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-21T08:43:02.306Z",
+  "checkedAt": "2026-11-21T08:47:00.913Z",
   "mode": "production build; controlled synthetic HTTP responses for lifecycle regression",
   "externalRequests": 0,
   "intakePosts": 0,
@@ -10,10 +10,10 @@
   ],
   "release": {
     "schema_version": 1,
-    "commit": "c3ff1a2b68c6c6a2f55aed14c045d2514cf99630",
-    "tree": "97918eeeae6aab482f50732a53ea3559576573f3",
+    "commit": "a669f6a4f8efa75e27ec6965994c0ae488a4f346",
+    "tree": "e3539dd061f0d27a2ca4a53ff2dd6584ef5f97ea",
     "dirty": false,
-    "built_at": "2026-11-21T08:42:37.408Z",
+    "built_at": "2026-11-21T08:46:44.303Z",
     "assets": [
       {
         "path": "/assets/chat-copy-CWFOcvzC.js",

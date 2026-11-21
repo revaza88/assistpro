@@ -1,3 +1,9 @@
+# Draft PR #7 — review/CI, 2026-11-21
+
+[ახალი review და შემოწმებები](PR7_REVIEW_2026_11_21.md): ჩატის მდგომარეობისა და staff isolation-ის რეგრესიები გასწორდა, check/87tests/build და ადგილობრივი browser/handoff/release audit წარმატებულია. დაემატა მხოლოდ read-only CI (Node24 check/test/build/clean identity), deploy/production secrets-ის გარეშე. პირველი remote runs ორივე success; საბოლოო head-ის CI ცალკე PR Checks-ში მოწმდება. **main merge, საჯარო მიღება/ინდექსაცია/შეტყობინებები და hosting ცვლილება კვლავ აკრძალულია ამ ამოცანის ფარგლებში.** საჯარო release.json-ის ბლოკერი არ მოგვარებულა.
+
+---
+
 # იზოლირებული მიღების ახალი მტკიცებულება — 2026-11-21
 
 `codex/assist-ai-chat-pilot`, შემოწმებული აპლიკაცია `440a5ae939392e146ab28425340dccc6ee537dfc`: [ჩატი → review → არსებული ფორმა → #1 → ავტორიზებული სინთეზური test-staff lookup](HANDOFF_QA_2026_11_21.md). 85 ტესტი/check/build/local strict release და ქართული mobile browser passed. შეტყობინება მხოლოდ ცალკე სიმულაციაა; production საცავი/რეალური თანამშრომელი/არხი კვლავ ღიაა. `TEST_STAFF_MODE` ნაგულისხმევად გამორთულია და loopback/local/.artifacts/სინთეზურ credentials-ს მოითხოვს. **ეს flag-ები ჰოსტინგზე არ გადაიტანოთ; main merge/push/deploy/ონლაინ მიღება/ინდექსაცია/შეტყობინებების ჩართვა ამ დავალებაში არ შესრულდეს.** საჯარო release.json წარმომავლობის საკითხი უცვლელად ცალკეა.

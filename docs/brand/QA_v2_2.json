@@ -2440,5 +2440,27 @@
     "production_intake_enabled": false,
     "hosting_provenance": "separate; unresolved",
     "logo_palette_header_changed": false
+  },
+  "pr7_review_2026_11_21": {
+    "report": "../PR7_REVIEW_2026_11_21.md",
+    "tested_application_commit": "a669f6a4f8efa75e27ec6965994c0ae488a4f346",
+    "local_check": "pass",
+    "local_tests": {
+      "pass": 87,
+      "fail": 0
+    },
+    "local_build": "clean; pass",
+    "local_browser": "KA/EN/RU 320/390/1440px; 200% text; pass",
+    "lifecycle": "delayed response, queued close and config refresh pass; controlled HTTP fixtures",
+    "handoff": "pass; synthetic recipient and notification simulation only",
+    "initial_remote_ci_head": "4f0a6a1cc0b7bfbfd10d5f3b0540aa840031d5c5",
+    "initial_remote_ci_runs": [
+      44886294372,
+      44886293055
+    ],
+    "initial_remote_ci_result": "both success; final head checked separately in PR",
+    "deployment": false,
+    "public_intake_enabled": false,
+    "main_merge": false
   }
 }

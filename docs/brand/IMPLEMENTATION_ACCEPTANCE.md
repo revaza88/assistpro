@@ -1,3 +1,11 @@
+## Draft PR #7-ის review — 21 ნოემბერი 2026
+
+საწყისი head `df7357f`; შემოწმებული აპლიკაცია `a669f6a4f8efa75e27ec6965994c0ae488a4f346`. გასწორდა არასასურველი სერვისის/ინდუსტრიის ცვლილება, დაძველებული async პასუხი, config caching და queued-close race, proxy staff წვდომა და lookup-ის 503. დამატებულია read-only CI; პირველი push/PR runs ორივე success, საბოლოო head ცალკე მოწმდება. [ანგარიში და ახალი მტკიცებულება](../PR7_REVIEW_2026_11_21.md).
+
+ადგილობრივად check/87tests/clean build/strict release8assets და production headless Chrome157 KA/EN/RU320/390/1440px/200%ტექსტი/keyboard/handoff/lifecycle წარმატებულია. რეალური მოდელი/თანამშრომელი/შეტყობინება არ დადასტურებულა. ბრენდი/header/პალიტრა უცვლელია. main/public intake/indexing/hosting/deploy არ შეცვლილა; PR Draft რჩება.
+
+---
+
 ## იზოლირებული მიღების გაგრძელება — 21 ნოემბერი 2026
 
 საწყისი `2f8fb29`; ახალი კოდი `440a5ae939392e146ab28425340dccc6ee537dfc`. ჩატის baseline კვლავ გაიარა; test-only flag-ისას მონახაზი არსებული საკონტაქტო ფორმისკენ მიდის, საკონტაქტო მონაცემები AI-ს არ გადაეცემა. #1/lost201/retry/restart/count1; განსხვავებული შინაარსი409; ახალი intent#2; უფლებამოსილი სინთეზური როლის lookup200/CLI, სხვა როლის403; ცალკე notification failure/retry მხოლოდ სიმულაცია. [სრული მტკიცებულება](../HANDOFF_QA_2026_11_21.md).

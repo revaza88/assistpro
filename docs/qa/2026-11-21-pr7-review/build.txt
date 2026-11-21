@@ -51,15 +51,15 @@ dist/public/assets/pricing-Cq-SW_rx.js               89.49 kB │ gzip: 25.80 kB
 dist/public/assets/proxy-DeG8SPka.js                108.22 kB │ gzip: 35.66 kB
 dist/public/assets/index-D1yMOeZ5.js                274.96 kB │ gzip: 79.01 kB
 
-✓ built in 3.91s
-[PLUGIN_TIMINGS] JavaScript callbacks ran for 1.8s of this 3.9s build (46%).
+✓ built in 4.20s
+[PLUGIN_TIMINGS] JavaScript callbacks ran for 2.0s of this 4.2s build (47%).
 1 callback is listed without a time. Its calls overlapped, so the time inside one call includes work from other calls. To find its cost, profile the build with `node --cpu-prof`:
   - plugin vite:css transform (4 calls)
 See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
 
 Prerendered 45 localized pages and 3 localized 404s with actual React content.
 
-  dist\index.js  95.5kb
+  dist\index.js  95.6kb
 
-Done in 13ms
-Release identity: c3ff1a2b68c6c6a2f55aed14c045d2514cf99630; source clean
+Done in 16ms
+Release identity: a669f6a4f8efa75e27ec6965994c0ae488a4f346; source clean
