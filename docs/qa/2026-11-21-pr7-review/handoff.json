@@ -1,0 +1,70 @@
+{
+  "checkedAt": "2026-11-21T08:43:02.494Z",
+  "sourceCommit": "c3ff1a2b68c6c6a2f55aed14c045d2514cf99630",
+  "fixture": "D:\\Assist\\assist-ai-chat\\.artifacts\\handoff-runs\\run-E9JY3e",
+  "model": "simulation; no real model",
+  "storage": "single-process isolated FileStorage; not production",
+  "checks": [
+    "No POST without consent; separate contact form receives only reviewed summary and selection; subsequent chat request excludes contact fields",
+    "KA 390px: actual service link → reviewed editable draft → existing form → lost successful response → retry/double-click returns one receipt",
+    "Same ID and creation time after real process restart; changed payload 409; simulated notification failure/retry does not create another request",
+    "New deliberate intent gets a distinct ID; disabled API writes nothing and staff route is absent; email fallback remains; no contact/transcript in logs"
+  ],
+  "externalRequests": 0,
+  "mailActions": 0,
+  "realEmployee": false,
+  "actualNotificationDelivery": false,
+  "physicalPhone": false,
+  "release": {
+    "origin": "http://127.0.0.1:50262",
+    "commit": "c3ff1a2b68c6c6a2f55aed14c045d2514cf99630",
+    "tree": "97918eeeae6aab482f50732a53ea3559576573f3",
+    "verified_assets": 8
+  },
+  "browser": "157.0.8103.79",
+  "requestId": 1,
+  "countAfterLostReplyAndRetry": 1,
+  "reviewedSummary": "გამარჯობა, ASSIST. გთხოვთ განვიხილოთ ჩემი საჭიროება.\nსაქმიანობის სფერო: საცალო ვაჭრობა\nმომსახურებები: ყოველდღიური ბუღალტერია\nსამუშაოს ტიპი: მიმდინარე აღრიცხვა\nკალკულატორი მხოლოდ დემო შეფასებაა — არა ფასი ან შეთავაზება.\nსატესტო შესწორება: საჭიროა მიმდინარე აღრიცხვის განხილვა.",
+  "authorizedRead": {
+    "testOnly": true,
+    "id": 1,
+    "firstName": "სატესტო ვიზიტორი",
+    "lastName": "",
+    "email": "handoff-fixture@example.invalid",
+    "phone": "",
+    "message": "გამარჯობა, ASSIST. გთხოვთ განვიხილოთ ჩემი საჭიროება.\nსაქმიანობის სფერო: საცალო ვაჭრობა\nმომსახურებები: ყოველდღიური ბუღალტერია\nსამუშაოს ტიპი: მიმდინარე აღრიცხვა\nკალკულატორი მხოლოდ დემო შეფასებაა — არა ფასი ან შეთავაზება.\nსატესტო შესწორება: საჭიროა მიმდინარე აღრიცხვის განხილვა.",
+    "industry": "retail",
+    "services": [
+      "bookkeeping"
+    ],
+    "createdAt": "2026-11-21T08:43:08.838Z",
+    "testHandoff": {
+      "assignee": "qa-responsible",
+      "notification": "not_attempted",
+      "attempts": 0
+    }
+  },
+  "staffCliVerified": true,
+  "notificationFailure": {
+    "testOnly": true,
+    "id": 1,
+    "stored": true,
+    "notification": "failed",
+    "attempts": 1,
+    "actualDelivery": false
+  },
+  "conflictStatus": 409,
+  "notificationRetry": {
+    "testOnly": true,
+    "id": 1,
+    "stored": true,
+    "notification": "simulated",
+    "attempts": 2,
+    "actualDelivery": false
+  },
+  "countAfterRestartAndNotificationRetry": 1,
+  "newIntentId": 2,
+  "finalCount": 2,
+  "disabledStatus": 503,
+  "passed": true
+}

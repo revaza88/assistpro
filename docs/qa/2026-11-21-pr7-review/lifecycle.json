@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-11-21T08:43:02.306Z",
+  "mode": "production build; controlled synthetic HTTP responses for lifecycle regression",
+  "externalRequests": 0,
+  "intakePosts": 0,
+  "checks": [
+    "Delayed response cannot overwrite the new medical/payroll selection",
+    "Queued close event from a previous opening cannot abort the reopened dialog",
+    "Reopening refreshes disabled mode instead of using cached enabled config"
+  ],
+  "release": {
+    "schema_version": 1,
+    "commit": "c3ff1a2b68c6c6a2f55aed14c045d2514cf99630",
+    "tree": "97918eeeae6aab482f50732a53ea3559576573f3",
+    "dirty": false,
+    "built_at": "2026-11-21T08:42:37.408Z",
+    "assets": [
+      {
+        "path": "/assets/chat-copy-CWFOcvzC.js",
+        "sha256": "bfb740ef820c94743a973c0053df4eed6df8d3657591d833835855104d7582dc",
+        "bytes": 32643
+      },
+      {
+        "path": "/assets/createLucideIcon-CxNr_4aI.js",
+        "sha256": "f490bae87a094c0b428d03f7804245bb6da13b6162ead7e937b5465d1e6d9fd8",
+        "bytes": 886
+      },
+      {
+        "path": "/assets/footer-TO2vXS0S.js",
+        "sha256": "8765c181f293bbcdb9777eb6f5af11c563f4ab39d2ad70d91ed7325517de5747",
+        "bytes": 32743
+      },
+      {
+        "path": "/assets/index-BtxYtz81.css",
+        "sha256": "cce853b80e663b65724028227526df821f42245a763464f9a48b21a110721588",
+        "bytes": 52059
+      },
+      {
+        "path": "/assets/index-D1yMOeZ5.js",
+        "sha256": "1a5d0072d7929ec58fd7e1898f10409309330927c373b307e26751fbfaa1efd7",
+        "bytes": 274964
+      },
+      {
+        "path": "/assets/jsx-runtime-Dn_YclF2.js",
+        "sha256": "69d8d9b5752d3eea0762c1d71123a64791e4fb7196449a9d772feae1eb0a43b4",
+        "bytes": 7968
+      },
+      {
+        "path": "/assets/users-round-B2_e2V2S.js",
+        "sha256": "2c3b575b47bea7e1fdc1fa9fb670af0f284005ea0c5cfd18e50cf5c6a06daba0",
+        "bytes": 18057
+      },
+      {
+        "path": "/theme-init.js",
+        "sha256": "6e510fb292b20ad381aa74cfb032118c5efe1f785e4812721a8bd0f5c8400b41",
+        "bytes": 390
+      }
+    ]
+  },
+  "browser": "157.0.8103.79",
+  "passed": true
+}

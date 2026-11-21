@@ -39,9 +39,11 @@ export async function answerChat(input: ChatInput, provider: ChatProvider = simu
  const text = input.message.toLowerCase();
  // Client supplies the prior structured context, never a transcript or a session ID.
  if (id === 'accounting') {
+ if (!context.industryKnown) {
  if (/მაღაზი|ვაჭრობ|retail|shop|торгов|магазин/.test(text)) { context.selection.industry = 'retail'; context.industryKnown = true; }
- const industries: [typeof industryIds[number],RegExp][] = [['education',/განათლებ|სკოლ|სასწავლ|education|school|образован|школ/],['medical',/მედიც|კლინიკ|medical|clinic|медицин|клиник/],['logistics',/ლოგისტ|logistic|логист/],['wholesale',/საბითუმ|wholesale|оптов/],['distribution',/დისტრიბ|distribution|дистриб/],['manufacturing',/წარმოებ|manufactur|производ/],['hotels',/სასტუმრ|hotel|гостиниц/],['startups',/სტარტაპ|startup|стартап/],['service',/^მომსახურება$|^services$|^услуги$|მომსახურების სფერო/],['other',/ჯერ არ ვიცი|სხვა|not sure|other|другое|пока не знаю/]];
+ const industries: [typeof industryIds[number],RegExp][] = [['education',/განათლებ|სკოლ|სასწავლ|education|school|образован|школ/],['medical',/მედიც|კლინიკ|medical|clinic|медицин|клиник/],['logistics',/ლოგისტ|logistic|логист/],['wholesale',/საბითუმ|wholesale|оптов/],['distribution',/დისტრიბ|distribution|дистриб/],['manufacturing',/წარმოებ|manufactur|производ/],['hotels',/სასტუმრ|hotel|гостиниц/],['startups',/სტარტაპ|startup|стартап/],['service',/^მომსახურება$|^services$|^услуги$|მომსახურების სფერო/],['other',/^(?:ჯერ არ ვიცი|სხვა|not sure|other|другое|пока не знаю)$/]];
  for(const [industry,pattern] of industries)if(pattern.test(text)){context.selection.industry=industry;context.industryKnown=true;break;}
+ }
  if (/აღდგენა|cleanup|восстанов/.test(text)) context.task = 'cleanup';
  if (/ხელფას|payroll|зарплат/.test(text)) context.task = 'payroll';
  if (/მიმდინარე|ყოველთვ|monthly|ongoing|текущ|ежемесяч/.test(text)) context.task = 'monthly';
