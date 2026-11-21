@@ -20,7 +20,7 @@ export default function AssistChat() {
  const dialog=useRef<HTMLDialogElement>(null), request=useRef<AbortController|null>(null), inFlight=useRef(false);
  const revision=useRef(0), configuration=useRef<AbortController|null>(null);
  function cancelAnswer(){revision.current++;request.current?.abort();request.current=null;inFlight.current=false;setBusy(false);}
- function close(){cancelAnswer();configuration.current?.abort();}
+ function close(){if(dialog.current?.open)return;cancelAnswer();configuration.current?.abort();}
  const [testIntake,setTestIntake]=useState(false);
  // In memory only. Preserve the latest site selection on calculator/contact navigation.
  useEffect(()=>{cancelAnswer();const value=parseSelection(search);if(value&&new URLSearchParams(search).has('sector')){setContext({selection:value,industryKnown:true});setReply(null);setDraft(null);}},[search]);
