@@ -1,3 +1,12 @@
+# Current infrastructure — 2026-11-27
+
+The user authorized infrastructure provisioning on the existing Dokploy `assist.ge`
+project. PostgreSQL, local backups and a health monitor are deployed separately
+from the website. See [the current deployment record](../deploy/ASSIST_INFRASTRUCTURE.md)
+and [cross-project handoff](CROSS_PROJECT_HANDOFF.md). Website database integration
+and external notifications remain pending. Earlier task-specific restrictions and
+QA results below are historical, not a description of this later infrastructure work.
+
 # Draft PR #7 — review/CI, 2026-11-21
 
 [ახალი review და შემოწმებები](PR7_REVIEW_2026_11_21.md): ჩატის მდგომარეობისა და staff isolation-ის რეგრესიები გასწორდა, check/87tests/build და ადგილობრივი browser/handoff/release audit წარმატებულია. დაემატა მხოლოდ read-only CI (Node24 check/test/build/clean identity), deploy/production secrets-ის გარეშე. პირველი remote runs ორივე success; საბოლოო head-ის CI ცალკე PR Checks-ში მოწმდება. **main merge, საჯარო მიღება/ინდექსაცია/შეტყობინებები და hosting ცვლილება კვლავ აკრძალულია ამ ამოცანის ფარგლებში.** საჯარო release.json-ის ბლოკერი არ მოგვარებულა.

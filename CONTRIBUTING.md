@@ -1,5 +1,9 @@
 # Contributing to AssistPro
 
+For continuing from another project, checkout or computer, start with
+[the cross-project handoff](docs/CROSS_PROJECT_HANDOFF.md). It documents the current
+Dokploy target, access prerequisites, deployment boundaries and verification steps.
+
 Thank you for considering contributing to AssistPro! This document provides guidelines for contributing to the project.
 
 ## Code of Conduct
