@@ -1,5 +1,11 @@
 # Assistpro project context
 
+## Current infrastructure handoff — 2026-11-27
+
+Before infrastructure/deployment work or continuing from another checkout, read `docs/CROSS_PROJECT_HANDOFF.md` and `deploy/ASSIST_INFRASTRUCTURE.md`. The user explicitly authorized provisioning infrastructure on 2026-11-27: a separate PostgreSQL 17, local daily backups and health monitor now exist in the Dokploy `assist.ge` project. Earlier database deferral is historical for this provisioned infrastructure; application database integration, staff authentication, external notifications and AI provider integration remain pending. Do not confuse provisioning with completed application functionality.
+
+The website `assistpro` and Raw Compose `assist-infrastructure` are separate Dokploy services. Website main pushes have autodeploy enabled; GitHub edits to the infrastructure YAML do not automatically update the Raw Compose service. Keep reviewed repository configuration and Dokploy configuration synchronized deliberately, verify the target project, preserve volumes/secrets, and record deployment results. Never store credentials in Git or create duplicate infrastructure from another checkout.
+
 Read `docs/SITES_ALIGNMENT.md` before planning product or architecture changes. It reconciles this repository with the user's related Sites project, records evidence limits, and distinguishes implemented features from proposals and demos.
 
 - Preserve existing local work. This checkout uses React/Vite and Express; the reference Site uses Next.js. Do not silently replace the framework or merge independent project identities.
